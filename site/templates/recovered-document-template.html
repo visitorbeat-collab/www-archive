@@ -3,23 +3,27 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>DOCUMENT IDENTIFIER</title>
+  <title>RECOVERED DOCUMENT</title>
   <link rel="stylesheet" href="/style.css">
 </head>
-<body>
+<body class="recovered-page">
 <main class="document">
   <header class="document-header">
-    <p class="meta">RECOVERED MATERIAL / STATUS</p>
-    <h1>DOCUMENT IDENTIFIER</h1>
+    <div class="system-label">RECOVERED MATERIAL / STATUS</div>
+    <h1 class="document-title">DOCUMENT_IDENTIFIER</h1>
+    <div class="document-metadata">
+      <span>revision: unknown</span>
+      <span>provenance: unresolved</span>
+    </div>
   </header>
 
-  <!-- PRESERVE RECOVERED CONTENT BELOW -->
-  <p>Recovered document content.</p>
-  <!-- END RECOVERED CONTENT -->
+  <section class="recovered-section">
+    <h2><span class="recovered-section-number">1.0</span>SECTION</h2>
+    <p>Recovered document content.</p>
+  </section>
 
   <footer class="document-footer">
-    <hr>
-    <p><a href="/recovered/">Back to recovered/</a></p>
+    <a class="up-link" href="/recovered/">← up</a>
   </footer>
 </main>
 <script src="/js/main.js"></script>

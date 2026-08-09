@@ -1,8 +1,6 @@
-/* WORLD WIDE WASTE — shared site JavaScript */
+/* WORLD WIDE WASTE — THE INDEX — V3 */
 
 document.addEventListener("DOMContentLoaded", () => {
-  console.log("Recovered index initialized.");
-
   const form = document.querySelector("[data-password-form]");
   if (!form) return;
 
@@ -12,14 +10,14 @@ document.addEventListener("DOMContentLoaded", () => {
     const input = form.querySelector("[data-password-input]");
     const status = document.querySelector("#password-status");
 
-    // Placeholder only.
-    // The real password logic will be added after the puzzle is finalized.
-    if (status) {
-      status.textContent = "Authentication unavailable.";
-    }
+    // Placeholder only. Final puzzle authentication will be added later.
+    if (status) status.textContent = "authentication unavailable";
 
-    if (input) {
-      input.value = "";
-    }
+    document.body.classList.add("threshold-entering");
+
+    window.setTimeout(() => {
+      document.body.classList.remove("threshold-entering");
+      if (input) input.value = "";
+    }, 250);
   });
 });

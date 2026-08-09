@@ -1,140 +1,394 @@
+@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap");
+
 /* =========================================================
-   WORLD WIDE WASTE — PUBLIC ARCHIVE
-   Version 2
-   Shared stylesheet
+   WORLD WIDE WASTE — THE INDEX
+   Visual System V3
    ========================================================= */
+
+:root {
+  color-scheme: dark;
+
+  --bg: #121417;
+  --bg-soft: #15191e;
+  --bg-recovered: #0f1317;
+  --bg-restricted: #0b0d10;
+
+  --text: #d8dde3;
+  --text-soft: #b8bec7;
+  --meta: #858d98;
+  --faint: #606873;
+
+  --line: #2b3138;
+  --line-soft: #20252b;
+
+  --link: #87bfff;
+  --link-hover: #b5d6ff;
+
+  --finder: #8fd8d2;
+
+  --sans: "IBM Plex Sans", "Segoe UI", Arial, sans-serif;
+  --mono: "IBM Plex Mono", "SFMono-Regular", Consolas, monospace;
+
+  --content-width: 820px;
+  --document-width: 720px;
+}
 
 * {
   box-sizing: border-box;
 }
 
 html {
-  background: #ffffff;
+  min-height: 100%;
+  background: var(--bg);
 }
 
 body {
-  margin: 20px;
-  background: #ffffff;
-  color: #111111;
-  font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
+  min-height: 100vh;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--sans);
   font-size: 16px;
-  line-height: 1.5;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+body.finder-page {
+  background:
+    linear-gradient(rgba(255,255,255,0.012), rgba(255,255,255,0.012)),
+    var(--bg);
+}
+
+body.recovered-page {
+  background: var(--bg-recovered);
+}
+
+body.restricted-page {
+  background: var(--bg-restricted);
 }
 
 main {
-  max-width: 1000px;
+  width: min(calc(100% - 36px), var(--content-width));
+  margin: 64px auto 80px;
+}
+
+main.document {
+  max-width: var(--document-width);
 }
 
 h1, h2, h3 {
-  margin: 0 0 16px;
-  font-weight: 600;
+  margin: 0;
+  font-weight: 500;
+  letter-spacing: -0.015em;
+}
+
+h1 {
+  font-size: 1.7rem;
+  margin-bottom: 18px;
+}
+
+h2 {
+  font-size: 1rem;
+  margin-top: 34px;
+  margin-bottom: 12px;
+  color: var(--text-soft);
+  text-transform: none;
 }
 
 p {
-  margin: 0 0 1em;
+  margin: 0 0 1.15em;
+}
+
+a {
+  color: var(--link);
+  text-decoration: none;
+}
+
+a:hover,
+a:focus-visible {
+  color: var(--link-hover);
+  text-decoration: underline;
+  text-underline-offset: 3px;
 }
 
 hr {
   border: 0;
-  border-top: 1px solid #888888;
-  margin: 12px 0 18px;
+  border-top: 1px solid var(--line);
+  margin: 18px 0 24px;
 }
 
-a {
-  color: #0000ee;
-  text-decoration: underline;
+/* ---------- Structure / metadata ---------- */
+
+.eyebrow,
+.meta,
+.directory-path,
+.statusline,
+.file-id,
+.system-label {
+  font-family: var(--mono);
+  color: var(--meta);
+  font-size: 0.82rem;
+  letter-spacing: 0.02em;
 }
 
-a:visited {
-  color: #551a8b;
+.directory-path {
+  margin-bottom: 8px;
 }
 
-table {
-  border-collapse: collapse;
+.statusline {
+  margin-top: 28px;
+  color: var(--faint);
 }
 
-th, td {
-  padding: 4px 32px 4px 0;
-  text-align: left;
-  vertical-align: top;
-  white-space: nowrap;
+.index-title {
+  margin-bottom: 8px;
 }
 
-th {
-  font-weight: normal;
-}
-
-.directory-note,
-.meta {
-  color: #555555;
-  font-size: 0.92rem;
-}
-
-.document {
-  max-width: 760px;
-}
-
-.document-header {
+.index-subtitle {
+  color: var(--meta);
+  max-width: 620px;
   margin-bottom: 28px;
 }
 
+/* ---------- Directory listings ---------- */
+
+.directory-list {
+  margin-top: 20px;
+  border-top: 1px solid var(--line);
+}
+
+.directory-row {
+  display: grid;
+  grid-template-columns: minmax(220px, 1fr) 160px 90px;
+  gap: 22px;
+  align-items: baseline;
+  padding: 11px 8px;
+  border-bottom: 1px solid var(--line-soft);
+}
+
+.directory-row:hover {
+  background: rgba(255,255,255,0.025);
+}
+
+.directory-name {
+  font-family: var(--mono);
+  overflow-wrap: anywhere;
+}
+
+.directory-meta,
+.directory-size {
+  font-family: var(--mono);
+  color: var(--meta);
+  font-size: 0.82rem;
+}
+
+.directory-size {
+  text-align: right;
+}
+
+.directory-footer {
+  margin-top: 24px;
+  font-family: var(--mono);
+  color: var(--faint);
+  font-size: 0.78rem;
+}
+
+/* ---------- Documents ---------- */
+
+.document-header {
+  margin-bottom: 36px;
+}
+
+.document-header .eyebrow {
+  margin-bottom: 8px;
+}
+
+.document-title {
+  margin-bottom: 10px;
+}
+
+.document-metadata {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 18px;
+  padding-top: 10px;
+  border-top: 1px solid var(--line-soft);
+  font-family: var(--mono);
+  color: var(--meta);
+  font-size: 0.76rem;
+}
+
 .document-footer {
-  margin-top: 40px;
+  margin-top: 48px;
+  padding-top: 18px;
+  border-top: 1px solid var(--line);
+  font-family: var(--mono);
+  font-size: 0.8rem;
 }
 
-.document p {
-  margin-bottom: 1em;
+.finder-annotation {
+  margin: 28px 0;
+  padding-left: 16px;
+  border-left: 2px solid var(--finder);
+  color: var(--text-soft);
 }
 
-.document blockquote {
-  margin: 18px 0;
-  padding-left: 18px;
-  border-left: 2px solid #999999;
+.finder-annotation::before {
+  content: "FINDER NOTE";
+  display: block;
+  margin-bottom: 8px;
+  color: var(--finder);
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
 }
 
-pre {
-  white-space: pre-wrap;
-  font-family: "Courier New", Courier, monospace;
-  line-height: 1.55;
+/* ---------- Recovered material ---------- */
+
+.recovered-page .document-header {
+  border-bottom: 1px solid var(--line);
+  padding-bottom: 18px;
 }
 
-input,
-button {
-  font: inherit;
+.recovered-page h2 {
+  font-family: var(--mono);
+  color: var(--text);
+  font-size: 0.9rem;
+  letter-spacing: 0.02em;
+}
+
+.recovered-section {
+  margin-top: 30px;
+}
+
+.recovered-section-number {
+  display: inline-block;
+  width: 56px;
+  color: var(--meta);
+  font-family: var(--mono);
+}
+
+.recovered-page p {
+  max-width: 680px;
+}
+
+/* ---------- Restricted ---------- */
+
+.restricted-shell {
+  min-height: 60vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.restricted-page h1 {
+  font-family: var(--mono);
+  font-size: 1.15rem;
+  letter-spacing: 0.03em;
 }
 
 .password-row {
   display: flex;
   gap: 8px;
-  margin-top: 18px;
+  margin-top: 20px;
+  max-width: 420px;
+}
+
+.password-row input,
+.password-row button {
+  font-family: var(--mono);
+  font-size: 0.9rem;
+  background: #0e1115;
+  color: var(--text);
+  border: 1px solid #343b44;
+  padding: 9px 11px;
 }
 
 .password-row input {
-  min-width: 240px;
-  padding: 5px 7px;
+  flex: 1;
+  min-width: 0;
+}
+
+.password-row input:focus {
+  outline: 1px solid #596574;
+  outline-offset: 1px;
 }
 
 .password-row button {
-  padding: 5px 12px;
+  cursor: pointer;
+}
+
+.password-row button:hover {
+  background: #151a20;
 }
 
 #password-status {
   min-height: 1.5em;
   margin-top: 12px;
+  color: var(--meta);
+  font-family: var(--mono);
+  font-size: 0.78rem;
 }
 
-@media (max-width: 700px) {
-  body {
-    margin: 14px;
-    font-size: 15px;
+.threshold-entering {
+  opacity: 0;
+  transition: opacity 250ms linear;
+}
+
+/* ---------- Utility ---------- */
+
+.mono {
+  font-family: var(--mono);
+}
+
+.muted {
+  color: var(--meta);
+}
+
+.up-link {
+  font-family: var(--mono);
+  font-size: 0.82rem;
+}
+
+::selection {
+  background: rgba(143, 216, 210, 0.22);
+  color: var(--text);
+}
+
+/* ---------- Mobile ---------- */
+
+@media (max-width: 680px) {
+  main {
+    width: min(calc(100% - 28px), var(--content-width));
+    margin-top: 38px;
   }
 
-  th, td {
-    padding-right: 16px;
+  .directory-row {
+    grid-template-columns: 1fr auto;
+    gap: 8px 14px;
   }
 
-  table {
-    display: block;
-    overflow-x: auto;
+  .directory-meta {
+    grid-column: 1 / 2;
+    grid-row: 2;
+  }
+
+  .directory-size {
+    grid-column: 2;
+    grid-row: 1 / 3;
+    align-self: center;
+  }
+
+  .document-metadata {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 3px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .threshold-entering {
+    transition: none;
   }
 }

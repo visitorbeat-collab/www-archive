@@ -1,0 +1,73 @@
+/* ===================================================
+   World Wide Waste Archive
+   =================================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: #050505;
+    color: #d0d0d0;
+    font-family: "Courier New", monospace;
+    font-size: 16px;
+    line-height: 1.7;
+    max-width: 900px;
+    margin: 60px auto;
+    padding: 40px;
+}
+
+h1,
+h2,
+h3 {
+    color: white;
+    margin-bottom: 20px;
+    font-weight: normal;
+}
+
+p {
+    margin-bottom: 20px;
+}
+
+a {
+    color: #8fd6ff;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+hr {
+    border: none;
+    border-top: 1px solid #444;
+    margin: 40px 0;
+}
+
+.container {
+    max-width: 850px;
+    margin: auto;
+}
+
+.directory {
+    margin-top: 30px;
+    padding-left: 20px;
+}
+
+.directory a {
+    display: block;
+    margin: 8px 0;
+}
+
+.note {
+    color: #888;
+    font-size: 14px;
+}
+
+.footer {
+    margin-top: 60px;
+    font-size: 13px;
+    color: #666;
+}

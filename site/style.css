@@ -162,7 +162,7 @@ hr {
 
 .directory-row {
   display: grid;
-  grid-template-columns: minmax(220px, 1fr) 160px 90px;
+  grid-template-columns: minmax(0, 1fr) 160px 90px;
   gap: 22px;
   align-items: baseline;
   padding: 11px 8px;
@@ -175,7 +175,13 @@ hr {
 
 .directory-name {
   font-family: var(--mono);
+  min-width: 0;
+}
+
+.directory-name a {
+  display: block;
   overflow-wrap: anywhere;
+  word-break: break-word;
 }
 
 .directory-meta,

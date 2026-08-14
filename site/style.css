@@ -1,5 +1,5 @@
-@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400;700&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap");
+
 /* =========================================================
    WORLD WIDE WASTE — THE INDEX
    Consolidated Visual System
@@ -20,13 +20,14 @@
   --line: #2b3138;
   --line-soft: #20252b;
 
-  --link: #7f9fb8;
-  --link-hover: #a9c1d1;
-  --finder: #7fa6a2;
-}
+  --link: #87bfff;
+  --link-hover: #b5d6ff;
+
+  --finder: #8fd8d2;
 
   --sans: "IBM Plex Sans", "Segoe UI", Arial, sans-serif;
   --mono: "IBM Plex Mono", "SFMono-Regular", Consolas, monospace;
+  --index-font: "Courier Prime", "Courier New", monospace;
 
   --content-width: 820px;
   --document-width: 720px;
@@ -145,19 +146,24 @@ hr {
   color: var(--faint);
 }
 
+/* ---------- Index typography ---------- */
+
 .index-title {
   margin-bottom: 8px;
+  font-family: var(--index-font);
+  font-size: 1.7rem;
+  letter-spacing: 0.02em;
 }
 
 .index-subtitle {
   max-width: 620px;
   margin-bottom: 28px;
   color: var(--meta);
+  font-family: var(--mono);
 }
 
 /* =========================================================
    STANDARD DIRECTORY LAYOUT
-   Used by homepage, field notes, recovered root, etc.
    ========================================================= */
 
 .directory-list {
@@ -180,11 +186,12 @@ hr {
 
 .directory-name {
   min-width: 0;
-  font-family: var(--mono);
 }
 
 .directory-name a {
   display: inline;
+  font-family: var(--index-font);
+  font-size: 0.95rem;
   overflow-wrap: normal;
   word-break: normal;
 }
@@ -209,7 +216,6 @@ hr {
 
 /* =========================================================
    SIMPLE DIRECTORY LAYOUT
-   Used only where long filenames need a vertical list
    ========================================================= */
 
 .simple-directory-list {
@@ -221,9 +227,11 @@ hr {
   display: block;
   padding: 11px 8px;
   border-bottom: 1px solid var(--line-soft);
-  font-family: var(--mono);
-  font-size: 0.92rem;
+
+  font-family: var(--index-font);
+  font-size: 0.95rem;
   line-height: 1.45;
+
   overflow-wrap: anywhere;
 }
 
@@ -398,6 +406,7 @@ hr {
 /* ---------- Mobile ---------- */
 
 @media (max-width: 680px) {
+
   body {
     font-size: 15px;
   }
@@ -409,6 +418,10 @@ hr {
 
   h1 {
     font-size: 1.4rem;
+  }
+
+  .index-title {
+    font-size: 1.55rem;
   }
 
   .document-title {
@@ -459,32 +472,4 @@ hr {
   .threshold-entering {
     transition: none;
   }
-}
-
-/* INDEX TYPOGRAPHY — COURIER REFINED */
-
-.index-title,
-.directory-name a,
-.simple-directory-entry {
-  font-family: "Courier Prime", "Courier New", monospace;
-}
-
-.index-title {
-  font-size: 1.7rem;
-  letter-spacing: 0.02em;
-}
-
-.directory-name a,
-.simple-directory-entry {
-  font-size: 0.95rem;
-}
-
-/* Keep structural information in the cleaner technical font */
-
-.index-subtitle,
-.directory-path,
-.directory-meta,
-.directory-size,
-.directory-footer {
-  font-family: var(--mono);
 }

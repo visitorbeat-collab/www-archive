@@ -473,3 +473,120 @@ hr {
     transition: none;
   }
 }
+
+/* =========================================================
+   CONCEPTUAL SEARCH
+   ========================================================= */
+
+.search-shell {
+  margin-top: 30px;
+}
+
+.search-label {
+  display: block;
+  margin-bottom: 7px;
+  font-family: var(--mono);
+  color: var(--meta);
+  font-size: 0.78rem;
+}
+
+.search-row {
+  display: flex;
+  gap: 8px;
+  max-width: 520px;
+}
+
+.search-row input,
+.search-row button {
+  border: 1px solid var(--line);
+  background: var(--bg-recovered);
+  color: var(--text);
+  font-family: var(--mono);
+  font-size: 0.9rem;
+  padding: 10px 11px;
+}
+
+.search-row input {
+  flex: 1;
+  min-width: 0;
+}
+
+.search-row input:focus {
+  outline: 1px solid var(--meta);
+  outline-offset: 1px;
+}
+
+.search-row button {
+  cursor: pointer;
+}
+
+.search-row button:hover {
+  border-color: var(--meta);
+}
+
+.search-response {
+  margin-top: 34px;
+  padding-top: 22px;
+  border-top: 1px solid var(--line);
+  min-height: 120px;
+}
+
+.search-result-section {
+  margin-top: 26px;
+}
+
+.search-heading {
+  margin-bottom: 8px;
+  font-family: var(--mono);
+  color: var(--meta);
+  font-size: 0.72rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.search-primary {
+  font-family: var(--index-font);
+  font-size: 1.15rem;
+}
+
+.search-mapping,
+.search-note {
+  color: var(--text-soft);
+}
+
+.concept-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+}
+
+.concept-link {
+  border: 1px solid var(--line);
+  background: transparent;
+  color: var(--link);
+  padding: 5px 8px;
+  font-family: var(--mono);
+  font-size: 0.78rem;
+  cursor: pointer;
+}
+
+.concept-link:hover {
+  border-color: var(--meta);
+  color: var(--link-hover);
+}
+
+.search-document {
+  padding: 8px 0;
+  border-bottom: 1px solid var(--line-soft);
+  font-family: var(--index-font);
+}
+
+@media (max-width: 680px) {
+  .search-row {
+    flex-direction: column;
+  }
+
+  .search-row button {
+    align-self: flex-start;
+  }
+}

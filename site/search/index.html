@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Search — Observation Index</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+
+<body class="finder-page">
+
+<main>
+
+  <div class="directory-path">/search/</div>
+
+  <h1 class="index-title">Search</h1>
+
+  <p class="index-subtitle">
+    Search terms do not necessarily correspond with Index classifications.
+  </p>
+
+  <a class="up-link" href="/">← root</a>
+
+  <div class="search-shell">
+
+    <form id="concept-search-form">
+      <label class="search-label" for="concept-search">
+        query
+      </label>
+
+      <div class="search-row">
+        <input
+          id="concept-search"
+          name="q"
+          type="text"
+          autocomplete="off"
+          spellcheck="false"
+          placeholder="enter concept"
+        >
+
+        <button type="submit">search</button>
+      </div>
+    </form>
+
+    <div id="search-response" class="search-response" aria-live="polite">
+      <p class="muted">
+        No query submitted.
+      </p>
+    </div>
+
+  </div>
+
+  <div class="directory-footer">
+    Observation Index
+  </div>
+
+</main>
+
+<script src="/js/concept-search.js"></script>
+
+</body>
+</html>

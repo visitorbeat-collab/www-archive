@@ -2,14 +2,13 @@
 
 /* =========================================================
    WORLD WIDE WASTE — THE INDEX
-   Visual System V3
+   Consolidated Visual System
    ========================================================= */
 
 :root {
   color-scheme: dark;
 
   --bg: #121417;
-  --bg-soft: #15191e;
   --bg-recovered: #0f1317;
   --bg-restricted: #0b0d10;
 
@@ -33,6 +32,8 @@
   --document-width: 720px;
 }
 
+/* ---------- Base ---------- */
+
 * {
   box-sizing: border-box;
 }
@@ -55,9 +56,7 @@ body {
 }
 
 body.finder-page {
-  background:
-    linear-gradient(rgba(255,255,255,0.012), rgba(255,255,255,0.012)),
-    var(--bg);
+  background: var(--bg);
 }
 
 body.recovered-page {
@@ -77,7 +76,11 @@ main.document {
   max-width: var(--document-width);
 }
 
-h1, h2, h3 {
+/* ---------- Typography ---------- */
+
+h1,
+h2,
+h3 {
   margin: 0;
   font-weight: 500;
   letter-spacing: -0.015em;
@@ -86,16 +89,15 @@ h1, h2, h3 {
 h1 {
   font-size: 1.7rem;
   margin-bottom: 18px;
+  line-height: 1.25;
   overflow-wrap: anywhere;
-  word-break: break-word;
 }
 
 h2 {
-  font-size: 1rem;
   margin-top: 34px;
   margin-bottom: 12px;
+  font-size: 1rem;
   color: var(--text-soft);
-  text-transform: none;
 }
 
 p {
@@ -120,7 +122,7 @@ hr {
   margin: 18px 0 24px;
 }
 
-/* ---------- Structure / metadata ---------- */
+/* ---------- Shared metadata ---------- */
 
 .eyebrow,
 .meta,
@@ -148,40 +150,50 @@ hr {
 }
 
 .index-subtitle {
-  color: var(--meta);
   max-width: 620px;
   margin-bottom: 28px;
+  color: var(--meta);
 }
 
-/* ---------- Directory listings ---------- */
+/* =========================================================
+   STANDARD DIRECTORY LAYOUT
+   Used by homepage, field notes, recovered root, etc.
+   ========================================================= */
 
 .directory-list {
   margin-top: 20px;
   border-top: 1px solid var(--line);
 }
+
 .directory-row {
-  display: block;
-  padding: 14px 8px;
+  display: grid;
+  grid-template-columns: minmax(220px, 1fr) 160px 90px;
+  gap: 22px;
+  align-items: baseline;
+  padding: 11px 8px;
   border-bottom: 1px solid var(--line-soft);
 }
 
+.directory-row:hover {
+  background: rgba(255, 255, 255, 0.025);
+}
+
 .directory-name {
-  font-family: var(--mono);
   min-width: 0;
+  font-family: var(--mono);
 }
 
 .directory-name a {
-  display: inline-block;
-  overflow-wrap: anywhere;
+  display: inline;
+  overflow-wrap: normal;
   word-break: normal;
 }
 
 .directory-meta,
 .directory-size {
-  display: block;
-  margin-top: 4px;
-  font-size: 0.72rem;
-  opacity: 0.55;
+  font-family: var(--mono);
+  color: var(--meta);
+  font-size: 0.82rem;
 }
 
 .directory-size {
@@ -193,6 +205,31 @@ hr {
   font-family: var(--mono);
   color: var(--faint);
   font-size: 0.78rem;
+}
+
+/* =========================================================
+   SIMPLE DIRECTORY LAYOUT
+   Used only where long filenames need a vertical list
+   ========================================================= */
+
+.simple-directory-list {
+  margin-top: 28px;
+  border-top: 1px solid var(--line);
+}
+
+.simple-directory-entry {
+  display: block;
+  padding: 11px 8px;
+  border-bottom: 1px solid var(--line-soft);
+  font-family: var(--mono);
+  font-size: 0.92rem;
+  line-height: 1.45;
+  overflow-wrap: anywhere;
+}
+
+.simple-directory-entry:hover {
+  background: rgba(255, 255, 255, 0.025);
+  text-decoration: none;
 }
 
 /* ---------- Documents ---------- */
@@ -208,7 +245,6 @@ hr {
 .document-title {
   margin-bottom: 10px;
   overflow-wrap: anywhere;
-  word-break: break-word;
 }
 
 .document-metadata {
@@ -247,11 +283,11 @@ hr {
   letter-spacing: 0.08em;
 }
 
-/* ---------- Recovered material ---------- */
+/* ---------- Recovered documents ---------- */
 
 .recovered-page .document-header {
-  border-bottom: 1px solid var(--line);
   padding-bottom: 18px;
+  border-bottom: 1px solid var(--line);
 }
 
 .recovered-page h2 {
@@ -339,7 +375,7 @@ hr {
   transition: opacity 250ms linear;
 }
 
-/* ---------- Utility ---------- */
+/* ---------- Utilities ---------- */
 
 .mono {
   font-family: var(--mono);
@@ -362,30 +398,50 @@ hr {
 /* ---------- Mobile ---------- */
 
 @media (max-width: 680px) {
+  body {
+    font-size: 15px;
+  }
+
   main {
     width: min(calc(100% - 28px), var(--content-width));
     margin-top: 38px;
   }
 
-.directory-row {
-  grid-template-columns: 1fr;
-  gap: 3px;
-}
+  h1 {
+    font-size: 1.4rem;
+  }
 
-.directory-meta,
-.directory-size {
-  grid-column: 1;
-  text-align: left;
-}
+  .document-title {
+    font-size: 1.35rem;
+    line-height: 1.3;
+  }
 
-.directory-name a {
-  overflow-wrap: anywhere;
-}
+  .directory-row {
+    grid-template-columns: 1fr auto;
+    gap: 4px 14px;
+    padding: 10px 6px;
+  }
+
+  .directory-name {
+    grid-column: 1;
+    grid-row: 1;
+  }
+
+  .directory-name a {
+    overflow-wrap: anywhere;
+  }
+
+  .directory-meta {
+    grid-column: 1;
+    grid-row: 2;
+    font-size: 0.72rem;
+  }
 
   .directory-size {
     grid-column: 2;
     grid-row: 1 / 3;
     align-self: center;
+    font-size: 0.72rem;
   }
 
   .document-metadata {
@@ -393,34 +449,14 @@ hr {
     grid-template-columns: 1fr;
     gap: 3px;
   }
+
+  .simple-directory-entry {
+    padding: 10px 6px;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
   .threshold-entering {
     transition: none;
   }
-}
-
-/* SIMPLE DIRECTORY LIST */
-
-.simple-directory-list {
-  margin-top: 28px;
-  border-top: 1px solid var(--line);
-}
-
-.simple-directory-entry {
-  display: block;
-  padding: 13px 8px;
-  border-bottom: 1px solid var(--line-soft);
-
-  font-family: var(--mono);
-  font-size: 0.92rem;
-
-  overflow-wrap: anywhere;
-  word-break: normal;
-}
-
-.simple-directory-entry:hover {
-  background: rgba(255, 255, 255, 0.025);
-  text-decoration: none;
 }

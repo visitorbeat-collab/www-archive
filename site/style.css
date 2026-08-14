@@ -460,3 +460,26 @@ hr {
     transition: none;
   }
 }
+/* INDEX TYPOGRAPHY — OPTION 1 */
+
+.index-title,
+.index-subtitle,
+.directory-path,
+.directory-name,
+.directory-meta,
+.directory-size,
+.directory-footer,
+.simple-directory-entry {
+  font-family: var(--mono);
+}
+
+.index-title {
+  letter-spacing: 0.04em;
+}
+
+.index-subtitle,
+.directory-meta,
+.directory-size,
+.directory-footer {
+  letter-spacing: 0.03em;
+}

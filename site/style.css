@@ -159,13 +159,9 @@ hr {
   margin-top: 20px;
   border-top: 1px solid var(--line);
 }
-
 .directory-row {
-  display: grid;
-  grid-template-columns: minmax(280px, 1fr) 150px 70px;
-  gap: 18px;
-  align-items: baseline;
-  padding: 11px 8px;
+  display: block;
+  padding: 14px 8px;
   border-bottom: 1px solid var(--line-soft);
 }
 
@@ -175,21 +171,17 @@ hr {
 }
 
 .directory-name a {
-  white-space: normal;
-  overflow-wrap: normal;
+  display: inline-block;
+  overflow-wrap: anywhere;
   word-break: normal;
 }
 
-.directory-row:hover {
-  background: rgba(255,255,255,0.025);
-}
-
-
 .directory-meta,
 .directory-size {
-  font-family: var(--mono);
-  color: var(--meta);
-  font-size: 0.82rem;
+  display: block;
+  margin-top: 4px;
+  font-size: 0.72rem;
+  opacity: 0.55;
 }
 
 .directory-size {

@@ -20,10 +20,10 @@
   --line: #2b3138;
   --line-soft: #20252b;
 
-  --link: #87bfff;
-  --link-hover: #b5d6ff;
-
-  --finder: #8fd8d2;
+  --link: #7f9fb8;
+  --link-hover: #a9c1d1;
+  --finder: #7fa6a2;
+}
 
   --sans: "IBM Plex Sans", "Segoe UI", Arial, sans-serif;
   --mono: "IBM Plex Mono", "SFMono-Regular", Consolas, monospace;

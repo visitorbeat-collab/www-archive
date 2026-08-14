@@ -459,25 +459,30 @@ hr {
   .threshold-entering {
     transition: none;
   }
-/* INDEX TYPOGRAPHY — OPTION 2 */
+/* INDEX TYPOGRAPHY — COURIER REFINED */
 
 .index-title,
-.index-subtitle,
-.directory-path,
-.directory-name,
-.directory-meta,
-.directory-size,
-.directory-footer,
+.directory-name a,
 .simple-directory-entry {
   font-family: "Courier Prime", "Courier New", monospace;
 }
 
 .index-title {
-  font-size: 1.6rem;
+  font-size: 1.7rem;
   letter-spacing: 0.02em;
 }
 
-.directory-name,
+.directory-name a,
 .simple-directory-entry {
   font-size: 0.95rem;
+}
+
+/* Keep structural information in the cleaner technical font */
+
+.index-subtitle,
+.directory-path,
+.directory-meta,
+.directory-size,
+.directory-footer {
+  font-family: var(--mono);
 }

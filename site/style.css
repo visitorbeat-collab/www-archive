@@ -1,5 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=VT323&display=swap");
 /* =========================================================
    WORLD WIDE WASTE — THE INDEX
    Consolidated Visual System
@@ -459,7 +459,7 @@ hr {
   .threshold-entering {
     transition: none;
   }
-}/* INDEX TYPOGRAPHY — OPTION 2 */
+/* INDEX TYPOGRAPHY — OPTION 3 */
 
 .index-title,
 .index-subtitle,
@@ -469,16 +469,22 @@ hr {
 .directory-size,
 .directory-footer,
 .simple-directory-entry {
-  font-family: "Courier Prime", "Courier New", monospace;
+  font-family: "VT323", monospace;
 }
 
 .index-title {
-  font-size: 1.6rem;
-  letter-spacing: 0.02em;
+  font-size: 2rem;
+  letter-spacing: 0.04em;
 }
 
 .directory-name,
 .simple-directory-entry {
-  font-size: 0.95rem;
+  font-size: 1.15rem;
 }
 
+.directory-meta,
+.directory-size,
+.directory-footer,
+.index-subtitle {
+  font-size: 0.95rem;
+}

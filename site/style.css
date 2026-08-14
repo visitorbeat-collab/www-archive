@@ -208,6 +208,8 @@ hr {
 
 .document-title {
   margin-bottom: 10px;
+  overflow-wrap: anywhere;
+  word-break: break-word;
 }
 
 .document-metadata {

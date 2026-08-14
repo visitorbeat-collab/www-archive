@@ -400,3 +400,27 @@ hr {
     transition: none;
   }
 }
+
+/* SIMPLE DIRECTORY LIST */
+
+.simple-directory-list {
+  margin-top: 28px;
+  border-top: 1px solid var(--line);
+}
+
+.simple-directory-entry {
+  display: block;
+  padding: 13px 8px;
+  border-bottom: 1px solid var(--line-soft);
+
+  font-family: var(--mono);
+  font-size: 0.92rem;
+
+  overflow-wrap: anywhere;
+  word-break: normal;
+}
+
+.simple-directory-entry:hover {
+  background: rgba(255, 255, 255, 0.025);
+  text-decoration: none;
+}

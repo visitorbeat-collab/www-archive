@@ -296,6 +296,21 @@ transfer: {
   ],
   note: "Meaning unresolved."
 },
+encounter: {
+  related: [
+    "interpretation",
+    "uncertainty",
+    "systems",
+    "transition"
+  ],
+  documents: [
+    ["encounter_reconstruction_001", "/working-notes/personal/encounter_reconstruction_001.html"],
+    ["testimony_001", "/testimony/testimony_001.html"],
+    ["testimony_002", "/testimony/testimony_002.html"],
+    ["transfer_of_what", "/working-notes/personal/transfer_of_what.html"]
+  ],
+  note: "Origin unresolved."
+},
 
 };
 
@@ -357,7 +372,10 @@ const aliases = {
   ready: "transition",
   readiness: "transition",
 
-  transferable: "transfer"
+  transferable: "transfer",
+  abduction: "encounter",
+experience: "encounter",
+memory: "encounter",
 
 };
 

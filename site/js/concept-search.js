@@ -453,6 +453,21 @@ anomaly: {
   ],
   note: "Classification depends on response and later correspondence."
 },
+prediction: {
+  related: [
+    "falsifiability",
+    "evidence",
+    "anomaly",
+    "epistemic restraint",
+    "reassessment response"
+  ],
+  documents: [
+    ["a_test_that_can_fail", "/working-notes/personal/a_test_that_can_fail.html"],
+    ["reassessment_response_protocol_fragment_001", "/recovered/unverified/reassessment_response_protocol_fragment_001.html"],
+    ["that_is_not_enough", "/working-notes/personal/that_is_not_enough.html"],
+    ["decision_threshold_assessment_001", "/recovered/unverified/decision_threshold_assessment_001.html"]
+  ]
+},
 
 };
 
@@ -556,8 +571,11 @@ certainty: "epistemic restraint",
 discontinuity: "anomaly",
 "broken reference": "anomaly",
 "missing reference": "anomaly",
-prediction: "reassessment response",
-"prospective test": "reassessment response",
+predict: "prediction",
+forecast: "prediction",
+falsifiable: "prediction",
+falsifiability: "prediction",
+fail: "prediction",
 };
 
 

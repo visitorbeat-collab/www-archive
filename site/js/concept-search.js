@@ -226,22 +226,22 @@ stewardship: {
     ]
   },
 
-  trust: {
-    related: [
-      "behavioral reliability",
-      "persistence",
-      "restraint",
-      "revision",
-      "capability"
-    ],
-    documents: [
-      ["behavioral_reliability_assessment_001", "/recovered/unverified/behavioral_reliability_assessment_001.html"],
-      ["can_they_trust_us", "/working-notes/personal/can_they_trust_us.html"],
-      ["technological_population_assessment_001", "/recovered/unverified/technological_population_assessment_001.html"],
-      ["system_dependency_assessment_001", "/recovered/unverified/system_dependency_assessment_001.html"]
-    ],
-    note: "Finder terminology. Closest recovered classification: behavioral reliability."
-  },
+trust: {
+  related: [
+    "trustworthiness",
+    "behavioral reliability",
+    "maturity",
+    "persistence",
+    "transition"
+  ],
+  documents: [
+    ["maturity_is_not_trust", "/working-notes/personal/maturity_is_not_trust.html"],
+    ["can_they_trust_us", "/working-notes/personal/can_they_trust_us.html"],
+    ["behavioral_reliability_assessment_001", "/recovered/unverified/behavioral_reliability_assessment_001.html"],
+    ["developmental_maturity_assessment_001", "/recovered/unverified/developmental_maturity_assessment_001.html"]
+  ],
+  note: "Human relational term. See trustworthiness and behavioral reliability."
+},
 
   "behavioral reliability": {
     related: [
@@ -534,6 +534,23 @@ intelligence: {
   ],
   note: "Technological or cognitive capability does not independently establish developmental maturity."
 },
+trustworthiness: {
+  related: [
+    "maturity",
+    "behavioral reliability",
+    "persistence",
+    "decision threshold",
+    "transition"
+  ],
+  documents: [
+    ["maturity_is_not_trust", "/working-notes/personal/maturity_is_not_trust.html"],
+    ["developmental_maturity_assessment_001", "/recovered/unverified/developmental_maturity_assessment_001.html"],
+    ["behavioral_reliability_assessment_001", "/recovered/unverified/behavioral_reliability_assessment_001.html"],
+    ["can_they_trust_us", "/working-notes/personal/can_they_trust_us.html"],
+    ["transition_criteria_fragment_001", "/recovered/unverified/transition_criteria_fragment_001.html"]
+  ],
+  note: "Finder terminology. Predictive confidence that regulatory behavior will persist under increased consequence."
+},
 };
 
 
@@ -578,8 +595,9 @@ const aliases = {
   preservation: "maintenance",
   protect: "maintenance",
 
-  trustworthiness: "trust",
-  trustworthy: "trust",
+trustworthy: "trustworthiness",
+reliable: "behavioral reliability",
+confidence: "trustworthiness",
   worthy: "trust",
 
   reliability: "behavioral reliability",

@@ -423,6 +423,36 @@ reassessment: {
   ],
   note: "Finder terminology. Evidentiary restraint under increasing apparent confirmation."
 },
+"reassessment response": {
+  related: [
+    "prediction",
+    "anomaly",
+    "uncertainty",
+    "reassessment",
+    "evidence"
+  ],
+  documents: [
+    ["reassessment_response_protocol_fragment_001", "/recovered/unverified/reassessment_response_protocol_fragment_001.html"],
+    ["that_is_not_enough", "/working-notes/personal/that_is_not_enough.html"],
+    ["reassessment_status_fragment_001", "/recovered/unverified/reassessment_status_fragment_001.html"],
+    ["Field Note 0006", "/field-notes/0006.html"]
+  ]
+},
+
+anomaly: {
+  related: [
+    "reassessment response",
+    "uncertainty",
+    "prediction",
+    "evidence"
+  ],
+  documents: [
+    ["reassessment_response_protocol_fragment_001", "/recovered/unverified/reassessment_response_protocol_fragment_001.html"],
+    ["Field Note 0006", "/field-notes/0006.html"],
+    ["what_have_i_been_doing", "/working-notes/personal/what_have_i_been_doing.html"]
+  ],
+  note: "Classification depends on response and later correspondence."
+},
 
 };
 
@@ -523,6 +553,11 @@ skepticism: "epistemic restraint",
 scepticism: "epistemic restraint",
 certainty: "epistemic restraint",
 
+discontinuity: "anomaly",
+"broken reference": "anomaly",
+"missing reference": "anomaly",
+prediction: "reassessment response",
+"prospective test": "reassessment response",
 };
 
 

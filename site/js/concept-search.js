@@ -80,7 +80,8 @@ const conceptIndex = {
     documents: [
       ["technological_population_assessment_001", "/recovered/unverified/technological_population_assessment_001.html"],
       ["environmental_observation_002", "/recovered/unverified/environmental_observation_002.html"],
-      ["what_are_they_measuring", "/working-notes/personal/what_are_they_measuring.html"]
+      ["what_are_they_measuring", "/working-notes/personal/what_are_they_measuring.html"],
+      ["behavioral_reliability_assessment_001", "/recovered/unverified/behavioral_reliability_assessment_001.html"]
     ]
   },
 
@@ -109,7 +110,8 @@ const conceptIndex = {
     documents: [
       ["technological_population_assessment_002", "/recovered/unverified/technological_population_assessment_002.html"],
       ["decision_threshold_assessment_001", "/recovered/unverified/decision_threshold_assessment_001.html"],
-      ["what_are_they_measuring", "/working-notes/personal/what_are_they_measuring.html"]
+      ["what_are_they_measuring", "/working-notes/personal/what_are_they_measuring.html"],
+      ["transition_criteria_fragment_001", "/recovered/unverified/transition_criteria_fragment_001.html"]
     ]
   },
 
@@ -152,7 +154,8 @@ const conceptIndex = {
     documents: [
       ["what_are_they_measuring", "/working-notes/personal/what_are_they_measuring.html"],
       ["technological_population_assessment_001", "/recovered/unverified/technological_population_assessment_001.html"],
-      ["technological_population_assessment_002", "/recovered/unverified/technological_population_assessment_002.html"]
+      ["technological_population_assessment_002", "/recovered/unverified/technological_population_assessment_002.html"],
+      ["behavioral_reliability_assessment_001", "/recovered/unverified/behavioral_reliability_assessment_001.html"]
     ]
   },
 
@@ -168,11 +171,56 @@ const conceptIndex = {
       ["what_are_they_measuring", "/working-notes/personal/what_are_they_measuring.html"],
       ["technological_population_assessment_001", "/recovered/unverified/technological_population_assessment_001.html"],
       ["technological_population_assessment_002", "/recovered/unverified/technological_population_assessment_002.html"],
-      ["decision_threshold_assessment_001", "/recovered/unverified/decision_threshold_assessment_001.html"]
+      ["decision_threshold_assessment_001", "/recovered/unverified/decision_threshold_assessment_001.html"],
+      ["system_dependency_assessment_001", "/recovered/unverified/system_dependency_assessment_001.html"]
     ],
-    note: "No direct classification found. Related assessment variables returned."
-  }
-     trust: {
+    note: "No direct recovered classification found. Related assessment variables returned."
+  },
+
+  stewardship: {
+    related: [
+      "system dependency",
+      "maintenance",
+      "influence",
+      "persistence",
+      "consequence"
+    ],
+    documents: [
+      ["system_dependency_assessment_001", "/recovered/unverified/system_dependency_assessment_001.html"],
+      ["environmental_observation_001", "/recovered/unverified/environmental_observation_001.html"],
+      ["decision_threshold_assessment_001", "/recovered/unverified/decision_threshold_assessment_001.html"],
+      ["what_are_they_measuring", "/working-notes/personal/what_are_they_measuring.html"]
+    ],
+    note: "No direct recovered classification found. Related maintenance variables returned."
+  },
+
+  "system dependency": {
+    related: [
+      "influence",
+      "maintenance",
+      "persistence",
+      "system boundary"
+    ],
+    documents: [
+      ["system_dependency_assessment_001", "/recovered/unverified/system_dependency_assessment_001.html"],
+      ["environmental_observation_001", "/recovered/unverified/environmental_observation_001.html"]
+    ]
+  },
+
+  maintenance: {
+    related: [
+      "system dependency",
+      "persistence",
+      "influence",
+      "consequence"
+    ],
+    documents: [
+      ["system_dependency_assessment_001", "/recovered/unverified/system_dependency_assessment_001.html"],
+      ["technological_population_assessment_001", "/recovered/unverified/technological_population_assessment_001.html"]
+    ]
+  },
+
+  trust: {
     related: [
       "behavioral reliability",
       "persistence",
@@ -188,8 +236,8 @@ const conceptIndex = {
     ],
     note: "Finder terminology. Closest recovered classification: behavioral reliability."
   },
-  },
-    "behavioral reliability": {
+
+  "behavioral reliability": {
     related: [
       "persistence",
       "restraint",
@@ -204,10 +252,54 @@ const conceptIndex = {
       ["system_dependency_assessment_001", "/recovered/unverified/system_dependency_assessment_001.html"]
     ]
   },
+
+  threshold: {
+    related: [
+      "behavioral reliability",
+      "capability",
+      "transition",
+      "restraint",
+      "persistence"
+    ],
+    documents: [
+      ["transition_criteria_fragment_001", "/recovered/unverified/transition_criteria_fragment_001.html"],
+      ["decision_threshold_assessment_001", "/recovered/unverified/decision_threshold_assessment_001.html"],
+      ["behavioral_reliability_assessment_001", "/recovered/unverified/behavioral_reliability_assessment_001.html"]
+    ]
+  },
+
+  transition: {
+    related: [
+      "threshold",
+      "behavioral reliability",
+      "capability",
+      "transfer"
+    ],
+    documents: [
+      ["transition_criteria_fragment_001", "/recovered/unverified/transition_criteria_fragment_001.html"],
+      ["behavioral_reliability_assessment_001", "/recovered/unverified/behavioral_reliability_assessment_001.html"],
+      ["can_they_trust_us", "/working-notes/personal/can_they_trust_us.html"]
+    ]
+  },
+
+  transfer: {
+    related: [
+      "transition",
+      "threshold",
+      "behavioral reliability",
+      "capability"
+    ],
+    documents: [
+      ["transition_criteria_fragment_001", "/recovered/unverified/transition_criteria_fragment_001.html"]
+    ],
+    note: "Meaning unresolved."
+  }
+
 };
 
 
 const aliases = {
+
   power: "capability",
   influence: "capability",
   ability: "capability",
@@ -215,6 +307,8 @@ const aliases = {
   mistake: "revision",
   error: "revision",
   learning: "revision",
+  "self correction": "revision",
+  "self-correction": "revision",
 
   caution: "restraint",
   wait: "restraint",
@@ -230,9 +324,23 @@ const aliases = {
   system: "systems",
   network: "systems",
   connected: "systems",
+  scale: "systems",
+  feedback: "systems",
+  "system boundary": "systems",
 
-  threshold: "decision threshold",
+  resilience: "persistence",
+  "long horizon": "persistence",
+
   decision: "decision threshold",
+  reversibility: "decision threshold",
+
+  environment: "system dependency",
+  ecology: "system dependency",
+  nature: "system dependency",
+
+  preservation: "maintenance",
+  protect: "maintenance",
+
   trustworthiness: "trust",
   trustworthy: "trust",
   worthy: "trust",
@@ -240,6 +348,15 @@ const aliases = {
   reliability: "behavioral reliability",
   reliable: "behavioral reliability",
   consistency: "behavioral reliability",
+  "self regulation": "behavioral reliability",
+  "self-regulation": "behavioral reliability",
+  generalization: "behavioral reliability",
+
+  ready: "transition",
+  readiness: "transition",
+
+  transferable: "transfer"
+
 };
 
 
@@ -257,16 +374,34 @@ function normalizeQuery(value) {
 }
 
 
+function escapeHTML(value) {
+  return value
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#039;");
+}
+
+
 function renderResult(originalQuery, concept, result, mapped) {
 
   const related = result.related
-    .map(item => `<button class="concept-link" type="button" data-concept="${item}">${item}</button>`)
+    .map(item => `
+      <button
+        class="concept-link"
+        type="button"
+        data-concept="${escapeHTML(item)}"
+      >
+        ${escapeHTML(item)}
+      </button>
+    `)
     .join("");
 
   const documents = result.documents
     .map(([title, url]) => `
       <div class="search-document">
-        <a href="${url}">${title}</a>
+        <a href="${url}">${escapeHTML(title)}</a>
       </div>
     `)
     .join("");
@@ -275,15 +410,15 @@ function renderResult(originalQuery, concept, result, mapped) {
     ? `
       <p class="search-mapping">
         query approximation:
-        <span class="mono">${originalQuery}</span>
+        <span class="mono">${escapeHTML(originalQuery)}</span>
         →
-        <span class="mono">${concept}</span>
+        <span class="mono">${escapeHTML(concept)}</span>
       </p>
     `
     : "";
 
   const note = result.note
-    ? `<p class="search-note">${result.note}</p>`
+    ? `<p class="search-note">${escapeHTML(result.note)}</p>`
     : "";
 
   response.innerHTML = `
@@ -291,7 +426,7 @@ function renderResult(originalQuery, concept, result, mapped) {
 
     <div class="search-result-section">
       <div class="search-heading">classification</div>
-      <div class="search-primary">${concept}</div>
+      <div class="search-primary">${escapeHTML(concept)}</div>
     </div>
 
     ${note}
@@ -318,7 +453,7 @@ function renderNoResult(query) {
   response.innerHTML = `
     <p class="search-note">
       No direct classification found for
-      <span class="mono">${query}</span>.
+      <span class="mono">${escapeHTML(query)}</span>.
     </p>
 
     <p class="muted">
@@ -338,11 +473,17 @@ function performSearch(rawQuery) {
   }
 
   if (conceptIndex[query]) {
-    renderResult(query, query, conceptIndex[query], false);
+    renderResult(
+      query,
+      query,
+      conceptIndex[query],
+      false
+    );
     return;
   }
 
   if (aliases[query]) {
+
     const mappedConcept = aliases[query];
 
     renderResult(

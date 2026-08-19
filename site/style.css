@@ -590,3 +590,28 @@ hr {
     align-self: flex-start;
   }
 }
+/* Grouped archive index sections */
+
+.directory-section {
+  margin-top: 2.75rem;
+}
+
+.directory-section:first-of-type {
+  margin-top: 2rem;
+}
+
+.directory-section-heading {
+  margin-bottom: 0.9rem;
+  padding-bottom: 0.45rem;
+
+  border-bottom: 1px solid var(--line);
+
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 0.72rem;
+  font-weight: 400;
+
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+
+  color: var(--meta);
+}

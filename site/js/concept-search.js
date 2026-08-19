@@ -177,22 +177,22 @@ const conceptIndex = {
     note: "No direct recovered classification found. Related assessment variables returned."
   },
 
-  stewardship: {
-    related: [
-      "system dependency",
-      "maintenance",
-      "influence",
-      "persistence",
-      "consequence"
-    ],
-    documents: [
-      ["system_dependency_assessment_001", "/recovered/unverified/system_dependency_assessment_001.html"],
-      ["environmental_observation_001", "/recovered/unverified/environmental_observation_001.html"],
-      ["decision_threshold_assessment_001", "/recovered/unverified/decision_threshold_assessment_001.html"],
-      ["what_are_they_measuring", "/working-notes/personal/what_are_they_measuring.html"]
-    ],
-    note: "No direct recovered classification found. Related maintenance variables returned."
-  },
+stewardship: {
+  related: [
+    "system dependency",
+    "maintenance",
+    "existence value",
+    "reverence",
+    "responsibility"
+  ],
+  documents: [
+    ["this_is_not_stewardship", "/working-notes/personal/this_is_not_stewardship.html"],
+    ["system_dependency_assessment_001", "/recovered/unverified/system_dependency_assessment_001.html"],
+    ["preservation_value_assessment_001", "/recovered/unverified/preservation_value_assessment_001.html"],
+    ["what_are_they_measuring", "/working-notes/personal/what_are_they_measuring.html"]
+  ],
+  note: "No direct recovered classification found. Related maintenance and preservation variables returned."
+},
 
   "system dependency": {
     related: [
@@ -501,17 +501,18 @@ preservation: {
 reverence: {
   related: [
     "existence value",
-    "preservation",
-    "non-ownership",
     "stewardship",
+    "non-ownership",
+    "responsibility",
     "maturity"
   ],
   documents: [
+    ["this_is_not_stewardship", "/working-notes/personal/this_is_not_stewardship.html"],
     ["preservation_value_assessment_001", "/recovered/unverified/preservation_value_assessment_001.html"],
     ["system_dependency_assessment_001", "/recovered/unverified/system_dependency_assessment_001.html"],
     ["what_are_they_measuring", "/working-notes/personal/what_are_they_measuring.html"]
   ],
-  note: "No direct recovered classification found. Closest concepts concern significance independent of immediate utility."
+  note: "Finder terminology. Closest recovered concept: significance independent of immediate utility."
 },
 };
 

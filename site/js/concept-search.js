@@ -172,6 +172,22 @@ const conceptIndex = {
     ],
     note: "No direct classification found. Related assessment variables returned."
   }
+    trust: {
+    related: [
+      "maturity",
+      "restraint",
+      "revision",
+      "persistence",
+      "capability"
+    ],
+    documents: [
+      ["can_they_trust_us", "/working-notes/personal/can_they_trust_us.html"],
+      ["technological_population_assessment_001", "/recovered/unverified/technological_population_assessment_001.html"],
+      ["technological_population_assessment_002", "/recovered/unverified/technological_population_assessment_002.html"],
+      ["system_dependency_assessment_001", "/recovered/unverified/system_dependency_assessment_001.html"]
+    ],
+    note: "Finder terminology. No equivalent recovered classification confirmed."
+  },
 };
 
 
@@ -200,7 +216,10 @@ const aliases = {
   connected: "systems",
 
   threshold: "decision threshold",
-  decision: "decision threshold"
+  decision: "decision threshold",
+  trustworthiness: "trust",
+  trustworthy: "trust",
+  worthy: "trust",
 };
 
 

@@ -372,6 +372,21 @@ evidence: {
     ["encounter_reconstruction_001", "/working-notes/personal/encounter_reconstruction_001.html"]
   ]
 },
+reconstruction: {
+  related: [
+    "structural retention",
+    "post-exposure observation",
+    "revision",
+    "uncertainty"
+  ],
+  documents: [
+    ["what_have_i_been_doing", "/working-notes/personal/what_have_i_been_doing.html"],
+    ["post_exposure_observation_fragment_001", "/recovered/unverified/post_exposure_observation_fragment_001.html"],
+    ["encounter_reconstruction_001", "/working-notes/personal/encounter_reconstruction_001.html"],
+    ["Field Note 0005", "/field-notes/0005.html"],
+    ["Field Note 0006", "/field-notes/0006.html"]
+  ]
+},
 
 };
 
@@ -454,6 +469,12 @@ followup: "post-exposure observation",
 monitoring: "post-exposure observation",
 watched: "post-exposure observation",
 "being watched": "post-exposure observation",
+
+index: "reconstruction",
+archive: "reconstruction",
+rebuild: "reconstruction",
+road: "reconstruction",
+anomaly: "reconstruction",
 
 };
 

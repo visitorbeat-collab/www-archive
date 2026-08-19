@@ -328,6 +328,7 @@ encounter: {
 
 "structural retention": {
   related: [
+    "reassessment",
     "post-exposure observation",
     "cognitive assessment",
     "systems",
@@ -335,13 +336,15 @@ encounter: {
     "persistence"
   ],
   documents: [
+    ["reassessment_status_fragment_001", "/recovered/unverified/reassessment_status_fragment_001.html"],
     ["post_exposure_observation_fragment_001", "/recovered/unverified/post_exposure_observation_fragment_001.html"],
     ["cognitive_assessment_protocol_fragment_001", "/recovered/unverified/cognitive_assessment_protocol_fragment_001.html"],
-    ["encounter_reconstruction_001", "/working-notes/personal/encounter_reconstruction_001.html"],
-    ["encounter_protocol_comparison_001", "/working-notes/personal/encounter_protocol_comparison_001.html"]
+    ["what_have_i_been_doing", "/working-notes/personal/what_have_i_been_doing.html"],
+    ["encounter_reconstruction_001", "/working-notes/personal/encounter_reconstruction_001.html"]
   ],
   note: "Retention of relational structure without confirmed factual recall."
 },
+
 
 evidence: {
   related: [
@@ -385,6 +388,20 @@ reconstruction: {
     ["encounter_reconstruction_001", "/working-notes/personal/encounter_reconstruction_001.html"],
     ["Field Note 0005", "/field-notes/0005.html"],
     ["Field Note 0006", "/field-notes/0006.html"]
+  ]
+},
+reassessment: {
+  related: [
+    "structural retention",
+    "post-exposure observation",
+    "uncertainty",
+    "persistence"
+  ],
+  documents: [
+    ["reassessment_status_fragment_001", "/recovered/unverified/reassessment_status_fragment_001.html"],
+    ["post_exposure_observation_fragment_001", "/recovered/unverified/post_exposure_observation_fragment_001.html"],
+    ["what_have_i_been_doing", "/working-notes/personal/what_have_i_been_doing.html"],
+    ["encounter_protocol_comparison_001", "/working-notes/personal/encounter_protocol_comparison_001.html"]
   ]
 },
 
@@ -475,6 +492,11 @@ archive: "reconstruction",
 rebuild: "reconstruction",
 road: "reconstruction",
 anomaly: "reconstruction",
+
+reassess: "reassessment",
+reevaluation: "reassessment",
+"re-evaluation": "reassessment",
+confirmation: "reassessment",
 
 };
 

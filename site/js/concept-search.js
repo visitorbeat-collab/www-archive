@@ -311,6 +311,34 @@ encounter: {
   ],
   note: "Origin unresolved."
 },
+"cognitive assessment": {
+  related: [
+    "interpretation",
+    "systems",
+    "structural retention",
+    "uncertainty"
+  ],
+  documents: [
+    ["cognitive_assessment_protocol_fragment_001", "/recovered/unverified/cognitive_assessment_protocol_fragment_001.html"],
+    ["encounter_reconstruction_001", "/working-notes/personal/encounter_reconstruction_001.html"],
+    ["testimony_002", "/testimony/testimony_002.html"],
+    ["cross_reference_003", "/cross-references/cross_reference_003.html"]
+  ]
+},
+
+"structural retention": {
+  related: [
+    "cognitive assessment",
+    "systems",
+    "interpretation",
+    "persistence"
+  ],
+  documents: [
+    ["cognitive_assessment_protocol_fragment_001", "/recovered/unverified/cognitive_assessment_protocol_fragment_001.html"],
+    ["encounter_reconstruction_001", "/working-notes/personal/encounter_reconstruction_001.html"]
+  ],
+  note: "Retention of relational structure without confirmed factual recall."
+},
 
 };
 
@@ -376,6 +404,13 @@ const aliases = {
   abduction: "encounter",
 experience: "encounter",
 memory: "encounter",
+
+test: "cognitive assessment",
+testing: "cognitive assessment",
+assessment: "cognitive assessment",
+"cognitive test": "cognitive assessment",
+structure: "structural retention",
+"relational structure": "structural retention",
 
 };
 

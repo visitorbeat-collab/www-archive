@@ -144,20 +144,26 @@ const conceptIndex = {
     ]
   },
 
-  maturity: {
-    related: [
-      "revision",
-      "persistence",
-      "restraint",
-      "capability"
-    ],
-    documents: [
-      ["what_are_they_measuring", "/working-notes/personal/what_are_they_measuring.html"],
-      ["technological_population_assessment_001", "/recovered/unverified/technological_population_assessment_001.html"],
-      ["technological_population_assessment_002", "/recovered/unverified/technological_population_assessment_002.html"],
-      ["behavioral_reliability_assessment_001", "/recovered/unverified/behavioral_reliability_assessment_001.html"]
-    ]
-  },
+maturity: {
+  related: [
+    "capability",
+    "restraint",
+    "revision",
+    "stewardship",
+    "reverence",
+    "persistence",
+    "behavioral reliability"
+  ],
+  documents: [
+    ["developmental_maturity_assessment_001", "/recovered/unverified/developmental_maturity_assessment_001.html"],
+    ["behavioral_reliability_assessment_001", "/recovered/unverified/behavioral_reliability_assessment_001.html"],
+    ["this_is_not_stewardship", "/working-notes/personal/this_is_not_stewardship.html"],
+    ["what_are_they_measuring", "/working-notes/personal/what_are_they_measuring.html"],
+    ["technological_population_assessment_001", "/recovered/unverified/technological_population_assessment_001.html"],
+    ["technological_population_assessment_002", "/recovered/unverified/technological_population_assessment_002.html"]
+  ],
+  note: "Recovered classification concerns integration of regulatory capacities under increasing influence."
+},
 
   responsibility: {
     related: [
@@ -514,6 +520,20 @@ reverence: {
   ],
   note: "Finder terminology. Closest recovered concept: significance independent of immediate utility."
 },
+intelligence: {
+  related: [
+    "interpretation",
+    "revision",
+    "capability",
+    "maturity"
+  ],
+  documents: [
+    ["developmental_maturity_assessment_001", "/recovered/unverified/developmental_maturity_assessment_001.html"],
+    ["what_are_they_measuring", "/working-notes/personal/what_are_they_measuring.html"],
+    ["technological_population_assessment_001", "/recovered/unverified/technological_population_assessment_001.html"]
+  ],
+  note: "Technological or cognitive capability does not independently establish developmental maturity."
+},
 };
 
 
@@ -537,8 +557,6 @@ const aliases = {
 
   warning: "interpretation",
   message: "interpretation",
-
-  intelligence: "maturity",
 
   system: "systems",
   network: "systems",
@@ -630,6 +648,11 @@ preserve: "preservation",
 extinction: "preservation",
 sacred: "reverence",
 respect: "reverence",
+
+advanced: "maturity",
+development: "maturity",
+developmental: "maturity",
+wisdom: "maturity",
 };
 
 

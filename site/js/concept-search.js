@@ -172,21 +172,37 @@ const conceptIndex = {
     ],
     note: "No direct classification found. Related assessment variables returned."
   }
-    trust: {
+     trust: {
     related: [
-      "maturity",
+      "behavioral reliability",
+      "persistence",
       "restraint",
       "revision",
-      "persistence",
       "capability"
     ],
     documents: [
+      ["behavioral_reliability_assessment_001", "/recovered/unverified/behavioral_reliability_assessment_001.html"],
       ["can_they_trust_us", "/working-notes/personal/can_they_trust_us.html"],
       ["technological_population_assessment_001", "/recovered/unverified/technological_population_assessment_001.html"],
-      ["technological_population_assessment_002", "/recovered/unverified/technological_population_assessment_002.html"],
       ["system_dependency_assessment_001", "/recovered/unverified/system_dependency_assessment_001.html"]
     ],
-    note: "Finder terminology. No equivalent recovered classification confirmed."
+    note: "Finder terminology. Closest recovered classification: behavioral reliability."
+  },
+  },
+    "behavioral reliability": {
+    related: [
+      "persistence",
+      "restraint",
+      "revision",
+      "self-regulation",
+      "generalization"
+    ],
+    documents: [
+      ["behavioral_reliability_assessment_001", "/recovered/unverified/behavioral_reliability_assessment_001.html"],
+      ["can_they_trust_us", "/working-notes/personal/can_they_trust_us.html"],
+      ["technological_population_assessment_001", "/recovered/unverified/technological_population_assessment_001.html"],
+      ["system_dependency_assessment_001", "/recovered/unverified/system_dependency_assessment_001.html"]
+    ]
   },
 };
 
@@ -220,6 +236,10 @@ const aliases = {
   trustworthiness: "trust",
   trustworthy: "trust",
   worthy: "trust",
+
+  reliability: "behavioral reliability",
+  reliable: "behavioral reliability",
+  consistency: "behavioral reliability",
 };
 
 

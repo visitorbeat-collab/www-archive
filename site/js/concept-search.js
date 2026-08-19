@@ -274,18 +274,21 @@ trust: {
     ]
   },
 
- transition: {
+transition: {
   related: [
+    "transition risk",
     "threshold",
+    "trustworthiness",
     "behavioral reliability",
     "capability",
     "transfer"
   ],
   documents: [
+    ["transition_risk_assessment_001", "/recovered/unverified/transition_risk_assessment_001.html"],
     ["transition_criteria_fragment_001", "/recovered/unverified/transition_criteria_fragment_001.html"],
+    ["maturity_is_not_trust", "/working-notes/personal/maturity_is_not_trust.html"],
     ["transfer_of_what", "/working-notes/personal/transfer_of_what.html"],
-    ["behavioral_reliability_assessment_001", "/recovered/unverified/behavioral_reliability_assessment_001.html"],
-    ["can_they_trust_us", "/working-notes/personal/can_they_trust_us.html"]
+    ["behavioral_reliability_assessment_001", "/recovered/unverified/behavioral_reliability_assessment_001.html"]
   ]
 },
 
@@ -551,6 +554,24 @@ trustworthiness: {
   ],
   note: "Finder terminology. Predictive confidence that regulatory behavior will persist under increased consequence."
 },
+"transition risk": {
+  related: [
+    "trustworthiness",
+    "transition",
+    "capability",
+    "behavioral reliability",
+    "decision threshold",
+    "consequence"
+  ],
+  documents: [
+    ["transition_risk_assessment_001", "/recovered/unverified/transition_risk_assessment_001.html"],
+    ["maturity_is_not_trust", "/working-notes/personal/maturity_is_not_trust.html"],
+    ["transition_criteria_fragment_001", "/recovered/unverified/transition_criteria_fragment_001.html"],
+    ["developmental_maturity_assessment_001", "/recovered/unverified/developmental_maturity_assessment_001.html"],
+    ["behavioral_reliability_assessment_001", "/recovered/unverified/behavioral_reliability_assessment_001.html"]
+  ],
+  note: "Risk introduced when transition expands population capability."
+},
 };
 
 
@@ -671,6 +692,11 @@ advanced: "maturity",
 development: "maturity",
 developmental: "maturity",
 wisdom: "maturity",
+
+"capability shock": "transition risk",
+"contact risk": "transition risk",
+"transition safety": "transition risk",
+"safe contact": "transition risk",
 };
 
 

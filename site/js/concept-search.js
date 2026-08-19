@@ -339,6 +339,21 @@ encounter: {
   ],
   note: "Retention of relational structure without confirmed factual recall."
 },
+evidence: {
+  related: [
+    "uncertainty",
+    "interpretation",
+    "revision",
+    "cognitive assessment"
+  ],
+  documents: [
+    ["encounter_protocol_comparison_001", "/working-notes/personal/encounter_protocol_comparison_001.html"],
+    ["encounter_reconstruction_001", "/working-notes/personal/encounter_reconstruction_001.html"],
+    ["cognitive_assessment_protocol_fragment_001", "/recovered/unverified/cognitive_assessment_protocol_fragment_001.html"],
+    ["Field Note 0003", "/field-notes/0003.html"],
+    ["Field Note 0007", "/field-notes/0007.html"]
+  ]
+},
 
 };
 
@@ -411,6 +426,10 @@ assessment: "cognitive assessment",
 "cognitive test": "cognitive assessment",
 structure: "structural retention",
 "relational structure": "structural retention",
+
+proof: "evidence",
+coincidence: "evidence",
+comparison: "evidence",
 
 };
 

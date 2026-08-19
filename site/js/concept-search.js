@@ -468,7 +468,51 @@ prediction: {
     ["decision_threshold_assessment_001", "/recovered/unverified/decision_threshold_assessment_001.html"]
   ]
 },
+"existence value": {
+  related: [
+    "preservation",
+    "uncertainty",
+    "system dependency",
+    "stewardship",
+    "maturity"
+  ],
+  documents: [
+    ["preservation_value_assessment_001", "/recovered/unverified/preservation_value_assessment_001.html"],
+    ["system_dependency_assessment_001", "/recovered/unverified/system_dependency_assessment_001.html"],
+    ["environmental_observation_001", "/recovered/unverified/environmental_observation_001.html"]
+  ],
+  note: "Significance independent of demonstrated immediate utility."
+},
 
+preservation: {
+  related: [
+    "existence value",
+    "system dependency",
+    "uncertainty",
+    "irreversibility",
+    "maintenance"
+  ],
+  documents: [
+    ["preservation_value_assessment_001", "/recovered/unverified/preservation_value_assessment_001.html"],
+    ["system_dependency_assessment_001", "/recovered/unverified/system_dependency_assessment_001.html"],
+    ["environmental_observation_001", "/recovered/unverified/environmental_observation_001.html"]
+  ]
+},
+reverence: {
+  related: [
+    "existence value",
+    "preservation",
+    "non-ownership",
+    "stewardship",
+    "maturity"
+  ],
+  documents: [
+    ["preservation_value_assessment_001", "/recovered/unverified/preservation_value_assessment_001.html"],
+    ["system_dependency_assessment_001", "/recovered/unverified/system_dependency_assessment_001.html"],
+    ["what_are_they_measuring", "/working-notes/personal/what_are_they_measuring.html"]
+  ],
+  note: "No direct recovered classification found. Closest concepts concern significance independent of immediate utility."
+},
 };
 
 
@@ -576,6 +620,15 @@ forecast: "prediction",
 falsifiable: "prediction",
 falsifiability: "prediction",
 fail: "prediction",
+
+value: "existence value",
+significance: "existence value",
+intrinsic: "existence value",
+"existence value": "existence value",
+preserve: "preservation",
+extinction: "preservation",
+sacred: "reverence",
+respect: "reverence",
 };
 
 

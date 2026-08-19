@@ -328,17 +328,21 @@ encounter: {
 
 "structural retention": {
   related: [
+    "post-exposure observation",
     "cognitive assessment",
     "systems",
     "interpretation",
     "persistence"
   ],
   documents: [
+    ["post_exposure_observation_fragment_001", "/recovered/unverified/post_exposure_observation_fragment_001.html"],
     ["cognitive_assessment_protocol_fragment_001", "/recovered/unverified/cognitive_assessment_protocol_fragment_001.html"],
-    ["encounter_reconstruction_001", "/working-notes/personal/encounter_reconstruction_001.html"]
+    ["encounter_reconstruction_001", "/working-notes/personal/encounter_reconstruction_001.html"],
+    ["encounter_protocol_comparison_001", "/working-notes/personal/encounter_protocol_comparison_001.html"]
   ],
   note: "Retention of relational structure without confirmed factual recall."
 },
+
 evidence: {
   related: [
     "uncertainty",
@@ -352,6 +356,20 @@ evidence: {
     ["cognitive_assessment_protocol_fragment_001", "/recovered/unverified/cognitive_assessment_protocol_fragment_001.html"],
     ["Field Note 0003", "/field-notes/0003.html"],
     ["Field Note 0007", "/field-notes/0007.html"]
+  ]
+},
+"post-exposure observation": {
+  related: [
+    "structural retention",
+    "persistence",
+    "cognitive assessment",
+    "uncertainty"
+  ],
+  documents: [
+    ["post_exposure_observation_fragment_001", "/recovered/unverified/post_exposure_observation_fragment_001.html"],
+    ["cognitive_assessment_protocol_fragment_001", "/recovered/unverified/cognitive_assessment_protocol_fragment_001.html"],
+    ["encounter_protocol_comparison_001", "/working-notes/personal/encounter_protocol_comparison_001.html"],
+    ["encounter_reconstruction_001", "/working-notes/personal/encounter_reconstruction_001.html"]
   ]
 },
 
@@ -430,6 +448,12 @@ structure: "structural retention",
 proof: "evidence",
 coincidence: "evidence",
 comparison: "evidence",
+
+followup: "post-exposure observation",
+"follow-up": "post-exposure observation",
+monitoring: "post-exposure observation",
+watched: "post-exposure observation",
+"being watched": "post-exposure observation",
 
 };
 

@@ -348,15 +348,17 @@ encounter: {
 
 evidence: {
   related: [
+    "epistemic restraint",
     "uncertainty",
     "interpretation",
     "revision",
     "cognitive assessment"
   ],
   documents: [
+    ["that_is_not_enough", "/working-notes/personal/that_is_not_enough.html"],
     ["encounter_protocol_comparison_001", "/working-notes/personal/encounter_protocol_comparison_001.html"],
+    ["reassessment_status_fragment_001", "/recovered/unverified/reassessment_status_fragment_001.html"],
     ["encounter_reconstruction_001", "/working-notes/personal/encounter_reconstruction_001.html"],
-    ["cognitive_assessment_protocol_fragment_001", "/recovered/unverified/cognitive_assessment_protocol_fragment_001.html"],
     ["Field Note 0003", "/field-notes/0003.html"],
     ["Field Note 0007", "/field-notes/0007.html"]
   ]
@@ -403,6 +405,23 @@ reassessment: {
     ["what_have_i_been_doing", "/working-notes/personal/what_have_i_been_doing.html"],
     ["encounter_protocol_comparison_001", "/working-notes/personal/encounter_protocol_comparison_001.html"]
   ]
+},
+"epistemic restraint": {
+  related: [
+    "uncertainty",
+    "evidence",
+    "prediction",
+    "revision",
+    "restraint"
+  ],
+  documents: [
+    ["that_is_not_enough", "/working-notes/personal/that_is_not_enough.html"],
+    ["reassessment_status_fragment_001", "/recovered/unverified/reassessment_status_fragment_001.html"],
+    ["encounter_protocol_comparison_001", "/working-notes/personal/encounter_protocol_comparison_001.html"],
+    ["Field Note 0003", "/field-notes/0003.html"],
+    ["Field Note 0007", "/field-notes/0007.html"]
+  ],
+  note: "Finder terminology. Evidentiary restraint under increasing apparent confirmation."
 },
 
 };
@@ -497,6 +516,12 @@ reassess: "reassessment",
 reevaluation: "reassessment",
 "re-evaluation": "reassessment",
 confirmation: "reassessment",
+
+falsifiable: "epistemic restraint",
+falsifiability: "epistemic restraint",
+skepticism: "epistemic restraint",
+scepticism: "epistemic restraint",
+certainty: "epistemic restraint",
 
 };
 

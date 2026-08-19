@@ -268,34 +268,32 @@ const conceptIndex = {
     ]
   },
 
- transition: {
-  related: [
-    "threshold",
-    "behavioral reliability",
-    "capability",
-    "transfer"
-  ],
-  documents: [
-    ["transition_criteria_fragment_001", "/recovered/unverified/transition_criteria_fragment_001.html"],
-    ["transfer_of_what", "/working-notes/personal/transfer_of_what.html"],
-    ["behavioral_reliability_assessment_001", "/recovered/unverified/behavioral_reliability_assessment_001.html"],
-    ["can_they_trust_us", "/working-notes/personal/can_they_trust_us.html"]
-  ]
-},
+  transition: {
+    related: [
+      "threshold",
+      "behavioral reliability",
+      "capability",
+      "transfer"
+    ],
+    documents: [
+      ["transition_criteria_fragment_001", "/recovered/unverified/transition_criteria_fragment_001.html"],
+      ["behavioral_reliability_assessment_001", "/recovered/unverified/behavioral_reliability_assessment_001.html"],
+      ["can_they_trust_us", "/working-notes/personal/can_they_trust_us.html"]
+    ]
+  },
 
-transfer: {
-  related: [
-    "transition",
-    "threshold",
-    "behavioral reliability",
-    "capability"
-  ],
-  documents: [
-    ["transition_criteria_fragment_001", "/recovered/unverified/transition_criteria_fragment_001.html"],
-    ["transfer_of_what", "/working-notes/personal/transfer_of_what.html"]
-  ],
-  note: "Meaning unresolved."
-},
+  transfer: {
+    related: [
+      "transition",
+      "threshold",
+      "behavioral reliability",
+      "capability"
+    ],
+    documents: [
+      ["transition_criteria_fragment_001", "/recovered/unverified/transition_criteria_fragment_001.html"]
+    ],
+    note: "Meaning unresolved."
+  }
 
 };
 

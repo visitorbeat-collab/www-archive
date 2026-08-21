@@ -829,6 +829,22 @@ externalization: {
   ],
   note: "Withholding preferred interpretation may preserve the behavior or reasoning being assessed."
 },
+"interpretive compression": {
+  related: [
+    "interpretation",
+    "epistemic restraint",
+    "structural compatibility",
+    "uncertainty",
+    "evidence"
+  ],
+  documents: [
+    ["testimony_003_notes", "/testimony/testimony_003_notes.html"],
+    ["cross_reference_005", "/cross-references/cross_reference_005.html"],
+    ["testimony_003", "/testimony/testimony_003.html"],
+    ["cultural_contamination_assessment_001", "/recovered/unverified/cultural_contamination_assessment_001.html"]
+  ],
+  note: "Reduction of several uncertain relationships into a compact explanation that may appear more certain than the evidence supports."
+},
 };
 
 
@@ -999,6 +1015,10 @@ fallibility: "source skepticism",
 "no explanation": "withheld explanation",
 "refused to answer": "withheld explanation",
 "the answer changes the test": "withheld explanation",
+
+compression: "interpretive compression",
+"too neat": "interpretive compression",
+"confirmation bias": "interpretive compression",
 };
 
 

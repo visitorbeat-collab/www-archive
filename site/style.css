@@ -614,4 +614,29 @@ hr {
   text-transform: uppercase;
 
   color: var(--meta);
+
+  /* Unresolved reference response */
+
+.unresolved-reference-page {
+  min-height: 82vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.unresolved-reference-page .document-header {
+  margin-top: 14vh;
+}
+
+.unresolved-reference-page .document-title {
+  margin-top: 0.5rem;
+}
+
+.unresolved-reference-page .recovered-section {
+  margin-top: 3.5rem;
+}
+
+.unresolved-reference-page .document-footer {
+  margin-top: auto;
+  padding-top: 6rem;
+}
 }

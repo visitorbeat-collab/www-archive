@@ -572,6 +572,54 @@ trustworthiness: {
   ],
   note: "Risk introduced when transition expands population capability."
 },
+contact: {
+  related: [
+    "incremental contact",
+    "transition risk",
+    "diagnostic exposure",
+    "interpretation",
+    "trustworthiness"
+  ],
+  documents: [
+    ["incremental_contact_assessment_001", "/recovered/unverified/incremental_contact_assessment_001.html"],
+    ["transition_risk_assessment_001", "/recovered/unverified/transition_risk_assessment_001.html"],
+    ["encounter_reconstruction_001", "/working-notes/personal/encounter_reconstruction_001.html"],
+    ["testimony_001", "/testimony/testimony_001.html"],
+    ["testimony_002", "/testimony/testimony_002.html"]
+  ],
+  note: "Interaction does not independently imply transition or capability transfer."
+},
+
+"incremental contact": {
+  related: [
+    "contact",
+    "diagnostic exposure",
+    "transition risk",
+    "contamination",
+    "capability"
+  ],
+  documents: [
+    ["incremental_contact_assessment_001", "/recovered/unverified/incremental_contact_assessment_001.html"],
+    ["cognitive_assessment_protocol_fragment_001", "/recovered/unverified/cognitive_assessment_protocol_fragment_001.html"],
+    ["testimony_002", "/testimony/testimony_002.html"],
+    ["encounter_reconstruction_001", "/working-notes/personal/encounter_reconstruction_001.html"]
+  ]
+},
+
+"diagnostic exposure": {
+  related: [
+    "incremental contact",
+    "cognitive assessment",
+    "interpretation",
+    "structural retention"
+  ],
+  documents: [
+    ["incremental_contact_assessment_001", "/recovered/unverified/incremental_contact_assessment_001.html"],
+    ["cognitive_assessment_protocol_fragment_001", "/recovered/unverified/cognitive_assessment_protocol_fragment_001.html"],
+    ["post_exposure_observation_fragment_001", "/recovered/unverified/post_exposure_observation_fragment_001.html"],
+    ["encounter_protocol_comparison_001", "/working-notes/personal/encounter_protocol_comparison_001.html"]
+  ]
+},
 };
 
 
@@ -697,6 +745,12 @@ wisdom: "maturity",
 "contact risk": "transition risk",
 "transition safety": "transition risk",
 "safe contact": "transition risk",
+
+interaction: "incremental contact",
+"first contact": "contact",
+aliens: "contact",
+extraterrestrial: "contact",
+nudge: "incremental contact",
 };
 
 

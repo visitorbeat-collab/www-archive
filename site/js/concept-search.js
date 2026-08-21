@@ -547,6 +547,7 @@ trustworthiness: {
     "transition"
   ],
   documents: [
+    ["reciprocal_trust_assessment_001", "/recovered/unverified/reciprocal_trust_assessment_001.html"],
     ["maturity_is_not_trust", "/working-notes/personal/maturity_is_not_trust.html"],
     ["developmental_maturity_assessment_001", "/recovered/unverified/developmental_maturity_assessment_001.html"],
     ["behavioral_reliability_assessment_001", "/recovered/unverified/behavioral_reliability_assessment_001.html"],
@@ -728,6 +729,22 @@ verification: {
     ["a_test_that_can_fail", "/working-notes/personal/a_test_that_can_fail.html"]
   ]
 },
+"reciprocal trust": {
+  related: [
+    "trustworthiness",
+    "developmental autonomy",
+    "verification",
+    "restraint",
+    "capability"
+  ],
+  documents: [
+    ["reciprocal_trust_assessment_001", "/recovered/unverified/reciprocal_trust_assessment_001.html"],
+    ["epistemic_dependency_assessment_001", "/recovered/unverified/epistemic_dependency_assessment_001.html"],
+    ["maturity_is_not_trust", "/working-notes/personal/maturity_is_not_trust.html"],
+    ["transition_risk_assessment_001", "/recovered/unverified/transition_risk_assessment_001.html"]
+  ],
+  note: "Mutual predictive confidence without surrender of independent evaluation."
+},
 };
 
 
@@ -877,6 +894,11 @@ deference: "epistemic dependency",
 skepticism: "verification",
 scepticism: "verification",
 "independent verification": "verification",
+
+reciprocity: "reciprocal trust",
+"mutual trust": "reciprocal trust",
+submission: "reciprocal trust",
+"capability asymmetry": "reciprocal trust",
 };
 
 

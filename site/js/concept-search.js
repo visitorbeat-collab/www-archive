@@ -616,6 +616,7 @@ contact: {
     "structural retention"
   ],
   documents: [
+    ["testimony_003", "/testimony/testimony_003.html"],
     ["incremental_contact_assessment_001", "/recovered/unverified/incremental_contact_assessment_001.html"],
     ["cognitive_assessment_protocol_fragment_001", "/recovered/unverified/cognitive_assessment_protocol_fragment_001.html"],
     ["post_exposure_observation_fragment_001", "/recovered/unverified/post_exposure_observation_fragment_001.html"],
@@ -809,6 +810,22 @@ externalization: {
   ],
   note: "Source capability or authenticity does not remove the requirement for independent evaluation."
 },
+"withheld explanation": {
+  related: [
+    "interpretation",
+    "developmental autonomy",
+    "source authority",
+    "diagnostic exposure",
+    "uncertainty"
+  ],
+  documents: [
+    ["testimony_003", "/testimony/testimony_003.html"],
+    ["incremental_contact_assessment_001", "/recovered/unverified/incremental_contact_assessment_001.html"],
+    ["cultural_contamination_assessment_001", "/recovered/unverified/cultural_contamination_assessment_001.html"],
+    ["epistemic_dependency_assessment_001", "/recovered/unverified/epistemic_dependency_assessment_001.html"]
+  ],
+  note: "Human testimony describing unresolved interaction in which explanation or preferred interpretation was not supplied."
+},
 };
 
 
@@ -974,6 +991,11 @@ externalities: "externalization",
 "source scepticism": "source skepticism",
 "question the source": "source skepticism",
 fallibility: "source skepticism",
+
+"no answer": "withheld explanation",
+"no explanation": "withheld explanation",
+"refused to answer": "withheld explanation",
+"the answer changes the test": "withheld explanation",
 };
 
 

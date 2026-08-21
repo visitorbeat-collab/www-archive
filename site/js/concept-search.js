@@ -745,6 +745,53 @@ verification: {
   ],
   note: "Mutual predictive confidence without surrender of independent evaluation."
 },
+"wider system responsibility": {
+  related: [
+    "responsibility",
+    "system boundary",
+    "stewardship",
+    "consequence",
+    "reciprocal trust",
+    "maturity"
+  ],
+  documents: [
+    ["wider_system_responsibility_assessment_001", "/recovered/unverified/wider_system_responsibility_assessment_001.html"],
+    ["reciprocal_trust_assessment_001", "/recovered/unverified/reciprocal_trust_assessment_001.html"],
+    ["system_dependency_assessment_001", "/recovered/unverified/system_dependency_assessment_001.html"],
+    ["preservation_value_assessment_001", "/recovered/unverified/preservation_value_assessment_001.html"],
+    ["developmental_maturity_assessment_001", "/recovered/unverified/developmental_maturity_assessment_001.html"]
+  ],
+  note: "Expansion of responsibility beyond native, familiar, or directly represented systems."
+},
+
+externalization: {
+  related: [
+    "wider system responsibility",
+    "system boundary",
+    "consequence",
+    "stewardship"
+  ],
+  documents: [
+    ["wider_system_responsibility_assessment_001", "/recovered/unverified/wider_system_responsibility_assessment_001.html"],
+    ["system_dependency_assessment_001", "/recovered/unverified/system_dependency_assessment_001.html"]
+  ],
+  note: "Consequence excluded from a decision model because it lies outside the preferred accounting boundary."
+},
+"wider community": {
+  related: [
+    "wider system responsibility",
+    "reciprocal trust",
+    "transition",
+    "maturity",
+    "responsibility"
+  ],
+  documents: [
+    ["wider_system_responsibility_assessment_001", "/recovered/unverified/wider_system_responsibility_assessment_001.html"],
+    ["reciprocal_trust_assessment_001", "/recovered/unverified/reciprocal_trust_assessment_001.html"],
+    ["transition_risk_assessment_001", "/recovered/unverified/transition_risk_assessment_001.html"]
+  ],
+  note: "Participation in a broader network of technological populations increases relational consequence and responsibility."
+},
 };
 
 
@@ -899,6 +946,12 @@ reciprocity: "reciprocal trust",
 "mutual trust": "reciprocal trust",
 submission: "reciprocal trust",
 "capability asymmetry": "reciprocal trust",
+
+community: "wider community",
+"cosmic community": "wider community",
+externalities: "externalization",
+"third party": "wider system responsibility",
+"future generations": "wider system responsibility",
 };
 
 

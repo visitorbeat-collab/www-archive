@@ -620,6 +620,23 @@ contact: {
     ["encounter_protocol_comparison_001", "/working-notes/personal/encounter_protocol_comparison_001.html"]
   ]
 },
+"structural compatibility": {
+  related: [
+    "incremental contact",
+    "diagnostic exposure",
+    "interpretation",
+    "contamination",
+    "structural retention"
+  ],
+  documents: [
+    ["cross_reference_004", "/cross-references/cross_reference_004.html"],
+    ["incremental_contact_assessment_001", "/recovered/unverified/incremental_contact_assessment_001.html"],
+    ["encounter_reconstruction_001", "/working-notes/personal/encounter_reconstruction_001.html"],
+    ["testimony_001", "/testimony/testimony_001.html"],
+    ["testimony_002", "/testimony/testimony_002.html"]
+  ],
+  note: "Similarity of relational features without confirmation of common origin."
+},
 };
 
 
@@ -751,6 +768,11 @@ interaction: "incremental contact",
 aliens: "contact",
 extraterrestrial: "contact",
 nudge: "incremental contact",
+
+comparison: "structural compatibility",
+similarity: "structural compatibility",
+"common origin": "structural compatibility",
+testimony: "structural compatibility",
 };
 
 

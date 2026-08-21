@@ -698,6 +698,35 @@ nudge: {
   ],
   note: "Low-scale influence intended to alter attention without supplying a required interpretation or action."
 },
+"epistemic dependency": {
+  related: [
+    "developmental autonomy",
+    "source authority",
+    "verification",
+    "revision",
+    "trustworthiness"
+  ],
+  documents: [
+    ["epistemic_dependency_assessment_001", "/recovered/unverified/epistemic_dependency_assessment_001.html"],
+    ["cultural_contamination_assessment_001", "/recovered/unverified/cultural_contamination_assessment_001.html"],
+    ["developmental_maturity_assessment_001", "/recovered/unverified/developmental_maturity_assessment_001.html"]
+  ],
+  note: "Reliance on external information that begins to replace independent model evaluation."
+},
+
+verification: {
+  related: [
+    "evidence",
+    "revision",
+    "epistemic dependency",
+    "uncertainty"
+  ],
+  documents: [
+    ["epistemic_dependency_assessment_001", "/recovered/unverified/epistemic_dependency_assessment_001.html"],
+    ["that_is_not_enough", "/working-notes/personal/that_is_not_enough.html"],
+    ["a_test_that_can_fail", "/working-notes/personal/a_test_that_can_fail.html"]
+  ]
+},
 };
 
 
@@ -841,6 +870,12 @@ contamination: "cultural contamination",
 autonomy: "developmental autonomy",
 "non interference": "developmental autonomy",
 "non-interference": "developmental autonomy",
+
+dependency: "epistemic dependency",
+deference: "epistemic dependency",
+skepticism: "verification",
+scepticism: "verification",
+"independent verification": "verification",
 };
 
 

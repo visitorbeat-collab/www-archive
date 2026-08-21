@@ -637,6 +637,67 @@ contact: {
   ],
   note: "Similarity of relational features without confirmation of common origin."
 },
+"cultural contamination": {
+  related: [
+    "source authority",
+    "developmental autonomy",
+    "incremental contact",
+    "interpretation",
+    "nudge"
+  ],
+  documents: [
+    ["cultural_contamination_assessment_001", "/recovered/unverified/cultural_contamination_assessment_001.html"],
+    ["incremental_contact_assessment_001", "/recovered/unverified/incremental_contact_assessment_001.html"],
+    ["cross_reference_004", "/cross-references/cross_reference_004.html"],
+    ["testimony_001", "/testimony/testimony_001.html"]
+  ],
+  note: "Population effects produced by attributed external interaction beyond the informational content itself."
+},
+
+"source authority": {
+  related: [
+    "cultural contamination",
+    "interpretation",
+    "developmental autonomy",
+    "uncertainty"
+  ],
+  documents: [
+    ["cultural_contamination_assessment_001", "/recovered/unverified/cultural_contamination_assessment_001.html"],
+    ["incremental_contact_assessment_001", "/recovered/unverified/incremental_contact_assessment_001.html"]
+  ],
+  note: "Acceptance produced by attributed origin rather than independent evaluation."
+},
+
+"developmental autonomy": {
+  related: [
+    "maturity",
+    "revision",
+    "interpretation",
+    "cultural contamination",
+    "nudge"
+  ],
+  documents: [
+    ["cultural_contamination_assessment_001", "/recovered/unverified/cultural_contamination_assessment_001.html"],
+    ["developmental_maturity_assessment_001", "/recovered/unverified/developmental_maturity_assessment_001.html"],
+    ["incremental_contact_assessment_001", "/recovered/unverified/incremental_contact_assessment_001.html"]
+  ],
+  note: "Capacity to construct, revise, and regulate internal models without continuous external instruction."
+},
+nudge: {
+  related: [
+    "developmental autonomy",
+    "incremental contact",
+    "interpretation",
+    "cultural contamination",
+    "restraint"
+  ],
+  documents: [
+    ["cultural_contamination_assessment_001", "/recovered/unverified/cultural_contamination_assessment_001.html"],
+    ["incremental_contact_assessment_001", "/recovered/unverified/incremental_contact_assessment_001.html"],
+    ["cross_reference_004", "/cross-references/cross_reference_004.html"]
+  ],
+  note: "Low-scale influence intended to alter attention without supplying a required interpretation or action."
+},
 };
 
 
@@ -767,12 +828,19 @@ interaction: "incremental contact",
 "first contact": "contact",
 aliens: "contact",
 extraterrestrial: "contact",
-nudge: "incremental contact",
 
 comparison: "structural compatibility",
 similarity: "structural compatibility",
 "common origin": "structural compatibility",
 testimony: "structural compatibility",
+
+authority: "source authority",
+obedience: "source authority",
+doctrine: "cultural contamination",
+contamination: "cultural contamination",
+autonomy: "developmental autonomy",
+"non interference": "developmental autonomy",
+"non-interference": "developmental autonomy",
 };
 
 

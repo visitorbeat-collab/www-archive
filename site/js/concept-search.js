@@ -471,6 +471,7 @@ prediction: {
     "reassessment response"
   ],
   documents: [
+    ["the_condition_occurred", "/working-notes/personal/the_condition_occurred.html"],
     ["a_test_that_can_fail", "/working-notes/personal/a_test_that_can_fail.html"],
     ["reassessment_response_protocol_fragment_001", "/recovered/unverified/reassessment_response_protocol_fragment_001.html"],
     ["that_is_not_enough", "/working-notes/personal/that_is_not_enough.html"],

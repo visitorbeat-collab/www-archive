@@ -632,6 +632,7 @@ contact: {
     "structural retention"
   ],
   documents: [
+    ["cross_reference_005", "/cross-references/cross_reference_005.html"],
     ["cross_reference_004", "/cross-references/cross_reference_004.html"],
     ["incremental_contact_assessment_001", "/recovered/unverified/incremental_contact_assessment_001.html"],
     ["encounter_reconstruction_001", "/working-notes/personal/encounter_reconstruction_001.html"],
@@ -812,19 +813,21 @@ externalization: {
 },
 "withheld explanation": {
   related: [
+    "diagnostic exposure",
     "interpretation",
     "developmental autonomy",
     "source authority",
-    "diagnostic exposure",
+    "structural compatibility",
     "uncertainty"
   ],
   documents: [
+    ["cross_reference_005", "/cross-references/cross_reference_005.html"],
     ["testimony_003", "/testimony/testimony_003.html"],
     ["incremental_contact_assessment_001", "/recovered/unverified/incremental_contact_assessment_001.html"],
     ["cultural_contamination_assessment_001", "/recovered/unverified/cultural_contamination_assessment_001.html"],
     ["epistemic_dependency_assessment_001", "/recovered/unverified/epistemic_dependency_assessment_001.html"]
   ],
-  note: "Human testimony describing unresolved interaction in which explanation or preferred interpretation was not supplied."
+  note: "Withholding preferred interpretation may preserve the behavior or reasoning being assessed."
 },
 };
 

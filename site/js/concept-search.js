@@ -738,6 +738,7 @@ verification: {
     "capability"
   ],
   documents: [
+    ["reciprocal_trust_assessment_001_notes", "/recovered/annotations/reciprocal_trust_assessment_001_notes.html"],
     ["reciprocal_trust_assessment_001", "/recovered/unverified/reciprocal_trust_assessment_001.html"],
     ["epistemic_dependency_assessment_001", "/recovered/unverified/epistemic_dependency_assessment_001.html"],
     ["maturity_is_not_trust", "/working-notes/personal/maturity_is_not_trust.html"],
@@ -791,6 +792,22 @@ externalization: {
     ["transition_risk_assessment_001", "/recovered/unverified/transition_risk_assessment_001.html"]
   ],
   note: "Participation in a broader network of technological populations increases relational consequence and responsibility."
+},
+"source skepticism": {
+  related: [
+    "reciprocal trust",
+    "source authority",
+    "verification",
+    "revision",
+    "developmental autonomy"
+  ],
+  documents: [
+    ["reciprocal_trust_assessment_001_notes", "/recovered/annotations/reciprocal_trust_assessment_001_notes.html"],
+    ["reciprocal_trust_assessment_001", "/recovered/unverified/reciprocal_trust_assessment_001.html"],
+    ["epistemic_dependency_assessment_001", "/recovered/unverified/epistemic_dependency_assessment_001.html"],
+    ["cultural_contamination_assessment_001", "/recovered/unverified/cultural_contamination_assessment_001.html"]
+  ],
+  note: "Source capability or authenticity does not remove the requirement for independent evaluation."
 },
 };
 
@@ -952,6 +969,11 @@ community: "wider community",
 externalities: "externalization",
 "third party": "wider system responsibility",
 "future generations": "wider system responsibility",
+
+"source skepticism": "source skepticism",
+"source scepticism": "source skepticism",
+"question the source": "source skepticism",
+fallibility: "source skepticism",
 };
 
 

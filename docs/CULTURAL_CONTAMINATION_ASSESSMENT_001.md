@@ -383,7 +383,9 @@ Instruction supplies preferred action or interpretation.
 Nudge alters probability that the population notices a relationship.
 
 Where intervention is justified, nudge may produce lower contamination.
+See:
 
+`authority_resistance_assessment_001`
 ---
 
 # 18.0 Ambiguity

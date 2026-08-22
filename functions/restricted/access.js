@@ -2,7 +2,16 @@ function normalize(value) {
   return String(value || "")
     .trim()
     .toLowerCase()
+    .replace(/[.,!?;:]+$/g, "")
     .replace(/\s+/g, " ");
+}
+
+
+function getAcceptedResponses(secretValue) {
+  return String(secretValue || "")
+    .split("|")
+    .map(normalize)
+    .filter(Boolean);
 }
 
 
@@ -35,10 +44,15 @@ async function signAccess(secret) {
 export async function onRequestPost(context) {
   const formData = await context.request.formData();
 
-  const submitted = normalize(formData.get("response"));
-  const expected = normalize(context.env.RESTRICTED_PASSWORD);
+  const submitted = normalize(
+    formData.get("response")
+  );
 
-  if (!expected) {
+  const acceptedResponses = getAcceptedResponses(
+    context.env.RESTRICTED_PASSWORD
+  );
+
+  if (acceptedResponses.length === 0) {
     return new Response(
       "restricted configuration unavailable",
       {
@@ -50,14 +64,20 @@ export async function onRequestPost(context) {
     );
   }
 
-  if (submitted !== expected) {
+  const accepted = acceptedResponses.includes(submitted);
+
+  if (!accepted) {
     return Response.redirect(
-      new URL("/restricted/?error=1", context.request.url),
+      new URL(
+        "/restricted/?error=1",
+        context.request.url
+      ),
       303
     );
   }
 
-  const cookieSecret = context.env.RESTRICTED_COOKIE_SECRET;
+  const cookieSecret =
+    context.env.RESTRICTED_COOKIE_SECRET;
 
   if (!cookieSecret) {
     return new Response(

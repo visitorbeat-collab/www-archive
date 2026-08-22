@@ -4,36 +4,133 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Index — /restricted/</title>
+  <title>restricted</title>
 
   <link rel="stylesheet" href="/style.css">
 </head>
 
-<body class="directory-page">
+<body>
 
-<main>
+<main class="document">
 
-  <div class="directory-path">
-    /restricted/
-  </div>
+  <header class="document-header">
 
-  <h1 class="index-title">
-    Index
-  </h1>
-
-  <p class="index-subtitle">
-    Additional material retained beyond the classification boundary.
-  </p>
-
-  <div class="simple-directory-list">
-
-    <div class="simple-directory-entry">
-      <span class="directory-name">
-        [no public classification]
-      </span>
+    <div class="eyebrow">
+      /restricted/
     </div>
 
-  </div>
+    <h1 class="document-title">
+      classification boundary
+    </h1>
+
+    <div class="document-metadata">
+      <span>status: restricted</span>
+      <span>interpretation required</span>
+    </div>
+
+  </header>
+
+
+  <section class="recovered-section">
+
+    <p>
+      Observation is not sufficient.
+    </p>
+
+    <p>
+      Interpretation is required.
+    </p>
+
+  </section>
+
+
+  <section class="recovered-section">
+
+    <p class="mono">
+      observation<br>
+      ↓<br>
+      interpretation<br>
+      ↓<br>
+      consequence<br>
+      ↓<br>
+      ?
+    </p>
+
+  </section>
+
+
+  <section class="recovered-section">
+
+    <p>
+      Complete the relationship.
+    </p>
+
+    <form
+      method="POST"
+      action="/restricted/access"
+      autocomplete="off"
+    >
+
+      <p>
+        <label
+          class="mono"
+          for="response"
+        >
+          interpretation:
+        </label>
+      </p>
+
+      <p>
+        <input
+          id="response"
+          name="response"
+          type="text"
+          spellcheck="false"
+          autocapitalize="none"
+          autocomplete="off"
+          required
+          style="
+            width: 100%;
+            max-width: 500px;
+            box-sizing: border-box;
+            background: transparent;
+            color: inherit;
+            border: 1px solid rgba(255,255,255,0.25);
+            padding: 12px;
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 1rem;
+          "
+        >
+      </p>
+
+      <p>
+        <button
+          type="submit"
+          style="
+            background: transparent;
+            color: inherit;
+            border: 1px solid rgba(255,255,255,0.25);
+            padding: 10px 16px;
+            font-family: 'IBM Plex Mono', monospace;
+            cursor: pointer;
+          "
+        >
+          submit
+        </button>
+      </p>
+
+    </form>
+
+    <p
+      id="restricted-response"
+      class="mono"
+      style="display: none;"
+    >
+      condition not satisfied
+    </p>
+
+  </section>
+
 
   <footer class="document-footer">
     <a class="up-link" href="/">← root</a>
@@ -41,7 +138,20 @@
 
 </main>
 
-<script src="/js/main.js"></script>
+
+<script>
+  const params = new URLSearchParams(window.location.search);
+
+  if (params.get("error") === "1") {
+    document.getElementById("restricted-response").style.display = "block";
+
+    history.replaceState(
+      {},
+      "",
+      window.location.pathname
+    );
+  }
+</script>
 
 </body>
 </html>

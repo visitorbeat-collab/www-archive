@@ -681,6 +681,7 @@ contact: {
     "nudge"
   ],
   documents: [
+    ["testimony_004", "/testimony/testimony_004.html"],
     ["cultural_contamination_assessment_001", "/recovered/unverified/cultural_contamination_assessment_001.html"],
     ["developmental_maturity_assessment_001", "/recovered/unverified/developmental_maturity_assessment_001.html"],
     ["incremental_contact_assessment_001", "/recovered/unverified/incremental_contact_assessment_001.html"]
@@ -740,6 +741,7 @@ verification: {
     "capability"
   ],
   documents: [
+    ["testimony_004", "/testimony/testimony_004.html"],
     ["reciprocal_trust_assessment_001_notes", "/recovered/annotations/reciprocal_trust_assessment_001_notes.html"],
     ["reciprocal_trust_assessment_001", "/recovered/unverified/reciprocal_trust_assessment_001.html"],
     ["epistemic_dependency_assessment_001", "/recovered/unverified/epistemic_dependency_assessment_001.html"],
@@ -905,6 +907,54 @@ resilience: {
     ["a_test_that_can_fail", "/working-notes/personal/a_test_that_can_fail.html"]
   ],
   note: "Evidence whose relevant condition was specified and recorded before the later event being evaluated."
+},
+"reconstruction uncertainty": {
+  related: [
+    "anomaly",
+    "epistemic restraint",
+    "reassessment",
+    "evidence",
+    "system boundary"
+  ],
+  documents: [
+    ["what_changed", "/working-notes/personal/what_changed.html"],
+    ["the_reference_resolved", "/working-notes/personal/the_reference_resolved.html"],
+    ["the_condition_occurred", "/working-notes/personal/the_condition_occurred.html"],
+    ["a_test_that_can_fail", "/working-notes/personal/a_test_that_can_fail.html"]
+  ],
+  note: "Uncertainty concerning whether the present state of the Index can be completely accounted for by its documented reconstruction history."
+},
+"anomaly authority": {
+  related: [
+    "source skepticism",
+    "prospective evidence",
+    "epistemic restraint",
+    "reconstruction uncertainty",
+    "source authority"
+  ],
+  documents: [
+    ["cross_reference_006", "/cross-references/cross_reference_006.html"],
+    ["the_reference_resolved", "/working-notes/personal/the_reference_resolved.html"],
+    ["what_changed", "/working-notes/personal/what_changed.html"],
+    ["reciprocal_trust_assessment_001_notes", "/recovered/annotations/reciprocal_trust_assessment_001_notes.html"]
+  ],
+  note: "Increased perceived authority produced by unusual or unexplained provenance rather than stronger evidence."
+},
+"refusal capacity": {
+  related: [
+    "developmental autonomy",
+    "restraint",
+    "reciprocal trust",
+    "capability",
+    "source authority"
+  ],
+  documents: [
+    ["testimony_004", "/testimony/testimony_004.html"],
+    ["reciprocal_trust_assessment_001", "/recovered/unverified/reciprocal_trust_assessment_001.html"],
+    ["incremental_contact_assessment_001", "/recovered/unverified/incremental_contact_assessment_001.html"],
+    ["reciprocal_trust_assessment_001_notes", "/recovered/annotations/reciprocal_trust_assessment_001_notes.html"]
+  ],
+  note: "Preservation of meaningful choice or refusal under conditions of substantial capability asymmetry."
 },
 };
 
@@ -1084,6 +1134,21 @@ compression: "interpretive compression",
 "prospective test": "prospective evidence",
 "prospective anomaly": "prospective evidence",
 "reference resolved": "prospective evidence",
+
+"reconstruction error": "reconstruction uncertainty",
+"index changes": "reconstruction uncertainty",
+"who wrote this": "reconstruction uncertainty",
+"external author": "reconstruction uncertainty",
+
+"mysterious source": "anomaly authority",
+"mystery authority": "anomaly authority",
+"unexplained source": "anomaly authority",
+"strange file": "anomaly authority",
+
+refusal: "refusal capacity",
+"say no": "refusal capacity",
+"said no": "refusal capacity",
+"choice under control": "refusal capacity",
 };
 
 

@@ -36,8 +36,8 @@ const conceptIndex = {
     ],
     documents: [
       ["classification_schema_v1", "/recovered/unverified/classification_schema_v1.html"],
-      ["environmental_observation_001", "/recovered/unverified/environmental_observation_001.html"],
-      ["environmental_observation_002", "/recovered/unverified/environmental_observation_002.html"],
+      ["environmental_observation_001", "/environmental/environmental_observation_001.html"],
+      ["environmental_observation_002", "/environmental/environmental_observation_002.html"],
       ["cross_reference_001", "/cross-references/cross_reference_001.html"]
     ]
   },
@@ -79,7 +79,7 @@ const conceptIndex = {
     ],
     documents: [
       ["technological_population_assessment_001", "/recovered/unverified/technological_population_assessment_001.html"],
-      ["environmental_observation_002", "/recovered/unverified/environmental_observation_002.html"],
+      ["environmental_observation_002", "/environmental/environmental_observation_002.html"],
       ["what_are_they_measuring", "/working-notes/personal/what_are_they_measuring.html"],
       ["behavioral_reliability_assessment_001", "/recovered/unverified/behavioral_reliability_assessment_001.html"]
     ]
@@ -123,8 +123,8 @@ const conceptIndex = {
       "scale"
     ],
     documents: [
-      ["environmental_observation_001", "/recovered/unverified/environmental_observation_001.html"],
-      ["environmental_observation_002", "/recovered/unverified/environmental_observation_002.html"],
+      ["environmental_observation_001", "/environmental/environmental_observation_001.html"],
+      ["environmental_observation_002", "/environmental/environmental_observation_002.html"],
       ["technological_population_assessment_001", "/recovered/unverified/technological_population_assessment_001.html"],
       ["decision_threshold_assessment_001", "/recovered/unverified/decision_threshold_assessment_001.html"]
     ]
@@ -209,7 +209,7 @@ stewardship: {
     ],
     documents: [
       ["system_dependency_assessment_001", "/recovered/unverified/system_dependency_assessment_001.html"],
-      ["environmental_observation_001", "/recovered/unverified/environmental_observation_001.html"]
+      ["environmental_observation_001", "/environmental/environmental_observation_001.html"]
     ]
   },
 
@@ -489,7 +489,7 @@ prediction: {
   documents: [
     ["preservation_value_assessment_001", "/recovered/unverified/preservation_value_assessment_001.html"],
     ["system_dependency_assessment_001", "/recovered/unverified/system_dependency_assessment_001.html"],
-    ["environmental_observation_001", "/recovered/unverified/environmental_observation_001.html"]
+    ["environmental_observation_001", "/environmental/environmental_observation_001.html"]
   ],
   note: "Significance independent of demonstrated immediate utility."
 },
@@ -505,7 +505,7 @@ preservation: {
   documents: [
     ["preservation_value_assessment_001", "/recovered/unverified/preservation_value_assessment_001.html"],
     ["system_dependency_assessment_001", "/recovered/unverified/system_dependency_assessment_001.html"],
-    ["environmental_observation_001", "/recovered/unverified/environmental_observation_001.html"]
+    ["environmental_observation_001", "/environmental/environmental_observation_001.html"]
   ]
 },
 reverence: {

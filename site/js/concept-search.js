@@ -891,6 +891,21 @@ resilience: {
     ["system_dependency_assessment_001", "/recovered/unverified/system_dependency_assessment_001.html"]
   ]
 },
+"prospective evidence": {
+  related: [
+    "prediction",
+    "evidence",
+    "anomaly",
+    "reassessment",
+    "epistemic restraint"
+  ],
+  documents: [
+    ["the_reference_resolved", "/working-notes/personal/the_reference_resolved.html"],
+    ["the_condition_occurred", "/working-notes/personal/the_condition_occurred.html"],
+    ["a_test_that_can_fail", "/working-notes/personal/a_test_that_can_fail.html"]
+  ],
+  note: "Evidence whose relevant condition was specified and recorded before the later event being evaluated."
+},
 };
 
 
@@ -1065,6 +1080,10 @@ fallibility: "source skepticism",
 compression: "interpretive compression",
 "too neat": "interpretive compression",
 "confirmation bias": "interpretive compression",
+
+"prospective test": "prospective evidence",
+"prospective anomaly": "prospective evidence",
+"reference resolved": "prospective evidence",
 };
 
 

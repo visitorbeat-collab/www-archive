@@ -155,6 +155,7 @@ maturity: {
     "behavioral reliability"
   ],
   documents: [
+    ["contact_readiness_synthesis_001", "/cross-references/contact_readiness_synthesis_001.html"],
     ["developmental_maturity_assessment_001", "/recovered/unverified/developmental_maturity_assessment_001.html"],
     ["behavioral_reliability_assessment_001", "/recovered/unverified/behavioral_reliability_assessment_001.html"],
     ["this_is_not_stewardship", "/working-notes/personal/this_is_not_stewardship.html"],
@@ -174,6 +175,7 @@ maturity: {
       "persistence"
     ],
     documents: [
+      ["contact_readiness_synthesis_001", "/cross-references/contact_readiness_synthesis_001.html"],
       ["what_are_they_measuring", "/working-notes/personal/what_are_they_measuring.html"],
       ["technological_population_assessment_001", "/recovered/unverified/technological_population_assessment_001.html"],
       ["technological_population_assessment_002", "/recovered/unverified/technological_population_assessment_002.html"],
@@ -284,6 +286,7 @@ transition: {
     "transfer"
   ],
   documents: [
+    ["contact_readiness_synthesis_001", "/cross-references/contact_readiness_synthesis_001.html"],
     ["transition_risk_assessment_001", "/recovered/unverified/transition_risk_assessment_001.html"],
     ["transition_criteria_fragment_001", "/recovered/unverified/transition_criteria_fragment_001.html"],
     ["maturity_is_not_trust", "/working-notes/personal/maturity_is_not_trust.html"],
@@ -547,6 +550,7 @@ trustworthiness: {
     "transition"
   ],
   documents: [
+    ["contact_readiness_synthesis_001", "/cross-references/contact_readiness_synthesis_001.html"],
     ["reciprocal_trust_assessment_001", "/recovered/unverified/reciprocal_trust_assessment_001.html"],
     ["maturity_is_not_trust", "/working-notes/personal/maturity_is_not_trust.html"],
     ["developmental_maturity_assessment_001", "/recovered/unverified/developmental_maturity_assessment_001.html"],
@@ -791,6 +795,7 @@ externalization: {
     "responsibility"
   ],
   documents: [
+    ["contact_readiness_synthesis_001", "/cross-references/contact_readiness_synthesis_001.html"],
     ["wider_system_responsibility_assessment_001", "/recovered/unverified/wider_system_responsibility_assessment_001.html"],
     ["reciprocal_trust_assessment_001", "/recovered/unverified/reciprocal_trust_assessment_001.html"],
     ["transition_risk_assessment_001", "/recovered/unverified/transition_risk_assessment_001.html"]
@@ -955,6 +960,25 @@ resilience: {
     ["reciprocal_trust_assessment_001_notes", "/recovered/annotations/reciprocal_trust_assessment_001_notes.html"]
   ],
   note: "Preservation of meaningful choice or refusal under conditions of substantial capability asymmetry."
+},
+"contact readiness": {
+  related: [
+    "maturity",
+    "trustworthiness",
+    "developmental autonomy",
+    "reciprocal trust",
+    "wider system responsibility",
+    "transition",
+    "responsibility"
+  ],
+  documents: [
+    ["contact_readiness_synthesis_001", "/cross-references/contact_readiness_synthesis_001.html"],
+    ["transition_risk_assessment_001", "/recovered/unverified/transition_risk_assessment_001.html"],
+    ["reciprocal_trust_assessment_001", "/recovered/unverified/reciprocal_trust_assessment_001.html"],
+    ["wider_system_responsibility_assessment_001", "/recovered/unverified/wider_system_responsibility_assessment_001.html"],
+    ["developmental_maturity_assessment_001", "/recovered/unverified/developmental_maturity_assessment_001.html"]
+  ],
+  note: "Capacity to enter consequential external relationships without loss of autonomy, regulatory stability, or wider-system responsibility."
 },
 };
 
@@ -1149,6 +1173,11 @@ refusal: "refusal capacity",
 "say no": "refusal capacity",
 "said no": "refusal capacity",
 "choice under control": "refusal capacity",
+
+"ready for contact": "contact readiness",
+readiness: "contact readiness",
+"integration readiness": "contact readiness",
+"what are they waiting for": "contact readiness",
 };
 
 

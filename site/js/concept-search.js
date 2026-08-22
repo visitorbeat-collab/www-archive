@@ -845,6 +845,52 @@ externalization: {
   ],
   note: "Reduction of several uncertain relationships into a compact explanation that may appear more certain than the evidence supports."
 },
+"recovery capacity": {
+  related: [
+    "redundancy",
+    "resilience",
+    "diversity",
+    "irreversibility",
+    "system dependency",
+    "preservation"
+  ],
+  documents: [
+    ["environmental_observation_003", "/environmental/environmental_observation_003.html"],
+    ["environmental_observation_002", "/environmental/environmental_observation_002.html"],
+    ["system_dependency_assessment_001", "/recovered/unverified/system_dependency_assessment_001.html"],
+    ["preservation_value_assessment_001", "/recovered/unverified/preservation_value_assessment_001.html"]
+  ],
+  note: "Capacity of a system to return to viable function after disturbance without complete external reconstruction."
+},
+
+redundancy: {
+  related: [
+    "recovery capacity",
+    "resilience",
+    "diversity",
+    "uncertainty",
+    "preservation"
+  ],
+  documents: [
+    ["environmental_observation_003", "/environmental/environmental_observation_003.html"]
+  ],
+  note: "Multiple pathways or capacities that may appear inefficient but reduce dependence on single points of failure."
+},
+
+resilience: {
+  related: [
+    "recovery capacity",
+    "redundancy",
+    "system dependency",
+    "maintenance",
+    "preservation"
+  ],
+  documents: [
+    ["environmental_observation_003", "/environmental/environmental_observation_003.html"],
+    ["environmental_observation_002", "/environmental/environmental_observation_002.html"],
+    ["system_dependency_assessment_001", "/recovered/unverified/system_dependency_assessment_001.html"]
+  ]
+},
 };
 
 

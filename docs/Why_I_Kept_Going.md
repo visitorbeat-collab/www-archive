@@ -1,93 +1,87 @@
 # why_i_kept_going.md
 
-I have asked myself more than once why I continue doing this.
+I've asked myself more than once why I'm still doing this.
 
-It would be easier to stop.
+It would be easier to stop, and there are plenty of ordinary explanations for most of what I've collected. Coincidence exists. Memory fails. People misunderstand what they see, fill in gaps, exaggerate without realizing it, and find patterns because they expect there to be one.
 
-There is no shortage of ordinary explanations for isolated observations. Coincidence exists. Memory fails. Human beings are remarkably good at constructing patterns where none exist.
+I know all of that. If anything, I'm probably more aware of it now than I was when I started.
 
-I know all of that.
+A lot of this project has involved trying to dismantle my own conclusions. That sounds backwards, but it's true. I've spent more time looking for reasons not to trust a connection than trying to prove one, and quite a few of them haven't survived.
 
-In fact, I have spent more time trying to dismantle my own conclusions than I have trying to support them.
+The problem is that getting rid of the weak ones hasn't made the rest easier to ignore.
 
-That is precisely why I have not stopped.
+That's part of why I kept going.
 
-Every explanation I have successfully discarded has left the remaining questions slightly more difficult to ignore.
+Individual accounts don't mean very much on their own. People forget things, reinterpret them later, or attach significance to details that probably don't deserve it. I include myself in that.
 
-I think there is an important difference between collecting unusual stories and documenting unusual relationships.
+What started to bother me was not the individual stories so much as the relationships between them.
 
-Individual accounts are unreliable.
+Even that needs to be treated carefully. People who have never met can still arrive at similar ideas for completely ordinary reasons. Culture spreads things. Memory is suggestible. Once you've learned a pattern, you can start seeing it everywhere.
 
-People misunderstand what they see.
+So similarity by itself isn't enough.
 
-They forget.
+What has been harder to dismiss is the structure underneath it. Different observations keep pointing toward similar kinds of relationships even when the surface details are quite different.
 
-They exaggerate.
+I don't know what weight that deserves.
 
-They search for meaning where there may be none.
+Apparently enough that I'm still here.
 
-Relationships are different.
+For a long time, I thought I was just making a filing system.
 
-Independent observations made by people who never knew each other should not repeatedly converge on the same underlying structure.
+That really was the original idea. I had too much material, no consistent naming scheme, and no reliable way to find the same note twice without starting over. I wanted something practical.
 
-That is the only reason I am still here.
+That's what the Index was supposed to be.
 
-Not because I am convinced.
+At some point, the organization itself started becoming part of the problem.
 
-Because I am unconvinced by every simpler explanation I have been able to test.
+I would follow one relationship and end up somewhere I didn't remember connecting to it. At first I assumed I'd forgotten making the link, which still happens. Then I assumed I'd classified something badly, which also happens.
 
-For a long time I believed I was simply building an organizational system for my own notes.
+After that, I started worrying that I'd been staring at the material for so long that I was training myself to see the same idea in everything.
 
-Something that would allow me to find the same document twice without starting over.
+That possibility still worries me the most.
 
-Nothing more.
+There was another possibility, though, and I didn't like it then any more than I like writing it now.
 
-Then, gradually, the structure itself began suggesting connections I had never entered.
+Maybe I wasn't inventing all of the structure.
 
-My first assumption was that I had forgotten making them.
+Maybe some of what I was rebuilding had structure before I got to it.
 
-The second was that I had indexed something incorrectly.
+I'm not saying I believe that. I don't know what I believe about it.
 
-The third was that I had become too familiar with the material to judge it objectively.
+But I can't dismiss it as easily as I used to.
 
-All three explanations were more comforting than the fourth.
+The comparison I keep coming back to is archaeology. It's probably imperfect, but it helps me think about the problem.
 
-The fourth possibility was that I had spent years reconstructing something that already existed.
+Imagine finding scattered pieces of an old road. One section doesn't tell you much. A second gives you a direction. If you find enough fragments, you can start making reasonable guesses about where the missing sections probably were.
 
-That thought still feels unreasonable.
+Obviously, some reconstruction is involved. You're filling gaps.
 
-I am not writing this because I believe it.
+But you're not inventing the fact that the road had a direction.
 
-I am writing it because I can no longer dismiss it.
+And if you keep following it, eventually you may reach something you didn't know was there: a settlement, a ruin, whatever the road originally connected to.
 
-The closest analogy I have found comes from archaeology.
+You didn't create the destination by reconstructing the road. You just made it possible to reach again.
 
-Imagine uncovering a few scattered sections of an ancient Roman road.
+That's the part of the analogy I keep coming back to.
 
-One stone tells you almost nothing.
+I started wondering whether the Index might work in a similar way.
 
-Two suggest a direction.
+I don't mean that I've literally uncovered some buried city. What I mean is that I may have spent years assuming the important thing was the material itself when the more important thing was the shape the material makes once enough of it is in one place.
 
-Enough fragments eventually allow you to infer the missing sections.
+Maybe that shape is real.
 
-At first you believe you are rebuilding the road.
+Maybe I've imposed it.
 
-Only later do you realize that roads exist because they lead somewhere.
+I still can't rule either possibility out.
 
-If you continue long enough, one day you may arrive at a city no one knew was still buried.
+If I'm wrong about all of this, then I've spent a fairly ridiculous amount of time carefully documenting my own pattern-making.
 
-The city was never created by the reconstruction.
+That is a real possibility, and I need it to stay one.
 
-It was always there.
+But if there is something here that I haven't accounted for, then stopping simply because that possibility makes me uncomfortable doesn't make much sense either.
 
-The reconstruction merely made it reachable.
+So I keep going.
 
-I have begun to wonder whether this index serves the same purpose.
+Not because I'm convinced, and not because I think I've found the answer.
 
-If that comparison is fundamentally wrong, then this entire project represents years of carefully documented self-deception.
-
-If it is even partially correct, then stopping now would guarantee that whatever lies beyond the next fragment remains buried.
-
-Neither possibility is comforting.
-
-For the moment, continuing seems to be the only intellectually honest option.
+Mostly because I still haven't found a good enough reason to stop.

@@ -1,34 +1,16 @@
-# WORLD WIDE WASTE
-## ENCOUNTER / PROTOCOL COMPARISON 001
-### Canonical Source — Version 1.0
-
-**Archive representation:** `encounter_protocol_comparison_001`
-**Classification:** Finder Working Note / Personal
-**Internal status:** Canonical
-
----
-
 # Working Note
 
 If the protocol fragment is genuine, then parts of my memory resemble it.
 
-That sentence is as far as I am willing to go.
+That's as far as I'm comfortable taking the statement.
 
-Resemblance is not identity.
+A resemblance is not the same thing as an identity, and there are several obvious ways I could be fooling myself here. The fragment may be misclassified. My memory may have changed more than I realize. I may be taking language I've only encountered recently and using it to organize something much older.
 
-The fragment may be misclassified.
+Some of the similarities may also be broad enough that they aren't very meaningful.
 
-My memory may be distorted.
+So I'm writing the comparison out explicitly.
 
-I may be mapping recent language onto an older experience.
-
-Some of the similarities may be broad enough to occur by chance.
-
-So I am writing the comparison explicitly.
-
-Not to prove a connection.
-
-To make it harder for me to exaggerate one.
+Partly because I want to see what actually matches, but mostly because I don't trust myself to keep the resemblance in proportion if I leave it vague.
 
 ---
 
@@ -51,334 +33,100 @@ To make it harder for me to exaggerate one.
 
 # Mismatches
 
-The fragment does not describe several things I remember.
+There are also several things I remember that the fragment doesn't mention at all: the physical examination, the apparent immobilization, the figures, being somewhere other than my bedroom, the return, and the gaps in memory.
 
-It does not mention:
+It's tempting to say those things must belong to another part of the procedure, but that would be cheating. I can't assume missing sections contain exactly whatever I need them to contain.
 
-- physical examination
-- immobilization
-- figures
-- removal from a normal environment
-- return
-- memory discontinuity
+They may belong to something else.
 
-Those may belong to another part of the procedure.
+They may also mean the comparison is wrong.
 
-Or they may indicate that the comparison is wrong.
-
-I cannot assume missing sections contain whatever I need them to contain.
+Both possibilities have to stay open.
 
 ---
 
 # Unknowns
 
-I do not know:
+There is still a lot I don't know.
 
-- whether the protocol applies to individuals or only selected cases
-- whether physical examination accompanies it
-- whether the relational structure is sensory, technological, cognitive, or something else
-- whether subjects are expected to remember the exposure
-- whether long-term observation occurs after exposure
-- whether the protocol was used on Earth
-- whether the fragment predates my encounter
-- whether TP-3 is humanity
-- whether my experience was external at all
+I don't know whether the protocol applies broadly or only to particular subjects, whether a physical examination has anything to do with it, or what the relational structure actually is. It could be sensory, technological, cognitive, or something I don't have a useful category for.
 
-The last point remains important.
+I don't know whether subjects are supposed to remember the exposure, whether observation continues afterward, whether the protocol was ever used on Earth, or whether the fragment even predates my experience.
 
-A neurological event could still produce an experience that resembles this protocol.
+I don't know whether TP-3 refers to humanity.
 
-The existence of the protocol fragment does not retroactively validate the encounter.
+And I still don't know whether my own experience was external in the first place.
+
+That last point matters more than all the others.
+
+A neurological or dream-state event could still produce an experience that happens to resemble the protocol. Finding the fragment later does not reach backward in time and validate my memory.
+
+I need to keep reminding myself of that.
 
 ---
 
 # Probability Problem
 
-The difficulty is not any one match.
+What bothers me isn't any one match.
 
-Most of them are weak individually.
+Most of them are weak enough on their own that I could probably dismiss them without much difficulty. The problem is the combination.
 
-The difficulty is the combination.
+The shift from trying to identify objects to following relationships is unusually specific.
 
-Especially:
+So is the idea that factual retention may be less important than retaining the structure of relationships.
 
-**object identification → relationship identification**
+And the contamination issue is uncomfortable because that was a decision I made independently, years before I had any reason to connect it to this material.
 
-and:
+Those three together are harder for me to explain away.
 
-**factual retention not required → relational structure retained**
+That doesn't mean I know what probability to assign to the resemblance. I don't.
 
-and:
-
-**post-exposure contamination should be minimized**
-
-Those are unusually specific.
-
-I do not know how much weight to assign that.
-
-I am not qualified to estimate the probability.
+I'm not qualified to calculate one, and pretending otherwise would just give a number to my own uncertainty.
 
 ---
 
 # Alternative Explanations
 
-At minimum I can identify four:
+At the moment I can think of at least four explanations that don't require me to ignore any of the evidence.
 
 **1. Coincidence**
 
-The similarities are real but unrelated.
+The similarities are real but unrelated. Given enough material, some amount of overlap is inevitable.
 
 **2. Memory reconstruction**
 
-My current understanding of the fragment is altering how I remember the encounter.
+My current understanding of the protocol is changing how I remember the encounter. This is probably happening to some degree regardless of whether the underlying connection is real.
 
 **3. Index contamination**
 
-Because I built the Index using relational concepts, I may be projecting those concepts backward into both sources.
+Because I built the Index around relational concepts, I may be projecting the same framework backward into both the fragment and my own memory. If so, the resemblance is partly something I've created.
 
 **4. Common origin**
 
-The encounter and the protocol are related.
+The encounter and the protocol are actually related.
 
-The fourth explanation is not automatically preferable because it explains more.
+The fourth explanation is obviously the most dramatic, which is exactly why I don't want to privilege it just because it seems to explain more at once.
 
-Explanatory power is not the same as evidentiary support.
+A good explanation is not automatically a well-supported one.
 
 ---
 
 # Current Position
 
-I cannot classify the encounter as an instance of this protocol.
+I can't classify the encounter as an instance of this protocol.
 
-I also cannot classify the resemblance as insignificant.
+I also don't think I can honestly classify the resemblance as insignificant anymore.
 
-So:
+So the relationship stays unresolved.
 
-**relationship unresolved**
+That is still the only position I can defend.
 
-That is the only conclusion I can defend.
+There is one consequence, though, and I don't think I can avoid it now.
 
-There is one consequence, however.
+I've treated the encounter and the Index as separate problems for years because that separation made it easier to evaluate both without using one to validate the other.
 
-I can no longer treat my encounter as entirely separate from the Index.
+I still think that was the right decision.
 
-That boundary is no longer justified.
+But the boundary isn't as clean as I wanted it to be.
 
----
-
-# Internal Design Notes
-
-## Purpose
-
-This note demonstrates the Finder's epistemic discipline at the moment when the evidence becomes personally destabilizing.
-
-He does not leap to:
-
-> I was tested.
-
-He performs a structured comparison and preserves alternative explanations.
-
----
-
-# Primary Concept
-
-**Uncertainty**
-
----
-
-# Secondary Concepts
-
-**Interpretation**
-**Comparison**
-**Evidence**
-**Model Revision**
-
----
-
-# Latent Concepts
-
-**Cognitive Assessment**
-**Structural Retention**
-**Finder Encounter**
-**Contact**
-
----
-
-# Narrative Function
-
-This note collapses the artificial separation between:
-
-**Finder biography**
-
-and
-
-**archive evidence**
-
-without yet proving common origin.
-
-The crucial narrative shift is:
-
-> I can no longer treat my encounter as entirely separate from the Index.
-
-This is a boundary revision.
-
-That mirrors the logic of the recovered documents themselves.
-
----
-
-# Why the Table Matters
-
-The Finder should behave like an archivist.
-
-A table prevents the note from becoming emotional free association.
-
-It also makes the strongest correspondences visually obvious to the reader.
-
-The reader should notice that the Finder is almost arguing against the conclusion despite accumulating evidence.
-
-That increases credibility.
-
----
-
-# Strongest Matches
-
-The three strongest are:
-
-1. object identification → relationship identification
-2. factual retention unnecessary → structural retention
-3. contamination avoidance
-
-These should drive the next narrative stage.
-
----
-
-# Mismatch Requirement
-
-The mismatches are essential.
-
-Without them, the fragment would feel manufactured specifically to explain the Finder.
-
-The archive should preserve inconvenient details.
-
-This supports the project's broader rule:
-
-> contradiction is information.
-
----
-
-# Next Narrative Step
-
-The next document should not be another Finder interpretation.
-
-We should return to recovered material.
-
-It should contain a brief reference to:
-
-**long-duration post-exposure observation**
-
-or
-
-**structural retention reassessment**
-
-That would make one of the Finder's listed unknowns unexpectedly relevant.
-
-Do not identify him.
-
-Do not include a recognizable personal profile.
-
-The effect should be:
-
-> The system may continue observing subjects after the initial assessment.
-
-Only after that should the Finder begin asking whether his later construction of the Index itself could have become part of an ongoing assessment.
-
----
-
-# Concept Matrix
-
-**Primary concept:**  
-Uncertainty
-
-**Secondary concepts:**  
-Interpretation  
-Comparison  
-Evidence  
-Model Revision
-
-**Latent concepts:**  
-Cognitive Assessment  
-Structural Retention  
-Finder Encounter  
-Contact
-
-**Narrative phase:**  
-Phase V
-
-**Existing material strengthened:**  
-`encounter_reconstruction_001`  
-`cognitive_assessment_protocol_fragment_001`  
-`field-notes/0003`  
-`field-notes/0007`
-
-**Future material prepared:**  
-Post-exposure observation  
-Structural retention reassessment  
-Finder / Index feedback loop  
-Restricted pathway
-
-**Assumption challenged:**  
-That resemblance either proves common origin or must be dismissed as coincidence.
-
----
-
-# Search Metadata
-
-```yaml
-document: encounter_protocol_comparison_001
-
-primary:
-  - uncertainty
-
-secondary:
-  - interpretation
-  - comparison
-  - evidence
-  - revision
-
-latent:
-  - cognitive_assessment
-  - structural_retention
-  - finder_encounter
-  - contact
-
-relationships:
-  - encounter_reconstruction_001
-  - cognitive_assessment_protocol_fragment_001
-  - field_note_0003
-  - field_note_0007
-
-search_associations:
-  evidence:
-    - uncertainty
-    - comparison
-    - interpretation
-
-  coincidence:
-    - uncertainty
-    - evidence
-    - comparison
-
-  encounter:
-    - cognitive_assessment
-    - structural_retention
-    - uncertainty
-
-  protocol:
-    - cognitive_assessment
-    - comparison
-    - structural_retention
-
-  proof:
-    - uncertainty
-    - evidence
-    - interpretation
+I can no longer treat the encounter as completely unrelated to the Index.

@@ -1,530 +1,237 @@
-const conceptIndex = {
-
-  observation: {
-    related: [
-      "interpretation",
-      "uncertainty",
-      "systems"
-    ],
-    documents: [
-      ["Field Note 0001", "/field-notes/0001.html"],
-      ["testimony_001", "/testimony/testimony_001.html"],
-      ["classification_schema_v1", "/recovered/unverified/classification_schema_v1.html"]
-    ]
-  },
-
-  interpretation: {
-    related: [
-      "observation",
-      "uncertainty",
-      "revision",
-      "systems"
-    ],
-    documents: [
-      ["testimony_001", "/testimony/testimony_001.html"],
-      ["environmental_observation_001_notes", "/recovered/annotations/environmental_observation_001_notes.html"],
-      ["cross_reference_002", "/cross-references/cross_reference_002.html"]
-    ]
-  },
-
-  systems: {
-    related: [
-      "scale",
-      "consequence",
-      "system boundary",
-      "feedback"
-    ],
-    documents: [
-      ["classification_schema_v1", "/recovered/unverified/classification_schema_v1.html"],
-      ["environmental_observation_001", "/recovered/unverified/environmental_observation_001.html"],
-      ["environmental_observation_002", "/recovered/unverified/environmental_observation_002.html"],
-      ["cross_reference_001", "/cross-references/cross_reference_001.html"]
-    ]
-  },
-
-  uncertainty: {
-    related: [
-      "prediction",
-      "restraint",
-      "decision threshold",
-      "reversibility"
-    ],
-    documents: [
-      ["technological_population_assessment_002", "/recovered/unverified/technological_population_assessment_002.html"],
-      ["decision_threshold_assessment_001", "/recovered/unverified/decision_threshold_assessment_001.html"],
-      ["testimony_002", "/testimony/testimony_002.html"],
-      ["cross_reference_003", "/cross-references/cross_reference_003.html"]
-    ]
-  },
-
-  revision: {
-    related: [
-      "self-correction",
-      "consequence",
-      "persistence",
-      "prediction"
-    ],
-    documents: [
-      ["technological_population_assessment_001", "/recovered/unverified/technological_population_assessment_001.html"],
-      ["what_are_they_measuring", "/working-notes/personal/what_are_they_measuring.html"]
-    ]
-  },
-
-  persistence: {
-    related: [
-      "revision",
-      "resilience",
-      "long horizon",
-      "maturity"
-    ],
-    documents: [
-      ["technological_population_assessment_001", "/recovered/unverified/technological_population_assessment_001.html"],
-      ["environmental_observation_002", "/recovered/unverified/environmental_observation_002.html"],
-      ["what_are_they_measuring", "/working-notes/personal/what_are_they_measuring.html"],
-      ["behavioral_reliability_assessment_001", "/recovered/unverified/behavioral_reliability_assessment_001.html"]
-    ]
-  },
-
-  restraint: {
-    related: [
-      "uncertainty",
-      "decision threshold",
-      "capability",
-      "reversibility"
-    ],
-    documents: [
-      ["technological_population_assessment_002", "/recovered/unverified/technological_population_assessment_002.html"],
-      ["decision_threshold_assessment_001", "/recovered/unverified/decision_threshold_assessment_001.html"],
-      ["testimony_002", "/testimony/testimony_002.html"],
-      ["cross_reference_003", "/cross-references/cross_reference_003.html"]
-    ]
-  },
-
-  capability: {
-    related: [
-      "consequence",
-      "prediction",
-      "restraint",
-      "decision threshold"
-    ],
-    documents: [
-      ["technological_population_assessment_002", "/recovered/unverified/technological_population_assessment_002.html"],
-      ["decision_threshold_assessment_001", "/recovered/unverified/decision_threshold_assessment_001.html"],
-      ["what_are_they_measuring", "/working-notes/personal/what_are_they_measuring.html"],
-      ["transition_criteria_fragment_001", "/recovered/unverified/transition_criteria_fragment_001.html"]
-    ]
-  },
-
-  consequence: {
-    related: [
-      "capability",
-      "revision",
-      "decision threshold",
-      "scale"
-    ],
-    documents: [
-      ["environmental_observation_001", "/recovered/unverified/environmental_observation_001.html"],
-      ["environmental_observation_002", "/recovered/unverified/environmental_observation_002.html"],
-      ["technological_population_assessment_001", "/recovered/unverified/technological_population_assessment_001.html"],
-      ["decision_threshold_assessment_001", "/recovered/unverified/decision_threshold_assessment_001.html"]
-    ]
-  },
-
-  "decision threshold": {
-    related: [
-      "uncertainty",
-      "consequence",
-      "restraint",
-      "reversibility"
-    ],
-    documents: [
-      ["decision_threshold_assessment_001", "/recovered/unverified/decision_threshold_assessment_001.html"],
-      ["technological_population_assessment_002", "/recovered/unverified/technological_population_assessment_002.html"],
-      ["testimony_002", "/testimony/testimony_002.html"]
-    ]
-  },
-
-  maturity: {
-    related: [
-      "revision",
-      "persistence",
-      "restraint",
-      "capability"
-    ],
-    documents: [
-      ["what_are_they_measuring", "/working-notes/personal/what_are_they_measuring.html"],
-      ["technological_population_assessment_001", "/recovered/unverified/technological_population_assessment_001.html"],
-      ["technological_population_assessment_002", "/recovered/unverified/technological_population_assessment_002.html"],
-      ["behavioral_reliability_assessment_001", "/recovered/unverified/behavioral_reliability_assessment_001.html"]
-    ]
-  },
-
-  responsibility: {
-    related: [
-      "capability",
-      "consequence",
-      "restraint",
-      "revision",
-      "persistence"
-    ],
-    documents: [
-      ["what_are_they_measuring", "/working-notes/personal/what_are_they_measuring.html"],
-      ["technological_population_assessment_001", "/recovered/unverified/technological_population_assessment_001.html"],
-      ["technological_population_assessment_002", "/recovered/unverified/technological_population_assessment_002.html"],
-      ["decision_threshold_assessment_001", "/recovered/unverified/decision_threshold_assessment_001.html"],
-      ["system_dependency_assessment_001", "/recovered/unverified/system_dependency_assessment_001.html"]
-    ],
-    note: "No direct recovered classification found. Related assessment variables returned."
-  },
-
-  stewardship: {
-    related: [
-      "system dependency",
-      "maintenance",
-      "influence",
-      "persistence",
-      "consequence"
-    ],
-    documents: [
-      ["system_dependency_assessment_001", "/recovered/unverified/system_dependency_assessment_001.html"],
-      ["environmental_observation_001", "/recovered/unverified/environmental_observation_001.html"],
-      ["decision_threshold_assessment_001", "/recovered/unverified/decision_threshold_assessment_001.html"],
-      ["what_are_they_measuring", "/working-notes/personal/what_are_they_measuring.html"]
-    ],
-    note: "No direct recovered classification found. Related maintenance variables returned."
-  },
-
-  "system dependency": {
-    related: [
-      "influence",
-      "maintenance",
-      "persistence",
-      "system boundary"
-    ],
-    documents: [
-      ["system_dependency_assessment_001", "/recovered/unverified/system_dependency_assessment_001.html"],
-      ["environmental_observation_001", "/recovered/unverified/environmental_observation_001.html"]
-    ]
-  },
-
-  maintenance: {
-    related: [
-      "system dependency",
-      "persistence",
-      "influence",
-      "consequence"
-    ],
-    documents: [
-      ["system_dependency_assessment_001", "/recovered/unverified/system_dependency_assessment_001.html"],
-      ["technological_population_assessment_001", "/recovered/unverified/technological_population_assessment_001.html"]
-    ]
-  },
-
-  trust: {
-    related: [
-      "behavioral reliability",
-      "persistence",
-      "restraint",
-      "revision",
-      "capability"
-    ],
-    documents: [
-      ["behavioral_reliability_assessment_001", "/recovered/unverified/behavioral_reliability_assessment_001.html"],
-      ["can_they_trust_us", "/working-notes/personal/can_they_trust_us.html"],
-      ["technological_population_assessment_001", "/recovered/unverified/technological_population_assessment_001.html"],
-      ["system_dependency_assessment_001", "/recovered/unverified/system_dependency_assessment_001.html"]
-    ],
-    note: "Finder terminology. Closest recovered classification: behavioral reliability."
-  },
-
-  "behavioral reliability": {
-    related: [
-      "persistence",
-      "restraint",
-      "revision",
-      "self-regulation",
-      "generalization"
-    ],
-    documents: [
-      ["behavioral_reliability_assessment_001", "/recovered/unverified/behavioral_reliability_assessment_001.html"],
-      ["can_they_trust_us", "/working-notes/personal/can_they_trust_us.html"],
-      ["technological_population_assessment_001", "/recovered/unverified/technological_population_assessment_001.html"],
-      ["system_dependency_assessment_001", "/recovered/unverified/system_dependency_assessment_001.html"]
-    ]
-  },
-
-  threshold: {
-    related: [
-      "behavioral reliability",
-      "capability",
-      "transition",
-      "restraint",
-      "persistence"
-    ],
-    documents: [
-      ["transition_criteria_fragment_001", "/recovered/unverified/transition_criteria_fragment_001.html"],
-      ["decision_threshold_assessment_001", "/recovered/unverified/decision_threshold_assessment_001.html"],
-      ["behavioral_reliability_assessment_001", "/recovered/unverified/behavioral_reliability_assessment_001.html"]
-    ]
-  },
-
-  transition: {
-    related: [
-      "threshold",
-      "behavioral reliability",
-      "capability",
-      "transfer"
-    ],
-    documents: [
-      ["transition_criteria_fragment_001", "/recovered/unverified/transition_criteria_fragment_001.html"],
-      ["behavioral_reliability_assessment_001", "/recovered/unverified/behavioral_reliability_assessment_001.html"],
-      ["can_they_trust_us", "/working-notes/personal/can_they_trust_us.html"]
-    ]
-  },
-
-  transfer: {
-    related: [
-      "transition",
-      "threshold",
-      "behavioral reliability",
-      "capability"
-    ],
-    documents: [
-      ["transition_criteria_fragment_001", "/recovered/unverified/transition_criteria_fragment_001.html"]
-    ],
-    note: "Meaning unresolved."
-  }
-
-};
-
-
-const aliases = {
-
-  power: "capability",
-  influence: "capability",
-  ability: "capability",
-
-  mistake: "revision",
-  error: "revision",
-  learning: "revision",
-  "self correction": "revision",
-  "self-correction": "revision",
-
-  caution: "restraint",
-  wait: "restraint",
-
-  risk: "uncertainty",
-  unknown: "uncertainty",
-
-  warning: "interpretation",
-  message: "interpretation",
-
-  intelligence: "maturity",
-
-  system: "systems",
-  network: "systems",
-  connected: "systems",
-  scale: "systems",
-  feedback: "systems",
-  "system boundary": "systems",
-
-  resilience: "persistence",
-  "long horizon": "persistence",
-
-  decision: "decision threshold",
-  reversibility: "decision threshold",
-
-  environment: "system dependency",
-  ecology: "system dependency",
-  nature: "system dependency",
-
-  preservation: "maintenance",
-  protect: "maintenance",
-
-  trustworthiness: "trust",
-  trustworthy: "trust",
-  worthy: "trust",
-
-  reliability: "behavioral reliability",
-  reliable: "behavioral reliability",
-  consistency: "behavioral reliability",
-  "self regulation": "behavioral reliability",
-  "self-regulation": "behavioral reliability",
-  generalization: "behavioral reliability",
-
-  ready: "transition",
-  readiness: "transition",
-
-  transferable: "transfer"
-
-};
-
-
-const form = document.getElementById("concept-search-form");
-const input = document.getElementById("concept-search");
-const response = document.getElementById("search-response");
-
-
-function normalizeQuery(value) {
-  return value
-    .trim()
-    .toLowerCase()
-    .replace(/[_-]+/g, " ")
-    .replace(/\s+/g, " ");
-}
-
-
-function escapeHTML(value) {
-  return value
-    .replace(/&/g, "&amp;")
-    .replace(/</g, "&lt;")
-    .replace(/>/g, "&gt;")
-    .replace(/"/g, "&quot;")
-    .replace(/'/g, "&#039;");
-}
-
-
-function renderResult(originalQuery, concept, result, mapped) {
-
-  const related = result.related
-    .map(item => `
-      <button
-        class="concept-link"
-        type="button"
-        data-concept="${escapeHTML(item)}"
-      >
-        ${escapeHTML(item)}
-      </button>
-    `)
-    .join("");
-
-  const documents = result.documents
-    .map(([title, url]) => `
-      <div class="search-document">
-        <a href="${url}">${escapeHTML(title)}</a>
-      </div>
-    `)
-    .join("");
-
-  const mappingText = mapped
-    ? `
-      <p class="search-mapping">
-        query approximation:
-        <span class="mono">${escapeHTML(originalQuery)}</span>
-        →
-        <span class="mono">${escapeHTML(concept)}</span>
-      </p>
-    `
-    : "";
-
-  const note = result.note
-    ? `<p class="search-note">${escapeHTML(result.note)}</p>`
-    : "";
-
-  response.innerHTML = `
-    ${mappingText}
-
-    <div class="search-result-section">
-      <div class="search-heading">classification</div>
-      <div class="search-primary">${escapeHTML(concept)}</div>
-    </div>
-
-    ${note}
-
-    <div class="search-result-section">
-      <div class="search-heading">related concepts</div>
-      <div class="concept-links">
-        ${related}
-      </div>
-    </div>
-
-    <div class="search-result-section">
-      <div class="search-heading">possible matches</div>
-      ${documents}
-    </div>
-  `;
-
-  attachConceptButtons();
-}
-
-
-function renderNoResult(query) {
-
-  response.innerHTML = `
-    <p class="search-note">
-      No direct classification found for
-      <span class="mono">${escapeHTML(query)}</span>.
-    </p>
-
-    <p class="muted">
-      Try a broader process, relationship, or assessment variable.
-    </p>
-  `;
-}
-
-
-function performSearch(rawQuery) {
-
-  const query = normalizeQuery(rawQuery);
-
-  if (!query) {
-    response.innerHTML = `<p class="muted">No query submitted.</p>`;
-    return;
-  }
-
-  if (conceptIndex[query]) {
-    renderResult(
-      query,
-      query,
-      conceptIndex[query],
-      false
-    );
-    return;
-  }
-
-  if (aliases[query]) {
-
-    const mappedConcept = aliases[query];
-
-    renderResult(
-      query,
-      mappedConcept,
-      conceptIndex[mappedConcept],
-      true
-    );
-
-    return;
-  }
-
-  renderNoResult(query);
-}
-
-
-function attachConceptButtons() {
-
-  document.querySelectorAll(".concept-link").forEach(button => {
-
-    button.addEventListener("click", () => {
-
-      const concept = button.dataset.concept;
-
-      input.value = concept;
-
-      performSearch(concept);
-
-      window.scrollTo({
-        top: 0,
-        behavior: "smooth"
-      });
-
-    });
-
-  });
-
-}
-
-
-form.addEventListener("submit", event => {
-  event.preventDefault();
-  performSearch(input.value);
-});
+# WORLD WIDE WASTE
+
+## WORKING NOTE — TRANSFER OF WHAT?
+
+### Canonical Source — Version 1.0
+
+**Archive representation:** `transfer_of_what`
+
+**Classification:** Finder Working Note / Personal
+
+**Internal status:** Canonical
+
+---
+
+# Working Note
+
+I've read the fragment enough times now that the wording is starting to feel deliberate.
+
+I'm trying very hard not to let that feeling become evidence.
+
+The problem is one sentence:
+
+**Reliability must precede transfer.**
+
+Transfer of what?
+
+Information is the obvious possibility, but only because that's the first thing I think of. Technology would make sense too. Access, maybe. Authority. Movement. I can probably invent ten more possibilities if I sit here long enough, which is exactly why I don't want to choose one.
+
+I don't have a basis for doing that yet.
+
+What I do think the sentence changes is the way I understand the assessments that came before it.
+
+Until now, I could still interpret most of the recovered material as observational in a fairly straightforward sense: a long-running study of developing technological populations, concerned with classification, prediction, risk, adaptation, and the way behavior changes after consequences become visible.
+
+Nothing about that interpretation required the observation to lead anywhere.
+
+This fragment seems to.
+
+It describes a threshold, and conditions under which some kind of transition should or should not proceed. It refers to capability being expanded beyond its current state and to the consequences of doing that too early.
+
+That is different from simply watching development.
+
+There appears to be a decision somewhere in the system.
+
+I don't know who makes it. I don't know whether it applies specifically to us, and I don't know whether the fragment is current, historical, hypothetical, or even correctly associated with TP-3.
+
+But if the association is right, then I have to at least consider the possibility that these assessments are doing more than describing development.
+
+They may be determining whether something happens next.
+
+My first word for that was "eligibility," and I immediately disliked it.
+
+It makes the whole thing sound like an examination with a passing grade, which may be completely wrong. The fragment doesn't describe moral worth. It doesn't say a population has to become peaceful, perfectly rational, or incapable of making mistakes.
+
+In fact, most of the material seems to assume that error is unavoidable.
+
+What keeps coming back instead is reliability.
+
+What happens after an error is recognized? What happens when restraint becomes expensive? What happens when capability increases faster than experience? What happens when the consequences fall on something or someone outside the population that caused them?
+
+Those are the same kinds of variables I've been seeing for years.
+
+The difference is that now they seem connected to a threshold.
+
+Possibly an endpoint.
+
+I'm not sure "endpoint" is right either. It may be more like a change in the relationship between the observer and whatever is being observed.
+
+That thought is harder to keep abstract.
+
+If "transfer" really does mean an increase in capability, then the concern makes sense in a way I wish it didn't. You wouldn't give a population more influence simply because it had demonstrated that it could understand what you were giving it.
+
+You'd want some reason to believe it could live with the consequences afterward.
+
+That brings me back to trustworthiness again.
+
+And, unfortunately, it also brings me back to my own encounter.
+
+I keep finding reasons to keep those two things separate, and then another document makes the separation slightly harder to defend.
+
+I'm not ready to write down what I think the connection might be.
+
+Not yet.
+
+---
+
+# Internal Design Notes
+
+## Purpose
+
+This note introduces the possibility that Observer assessment leads toward some form of transition or transfer rather than indefinite observation.
+
+The Finder must not know what "transfer" means.
+
+The ambiguity is essential.
+
+---
+
+## Primary Concept
+
+**Transfer**
+
+---
+
+## Secondary Concepts
+
+**Transition**
+
+**Threshold**
+
+**Reliability**
+
+**Capability**
+
+**Trustworthiness**
+
+---
+
+## Latent Concepts
+
+**Contact**
+
+**Access**
+
+**Capability Transfer**
+
+**Participation**
+
+**Finder Encounter**
+
+---
+
+## Narrative Function
+
+The note changes the apparent purpose of observation.
+
+Previously:
+
+> observation may be descriptive
+
+Now:
+
+> observation may inform a consequential decision
+
+The Finder should recognize that the system may have an endpoint without knowing what the endpoint is.
+
+---
+
+## Important Constraint
+
+Do not establish that transfer means:
+
+- technology
+- knowledge
+- contact
+- travel
+- membership
+- authority
+- capability increase
+
+All remain possible interpretations.
+
+The later archive may narrow the meaning.
+
+---
+
+## Critical Distinction
+
+The fragment does not imply moral worthiness.
+
+The threshold is more plausibly related to whether expanded capability would produce tolerable consequences.
+
+This distinction prepares later material concerning contact readiness and wider participation.
+
+---
+
+## Relationship to Existing Material
+
+`transition_criteria_fragment_001`
+
+introduces the phrase:
+
+> Reliability must precede transfer.
+
+`behavioral_reliability_assessment_001`
+
+provides a possible meaning for reliability.
+
+`can_they_trust_us`
+
+interprets that reliability as possible trustworthiness.
+
+`what_are_they_measuring`
+
+distinguishes intelligence from the larger characteristic under observation.
+
+This note asks what the assessment is ultimately for.
+
+---
+
+## Concept Matrix
+
+**Primary concept:**  
+Transfer
+
+**Secondary concepts:**  
+Transition  
+Threshold  
+Reliability  
+Capability  
+Trustworthiness
+
+**Latent concepts:**  
+Contact  
+Access  
+Capability Transfer  
+Participation  
+Finder Encounter
+
+**Narrative phase:**  
+Phase V
+
+**Existing material strengthened:**  
+`transition_criteria_fragment_001`  
+`behavioral_reliability_assessment_001`  
+`can_they_trust_us`  
+`what_are_they_measuring`
+
+**Future material prepared:**  
+Incremental contact  
+Transition risk  
+Contact readiness  
+Participation  
+Restricted pathway
+
+**Assumption challenged:**  
+That observation is necessarily an end in itself.

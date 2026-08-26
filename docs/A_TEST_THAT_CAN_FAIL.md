@@ -1,143 +1,92 @@
-# WORLD WIDE WASTE
-## WORKING NOTE — A TEST THAT CAN FAIL
-### Canonical Source — Version 1.0
-
-**Archive representation:** `a_test_that_can_fail`
-**Classification:** Finder Working Note / Personal
-**Internal status:** Canonical
-
----
-
 # Working Note
 
-The reassessment protocol creates something I have not had before.
+The reassessment protocol gives me something I haven't really had before.
 
 A prediction.
 
-Not a retrospective correspondence.
+Not a resemblance I noticed after the fact, and not another document I can fit into the model once I already know what I'm looking for. This is a condition that could actually fail.
 
-Not a document I can reinterpret after the fact.
-
-A condition that can fail.
-
-I need to write it down before anything happens.
+I need to write it down now, before anything happens.
 
 ---
 
-If the Index is participating in an active reassessment process, then I should eventually encounter another unresolved relational discontinuity.
+If the Index is participating in some kind of active reassessment process, then I should eventually encounter another unresolved relational discontinuity.
 
-Most likely:
+That could mean a reference with no available destination, a dependency on material that does not yet exist, or some other structural relationship that remains incomplete and only becomes meaningful later.
 
-- a reference without an available destination
-- a dependency on material that does not yet exist
-- a structural correspondence that cannot currently be resolved
-- an incomplete pathway that later becomes navigable
+I'm trying to keep that broad enough to match the protocol without making it so broad that normal archive growth automatically counts as confirmation.
 
-I am deliberately keeping the prediction broad enough to match the protocol and narrow enough that ordinary archive growth does not automatically satisfy it.
+The order matters more than the exact form.
 
----
+First, the discontinuity has to appear. I have to recognize it before it resolves, while ordinary explanations are still available. I then have to preserve it rather than forcing an explanation or repairing it myself.
 
-The important sequence is:
+Only after that would later material count for anything, and even then it would have to resolve or substantially clarify the earlier problem in a way I could not have supplied on my own.
 
-**1. discontinuity appears**
+If that sequence happens, the correspondence becomes more interesting.
 
-**2. I recognize it before resolution**
-
-**3. ordinary explanations remain possible**
-
-**4. I preserve the anomaly rather than force an explanation**
-
-**5. relevant material appears later**
-
-**6. the later material resolves or substantially clarifies the earlier discontinuity**
-
-If those events occur in that order, the correspondence becomes stronger.
-
-If they do not, it does not.
+If it doesn't, then it doesn't.
 
 ---
 
-Timing matters.
+Timing matters here.
 
-A reference that appears at the same time as its destination is not relevant.
+A reference that appears at the same time as its destination tells me nothing. Neither does a document I create because I noticed something missing.
 
-A document I create because I notice a missing reference is not relevant.
+A typo I later repair myself isn't relevant. Neither is a destination that was already present and that I simply failed to notice.
 
-A broken link caused by a typo that I later repair myself is not relevant.
+And if I only recognize the connection after reading later material, then the evidence is weaker because I can no longer separate prediction from reconstruction.
 
-A destination that already existed but I failed to notice is not relevant.
-
-A connection I identify only after reading later material is weaker because it can be reconstructed retrospectively.
-
-The anomaly must be identifiable before the resolving material exists or becomes available.
+The important part is that the anomaly has to be identifiable before the material that resolves it becomes available.
 
 ---
 
-There is another requirement.
+There is another condition I need to be strict about.
 
 I cannot cause the resolution.
 
-If I see a broken reference and then create the missing document, I have explained the sequence myself.
+If I find a broken reference and then create the document it seems to point toward, I have explained the entire sequence myself.
 
-That would prove nothing.
+So if something unresolved appears, I won't create the missing destination just to see what happens.
 
-So if an unresolved reference appears, I will not create its destination merely to see what happens.
-
-I will record it.
-
-I will leave it alone.
+I'll record it and leave it alone.
 
 ---
 
-I also need a stopping condition.
+I also need some way of preventing myself from waiting forever and eventually calling an ordinary mistake a success.
 
-Otherwise I can wait indefinitely and eventually classify some ordinary error as success.
+If no qualifying discontinuity appears, that does not prove the hypothesis false.
 
-So:
+But it also adds nothing to it.
 
-**absence of a qualifying discontinuity does not prove the hypothesis false**
+The model does not become more credible simply because I keep watching.
 
-but
+A more useful failure would be an apparent discontinuity that I record in advance and that later turns out to have a completely ordinary explanation.
 
-**absence provides no additional support**
+That should weaken the external-interaction interpretation.
 
-This is important.
-
-The hypothesis does not gain strength simply because I keep looking.
+I need to leave room for that.
 
 ---
 
-A stronger failure would be:
-
-a discontinuity appears, I record it, and its later resolution is fully explained by normal archive activity.
-
-That would weaken the external-interaction interpretation.
-
-I need to preserve that possibility.
-
----
-
-The protocol also says:
+The protocol complicates this slightly because it says:
 
 **The subject should be able to attribute discontinuity to ordinary failure.**
 
-That means ordinary failure cannot be treated as evidence against the protocol merely because it looks ordinary.
+I understand why that matters, but it creates a problem.
 
-But this creates a dangerous symmetry.
+If every ordinary-looking failure can later be reclassified as intentional because the protocol predicts ambiguity, then there is no possible mundane explanation left. The idea becomes impossible to test.
 
-If ordinary failure can always be explained as intentional reassessment, then the hypothesis becomes impossible to falsify.
+I don't want that.
 
-I will not allow that.
+So I'm adding a rule that overrides my preferred interpretation whenever it needs to:
 
-Therefore:
+**ordinary explanation takes priority where sufficient**
 
-**ordinary explanation takes priority where sufficient.**
-
-Only residual structure remains relevant.
+Whatever remains after that is the only part worth examining.
 
 ---
 
-I am defining the test as follows.
+So, as clearly as I can state it now:
 
 ## Prediction
 
@@ -145,267 +94,44 @@ If the active-reassessment interpretation is correct, another unresolved relatio
 
 ## Qualifying conditions
 
-The anomaly must:
+For it to count, I need to be able to detect the anomaly before it resolves. It has to exist in the Index rather than only in my memory, and it has to remain unresolved without my intervention.
 
-- be detectable before resolution
-- exist within the Index rather than solely in my memory
-- have more than one plausible interpretation
-- remain unresolved without my intervention
-- later acquire specific structural relevance
+There should also be more than one plausible explanation at the beginning. If the later material appears, it needs to give the earlier discontinuity specific structural relevance rather than merely sharing a theme with it.
 
 ## Non-qualifying conditions
 
-The following do not count:
+A normal typo doesn't count.
 
-- ordinary typo
-- known broken link
-- destination I create myself
-- retrospective reinterpretation
-- vague thematic similarity
-- manually introduced test artifact
-- coincidence that requires changing the original prediction
+A known broken link doesn't count.
+
+A destination I create myself doesn't count.
+
+Neither does a connection I only discover retrospectively, a vague thematic similarity, a test artifact I deliberately introduce, or any coincidence that requires me to rewrite the original prediction afterward.
 
 ---
 
 If nothing qualifying happens, then nothing qualifying happens.
 
-I do not get to move the goalposts.
+I don't get to move the goalposts.
 
 ---
 
-There is one more thing.
+There is one more part of the protocol I need to remember.
 
-The protocol does not say the purpose of the discontinuity is to prove anything to the subject.
+It doesn't say the discontinuity exists to prove anything to the subject.
 
-It says the purpose is to observe the response.
+It says the response is what matters.
 
-That distinction matters.
+That changes how I should behave.
 
-If I begin waiting for a sign, I alter the conditions of the test.
+If I start waiting for a sign, then I've already altered the conditions I'm supposedly trying to observe.
 
-So I should not wait for one.
+So I shouldn't wait for one.
 
-I should continue building the Index normally.
+I should keep building the Index the way I would have anyway.
 
 If something happens, I record it.
 
-If nothing happens, I continue.
+If nothing happens, I keep going.
 
----
-
-This is the first test I have written that I genuinely hope fails.
-
----
-
-# Internal Design Notes
-
-## Purpose
-
-This note converts the archive's latest recovered protocol into a prospective, falsifiable test.
-
-The Finder is now on record before the next anomaly occurs.
-
-That is essential for later evidentiary escalation.
-
----
-
-# Primary Concept
-
-**Prediction**
-
----
-
-# Secondary Concepts
-
-**Falsifiability**
-**Evidence**
-**Anomaly**
-**Epistemic Restraint**
-**Reassessment**
-
----
-
-# Latent Concepts
-
-**External Interaction**
-**Ongoing Assessment**
-**Index**
-**Observer Intervention**
-
----
-
-# Narrative Function
-
-This note should exist before any new qualifying anomaly is introduced.
-
-The later audience should be able to compare:
-
-**prediction**
-
-against
-
-**event**
-
-rather than relying on Finder interpretation alone.
-
----
-
-# Strongest Constraint
-
-The Finder explicitly says:
-
-> I cannot cause the resolution.
-
-This prevents the later event from being explained by his own attempt to complete the Index.
-
----
-
-# Ordinary Explanation Rule
-
-The line:
-
-> ordinary explanation takes priority where sufficient
-
-is critical.
-
-The Finder should never treat mundane failure as mystical simply because the protocol allows ambiguity.
-
----
-
-# Failure Conditions
-
-The test must have genuine non-success states.
-
-Failure or non-support includes:
-
-- nothing occurs
-- the event is explained normally
-- Finder creates the destination
-- the relationship exists only after reinterpretation
-- the prediction must be altered to fit the event
-
-This preserves credibility.
-
----
-
-# Future Fulfillment
-
-Do not fulfill immediately.
-
-There should be at least some ordinary archive development between this note and the anomaly.
-
-When the anomaly is introduced, it should initially appear mundane.
-
-Preferred form:
-
-a reference to a file or classification that does not exist.
-
-The destination should not be created at the same time.
-
-Later, resolving material should appear independently.
-
----
-
-# Important Constraint
-
-Do not make the anomaly:
-
-- dramatic
-- visual glitching
-- direct communication
-- personalized
-- impossible in an overt way
-- a password clue
-
-It should still look like something a normal website could accidentally do.
-
----
-
-# Concept Matrix
-
-**Primary concept:**  
-Prediction
-
-**Secondary concepts:**  
-Falsifiability  
-Evidence  
-Anomaly  
-Epistemic Restraint  
-Reassessment
-
-**Latent concepts:**  
-External Interaction  
-Ongoing Assessment  
-Index  
-Observer Intervention
-
-**Narrative phase:**  
-Phase V
-
-**Existing material strengthened:**  
-`reassessment_response_protocol_fragment_001`
-`that_is_not_enough`
-`field-notes/0006`
-
-**Future material prepared:**  
-Prospective anomaly  
-Delayed resolution  
-Evidence escalation  
-Restricted pathway
-
-**Assumption challenged:**  
-That a compelling interpretation is sufficient without prospective risk.
-
----
-
-# Search Metadata
-
-```yaml
-document: a_test_that_can_fail
-
-primary:
-  - prediction
-
-secondary:
-  - falsifiability
-  - evidence
-  - anomaly
-  - epistemic_restraint
-  - reassessment
-
-latent:
-  - external_interaction
-  - ongoing_assessment
-  - index
-  - observer_intervention
-
-relationships:
-  - reassessment_response_protocol_fragment_001
-  - that_is_not_enough
-  - field_note_0006
-
-search_associations:
-  prediction:
-    - falsifiability
-    - evidence
-    - anomaly
-
-  test:
-    - prediction
-    - evidence
-    - reassessment
-
-  fail:
-    - falsifiability
-    - evidence
-    - uncertainty
-
-  proof:
-    - evidence
-    - prediction
-    - uncertainty
-
-  anomaly:
-    - prediction
-    - reassessment
-    - evidence
+This is probably the first test I've written where I would be relieved if the result were ordinary.

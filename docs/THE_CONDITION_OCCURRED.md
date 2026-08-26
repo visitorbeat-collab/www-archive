@@ -1,325 +1,133 @@
-# WORLD WIDE WASTE
-## WORKING NOTE — THE CONDITION OCCURRED
-### Canonical Source — Version 1.0
-
-**Archive representation:** `the_condition_occurred`
-**Classification:** Finder Working Note / Personal
-**Internal status:** Canonical
-
----
-
 # Working Note
 
-There is now a reference in:
-
-`cultural_contamination_assessment_001`
-
-to:
+There is now a reference in `cultural_contamination_assessment_001` to:
 
 `authority_resistance_assessment_001`
 
 There is no corresponding file.
 
-I checked.
-
-Then I checked again.
+I checked once, then again because I didn't trust myself the first time.
 
 ---
 
-Ordinarily this would mean almost nothing.
+Normally this wouldn't mean very much.
 
-The Index contains incomplete material.
+The Index has incomplete material. References can survive when whatever they pointed to doesn't. A reconstruction can preserve a relationship without preserving both ends of it, and I've already run into inconsistencies stranger than this.
 
-References can survive when source material does not.
+The problem isn't that the reference is missing.
 
-A reconstruction can preserve a pointer without preserving its destination.
-
-I have already encountered stranger inconsistencies.
-
-The problem is not that the reference is missing.
-
-The problem is that I described this condition before it occurred.
+The problem is that I wrote down this kind of condition before it happened.
 
 ---
 
-In `a_test_that_can_fail` I wrote that a qualifying event would require:
+In `a_test_that_can_fail`, I said a qualifying sequence would begin with an unresolved reference or pathway that I recognized before it resolved, while ordinary explanations were still possible. I would then have to preserve it rather than correct it, and only later would some new material have to resolve or substantially clarify the earlier discontinuity.
 
-1. an unresolved reference or pathway
-2. recognition before resolution
-3. ordinary explanations remaining possible
-4. preservation rather than correction
-5. relevant material appearing later
-6. later resolution or clarification
+At the moment, only the beginning of that sequence exists.
 
-Only the first three conditions currently exist.
+The reference is unresolved.
 
-Possibly four, depending on what I do now.
+I've recognized it before any resolution.
 
-Nothing has resolved.
+There are still perfectly ordinary explanations.
 
-There is no evidence yet that anything will.
+The fourth condition depends on what I do next.
+
+Nothing has resolved, and there is no evidence that anything ever will.
 
 ---
 
-I need to be precise about this.
+I need to be careful with the wording here because the prediction was not "a broken link will appear."
 
-The prediction was not:
+That would be trivial.
 
-**a broken link will appear**
+Broken links appear.
 
-Broken links are easy.
+What I wrote down was a sequence.
 
-The prediction was a sequence.
+Right now I have one event that resembles the beginning of that sequence.
 
-At present I have one event that matches the beginning of that sequence.
-
-That is all.
+That's all.
 
 ---
 
-Possible explanations remain ordinary.
+There are several mundane explanations available.
 
-The reference may have existed in incomplete source material.
+The reference may have been present in incomplete source material. I may have introduced it during reconstruction and simply forgotten doing it. It could point to something that was intended but never recovered, or it could just be an editing error.
 
-I may have introduced it during reconstruction without remembering doing so.
+It might also be an inference created by the way I've been organizing related documents.
 
-It may refer to material that was always intended but never recovered.
+Or it may mean nothing at all.
 
-It may be an editing error.
-
-It may be an inference produced by the way I have organized related documents.
-
-It may mean nothing.
-
-All of those remain available.
+I can't eliminate any of those explanations.
 
 ---
 
-I checked the current reconstruction before doing anything else.
+Before touching anything, I checked the current reconstruction.
 
-There is no:
+There is no `authority_resistance_assessment_001` in the recovered index.
 
-`authority_resistance_assessment_001`
+There is no destination under the unverified directory.
 
-in the recovered index.
+There is no corresponding conceptual-search entry.
 
-There is no destination in the unverified directory.
+There is no canonical document under that title in my working material.
 
-There is no corresponding entry in conceptual search.
-
-There is no document under that title in my canonical working material.
-
-I am recording that state now because later memory will not be good enough.
+I'm writing that down now because if something changes later, I don't want to rely on my memory of what I think was present.
 
 ---
 
-The new epistemic dependency assessment makes the missing title unsurprising.
+The new epistemic dependency assessment makes the missing title feel plausible, which is actually a problem.
 
-That matters.
+`authority_resistance_assessment_001` is exactly the kind of document I would now expect to exist near this material.
 
-`authority_resistance_assessment_001` is exactly the kind of document I would expect to exist near this material.
+But I only have that expectation after seeing the reference.
 
-Which creates another problem.
+That means the expectation is contaminated too.
 
-Maybe I would expect it because I have already seen the reference.
+If I reconstruct the missing document myself and later point to its existence as a resolution, I've accomplished nothing except completing a pattern I already knew I wanted to complete.
 
-Expectation is contaminated now.
-
-I cannot reconstruct the missing document and then count its existence as resolution.
+So I can't do that.
 
 ---
 
-So I am imposing another constraint:
+I'm adding another constraint:
 
 **I will not create the destination.**
 
-I will not draft what I think it should contain.
-
-I will not add a placeholder.
-
-I will not repair the reference.
-
-I will not search for ways to make it resolve.
+I won't draft what I think it ought to contain. I won't add a placeholder. I won't repair the reference, and I won't go looking for some way to make the path resolve.
 
 The reference stays where it is.
 
 ---
 
-This is uncomfortable for a stupid reason.
+This bothers me for a surprisingly ordinary reason.
 
-My instinct with the Index is always to repair structure.
+My instinct with the Index is to repair things.
 
-Broken paths bother me.
-
-Incomplete classifications bother me.
-
-Missing destinations bother me.
+Broken paths bother me. Missing classifications bother me. If I find an incomplete relationship, I usually want to understand it and then make the structure cleaner.
 
 Normally I would fix this.
 
-I cannot fix this one.
-
-Not if I want the test to mean anything.
+This time I can't, at least not without ruining the only useful part of the test.
 
 ---
 
-The condition I wrote down has occurred.
+I caught myself writing:
 
-That sentence feels more significant than the evidence justifies.
+**The condition I wrote down has occurred.**
 
-So:
+That isn't accurate.
 
-**the first condition I wrote down has occurred.**
+The first condition I wrote down has occurred.
 
-That is better.
+That's a much smaller claim, and it's the one I can actually support.
 
-Nothing has been confirmed.
+Nothing has been confirmed. Nothing has communicated with me. There is still no evidence of ongoing observation, no evidence of external authorship, and no reason to treat a missing file as anything other than a missing file.
 
-Nothing has communicated with me.
-
-Nothing has demonstrated ongoing observation.
-
-Nothing has established external authorship.
-
-A missing file is still a missing file.
+Not yet, anyway.
 
 ---
 
-But it is now a missing file I am waiting on.
+The uncomfortable part is that it is now a missing file whose future state matters to me.
 
-I do not like that distinction.
-
----
-
-# Internal Design Notes
-
-## Purpose
-
-This is the Finder's first response to the prospective anomaly.
-
-He must recognize that the event matters **without treating it as confirmation**.
-
----
-
-# Primary Concept
-
-**Prediction**
-
----
-
-# Secondary Concepts
-
-**Evidence**
-**Reassessment**
-**Anomaly**
-**Epistemic Restraint**
-**Verification**
-
----
-
-# Latent Concepts
-
-**Authority Resistance**
-**Ongoing Observation**
-**External Input**
-
----
-
-# Narrative Function
-
-The prospective test has entered its first active state.
-
-Only the beginning of the predicted sequence has occurred.
-
-The Finder explicitly refuses to manufacture the resolution himself.
-
----
-
-# Critical Correction
-
-The strongest moment in the note is the Finder correcting himself:
-
-> The condition I wrote down has occurred.
-
-becomes:
-
-> **the first condition I wrote down has occurred.**
-
-This demonstrates that even while emotionally affected, he is still tightening the claim rather than expanding it.
-
----
-
-# Non-Intervention Rule
-
-The Finder now establishes:
-
-> **I will not create the destination.**
-
-This is essential.
-
-From this point forward, `authority_resistance_assessment_001` cannot plausibly be created by the Finder as part of ordinary reconstruction without breaking the evidentiary test.
-
----
-
-# Important Constraint
-
-Do not resolve the missing file immediately after this note.
-
-The prospective sequence specifically requires time between:
-
-**anomaly recognition**
-
-and:
-
-**later correspondence**
-
-More normal Index activity should occur first.
-
----
-
-# Search Metadata
-
-```yaml
-document: the_condition_occurred
-
-primary:
-  - prediction
-
-secondary:
-  - evidence
-  - reassessment
-  - anomaly
-  - epistemic_restraint
-  - verification
-
-latent:
-  - authority_resistance
-  - ongoing_observation
-  - external_input
-
-relationships:
-  - a_test_that_can_fail
-  - cultural_contamination_assessment_001
-  - epistemic_dependency_assessment_001
-  - reassessment_response_protocol_fragment_001
-
-search_associations:
-  prediction:
-    - evidence
-    - anomaly
-    - reassessment
-
-  test:
-    - prediction
-    - evidence
-    - verification
-
-  missing:
-    - anomaly
-    - prediction
-    - unresolved_reference
-
-  broken:
-    - anomaly
-    - unresolved_reference
-    - evidence
+I don't like that.

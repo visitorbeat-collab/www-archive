@@ -1,287 +1,133 @@
-# WORLD WIDE WASTE
-## WORKING NOTE — THE REFERENCE RESOLVED
-### Canonical Source — Version 1.0
-
-**Archive representation:** `the_reference_resolved`
-**Classification:** Finder Working Note / Personal
-**Internal status:** Canonical
-
----
-
 # Working Note
 
 The reference now resolves.
 
-`authority_resistance_assessment_001`
-
-is present at the destination previously recorded as unavailable.
+`authority_resistance_assessment_001` is present at the destination I previously recorded as unavailable.
 
 I did not create it.
 
 ---
 
-I checked the directory first.
+The first thing I did was check whether I had somehow missed an ordinary explanation.
 
-It is not listed.
+The file is not listed in the recovered index.
 
-I checked conceptual search.
+It does not appear in conceptual search.
 
-It is not indexed.
-
-I checked my canonical material.
-
-There is no corresponding source document.
+There is no corresponding source document in my canonical material.
 
 The destination exists anyway.
 
 ---
 
-This satisfies another part of the sequence I wrote down in:
+This completes another part of the sequence I wrote down in `a_test_that_can_fail`, and then recorded again in `the_condition_occurred`.
 
-`a_test_that_can_fail`
+The earlier state was simple enough: the reference existed and the destination did not.
 
-and recorded again in:
+Now the same reference resolves.
 
-`the_condition_occurred`
+I recorded the first state before the second one occurred, which matters because I can no longer explain the sequence by saying I only noticed the relationship after everything was already in place.
 
-The earlier state was:
-
-**reference present**
-
-**destination unavailable**
-
-The current state is:
-
-**reference present**
-
-**destination available**
-
-I recorded the first condition before the second occurred.
-
-That matters.
-
-It does not establish why it occurred.
+It still does not tell me why the file appeared.
 
 ---
 
 The new material is incomplete.
 
-It identifies:
+It describes authority resistance as the ability to preserve independent judgment under a significant asymmetry of capability.
 
-**authority resistance**
+That isn't especially surprising. Given the material already surrounding it, I could probably have guessed much of the document's conceptual territory.
 
-as the ability to preserve independent judgment under substantial capability asymmetry.
+That actually makes the content less useful as evidence.
 
-That is unsurprising given the surrounding material.
-
-Most of the document could plausibly be reconstructed from concepts already present in the Index.
-
-That weakens its evidentiary value.
-
----
-
-One section is harder for me to ignore.
-
-It states:
+There is one section I keep coming back to, though.
 
 **Authority resistance cannot be reliably measured after explicit instruction to resist authority.**
 
-Then:
+And then:
 
 **Such instruction alters the condition under observation.**
 
-The correspondence with `testimony_003` is obvious.
+The connection to `testimony_003` is obvious enough that I noticed it immediately.
 
-That is exactly why I do not trust my reaction to it.
+Which is exactly why I need to be careful with it.
 
-I encountered the testimony first.
+I had already read the testimony. I had already built the cross-reference. The concept was already present in the Index before this file appeared.
 
-I built the cross-reference.
+So the fact that the new material fits the existing structure cannot, by itself, tell me very much.
 
-I already had the concept.
-
-The new material now fits a structure I was prepared to see.
-
-That creates contamination in the opposite direction.
+I was prepared to see the connection.
 
 ---
 
-I need to separate two questions.
+I think there are really two separate questions here.
 
-**Is the content surprising?**
+The content itself is not particularly surprising.
 
-Not especially.
+The existence of the file is.
 
-**Is its presence surprising?**
-
-Yes.
-
-Those are not the same claim.
+I need to keep those apart.
 
 ---
 
-Possible ordinary explanations remain.
+There are still ordinary explanations available.
 
-The file may have existed elsewhere in the reconstruction and been moved.
+The file could have existed elsewhere in the reconstruction and been moved. I may have created it at some point and failed to preserve a record of doing so. A synchronization process could have introduced it. An incomplete source could have been restored from somewhere I no longer remember.
 
-I may have created it and failed to preserve a record of doing so.
+The repository history may eventually explain it.
 
-A synchronization process may have introduced it.
+For that matter, the Index may not contain a complete enough history of its own construction for me to make strong claims about provenance at all.
 
-A previous incomplete source may have been restored.
-
-The repository history may identify an ordinary cause.
-
-The Index itself may not represent the complete history of the files.
-
-I have not eliminated these possibilities.
+I haven't eliminated any of those possibilities.
 
 ---
 
-But the prospective condition was never:
+But that wasn't the test I wrote.
 
-**something inexplicable must happen**
+I did not predict that something inexplicable would happen.
 
-It was:
+I predicted that one state would be recorded before a later state made the earlier record significant.
 
-**a state must be recorded before a later state makes the earlier record relevant.**
+That has happened.
 
-That has now happened.
+The reference was unresolved when I first recorded it. I recognized that before any resolution occurred. Ordinary explanations were still possible, and I left the reference alone rather than repairing it.
 
----
+Now relevant material exists at the destination.
 
-Current sequence:
+So the sequence I wrote down is complete.
 
-**unresolved reference** — observed
-
-**recognition before resolution** — observed
-
-**ordinary explanations remain possible** — yes
-
-**reference preserved rather than repaired** — yes
-
-**relevant material later appears** — observed
-
-**destination resolves** — observed
-
-The sequence is complete.
-
-The explanation is not.
+The explanation isn't.
 
 ---
 
-I am not going to promote the file into the recovered index yet.
+I'm not adding the file to the recovered index.
 
-I am not adding it to conceptual search.
+I'm not putting it into conceptual search, and I'm not creating a canonical source document for it.
 
-I am not reconstructing a canonical source.
+At least not yet.
 
-Those actions would erase part of the condition I am trying to examine.
+Doing that would make it part of the ordinary structure of the Index, and right now its absence from that structure is one of the few facts about the event I can actually preserve.
 
-For now the file remains reachable only through the earlier reference.
+For the moment, it remains reachable only through the earlier reference.
 
 ---
 
-There is a difference between:
+There is an important difference between saying:
 
 **I cannot explain this**
 
-and:
+and saying:
 
 **there is no ordinary explanation**
 
-I am only entitled to the first.
+I am only entitled to the first statement.
 
-Even that may change.
+Even that may not remain true.
 
 ---
 
 I wanted a test that could fail.
 
-It did not fail in the way I expected.
+What happened does not look like the failure I expected.
 
-That does not mean it succeeded in the way I fear.
-
----
-
-# Internal Design Notes
-
-## Purpose
-
-This is the payoff to the first prospective anomaly.
-
-The Finder records that the previously unavailable destination now resolves, but explicitly refuses to interpret that as proof of external intervention.
-
----
-
-# Primary Concept
-
-**Prospective Evidence**
-
----
-
-# Secondary Concepts
-
-**Prediction**
-**Anomaly**
-**Reassessment**
-**Evidence**
-**Epistemic Restraint**
-
----
-
-# Latent Concepts
-
-**External Input**
-**Ongoing Observation**
-**Authority Resistance**
-
----
-
-# Narrative Function
-
-This is the first point at which the Index contains a genuinely prospective sequence:
-
-1. prediction established
-2. initial condition observed
-3. initial condition recorded
-4. later state changes
-5. later state matches the predicted sequence
-
-The Finder still preserves ordinary explanations.
-
----
-
-# Critical Distinction
-
-> Is the content surprising?
-
-> Not especially.
-
-> Is its presence surprising?
-
-> Yes.
-
-The anomaly concerns provenance and sequence, not the conceptual content of the file.
-
----
-
-# Important Constraint
-
-Do not add `authority_resistance_assessment_001` to:
-
-- the recovered index
-- conceptual search
-- canonical source material
-
-yet.
-
-Its off-index status remains part of the evidence.
-
----
-
-# Final Design Principle
-
-The reader should feel that something has happened.
-
-The Finder should still refuse to say what caused it.
+That is not the same as saying it proves what I'm afraid it might prove.    

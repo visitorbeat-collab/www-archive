@@ -1,136 +1,80 @@
-# WORLD WIDE WASTE
-## WORKING NOTE — MATURITY IS NOT TRUST
-### Canonical Source — Version 1.0
-
-**Archive representation:** `maturity_is_not_trust`
-**Classification:** Finder Working Note / Personal
-**Internal status:** Canonical
-
----
-
 # Working Note
 
-I think I have been using two different questions as if they were the same.
+I think I've been treating two different questions as though they were the same.
 
-They are not.
+The maturity assessment made that harder to ignore.
 
-The maturity assessment helped separate them.
+One question is about the population itself: can it regulate its own influence as that influence grows?
 
-The first question is internal:
+The other is about whether anyone outside that population has reason to believe the regulation will continue.
 
-**Can a population regulate its own influence?**
-
-The second is relational:
-
-**Can another population reasonably expect that regulation to persist?**
-
-Those are different problems.
+Those aren't quite the same problem.
 
 ---
 
-A civilization may demonstrate:
+A civilization could demonstrate restraint, revise its models after failure, preserve systems it depends on, act carefully under uncertainty, and still be difficult to predict over time.
 
-- restraint
-- revision
-- stewardship
-- preservation
-- uncertainty recognition
-- long-horizon reasoning
-- cross-domain learning
+The capacities might be real.
 
-and still remain difficult to predict.
+They might even be well developed.
 
-The capacities may be present.
+But if they disappear as soon as the conditions change, then an outside observer can't safely assume they will still be there when it matters.
 
-They may even be sophisticated.
+I think that's where the distinction starts to become useful.
 
-But if they disappear when conditions change, then another observer cannot rely on them.
+Maturity seems to describe what has developed internally.
 
-That seems to be where maturity ends and trust begins.
+Trustworthiness seems to involve a prediction about whether those capacities will persist.
 
 ---
 
-I am increasingly convinced that maturity is not a single trait.
+I'm also becoming less convinced that maturity is a single trait.
 
-It is an integrated condition.
+The recovered material treats it more like an integrated condition. Capability increases, and the question is whether regulation increases with it rather than falling behind.
 
-The recovered assessment describes something like:
+That seems to involve a lot of things at once: better decision thresholds, durable revision, preservation of recovery capacity, awareness of dependency, restraint under uncertainty, and the ability to recognize significance beyond immediate usefulness.
 
-**capability remains coupled to regulation**
+If those things remain connected as influence grows, I think calling the population "more mature" is probably reasonable.
 
-as influence increases.
-
-That includes:
-
-- stronger decision thresholds
-- durable revision
-- preservation of recovery capacity
-- recognition of dependency
-- restraint under uncertainty
-- significance beyond direct utility
-- persistence across time
-
-If those remain integrated, I think the population becomes more mature.
-
-But maturity alone may still be insufficient for whatever "transfer" means.
+But that still may not be enough for whatever "transfer" means.
 
 ---
 
-The behavioral reliability material changes the question.
+The behavioral reliability material changes the problem.
 
-It asks:
+It keeps asking what happens when the incentives shift.
 
-What happens when the incentives change?
+What happens when capability increases, when restraint becomes expensive, when outside enforcement disappears, or when the affected system can't object?
 
-What happens when capability increases?
+What happens when the consequences don't arrive until much later?
 
-What happens when restraint becomes expensive?
+Those aren't just questions about whether a capacity exists.
 
-What happens when external enforcement disappears?
+They're questions about whether you can expect it to remain available under different conditions.
 
-What happens when the affected system cannot object?
-
-What happens when the consequences arrive later?
-
-That is not simply another maturity assessment.
-
-It is a prediction problem.
+That makes the whole thing feel less like a developmental score and more like a prediction problem.
 
 ---
 
-Maybe maturity describes the population.
+Maybe that's the distinction I've been reaching for.
 
-Trustworthiness describes the confidence another population can place in the prediction.
+Maturity describes the state of the population.
 
-That distinction feels useful.
+Trustworthiness describes how much confidence another population can reasonably place in that state continuing.
 
-Not:
+I don't mean "trust" in the ordinary moral sense.
 
-**Are they good?**
+The question isn't whether we're good, obedient, agreeable, or harmless.
 
-Not:
+It's closer to asking whether an increase in our sphere of influence would leave the regulatory capacities already observed intact.
 
-**Are they obedient?**
+That is a colder idea than the word "trust" usually carries.
 
-Not:
-
-**Do they agree with us?**
-
-Not even:
-
-**Are they mature?**
-
-But:
-
-**If their sphere of influence increases, how confident are we that the regulatory capacities already observed will remain operative?**
-
-That is much colder than the human word "trust."
-
-It may also be closer to the recovered material.
+It may also be closer to the material.
 
 ---
 
-This helps explain something that has bothered me about the transition fragment.
+This helps with the transition fragment.
 
 It says:
 
@@ -140,218 +84,88 @@ Not maturity.
 
 Reliability.
 
-If those words are being translated consistently, then whatever transition is being evaluated may depend less on whether a population has achieved some abstract developmental level and more on whether its behavior remains predictable under increased consequence.
+If the terminology is being used consistently, then whatever transition is being evaluated may depend less on reaching some abstract level of development and more on whether behavior remains predictable after the conditions change.
 
-That would make sense if transfer itself changes capability.
-
----
-
-Suppose a population is stable under its current conditions.
-
-Then give it:
-
-more energy.
-
-more information.
-
-greater mobility.
-
-faster coordination.
-
-more powerful intervention tools.
-
-access to systems it could not previously affect.
-
-The previous assessment may no longer be sufficient.
-
-You would need to know whether its regulation scales with the new capability.
-
-Otherwise the act of transition changes the variable being assessed.
+That would make a lot of sense if the transition itself changes capability.
 
 ---
 
-That may be why the archive keeps returning to persistence.
+Suppose a population is reasonably stable under its current conditions.
 
-A population can behave carefully when it is weak.
+Then give it access to more energy, more information, faster coordination, greater mobility, more powerful tools, or systems it previously couldn't affect.
 
-It can behave carefully immediately after catastrophe.
+The old assessment might no longer tell you very much.
 
-It can behave carefully while being watched.
+You would need to know whether the internal limits scale with the new capability.
 
-It can behave carefully when restraint costs nothing.
+Otherwise the act of expanding access changes the very condition you thought you had measured.
 
-None of those conditions prove much about what happens after the environment changes.
-
-Trust requires more than the presence of regulation.
-
-It requires confidence in its continuation.
+That may be why persistence appears so often in the archive.
 
 ---
 
-This also means trustworthiness is not the same thing as moral approval.
+A population can behave carefully while it is weak.
 
-A trustworthy population could still:
+It can behave carefully immediately after a catastrophe, or while someone else is watching, or when restraint costs almost nothing.
 
-- disagree
-- compete
-- take risks
-- make mistakes
-- change systems
-- defend itself
-- pursue its own interests
+None of those situations tells you very much about what happens when the environment changes.
 
-The question is not whether it becomes harmless.
+Trust seems to require something more than seeing regulation once.
 
-The question is whether its behavior remains constrained by models that incorporate consequence.
-
-That is different.
+It requires some reason to expect it to continue.
 
 ---
 
-I think the distinction may be:
+That still doesn't make trustworthiness the same thing as moral approval.
 
-**maturity is an internal condition**
+A population could be trustworthy and still disagree, compete, take risks, defend itself, make mistakes, alter systems, and pursue its own interests.
 
-**trustworthiness is an external prediction**
+I don't think the archive is asking whether a civilization becomes harmless.
 
-One asks what a population has become.
+What matters seems to be whether its behavior remains constrained by an understanding of consequence, even when the circumstances become less favorable.
 
-The other asks whether another population can safely act on that belief.
-
----
-
-That would make transfer a serious problem.
-
-If contact, access, or knowledge increases capability, then the act of trusting a population changes the consequences of being wrong.
-
-The higher the potential consequence of misplaced trust, the stronger the reliability requirement becomes.
-
-That sounds familiar.
-
-It is the decision-threshold problem again.
-
-Only at a larger scale.
+That distinction feels important.
 
 ---
 
-Maybe that is the pattern I have been missing.
+So, at least provisionally, I think the difference is this:
 
-The same relationship keeps repeating.
+**maturity describes an internal condition**
 
-For TP-3:
+**trustworthiness describes an external prediction**
 
-greater consequence requires greater decision discrimination.
+One is about what the population has become.
 
-For an external population considering transfer:
-
-greater possible consequence may require greater confidence in TP-3.
-
-The subject changes.
-
-The structure does not.
+The other is about whether another population can safely act on the assumption that it will remain that way.
 
 ---
 
-If that interpretation is correct, then transition is not a reward for maturity.
+That makes transfer a much more serious problem than I first thought.
 
-It is a decision under uncertainty.
+If contact, knowledge, or access increases capability, then deciding to trust a population also increases the consequences of being wrong about it.
 
-And trustworthiness is not worthiness.
+The larger the possible consequence, the stronger the evidence would have to be before taking the risk.
 
-It is evidence strong enough to justify taking the risk.
+Which is basically the decision-threshold problem again.
 
----
-
-I think that distinction matters enough to keep.
+Just at a much larger scale.
 
 ---
 
-# Internal Design Notes
+I think that's the pattern I've been missing.
 
-## Purpose
+For TP-3, larger consequences require better discrimination before acting.
 
-This note distinguishes **maturity** from **trustworthiness**.
+For an external population considering transfer, larger consequences may require stronger confidence in TP-3 before expanding access.
 
-It should clarify that maturity is population-internal, while trustworthiness is relational and predictive.
+The subject changes, but the relationship is very similar.
 
----
+If that reading is right, then transition isn't a reward for maturity.
 
-# Primary Concept
+It's a decision made under uncertainty.
 
-**Trustworthiness**
+And trustworthiness isn't worthiness.
 
----
+It's the level of confidence required before taking that risk.
 
-# Secondary Concepts
-
-**Maturity**
-**Behavioral Reliability**
-**Persistence**
-**Capability**
-**Decision Threshold**
-
----
-
-# Latent Concepts
-
-**Transition**
-**Transfer**
-**Contact**
-**Integration**
-
----
-
-# Narrative Function
-
-This is the conceptual synthesis connecting:
-
-- developmental maturity
-- behavioral reliability
-- trust
-- transition criteria
-
-The Finder now understands why the archive distinguishes maturity from reliability.
-
----
-
-# Critical Distinction
-
-The core formulation is:
-
-> maturity is an internal condition
-
-> trustworthiness is an external prediction
-
-This should become the Finder's working model.
-
----
-
-# Why Trustworthiness Is Relational
-
-A population cannot be "trustworthy" in isolation.
-
-Trustworthiness exists relative to:
-
-- an observer
-- an expected future behavior
-- a consequence of misplaced confidence
-- a change in access or capability
-
-Therefore it is not simply another internal developmental trait.
-
----
-
-# Relationship to Behavioral Reliability
-
-Behavioral reliability is the measurable bridge.
-
-Internal model:
-
-```text
-MATURITY
-    ↓
-BEHAVIORAL RELIABILITY
-    ↓
-PREDICTIVE CONFIDENCE
-    ↓
-TRUSTWORTHINESS
+I think that distinction is worth keeping.

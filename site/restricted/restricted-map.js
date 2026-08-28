@@ -118,6 +118,20 @@
 
   });
 
+function revealSecondaryRelations() {
+  const visited = getVisitedNodes();
 
-  applyVisitedState();
-})();
+  const exposureRetention =
+    document.getElementById("relation-exposure-retention");
+
+  if (
+    exposureRetention &&
+    visited.includes("exposure") &&
+    visited.includes("retention")
+  ) {
+    exposureRetention.classList.add("is-revealed");
+  }
+}
+
+applyVisitedState();
+revealSecondaryRelations();

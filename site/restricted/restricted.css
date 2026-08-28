@@ -108,6 +108,15 @@ body.restricted-map-page {
   vector-effect: non-scaling-stroke;
 }
 
+.secondary-relation {
+  opacity: 0;
+  transition: opacity 700ms ease;
+}
+
+.secondary-relation.is-revealed {
+  opacity: 1;
+}
+
 
 /* ---------------------------------------------------------
    NODES

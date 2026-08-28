@@ -104,12 +104,29 @@
         "relation-exposure-retention"
       );
 
+    const participationEffect =
+      document.getElementById(
+        "relation-participation-effect"
+      );
+
+
     if (exposureRetention) {
       const shouldReveal =
         visited.includes("exposure") &&
         visited.includes("retention");
 
       exposureRetention.classList.toggle(
+        "is-revealed",
+        shouldReveal
+      );
+    }
+
+
+    if (participationEffect) {
+      const shouldReveal =
+        visited.includes("participation");
+
+      participationEffect.classList.toggle(
         "is-revealed",
         shouldReveal
       );

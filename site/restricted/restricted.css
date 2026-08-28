@@ -211,8 +211,6 @@ body.restricted-map-page {
 
 /* ---------------------------------------------------------
    STATIC CONCEPT NODES
-
-   These belong to the model but do not open documents.
    --------------------------------------------------------- */
 
 .concept-node-static {
@@ -274,6 +272,12 @@ body.restricted-map-page {
 }
 
 
+.node-effect {
+  left: 50%;
+  top: 65.8%;
+}
+
+
 .node-nontext {
   left: 50%;
   top: 83.5%;
@@ -323,7 +327,7 @@ body.restricted-map-page {
   position: absolute;
 
   left: 50%;
-  bottom: 6%;
+  bottom: 4%;
 
   width: min(620px, 80%);
 
@@ -404,7 +408,7 @@ body.restricted-map-page {
 
 
   .concept-map {
-    height: 680px;
+    height: 700px;
 
     max-width: 540px;
   }
@@ -412,37 +416,43 @@ body.restricted-map-page {
 
   .node-retention {
     left: 50%;
-    top: 18%;
+    top: 15%;
   }
 
 
   .node-boundary {
     left: 50%;
-    top: 33%;
+    top: 31%;
   }
 
 
   .node-exposure {
     left: 18%;
-    top: 48%;
+    top: 47%;
   }
 
 
   .node-center {
     left: 50%;
-    top: 48%;
+    top: 47%;
   }
 
 
   .node-participation {
     left: 82%;
-    top: 48%;
+    top: 47%;
+  }
+
+
+  .node-effect {
+    left: 50%;
+    top: 64%;
   }
 
 
   .node-nontext {
     left: 50%;
-    top: 78%;
+    top: 80%;
   }
 
 
@@ -464,7 +474,7 @@ body.restricted-map-page {
 
 
   .relation-display {
-    bottom: 3%;
+    bottom: 1%;
 
     width: 90%;
   }

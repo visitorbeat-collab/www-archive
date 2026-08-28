@@ -71,16 +71,25 @@
         y2="380"
       />
 
-      <!-- center → nontext -->
+      <!-- center → effect -->
       <line
         class="relation-line"
         x1="500"
         y1="380"
         x2="500"
+        y2="500"
+      />
+
+      <!-- effect → nontext -->
+      <line
+        class="relation-line"
+        x1="500"
+        y1="500"
+        x2="500"
         y2="635"
       />
 
-      <!-- secondary relation: exposure → retention -->
+      <!-- progressive relation: exposure → retention -->
       <line
         class="relation-line secondary-relation"
         id="relation-exposure-retention"
@@ -88,6 +97,16 @@
         y1="380"
         x2="500"
         y2="125"
+      />
+
+      <!-- progressive relation: participation → effect -->
+      <line
+        class="relation-line secondary-relation"
+        id="relation-participation-effect"
+        x1="790"
+        y1="380"
+        x2="500"
+        y2="500"
       />
 
     </svg>
@@ -110,7 +129,7 @@
     </a>
 
 
-    <!-- CONCEPT NODE: BOUNDARY -->
+    <!-- STATIC CONCEPT: BOUNDARY -->
 
     <div
       class="concept-node concept-node-static node-boundary"
@@ -175,6 +194,22 @@
         participation
       </span>
     </a>
+
+
+    <!-- STATIC CONCEPT: EFFECT -->
+
+    <div
+      class="concept-node concept-node-static node-effect"
+      data-relation="that which persists beyond the initiating act"
+      aria-label="Effect concept"
+      tabindex="0"
+    >
+      <span class="node-symbol">⊙</span>
+
+      <span class="node-label">
+        effect
+      </span>
+    </div>
 
 
     <!-- NONTEXT -->

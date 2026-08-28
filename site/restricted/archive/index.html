@@ -2,65 +2,206 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Index — /restricted/</title>
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>restricted archive</title>
 
   <link rel="stylesheet" href="/style.css">
+  <link rel="stylesheet" href="/restricted/restricted.css">
 </head>
 
-<body class="directory-page">
+<body class="restricted-map-page">
 
-<main>
+<main class="restricted-map-shell">
 
-  <div class="directory-path">
-    /restricted/
-  </div>
+  <header class="restricted-map-header">
+    <div class="restricted-marker">RESTRICTED</div>
+  </header>
 
-  <h1 class="index-title">
-    Index
-  </h1>
 
-  <p class="index-subtitle">
-    Additional material retained beyond the classification boundary.
-  </p>
+  <section
+    class="concept-map"
+    aria-label="Restricted relational map"
+  >
 
-  <div class="simple-directory-list">
+    <!--
+      RELATIONAL LINES
 
-    <div class="simple-directory-entry">
-  <a href="/restricted/archive/restricted_threshold_interpretation_001.html">
-    restricted_threshold_interpretation_001
-  </a>
-</div>
-<div class="simple-directory-entry">
-  <a href="/restricted/archive/participation_condition_fragment_001.html">
-    participation_condition_fragment_001
-  </a>
-</div>
-<div class="simple-directory-entry">
-  <a href="/restricted/archive/post_exposure_participation_fragment_001.html">
-    post_exposure_participation_fragment_001
-  </a>
-</div>
-<div class="simple-directory-entry">
-  <a href="/restricted/archive/nontext_retention_fragment_001.html">
-    nontext_retention_fragment_001
-  </a>
-</div>
-<div class="simple-directory-entry">
-  <a href="/restricted/archive/nontext/">
-    nontext/
-  </a>
-</div>
-  </div>
+      These are purely structural.
+      They sit behind the clickable nodes.
+    -->
 
-  <footer class="document-footer">
-    <a class="up-link" href="/">← up</a>
+    <svg
+      class="concept-lines"
+      viewBox="0 0 1000 760"
+      preserveAspectRatio="none"
+      aria-hidden="true"
+    >
+
+      <!-- center → retention -->
+      <line
+        class="relation-line"
+        x1="500"
+        y1="380"
+        x2="500"
+        y2="125"
+      />
+
+      <!-- center → exposure -->
+      <line
+        class="relation-line"
+        x1="500"
+        y1="380"
+        x2="210"
+        y2="380"
+      />
+
+      <!-- center → participation -->
+      <line
+        class="relation-line"
+        x1="500"
+        y1="380"
+        x2="790"
+        y2="380"
+      />
+
+      <!-- center → nontext -->
+      <line
+        class="relation-line"
+        x1="500"
+        y1="380"
+        x2="500"
+        y2="635"
+      />
+
+    </svg>
+
+
+    <!--
+      CENTRAL NODE
+
+      Intentionally not given a conventional visible title.
+      The small label appears during interaction.
+    -->
+
+    <a
+      class="concept-node node-center"
+      href="/restricted/archive/restricted_threshold_interpretation_001.html"
+      data-node-id="threshold"
+      data-relation="boundary / condition"
+      aria-label="Threshold condition"
+    >
+      <span class="node-symbol">◎</span>
+
+      <span class="node-label">
+        condition
+      </span>
+    </a>
+
+
+    <!-- RETENTION -->
+
+    <a
+      class="concept-node node-retention"
+      href="/restricted/archive/nontext_retention_fragment_001.html"
+      data-node-id="retention"
+      data-relation="structure persists after translation fails"
+      aria-label="Retention"
+    >
+      <span class="node-symbol">○</span>
+
+      <span class="node-label">
+        retention
+      </span>
+    </a>
+
+
+    <!-- EXPOSURE -->
+
+    <a
+      class="concept-node node-exposure"
+      href="/restricted/archive/post_exposure_participation_fragment_001.html"
+      data-node-id="exposure"
+      data-relation="exposure alters the condition observed"
+      aria-label="Exposure"
+    >
+      <span class="node-symbol">○</span>
+
+      <span class="node-label">
+        exposure
+      </span>
+    </a>
+
+
+    <!-- PARTICIPATION -->
+
+    <a
+      class="concept-node node-participation"
+      href="/restricted/archive/participation_condition_fragment_001.html"
+      data-node-id="participation"
+      data-relation="participation introduces reciprocal consequence"
+      aria-label="Participation"
+    >
+      <span class="node-symbol">○</span>
+
+      <span class="node-label">
+        participation
+      </span>
+    </a>
+
+
+    <!-- NONTEXT -->
+
+    <a
+      class="concept-node node-nontext"
+      href="/restricted/archive/nontext/"
+      data-node-id="nontext"
+      data-relation="retain first / interpret second"
+      aria-label="Nontext material"
+    >
+      <span class="node-symbol">◇</span>
+
+      <span class="node-label">
+        nontext
+      </span>
+    </a>
+
+
+    <!--
+      RELATION DISPLAY
+
+      This changes when the reader focuses or hovers a node.
+    -->
+
+    <div
+      class="relation-display"
+      aria-live="polite"
+    >
+      <span class="relation-display-text">
+        relation unresolved
+      </span>
+    </div>
+
+  </section>
+
+
+  <footer class="restricted-map-footer">
+    <a
+      class="restricted-return"
+      href="/"
+    >
+      ← index
+    </a>
   </footer>
 
 </main>
 
-<script src="/js/main.js"></script>
+
+<script src="/restricted/restricted-map.js"></script>
 
 </body>
 </html>

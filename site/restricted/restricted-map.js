@@ -1,13 +1,22 @@
 (() => {
   const storageKey = "restricted-map-visited";
 
-  const nodes = document.querySelectorAll(".concept-node");
-  const relationDisplay = document.querySelector(".relation-display");
-  const relationText = document.querySelector(".relation-display-text");
+  const clickableNodes =
+    document.querySelectorAll("a.concept-node");
 
-  if (!nodes.length) {
+  const allNodes =
+    document.querySelectorAll(".concept-node");
+
+  const relationDisplay =
+    document.querySelector(".relation-display");
+
+  const relationText =
+    document.querySelector(".relation-display-text");
+
+  if (!allNodes.length) {
     return;
   }
+
 
   function getVisitedNodes() {
     try {
@@ -24,6 +33,7 @@
       return [];
     }
   }
+
 
   function saveVisitedNode(nodeId) {
     if (!nodeId) {
@@ -46,10 +56,11 @@
     }
   }
 
+
   function applyVisitedState() {
     const visited = getVisitedNodes();
 
-    nodes.forEach((node) => {
+    clickableNodes.forEach((node) => {
       const nodeId = node.dataset.nodeId;
       const symbol = node.querySelector(".node-symbol");
 
@@ -84,11 +95,14 @@
     });
   }
 
+
   function revealSecondaryRelations() {
     const visited = getVisitedNodes();
 
     const exposureRetention =
-      document.getElementById("relation-exposure-retention");
+      document.getElementById(
+        "relation-exposure-retention"
+      );
 
     if (exposureRetention) {
       const shouldReveal =
@@ -102,10 +116,12 @@
     }
   }
 
+
   function refreshMap() {
     applyVisitedState();
     revealSecondaryRelations();
   }
+
 
   function showRelation(node) {
     if (!relationDisplay || !relationText) {
@@ -122,6 +138,7 @@
     relationDisplay.classList.add("is-active");
   }
 
+
   function clearRelation() {
     if (!relationDisplay || !relationText) {
       return;
@@ -131,7 +148,8 @@
     relationDisplay.classList.remove("is-active");
   }
 
-  nodes.forEach((node) => {
+
+  allNodes.forEach((node) => {
     node.addEventListener("mouseenter", () => {
       showRelation(node);
     });
@@ -147,27 +165,24 @@
     node.addEventListener("blur", () => {
       clearRelation();
     });
+  });
 
+
+  clickableNodes.forEach((node) => {
     node.addEventListener("click", () => {
       saveVisitedNode(node.dataset.nodeId);
     });
   });
 
-  /*
-    Initial map state
-  */
+
   refreshMap();
 
-  /*
-    Refresh when returning via browser back/forward navigation.
-  */
+
   window.addEventListener("pageshow", () => {
     refreshMap();
   });
 
-  /*
-    Refresh if localStorage changes in another tab.
-  */
+
   window.addEventListener("storage", () => {
     refreshMap();
   });

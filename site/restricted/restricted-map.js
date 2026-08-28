@@ -53,36 +53,35 @@
       const nodeId = node.dataset.nodeId;
       const symbol = node.querySelector(".node-symbol");
 
-if (visited.includes(nodeId)) {
-  node.classList.add("is-visited");
+      if (!symbol) {
+        return;
+      }
 
-  if (symbol) {
-    const current = symbol.textContent.trim();
+      const isVisited = visited.includes(nodeId);
 
-    if (current === "○") {
-      symbol.textContent = "◉";
-    }
+      if (isVisited) {
+        node.classList.add("is-visited");
 
-    if (current === "◇") {
-      symbol.textContent = "◆";
-    }
-  }
+        if (nodeId === "nontext") {
+          symbol.textContent = "◆";
+        } else if (nodeId === "threshold") {
+          symbol.textContent = "◎";
+        } else {
+          symbol.textContent = "◉";
+        }
 
-} else {
-  node.classList.remove("is-visited");
+      } else {
+        node.classList.remove("is-visited");
 
-  if (symbol) {
-    const current = symbol.textContent.trim();
-
-    if (current === "◉") {
-      symbol.textContent = "○";
-    }
-
-    if (current === "◆") {
-      symbol.textContent = "◇";
-    }
-  }
-};
+        if (nodeId === "nontext") {
+          symbol.textContent = "◇";
+        } else if (nodeId === "threshold") {
+          symbol.textContent = "◎";
+        } else {
+          symbol.textContent = "○";
+        }
+      }
+    });
   }
 
   function revealSecondaryRelations() {
@@ -91,18 +90,16 @@ if (visited.includes(nodeId)) {
     const exposureRetention =
       document.getElementById("relation-exposure-retention");
 
-    if (!exposureRetention) {
-      return;
+    if (exposureRetention) {
+      const shouldReveal =
+        visited.includes("exposure") &&
+        visited.includes("retention");
+
+      exposureRetention.classList.toggle(
+        "is-revealed",
+        shouldReveal
+      );
     }
-
-    const shouldReveal =
-      visited.includes("exposure") &&
-      visited.includes("retention");
-
-    exposureRetention.classList.toggle(
-      "is-revealed",
-      shouldReveal
-    );
   }
 
   function refreshMap() {
@@ -157,20 +154,19 @@ if (visited.includes(nodeId)) {
   });
 
   /*
-    Run normally on first load.
+    Initial map state
   */
   refreshMap();
 
   /*
-    Also run whenever the browser restores this page from
-    back/forward cache.
+    Refresh when returning via browser back/forward navigation.
   */
   window.addEventListener("pageshow", () => {
     refreshMap();
   });
 
   /*
-    Also react if storage changes in another tab.
+    Refresh if localStorage changes in another tab.
   */
   window.addEventListener("storage", () => {
     refreshMap();

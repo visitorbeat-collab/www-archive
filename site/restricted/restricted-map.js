@@ -53,26 +53,36 @@
       const nodeId = node.dataset.nodeId;
       const symbol = node.querySelector(".node-symbol");
 
-      if (visited.includes(nodeId)) {
-        node.classList.add("is-visited");
+if (visited.includes(nodeId)) {
+  node.classList.add("is-visited");
 
-        if (
-          symbol &&
-          symbol.textContent.trim() === "○"
-        ) {
-          symbol.textContent = "◉";
-        }
-      } else {
-        node.classList.remove("is-visited");
+  if (symbol) {
+    const current = symbol.textContent.trim();
 
-        if (
-          symbol &&
-          symbol.textContent.trim() === "◉"
-        ) {
-          symbol.textContent = "○";
-        }
-      }
-    });
+    if (current === "○") {
+      symbol.textContent = "◉";
+    }
+
+    if (current === "◇") {
+      symbol.textContent = "◆";
+    }
+  }
+
+} else {
+  node.classList.remove("is-visited");
+
+  if (symbol) {
+    const current = symbol.textContent.trim();
+
+    if (current === "◉") {
+      symbol.textContent = "○";
+    }
+
+    if (current === "◆") {
+      symbol.textContent = "◇";
+    }
+  }
+};
   }
 
   function revealSecondaryRelations() {

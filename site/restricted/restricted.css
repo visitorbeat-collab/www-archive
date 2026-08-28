@@ -108,10 +108,13 @@ body.restricted-map-page {
   vector-effect: non-scaling-stroke;
 }
 
+
 .secondary-relation {
   opacity: 0;
+
   transition: opacity 700ms ease;
 }
+
 
 .secondary-relation.is-revealed {
   opacity: 1;
@@ -207,12 +210,49 @@ body.restricted-map-page {
 
 
 /* ---------------------------------------------------------
+   STATIC CONCEPT NODES
+
+   These belong to the model but do not open documents.
+   --------------------------------------------------------- */
+
+.concept-node-static {
+  cursor: default;
+
+  color: rgba(207, 214, 219, 0.44);
+}
+
+
+.concept-node-static .node-symbol {
+  font-size: 1.35rem;
+
+  opacity: 0.72;
+}
+
+
+.concept-node-static .node-label {
+  opacity: 0.16;
+}
+
+
+.concept-node-static:hover .node-label,
+.concept-node-static:focus-visible .node-label {
+  opacity: 0.78;
+}
+
+
+/* ---------------------------------------------------------
    NODE POSITIONS
    --------------------------------------------------------- */
 
 .node-center {
   left: 50%;
   top: 50%;
+}
+
+
+.node-boundary {
+  left: 50%;
+  top: 35.5%;
 }
 
 
@@ -258,8 +298,6 @@ body.restricted-map-page {
 
 /* ---------------------------------------------------------
    VISITED STATE
-
-   JavaScript adds .is-visited.
    --------------------------------------------------------- */
 
 .concept-node.is-visited {
@@ -351,8 +389,6 @@ body.restricted-map-page {
 
 /* ---------------------------------------------------------
    SMALL SCREENS
-
-   Preserve the relationships but compress the geometry.
    --------------------------------------------------------- */
 
 @media (max-width: 700px) {
@@ -377,6 +413,12 @@ body.restricted-map-page {
   .node-retention {
     left: 50%;
     top: 18%;
+  }
+
+
+  .node-boundary {
+    left: 50%;
+    top: 33%;
   }
 
 
@@ -439,7 +481,8 @@ body.restricted-map-page {
   .concept-node,
   .node-symbol,
   .node-label,
-  .relation-display-text {
+  .relation-display-text,
+  .secondary-relation {
     transition: none;
   }
 

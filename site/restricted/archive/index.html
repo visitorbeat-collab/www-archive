@@ -1,489 +1,224 @@
-/* =========================================================
-   RESTRICTED ARCHIVE
-   relational interface
-   ========================================================= */
-
-
-/* ---------------------------------------------------------
-   PAGE
-   --------------------------------------------------------- */
-
-body.restricted-map-page {
-  margin: 0;
-  min-height: 100vh;
-
-  background:
-    radial-gradient(
-      circle at center,
-      rgba(255, 255, 255, 0.025) 0%,
-      rgba(255, 255, 255, 0.008) 34%,
-      rgba(0, 0, 0, 0) 68%
-    ),
-    #090b0d;
-
-  color: #c9ced3;
-
-  font-family:
-    "IBM Plex Mono",
-    "Courier New",
-    monospace;
-
-  overflow-x: hidden;
-}
-
-
-.restricted-map-shell {
-  width: min(1180px, 94vw);
-  min-height: 100vh;
-
-  margin: 0 auto;
-
-  display: flex;
-  flex-direction: column;
-}
-
-
-/* ---------------------------------------------------------
-   HEADER
-   --------------------------------------------------------- */
-
-.restricted-map-header {
-  padding: 28px 0 0;
-
-  min-height: 48px;
-}
-
-
-.restricted-marker {
-  font-size: 0.68rem;
-  letter-spacing: 0.22em;
-
-  color: rgba(201, 206, 211, 0.42);
-
-  text-transform: uppercase;
-}
-
-
-/* ---------------------------------------------------------
-   MAP
-   --------------------------------------------------------- */
-
-.concept-map {
-  position: relative;
-
-  width: 100%;
-  max-width: 1000px;
-
-  height: 760px;
-
-  margin: auto;
-
-  flex: 1;
-}
-
-
-/* ---------------------------------------------------------
-   SVG RELATION LINES
-   --------------------------------------------------------- */
-
-.concept-lines {
-  position: absolute;
-
-  inset: 0;
-
-  width: 100%;
-  height: 100%;
-
-  pointer-events: none;
-
-  overflow: visible;
-}
-
-
-.relation-line {
-  stroke: rgba(190, 201, 208, 0.19);
-
-  stroke-width: 1;
-
-  vector-effect: non-scaling-stroke;
-}
-
-
-.secondary-relation {
-  opacity: 0;
-
-  transition: opacity 700ms ease;
-}
-
-
-.secondary-relation.is-revealed {
-  opacity: 1;
-}
-
-
-/* ---------------------------------------------------------
-   NODES
-   --------------------------------------------------------- */
-
-.concept-node {
-  position: absolute;
-
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-
-  gap: 10px;
-
-  min-width: 130px;
-
-  transform: translate(-50%, -50%);
-
-  color: rgba(219, 224, 228, 0.58);
-
-  text-decoration: none;
-
-  outline: none;
-
-  transition:
-    color 220ms ease,
-    opacity 220ms ease,
-    transform 220ms ease;
-}
-
-
-.node-symbol {
-  display: block;
-
-  font-family:
-    "IBM Plex Mono",
-    "Courier New",
-    monospace;
-
-  font-size: 1.65rem;
-  font-weight: 400;
-
-  line-height: 1;
-
-  transition:
-    transform 220ms ease,
-    opacity 220ms ease;
-}
-
-
-.node-label {
-  font-size: 0.67rem;
-
-  letter-spacing: 0.16em;
-
-  text-transform: lowercase;
-
-  opacity: 0.22;
-
-  transition:
-    opacity 220ms ease,
-    letter-spacing 220ms ease;
-}
-
-
-.concept-node:hover,
-.concept-node:focus-visible {
-  color: rgba(240, 243, 245, 0.96);
-
-  transform:
-    translate(-50%, -50%)
-    scale(1.035);
-}
-
-
-.concept-node:hover .node-label,
-.concept-node:focus-visible .node-label {
-  opacity: 0.92;
-
-  letter-spacing: 0.19em;
-}
-
-
-.concept-node:hover .node-symbol,
-.concept-node:focus-visible .node-symbol {
-  transform: scale(1.08);
-}
-
-
-/* ---------------------------------------------------------
-   STATIC CONCEPT NODES
-
-   These belong to the model but do not open documents.
-   --------------------------------------------------------- */
-
-.concept-node-static {
-  cursor: default;
-
-  color: rgba(207, 214, 219, 0.44);
-}
-
-
-.concept-node-static .node-symbol {
-  font-size: 1.35rem;
-
-  opacity: 0.72;
-}
-
-
-.concept-node-static .node-label {
-  opacity: 0.16;
-}
-
-
-.concept-node-static:hover .node-label,
-.concept-node-static:focus-visible .node-label {
-  opacity: 0.78;
-}
-
-
-/* ---------------------------------------------------------
-   NODE POSITIONS
-   --------------------------------------------------------- */
-
-.node-center {
-  left: 50%;
-  top: 50%;
-}
-
-
-.node-boundary {
-  left: 50%;
-  top: 35.5%;
-}
-
-
-.node-retention {
-  left: 50%;
-  top: 16.5%;
-}
-
-
-.node-exposure {
-  left: 21%;
-  top: 50%;
-}
-
-
-.node-participation {
-  left: 79%;
-  top: 50%;
-}
-
-
-.node-nontext {
-  left: 50%;
-  top: 83.5%;
-}
-
-
-/* ---------------------------------------------------------
-   CENTRAL NODE
-   --------------------------------------------------------- */
-
-.node-center .node-symbol {
-  font-size: 2rem;
-
-  color: rgba(238, 241, 243, 0.88);
-}
-
-
-.node-center .node-label {
-  opacity: 0.34;
-}
-
-
-/* ---------------------------------------------------------
-   VISITED STATE
-   --------------------------------------------------------- */
-
-.concept-node.is-visited {
-  color: rgba(225, 230, 233, 0.76);
-}
-
-
-.concept-node.is-visited .node-label {
-  opacity: 0.42;
-}
-
-
-.concept-node.is-visited .node-symbol {
-  opacity: 0.92;
-}
-
-
-/* ---------------------------------------------------------
-   RELATION DISPLAY
-   --------------------------------------------------------- */
-
-.relation-display {
-  position: absolute;
-
-  left: 50%;
-  bottom: 6%;
-
-  width: min(620px, 80%);
-
-  transform: translateX(-50%);
-
-  text-align: center;
-
-  pointer-events: none;
-}
-
-
-.relation-display-text {
-  display: inline-block;
-
-  min-height: 1.4em;
-
-  font-size: 0.64rem;
-
-  letter-spacing: 0.12em;
-
-  color: rgba(192, 200, 205, 0.32);
-
-  opacity: 1;
-
-  transition:
-    opacity 180ms ease,
-    color 180ms ease;
-}
-
-
-.relation-display.is-active .relation-display-text {
-  color: rgba(205, 212, 217, 0.68);
-}
-
-
-/* ---------------------------------------------------------
-   FOOTER
-   --------------------------------------------------------- */
-
-.restricted-map-footer {
-  padding: 12px 0 30px;
-}
-
-
-.restricted-return {
-  font-size: 0.7rem;
-
-  letter-spacing: 0.1em;
-
-  color: rgba(193, 201, 206, 0.34);
-
-  text-decoration: none;
-
-  transition: color 180ms ease;
-}
-
-
-.restricted-return:hover,
-.restricted-return:focus-visible {
-  color: rgba(230, 234, 237, 0.82);
-}
-
-
-/* ---------------------------------------------------------
-   SMALL SCREENS
-   --------------------------------------------------------- */
-
-@media (max-width: 700px) {
-
-  .restricted-map-shell {
-    width: 92vw;
-  }
-
-
-  .restricted-map-header {
-    padding-top: 20px;
-  }
-
-
-  .concept-map {
-    height: 680px;
-
-    max-width: 540px;
-  }
-
-
-  .node-retention {
-    left: 50%;
-    top: 18%;
-  }
-
-
-  .node-boundary {
-    left: 50%;
-    top: 33%;
-  }
-
-
-  .node-exposure {
-    left: 18%;
-    top: 48%;
-  }
-
-
-  .node-center {
-    left: 50%;
-    top: 48%;
-  }
-
-
-  .node-participation {
-    left: 82%;
-    top: 48%;
-  }
-
-
-  .node-nontext {
-    left: 50%;
-    top: 78%;
-  }
-
-
-  .concept-node {
-    min-width: 100px;
-  }
-
-
-  .node-symbol {
-    font-size: 1.45rem;
-  }
-
-
-  .node-label {
-    font-size: 0.58rem;
-
-    letter-spacing: 0.11em;
-  }
-
-
-  .relation-display {
-    bottom: 3%;
-
-    width: 90%;
-  }
-
-}
-
-
-/* ---------------------------------------------------------
-   REDUCED MOTION
-   --------------------------------------------------------- */
-
-@media (prefers-reduced-motion: reduce) {
-
-  .concept-node,
-  .node-symbol,
-  .node-label,
-  .relation-display-text,
-  .secondary-relation {
-    transition: none;
-  }
-
-}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>restricted archive</title>
+
+  <link rel="stylesheet" href="/style.css">
+  <link rel="stylesheet" href="/restricted/restricted.css">
+</head>
+
+<body class="restricted-map-page">
+
+<main class="restricted-map-shell">
+
+  <header class="restricted-map-header">
+    <div class="restricted-marker">RESTRICTED</div>
+  </header>
+
+
+  <section
+    class="concept-map"
+    aria-label="Restricted relational map"
+  >
+
+    <svg
+      class="concept-lines"
+      viewBox="0 0 1000 760"
+      preserveAspectRatio="none"
+      aria-hidden="true"
+    >
+
+      <!-- center → boundary -->
+      <line
+        class="relation-line"
+        x1="500"
+        y1="380"
+        x2="500"
+        y2="270"
+      />
+
+      <!-- boundary → retention -->
+      <line
+        class="relation-line"
+        x1="500"
+        y1="270"
+        x2="500"
+        y2="125"
+      />
+
+      <!-- center → exposure -->
+      <line
+        class="relation-line"
+        x1="500"
+        y1="380"
+        x2="210"
+        y2="380"
+      />
+
+      <!-- center → participation -->
+      <line
+        class="relation-line"
+        x1="500"
+        y1="380"
+        x2="790"
+        y2="380"
+      />
+
+      <!-- center → nontext -->
+      <line
+        class="relation-line"
+        x1="500"
+        y1="380"
+        x2="500"
+        y2="635"
+      />
+
+      <!-- secondary relation: exposure → retention -->
+      <line
+        class="relation-line secondary-relation"
+        id="relation-exposure-retention"
+        x1="210"
+        y1="380"
+        x2="500"
+        y2="125"
+      />
+
+    </svg>
+
+
+    <!-- CENTRAL CONDITION -->
+
+    <a
+      class="concept-node node-center"
+      href="/restricted/archive/restricted_threshold_interpretation_001.html"
+      data-node-id="threshold"
+      data-relation="boundary / condition"
+      aria-label="Threshold condition"
+    >
+      <span class="node-symbol">◎</span>
+
+      <span class="node-label">
+        condition
+      </span>
+    </a>
+
+
+    <!-- CONCEPT NODE: BOUNDARY -->
+
+    <div
+      class="concept-node concept-node-static node-boundary"
+      data-relation="the limit of included consequence"
+      aria-label="Boundary concept"
+      tabindex="0"
+    >
+      <span class="node-symbol">⊙</span>
+
+      <span class="node-label">
+        boundary
+      </span>
+    </div>
+
+
+    <!-- RETENTION -->
+
+    <a
+      class="concept-node node-retention"
+      href="/restricted/archive/nontext_retention_fragment_001.html"
+      data-node-id="retention"
+      data-relation="structure persists after translation fails"
+      aria-label="Retention"
+    >
+      <span class="node-symbol">○</span>
+
+      <span class="node-label">
+        retention
+      </span>
+    </a>
+
+
+    <!-- EXPOSURE -->
+
+    <a
+      class="concept-node node-exposure"
+      href="/restricted/archive/post_exposure_participation_fragment_001.html"
+      data-node-id="exposure"
+      data-relation="exposure alters the condition observed"
+      aria-label="Exposure"
+    >
+      <span class="node-symbol">○</span>
+
+      <span class="node-label">
+        exposure
+      </span>
+    </a>
+
+
+    <!-- PARTICIPATION -->
+
+    <a
+      class="concept-node node-participation"
+      href="/restricted/archive/participation_condition_fragment_001.html"
+      data-node-id="participation"
+      data-relation="participation introduces reciprocal consequence"
+      aria-label="Participation"
+    >
+      <span class="node-symbol">○</span>
+
+      <span class="node-label">
+        participation
+      </span>
+    </a>
+
+
+    <!-- NONTEXT -->
+
+    <a
+      class="concept-node node-nontext"
+      href="/restricted/archive/nontext/"
+      data-node-id="nontext"
+      data-relation="retain first / interpret second"
+      aria-label="Nontext material"
+    >
+      <span class="node-symbol">◇</span>
+
+      <span class="node-label">
+        nontext
+      </span>
+    </a>
+
+
+    <div
+      class="relation-display"
+      aria-live="polite"
+    >
+      <span class="relation-display-text">
+        relation unresolved
+      </span>
+    </div>
+
+  </section>
+
+
+  <footer class="restricted-map-footer">
+    <a
+      class="restricted-return"
+      href="/"
+    >
+      ← index
+    </a>
+  </footer>
+
+</main>
+
+
+<script src="/restricted/restricted-map.js"></script>
+
+</body>
+</html>

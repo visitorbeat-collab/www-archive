@@ -109,6 +109,8 @@ body.restricted-map-page {
 }
 
 
+/* ordinary progressive relationships */
+
 .secondary-relation {
   opacity: 0;
 
@@ -118,6 +120,30 @@ body.restricted-map-page {
 
 .secondary-relation.is-revealed {
   opacity: 1;
+}
+
+
+/* deeper convergence relationship */
+
+.convergence-relation {
+  opacity: 0;
+
+  stroke: rgba(213, 220, 224, 0.27);
+
+  stroke-width: 1;
+
+  stroke-dasharray: 2 7;
+
+  transition:
+    opacity 1400ms ease,
+    stroke 1400ms ease;
+}
+
+
+.convergence-relation.is-revealed {
+  opacity: 1;
+
+  stroke: rgba(224, 229, 232, 0.42);
 }
 
 
@@ -492,7 +518,8 @@ body.restricted-map-page {
   .node-symbol,
   .node-label,
   .relation-display-text,
-  .secondary-relation {
+  .secondary-relation,
+  .convergence-relation {
     transition: none;
   }
 

@@ -96,19 +96,21 @@
   }
 
 
-  function revealSecondaryRelations() {
+  function revealRelations() {
     const visited = getVisitedNodes();
+
+
+    /*
+      RELATION 01
+      exposure ↔ retention
+
+      Requires both source nodes to have been visited.
+    */
 
     const exposureRetention =
       document.getElementById(
         "relation-exposure-retention"
       );
-
-    const participationEffect =
-      document.getElementById(
-        "relation-participation-effect"
-      );
-
 
     if (exposureRetention) {
       const shouldReveal =
@@ -122,6 +124,19 @@
     }
 
 
+    /*
+      RELATION 02
+      participation ↔ effect
+
+      The concept becomes available after participation
+      has been encountered.
+    */
+
+    const participationEffect =
+      document.getElementById(
+        "relation-participation-effect"
+      );
+
     if (participationEffect) {
       const shouldReveal =
         visited.includes("participation");
@@ -131,12 +146,41 @@
         shouldReveal
       );
     }
+
+
+    /*
+      RELATION 03
+      retention ↔ effect
+
+      This is a convergence relationship.
+
+      It does not reveal from either endpoint alone.
+      Exposure, participation, and retention must all
+      have entered the reader's explored state.
+    */
+
+    const retentionEffect =
+      document.getElementById(
+        "relation-retention-effect"
+      );
+
+    if (retentionEffect) {
+      const shouldReveal =
+        visited.includes("exposure") &&
+        visited.includes("participation") &&
+        visited.includes("retention");
+
+      retentionEffect.classList.toggle(
+        "is-revealed",
+        shouldReveal
+      );
+    }
   }
 
 
   function refreshMap() {
     applyVisitedState();
-    revealSecondaryRelations();
+    revealRelations();
   }
 
 

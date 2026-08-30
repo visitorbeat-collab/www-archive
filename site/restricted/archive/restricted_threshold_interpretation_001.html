@@ -518,22 +518,30 @@
       preserveAspectRatio="none"
       aria-hidden="true"
     >
-      <line x1="310" y1="161" x2="310" y2="56" />
-      <line x1="310" y1="161" x2="112" y2="161" />
-      <line x1="310" y1="161" x2="508" y2="161" />
-      <line x1="310" y1="161" x2="310" y2="260" />
+      <!-- condition → boundary -->
+      <line x1="310" y1="155" x2="310" y2="58" />
+
+      <!-- condition → exposure -->
+      <line x1="310" y1="155" x2="112" y2="155" />
+
+      <!-- condition → participation -->
+      <line x1="310" y1="155" x2="508" y2="155" />
+
+      <!-- condition → effect -->
+      <line x1="310" y1="155" x2="310" y2="255" />
     </svg>
 
-    <!-- retention -->
 
-    <a
-      class="local-node local-node-top"
-      href="/restricted/archive/nontext_retention_fragment_001.html"
-      aria-label="Retention"
+    <!-- boundary -->
+
+    <div
+      class="local-node local-node-top local-node-static"
+      aria-label="Boundary"
     >
-      <span class="local-node-symbol">○</span>
-      <span class="local-node-label">retention</span>
-    </a>
+      <span class="local-node-symbol">⊙</span>
+      <span class="local-node-label">boundary</span>
+    </div>
+
 
     <!-- exposure -->
 
@@ -546,6 +554,7 @@
       <span class="local-node-label">exposure</span>
     </a>
 
+
     <!-- current: condition -->
 
     <div
@@ -555,6 +564,7 @@
       <span class="local-node-symbol">◎</span>
       <span class="local-node-label">condition</span>
     </div>
+
 
     <!-- participation -->
 
@@ -567,21 +577,24 @@
       <span class="local-node-label">participation</span>
     </a>
 
-    <!-- nontext -->
 
-    <a
-      class="local-node local-node-bottom"
-      href="/restricted/archive/nontext/"
-      aria-label="Nontext"
+    <!-- effect -->
+
+    <div
+      class="local-node local-node-bottom local-node-static"
+      aria-label="Effect"
     >
-      <span class="local-node-symbol">◇</span>
-      <span class="local-node-label">nontext</span>
-    </a>
+      <span class="local-node-symbol">⊙</span>
+      <span class="local-node-label">effect</span>
+    </div>
 
   </div>
 
+
   <div class="local-map-return">
-    <a href="/restricted/archive/">relation</a>
+    <a href="/restricted/archive/">
+      relation
+    </a>
   </div>
 
 </footer>

@@ -524,3 +524,237 @@ body.restricted-map-page {
   }
 
 }
+
+/* =========================================================
+   LOCAL RELATIONAL NAVIGATION
+   ========================================================= */
+
+.restricted-local-nav {
+  margin-top: 5rem;
+  padding-top: 2.5rem;
+
+  border-top: 1px solid rgba(190, 201, 208, 0.09);
+}
+
+
+.local-map {
+  position: relative;
+
+  width: min(520px, 100%);
+  height: 240px;
+
+  margin: 0 auto;
+}
+
+
+.local-map-lines {
+  position: absolute;
+
+  inset: 0;
+
+  width: 100%;
+  height: 100%;
+
+  pointer-events: none;
+}
+
+
+.local-map-lines line {
+  stroke: rgba(190, 201, 208, 0.16);
+
+  stroke-width: 1;
+
+  vector-effect: non-scaling-stroke;
+}
+
+
+.local-node {
+  position: absolute;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  gap: 7px;
+
+  min-width: 90px;
+
+  transform: translate(-50%, -50%);
+
+  color: rgba(210, 216, 220, 0.48);
+
+  text-decoration: none;
+
+  transition:
+    color 180ms ease,
+    transform 180ms ease;
+}
+
+
+.local-node-symbol {
+  font-family:
+    "IBM Plex Mono",
+    "Courier New",
+    monospace;
+
+  font-size: 1.1rem;
+
+  line-height: 1;
+}
+
+
+.local-node-label {
+  font-family:
+    "IBM Plex Mono",
+    "Courier New",
+    monospace;
+
+  font-size: 0.56rem;
+
+  letter-spacing: 0.14em;
+
+  text-transform: lowercase;
+
+  opacity: 0.28;
+
+  transition: opacity 180ms ease;
+}
+
+
+a.local-node:hover,
+a.local-node:focus-visible {
+  color: rgba(238, 242, 244, 0.9);
+
+  transform:
+    translate(-50%, -50%)
+    scale(1.04);
+}
+
+
+a.local-node:hover .local-node-label,
+a.local-node:focus-visible .local-node-label {
+  opacity: 0.85;
+}
+
+
+.local-node-current {
+  color: rgba(235, 239, 242, 0.9);
+}
+
+
+.local-node-current .local-node-symbol {
+  font-size: 1.3rem;
+}
+
+
+.local-node-current .local-node-label {
+  opacity: 0.62;
+}
+
+
+.local-node-static {
+  color: rgba(204, 211, 216, 0.36);
+}
+
+
+.local-node-static .local-node-label {
+  opacity: 0.2;
+}
+
+
+.local-node-top {
+  left: 50%;
+  top: 15%;
+}
+
+
+.local-node-left {
+  left: 18%;
+  top: 50%;
+}
+
+
+.local-node-center {
+  left: 50%;
+  top: 50%;
+}
+
+
+.local-node-right {
+  left: 82%;
+  top: 50%;
+}
+
+
+.local-node-bottom {
+  left: 50%;
+  top: 85%;
+}
+
+
+.local-map-return {
+  margin-top: 0.7rem;
+
+  text-align: center;
+}
+
+
+.local-map-return a {
+  font-family:
+    "IBM Plex Mono",
+    "Courier New",
+    monospace;
+
+  font-size: 0.58rem;
+
+  letter-spacing: 0.16em;
+
+  color: rgba(193, 201, 206, 0.28);
+
+  text-decoration: none;
+
+  text-transform: lowercase;
+
+  transition: color 180ms ease;
+}
+
+
+.local-map-return a:hover,
+.local-map-return a:focus-visible {
+  color: rgba(230, 234, 237, 0.78);
+}
+
+
+@media (max-width: 600px) {
+
+  .restricted-local-nav {
+    margin-top: 4rem;
+  }
+
+
+  .local-map {
+    width: 100%;
+    height: 220px;
+  }
+
+
+  .local-node {
+    min-width: 72px;
+  }
+
+
+  .local-node-left {
+    left: 16%;
+  }
+
+
+  .local-node-right {
+    left: 84%;
+  }
+
+
+  .local-node-label {
+    font-size: 0.5rem;
+  }
+
+}

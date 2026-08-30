@@ -1101,3 +1101,55 @@ a.local-node:focus-visible .local-node-label {
   }
 
 }
+/* =========================================================
+   RELATIONAL NODE INTERACTION GRAMMAR
+   ========================================================= */
+
+/* Navigable document/material nodes */
+a.concept-node,
+a.local-node {
+  cursor: pointer;
+}
+
+
+/* Concept-only nodes */
+.concept-node-static,
+.local-node-static {
+  cursor: default;
+}
+
+
+/* Concept nodes may clarify on hover, but should not
+   visually imply navigation. */
+
+.concept-node-static:hover,
+.concept-node-static:focus-visible,
+.local-node-static:hover,
+.local-node-static:focus-visible {
+  transform: translate(-50%, -50%);
+}
+
+
+/* Current location is informational, not a self-link. */
+
+.local-node-current {
+  cursor: default;
+}
+
+
+/* Clickable nodes get the stronger interaction cue. */
+
+a.concept-node:hover .node-symbol,
+a.concept-node:focus-visible .node-symbol,
+a.local-node:hover .local-node-symbol,
+a.local-node:focus-visible .local-node-symbol {
+  opacity: 1;
+}
+
+
+/* Static concepts remain deliberately quieter. */
+
+.concept-node-static .node-symbol,
+.local-node-static .local-node-symbol {
+  opacity: 0.68;
+}

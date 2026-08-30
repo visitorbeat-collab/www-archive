@@ -1153,3 +1153,26 @@ a.local-node:focus-visible .local-node-symbol {
 .local-node-static .local-node-symbol {
   opacity: 0.68;
 }
+/* =========================================================
+   TARGETED CONCEPT
+   ========================================================= */
+
+.concept-node-static.is-targeted {
+  color: rgba(240, 243, 245, 0.94);
+
+  transform:
+    translate(-50%, -50%)
+    scale(1.08);
+}
+
+
+.concept-node-static.is-targeted .node-symbol {
+  opacity: 1;
+}
+
+
+.concept-node-static.is-targeted .node-label {
+  opacity: 0.9;
+
+  letter-spacing: 0.19em;
+}

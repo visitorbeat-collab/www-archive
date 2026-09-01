@@ -1,0 +1,605 @@
+/* ---------------------------------------------------------
+   RESTRICTED THRESHOLD — VISUAL PROTOTYPE
+   --------------------------------------------------------- */
+
+:root {
+  --gate-bg: #0c0f12;
+
+  --gate-node: rgba(222, 229, 233, 0.76);
+  --gate-node-soft: rgba(222, 229, 233, 0.48);
+
+  --gate-line: rgba(192, 204, 211, 0.085);
+  --gate-line-soft: rgba(192, 204, 211, 0.04);
+
+  --gate-center: rgba(239, 243, 245, 0.92);
+}
+
+
+/* ---------------------------------------------------------
+   PAGE
+   --------------------------------------------------------- */
+
+html,
+body {
+  margin: 0;
+  width: 100%;
+  min-height: 100%;
+}
+
+body.gate-test-page {
+  min-height: 100vh;
+
+  background:
+    radial-gradient(
+      circle at center,
+      rgba(24, 30, 35, 0.45) 0%,
+      rgba(15, 19, 23, 0.4) 35%,
+      var(--gate-bg) 75%
+    );
+
+  overflow: hidden;
+}
+
+
+/* ---------------------------------------------------------
+   OUTER SHELL
+   --------------------------------------------------------- */
+
+.gate-shell {
+  width: 100vw;
+  height: 100vh;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  box-sizing: border-box;
+
+  padding: 4vh 4vw;
+}
+
+
+/* ---------------------------------------------------------
+   FIELD
+   --------------------------------------------------------- */
+
+.gate-field {
+  position: relative;
+
+  width: min(82vw, 820px);
+  aspect-ratio: 1 / 1;
+
+  max-height: 88vh;
+
+  isolation: isolate;
+}
+
+
+/* ---------------------------------------------------------
+   VERY FAINT FIELD RINGS
+   --------------------------------------------------------- */
+
+.field-ring {
+  position: absolute;
+
+  left: 50%;
+  top: 50%;
+
+  border-radius: 50%;
+
+  pointer-events: none;
+
+  transform: translate(-50%, -50%);
+
+  box-sizing: border-box;
+}
+
+.field-ring-1 {
+  width: 30%;
+  height: 30%;
+
+  border: 1px solid rgba(210, 221, 226, 0.035);
+}
+
+.field-ring-2 {
+  width: 55%;
+  height: 55%;
+
+  border: 1px solid rgba(210, 221, 226, 0.027);
+}
+
+.field-ring-3 {
+  width: 79%;
+  height: 79%;
+
+  border: 1px solid rgba(210, 221, 226, 0.022);
+}
+
+
+/* ---------------------------------------------------------
+   STRUCTURAL SVG
+   --------------------------------------------------------- */
+
+.field-traces {
+  position: absolute;
+
+  inset: 0;
+
+  width: 100%;
+  height: 100%;
+
+  overflow: visible;
+
+  pointer-events: none;
+
+  z-index: 0;
+}
+
+.trace-circle {
+  fill: none;
+
+  stroke: var(--gate-line-soft);
+  stroke-width: 1;
+}
+
+.trace-circle-secondary {
+  stroke-dasharray: 2 14;
+}
+
+.trace-line {
+  stroke: var(--gate-line);
+  stroke-width: 0.75;
+
+  stroke-dasharray: 1 11;
+
+  opacity: 0.48;
+}
+
+
+/* ---------------------------------------------------------
+   CENTRAL NODE
+   --------------------------------------------------------- */
+
+.gate-center {
+  position: absolute;
+
+  left: 50%;
+  top: 50%;
+
+  width: 42px;
+  height: 42px;
+
+  transform: translate(-50%, -50%);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+
+  z-index: 5;
+}
+
+.gate-center::before {
+  content: "";
+
+  position: absolute;
+
+  width: 100%;
+  height: 100%;
+
+  border: 1px solid rgba(225, 233, 237, 0.11);
+
+  border-radius: 50%;
+}
+
+.gate-center::after {
+  content: "";
+
+  position: absolute;
+
+  width: 16px;
+  height: 16px;
+
+  border: 1px solid rgba(229, 236, 239, 0.21);
+
+  border-radius: 50%;
+}
+
+.gate-center-core {
+  display: block;
+
+  width: 5px;
+  height: 5px;
+
+  border-radius: 50%;
+
+  background: var(--gate-center);
+
+  box-shadow:
+    0 0 11px rgba(230, 238, 241, 0.1);
+}
+
+
+/* ---------------------------------------------------------
+   PRIMARY NODES
+   --------------------------------------------------------- */
+
+.gate-node {
+  position: absolute;
+
+  width: 34px;
+  height: 34px;
+
+  transform: translate(-50%, -50%);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  z-index: 4;
+
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.node-body {
+  position: relative;
+
+  width: 19px;
+  height: 19px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border: 1px solid var(--gate-node-soft);
+  border-radius: 50%;
+
+  box-sizing: border-box;
+
+  opacity: 0.88;
+}
+
+.gate-node::after {
+  content: "";
+
+  position: absolute;
+
+  width: 29px;
+  height: 29px;
+
+  border: 1px solid rgba(219, 228, 232, 0.025);
+
+  border-radius: 50%;
+}
+
+
+/* ---------------------------------------------------------
+   NODE POSITIONS
+   --------------------------------------------------------- */
+
+/*
+   These positions are intentionally irregular.
+
+   In the next development stage they will be generated
+   dynamically rather than hard-coded.
+*/
+
+.node-1 {
+  left: 50%;
+  top: 13%;
+}
+
+.node-2 {
+  left: 72%;
+  top: 22%;
+}
+
+.node-3 {
+  left: 84%;
+  top: 45%;
+}
+
+.node-4 {
+  left: 77%;
+  top: 70%;
+}
+
+.node-5 {
+  left: 58%;
+  top: 84%;
+}
+
+.node-6 {
+  left: 34%;
+  top: 79%;
+}
+
+.node-7 {
+  left: 17%;
+  top: 61%;
+}
+
+.node-8 {
+  left: 20%;
+  top: 34%;
+}
+
+.node-9 {
+  left: 38%;
+  top: 24%;
+}
+
+
+/* ---------------------------------------------------------
+   INTERNAL NODE MARKS
+   --------------------------------------------------------- */
+
+.node-mark {
+  position: relative;
+
+  display: block;
+
+  width: 7px;
+  height: 7px;
+
+  opacity: 0.65;
+}
+
+
+/* dot */
+
+.mark-dot::before {
+  content: "";
+
+  position: absolute;
+
+  left: 50%;
+  top: 50%;
+
+  width: 2px;
+  height: 2px;
+
+  background: var(--gate-node);
+
+  border-radius: 50%;
+
+  transform: translate(-50%, -50%);
+}
+
+
+/* diagonal line */
+
+.mark-line::before {
+  content: "";
+
+  position: absolute;
+
+  left: 50%;
+  top: 50%;
+
+  width: 1px;
+  height: 7px;
+
+  background: var(--gate-node);
+
+  transform:
+    translate(-50%, -50%)
+    rotate(37deg);
+}
+
+
+/* double line */
+
+.mark-double::before,
+.mark-double::after {
+  content: "";
+
+  position: absolute;
+
+  top: 0;
+
+  width: 1px;
+  height: 7px;
+
+  background: var(--gate-node);
+}
+
+.mark-double::before {
+  left: 2px;
+}
+
+.mark-double::after {
+  right: 2px;
+}
+
+
+/* slash */
+
+.mark-slash::before {
+  content: "";
+
+  position: absolute;
+
+  left: 50%;
+  top: 50%;
+
+  width: 8px;
+  height: 1px;
+
+  background: var(--gate-node);
+
+  transform:
+    translate(-50%, -50%)
+    rotate(-32deg);
+}
+
+
+/* cross */
+
+.mark-cross::before,
+.mark-cross::after {
+  content: "";
+
+  position: absolute;
+
+  left: 50%;
+  top: 50%;
+
+  background: var(--gate-node);
+
+  transform: translate(-50%, -50%);
+}
+
+.mark-cross::before {
+  width: 7px;
+  height: 1px;
+}
+
+.mark-cross::after {
+  width: 1px;
+  height: 7px;
+}
+
+
+/* small ring */
+
+.mark-small-ring::before {
+  content: "";
+
+  position: absolute;
+
+  left: 50%;
+  top: 50%;
+
+  width: 4px;
+  height: 4px;
+
+  border: 1px solid var(--gate-node);
+
+  border-radius: 50%;
+
+  transform: translate(-50%, -50%);
+}
+
+
+/* vertical */
+
+.mark-vertical::before {
+  content: "";
+
+  position: absolute;
+
+  left: 50%;
+  top: 50%;
+
+  width: 1px;
+  height: 7px;
+
+  background: var(--gate-node);
+
+  transform: translate(-50%, -50%);
+}
+
+
+/* two dots */
+
+.mark-two-dots::before,
+.mark-two-dots::after {
+  content: "";
+
+  position: absolute;
+
+  top: 50%;
+
+  width: 2px;
+  height: 2px;
+
+  background: var(--gate-node);
+
+  border-radius: 50%;
+
+  transform: translateY(-50%);
+}
+
+.mark-two-dots::before {
+  left: 0;
+}
+
+.mark-two-dots::after {
+  right: 0;
+}
+
+
+/* horizontal */
+
+.mark-horizontal::before {
+  content: "";
+
+  position: absolute;
+
+  left: 50%;
+  top: 50%;
+
+  width: 7px;
+  height: 1px;
+
+  background: var(--gate-node);
+
+  transform: translate(-50%, -50%);
+}
+
+
+/* ---------------------------------------------------------
+   VERY SUBTLE MOTION
+   --------------------------------------------------------- */
+
+@keyframes center-breathe {
+  0%,
+  100% {
+    opacity: 0.78;
+  }
+
+  50% {
+    opacity: 1;
+  }
+}
+
+.gate-center-core {
+  animation:
+    center-breathe
+    6.5s
+    ease-in-out
+    infinite;
+}
+
+
+/* ---------------------------------------------------------
+   RESPONSIVE
+   --------------------------------------------------------- */
+
+@media (max-width: 700px) {
+  .gate-shell {
+    padding: 2vh 2vw;
+  }
+
+  .gate-field {
+    width: min(96vw, 700px);
+  }
+
+  .gate-center {
+    width: 36px;
+    height: 36px;
+  }
+
+  .gate-node {
+    width: 30px;
+    height: 30px;
+  }
+
+  .node-body {
+    width: 17px;
+    height: 17px;
+  }
+}

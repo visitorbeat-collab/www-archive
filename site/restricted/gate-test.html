@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>restricted threshold</title>
+
+  <link rel="stylesheet" href="/style.css">
+  <link rel="stylesheet" href="/restricted/gate-test.css">
+</head>
+
+<body class="gate-test-page">
+
+  <main class="gate-shell">
+
+    <section
+      class="gate-field"
+      id="gate-field"
+      aria-label="Relational field"
+    >
+
+      <!--
+        These circles are intentionally very faint.
+        They are not presented as explicit puzzle rings.
+      -->
+      <div class="field-ring field-ring-1" aria-hidden="true"></div>
+      <div class="field-ring field-ring-2" aria-hidden="true"></div>
+      <div class="field-ring field-ring-3" aria-hidden="true"></div>
+
+      <!--
+        Faint structural traces.
+        These are visual only in this first prototype.
+      -->
+      <svg
+        class="field-traces"
+        viewBox="0 0 1000 1000"
+        preserveAspectRatio="none"
+        aria-hidden="true"
+      >
+        <circle
+          cx="500"
+          cy="500"
+          r="360"
+          class="trace-circle"
+        />
+
+        <circle
+          cx="500"
+          cy="500"
+          r="255"
+          class="trace-circle trace-circle-secondary"
+        />
+
+        <line
+          x1="500"
+          y1="500"
+          x2="500"
+          y2="155"
+          class="trace-line"
+        />
+
+        <line
+          x1="500"
+          y1="500"
+          x2="775"
+          y2="285"
+          class="trace-line"
+        />
+
+        <line
+          x1="500"
+          y1="500"
+          x2="810"
+          y2="610"
+          class="trace-line"
+        />
+
+        <line
+          x1="500"
+          y1="500"
+          x2="630"
+          y2="825"
+          class="trace-line"
+        />
+
+        <line
+          x1="500"
+          y1="500"
+          x2="330"
+          y2="805"
+          class="trace-line"
+        />
+
+        <line
+          x1="500"
+          y1="500"
+          x2="185"
+          y2="610"
+          class="trace-line"
+        />
+
+        <line
+          x1="500"
+          y1="500"
+          x2="235"
+          y2="325"
+          class="trace-line"
+        />
+      </svg>
+
+
+      <!-- CENTRAL ACTOR -->
+
+      <div
+        class="gate-center"
+        id="gate-center"
+        aria-label="Central node"
+      >
+        <span class="gate-center-core"></span>
+      </div>
+
+
+      <!-- PRIMARY NODES -->
+
+      <div
+        class="gate-node node-1"
+        data-profile="A"
+        aria-label="Entity 1"
+      >
+        <span class="node-body">
+          <span class="node-mark mark-dot"></span>
+        </span>
+      </div>
+
+
+      <div
+        class="gate-node node-2"
+        data-profile="B"
+        aria-label="Entity 2"
+      >
+        <span class="node-body">
+          <span class="node-mark mark-line"></span>
+        </span>
+      </div>
+
+
+      <div
+        class="gate-node node-3"
+        data-profile="C"
+        aria-label="Entity 3"
+      >
+        <span class="node-body">
+          <span class="node-mark mark-double"></span>
+        </span>
+      </div>
+
+
+      <div
+        class="gate-node node-4"
+        data-profile="D"
+        aria-label="Entity 4"
+      >
+        <span class="node-body">
+          <span class="node-mark mark-slash"></span>
+        </span>
+      </div>
+
+
+      <div
+        class="gate-node node-5"
+        data-profile="E"
+        aria-label="Entity 5"
+      >
+        <span class="node-body">
+          <span class="node-mark mark-cross"></span>
+        </span>
+      </div>
+
+
+      <div
+        class="gate-node node-6"
+        data-profile="F"
+        aria-label="Entity 6"
+      >
+        <span class="node-body">
+          <span class="node-mark mark-small-ring"></span>
+        </span>
+      </div>
+
+
+      <div
+        class="gate-node node-7"
+        data-profile="G"
+        aria-label="Entity 7"
+      >
+        <span class="node-body">
+          <span class="node-mark mark-vertical"></span>
+        </span>
+      </div>
+
+
+      <div
+        class="gate-node node-8"
+        data-profile="H"
+        aria-label="Entity 8"
+      >
+        <span class="node-body">
+          <span class="node-mark mark-two-dots"></span>
+        </span>
+      </div>
+
+
+      <div
+        class="gate-node node-9"
+        data-profile="I"
+        aria-label="Entity 9"
+      >
+        <span class="node-body">
+          <span class="node-mark mark-horizontal"></span>
+        </span>
+      </div>
+
+    </section>
+
+  </main>
+
+  <script src="/restricted/gate-test.js"></script>
+
+</body>
+</html>

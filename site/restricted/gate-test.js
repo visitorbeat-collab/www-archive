@@ -1,45 +1,6 @@
 "use strict";
 
 
-/*
-  ---------------------------------------------------------
-  RESTRICTED THRESHOLD — CONSEQUENCE PROTOTYPE
-  ---------------------------------------------------------
-
-  CURRENTLY IMPLEMENTED:
-
-  - randomized angular placement
-  - randomized starting radii
-  - randomized visual markers
-  - radial-only dragging
-  - expanded movement range
-  - dynamic causal lines
-  - temporary dependent structures
-
-  CURRENT TEST PROFILES:
-
-  A
-    dramatic direct effect
-    complete recovery
-
-  B
-    very weak direct response
-    delayed dependent degradation
-
-  F
-    moderate direct effect
-    persistent alteration
-
-  NOT YET IMPLEMENTED:
-
-  - C / D / E / G / H / I behaviors
-  - randomized event order
-  - hidden radial classes
-  - validation
-  - completion state
-*/
-
-
 document.addEventListener("DOMContentLoaded", () => {
   const field =
     document.getElementById("gate-field");
@@ -52,6 +13,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const dependentLayer =
     document.getElementById("dependent-layer");
+
 
   if (
     !field ||
@@ -69,7 +31,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
   /* -------------------------------------------------------
-     SESSION CONFIGURATION
+     CONFIGURATION
      ------------------------------------------------------- */
 
   const MIN_ANGLE_GAP = 28;
@@ -118,8 +80,7 @@ document.addEventListener("DOMContentLoaded", () => {
       i -= 1
     ) {
       const j = Math.floor(
-        Math.random() *
-        (i + 1)
+        Math.random() * (i + 1)
       );
 
       [copy[i], copy[j]] = [
@@ -192,6 +153,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     return {
       rect,
+
       centerX:
         rect.width / 2,
 
@@ -226,14 +188,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
   /* -------------------------------------------------------
-     RANDOM ANGLES
+     ANGLE GENERATION
      ------------------------------------------------------- */
 
   function generateAngles(count) {
     const baseGap =
       360 / count;
 
-    const globalRotation =
+    const rotation =
       Math.random() * 360;
 
     const angles = [];
@@ -243,19 +205,14 @@ document.addEventListener("DOMContentLoaded", () => {
       i < count;
       i += 1
     ) {
-      const base =
-        globalRotation +
-        i * baseGap;
-
-      const jitter =
-        randomBetween(
-          -10,
-          10
-        );
-
       angles.push(
         normalizeAngle(
-          base + jitter
+          rotation +
+          i * baseGap +
+          randomBetween(
+            -10,
+            10
+          )
         )
       );
     }
@@ -276,9 +233,7 @@ document.addEventListener("DOMContentLoaded", () => {
             angles[j]
           ) < MIN_ANGLE_GAP
         ) {
-          return generateAngles(
-            count
-          );
+          return generateAngles(count);
         }
       }
     }
@@ -363,7 +318,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
   /* -------------------------------------------------------
-     RANDOMIZED GEOMETRY
+     STARTING GEOMETRY
      ------------------------------------------------------- */
 
   function assignGeometry() {
@@ -372,7 +327,7 @@ document.addEventListener("DOMContentLoaded", () => {
         profiles.length
       );
 
-    const startingRadiusGroups = [
+    const startingRadii = shuffle([
       0.27,
       0.30,
       0.33,
@@ -382,12 +337,8 @@ document.addEventListener("DOMContentLoaded", () => {
       0.41,
       0.43,
       0.31
-    ];
+    ]);
 
-    const shuffledRadii =
-      shuffle(
-        startingRadiusGroups
-      );
 
     profiles.forEach(
       (node, index) => {
@@ -401,7 +352,7 @@ document.addEventListener("DOMContentLoaded", () => {
             Math.min(
               MAX_RADIUS_RATIO,
 
-              shuffledRadii[index] +
+              startingRadii[index] +
               randomBetween(
                 -0.012,
                 0.012
@@ -414,7 +365,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
   /* -------------------------------------------------------
-     PRIMARY NODE POSITIONING
+     PRIMARY POSITIONING
      ------------------------------------------------------- */
 
   function positionNode(node) {
@@ -433,21 +384,19 @@ document.addEventListener("DOMContentLoaded", () => {
       usableRadius *
       node.radiusRatio;
 
-    const x =
-      centerX +
-      Math.cos(radians) *
-      radius;
-
-    const y =
-      centerY +
-      Math.sin(radians) *
-      radius;
-
     node.element.style.left =
-      `${x}px`;
+      `${
+        centerX +
+        Math.cos(radians) *
+        radius
+      }px`;
 
     node.element.style.top =
-      `${y}px`;
+      `${
+        centerY +
+        Math.sin(radians) *
+        radius
+      }px`;
   }
 
 
@@ -504,15 +453,13 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
 
-  function clampRadiusRatio(
-    radiusRatio
-  ) {
+  function clampRadiusRatio(value) {
     return Math.max(
       DRAG_MIN_RATIO,
 
       Math.min(
         DRAG_MAX_RATIO,
-        radiusRatio
+        value
       )
     );
   }
@@ -553,15 +500,12 @@ document.addEventListener("DOMContentLoaded", () => {
       return;
     }
 
-    const rawRatio =
-      calculatePointerRadiusRatio(
-        event.clientX,
-        event.clientY
-      );
-
     node.radiusRatio =
       clampRadiusRatio(
-        rawRatio
+        calculatePointerRadiusRatio(
+          event.clientX,
+          event.clientY
+        )
       );
 
     positionNode(node);
@@ -638,7 +582,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
   /* -------------------------------------------------------
-     DYNAMIC CAUSAL STRUCTURES
+     DYNAMIC STRUCTURES
      ------------------------------------------------------- */
 
   const dynamicLines =
@@ -724,7 +668,8 @@ document.addEventListener("DOMContentLoaded", () => {
     line.classList.remove(
       "is-visible",
       "is-faint",
-      "is-residual"
+      "is-residual",
+      "is-remote"
     );
   }
 
@@ -733,7 +678,8 @@ document.addEventListener("DOMContentLoaded", () => {
     id,
     parentProfile,
     angleOffset,
-    distance
+    distance,
+    options = {}
   ) {
     const element =
       document.createElement(
@@ -743,16 +689,31 @@ document.addEventListener("DOMContentLoaded", () => {
     element.className =
       "dependent-node";
 
+    if (options.remote) {
+      element.classList.add(
+        "is-remote"
+      );
+    }
+
     dependentLayer.appendChild(
       element
     );
 
     const dependent = {
       id,
+
       parentProfile,
+
       angleOffset,
+
       distance,
-      element
+
+      element,
+
+      remote:
+        Boolean(
+          options.remote
+        )
     };
 
     dependents.set(
@@ -768,7 +729,8 @@ document.addEventListener("DOMContentLoaded", () => {
     id,
     parentProfile,
     angleOffset,
-    distance
+    distance,
+    options = {}
   ) {
     if (dependents.has(id)) {
       return dependents.get(id);
@@ -778,7 +740,8 @@ document.addEventListener("DOMContentLoaded", () => {
       id,
       parentProfile,
       angleOffset,
-      distance
+      distance,
+      options
     );
   }
 
@@ -839,9 +802,7 @@ document.addEventListener("DOMContentLoaded", () => {
       getNode(profileId);
 
     const line =
-      dynamicLines.get(
-        lineId
-      );
+      dynamicLines.get(lineId);
 
     if (
       !node ||
@@ -850,20 +811,16 @@ document.addEventListener("DOMContentLoaded", () => {
       return;
     }
 
-    const center =
-      getElementCenter(
-        centerElement
-      );
-
-    const target =
-      getElementCenter(
-        node.element
-      );
-
     setLineCoordinates(
       line,
-      center,
-      target
+
+      getElementCenter(
+        centerElement
+      ),
+
+      getElementCenter(
+        node.element
+      )
     );
   }
 
@@ -882,9 +839,7 @@ document.addEventListener("DOMContentLoaded", () => {
       );
 
     const line =
-      dynamicLines.get(
-        lineId
-      );
+      dynamicLines.get(lineId);
 
     if (
       !node ||
@@ -896,11 +851,53 @@ document.addEventListener("DOMContentLoaded", () => {
 
     setLineCoordinates(
       line,
+
       getElementCenter(
         node.element
       ),
+
       getElementCenter(
         dependent.element
+      )
+    );
+  }
+
+
+  function updateDependentToDependentLine(
+    startDependentId,
+    endDependentId,
+    lineId
+  ) {
+    const start =
+      dependents.get(
+        startDependentId
+      );
+
+    const end =
+      dependents.get(
+        endDependentId
+      );
+
+    const line =
+      dynamicLines.get(lineId);
+
+    if (
+      !start ||
+      !end ||
+      !line
+    ) {
+      return;
+    }
+
+    setLineCoordinates(
+      line,
+
+      getElementCenter(
+        start.element
+      ),
+
+      getElementCenter(
+        end.element
       )
     );
   }
@@ -909,49 +906,74 @@ document.addEventListener("DOMContentLoaded", () => {
   function updateDynamicGeometry() {
     positionAllDependents();
 
-    updateCenterLine(
+
+    [
       "A",
-      "center-A"
-    );
-
-    updateCenterLine(
       "B",
-      "center-B"
-    );
-
-    updateCenterLine(
+      "C",
+      "D",
+      "E",
       "F",
-      "center-F"
+      "G",
+      "H",
+      "I"
+    ].forEach(
+      profile => {
+        updateCenterLine(
+          profile,
+          `center-${profile}`
+        );
+      }
     );
 
-    updateDependentLine(
-      "B",
-      "B1",
-      "B-B1"
+
+    const relations = [
+      ["B", "B1", "B-B1"],
+      ["B", "B2", "B-B2"],
+      ["B", "B3", "B-B3"],
+
+      ["C", "C1", "C-C1"],
+      ["C", "C2", "C-C2"],
+      ["C", "C3", "C-C3"],
+
+      ["F", "F1", "F-F1"],
+
+      ["G", "G1", "G-G1"],
+      ["G", "G2", "G-G2"],
+
+      ["H", "H1", "H-H1"],
+
+      ["I", "I1", "I-I1"]
+    ];
+
+
+    relations.forEach(
+      relation => {
+        updateDependentLine(
+          relation[0],
+          relation[1],
+          relation[2]
+        );
+      }
     );
 
-    updateDependentLine(
-      "B",
-      "B2",
-      "B-B2"
+
+    updateDependentToDependentLine(
+      "H1",
+      "H2",
+      "H1-H2"
     );
 
-    updateDependentLine(
-      "B",
-      "B3",
-      "B-B3"
-    );
-
-    updateDependentLine(
-      "F",
-      "F1",
-      "F-F1"
+    updateDependentToDependentLine(
+      "H2",
+      "H3",
+      "H2-H3"
     );
   }
 
 
   /* -------------------------------------------------------
-     EFFECT RESET
+     RESET
      ------------------------------------------------------- */
 
   function clearPrimaryEffects() {
@@ -959,9 +981,13 @@ document.addEventListener("DOMContentLoaded", () => {
       node => {
         node.element.classList.remove(
           "effect-strong",
+          "effect-collapse",
           "effect-subtle",
           "effect-moderate",
-          "effect-persistent"
+          "effect-substantial",
+          "effect-small",
+          "effect-persistent",
+          "effect-residual"
         );
       }
     );
@@ -970,9 +996,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function hideAllLines() {
     dynamicLines.forEach(
-      line => {
-        hideLine(line);
-      }
+      hideLine
     );
   }
 
@@ -999,21 +1023,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
   /* -------------------------------------------------------
-     PROFILE A
-     -------------------------------------------------------
-
-     Strong immediate visual response.
-     Complete recovery.
-     No downstream structure.
-  ------------------------------------------------------- */
+     A — SPECTACULAR / REVERSIBLE
+     ------------------------------------------------------- */
 
   async function runProfileA() {
     const node =
       getNode("A");
-
-    if (!node) {
-      return;
-    }
 
     const line =
       getOrCreateLine(
@@ -1024,7 +1039,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     showLine(line);
 
-    await wait(450);
+    await wait(400);
 
     node.element.classList.add(
       "effect-strong"
@@ -1040,32 +1055,22 @@ document.addEventListener("DOMContentLoaded", () => {
 
     hideLine(line);
 
-    await wait(600);
+    await wait(500);
   }
 
 
   /* -------------------------------------------------------
-     PROFILE B
-     -------------------------------------------------------
-
-     Very weak direct response.
-     Delayed dependency cascade.
-     Partial residual damage.
-  ------------------------------------------------------- */
+     B — SILENT DEPENDENCY HUB
+     ------------------------------------------------------- */
 
   async function runProfileB() {
     const node =
       getNode("B");
 
-    if (!node) {
-      return;
-    }
-
     const centerLine =
       getOrCreateLine(
         "center-B"
       );
-
 
     const B1 =
       getOrCreateDependent(
@@ -1091,7 +1096,6 @@ document.addEventListener("DOMContentLoaded", () => {
         70
       );
 
-
     const line1 =
       getOrCreateLine(
         "B-B1"
@@ -1107,88 +1111,66 @@ document.addEventListener("DOMContentLoaded", () => {
         "B-B3"
       );
 
-
     updateDynamicGeometry();
 
-    showLine(
-      centerLine
-    );
+    showLine(centerLine);
 
     node.element.classList.add(
       "effect-subtle"
     );
 
-    await wait(850);
+    await wait(800);
 
     node.element.classList.remove(
       "effect-subtle"
     );
 
-    /*
-      Deliberate pause.
-
-      The direct event appears almost inconsequential.
-    */
-
-    await wait(1200);
+    await wait(1100);
 
 
     B1.element.classList.add(
       "is-visible"
     );
 
-    line1.classList.add(
-      "is-visible"
-    );
+    showLine(line1);
 
-    await wait(450);
+    await wait(400);
 
 
     B2.element.classList.add(
       "is-visible"
     );
 
-    line2.classList.add(
-      "is-visible"
-    );
+    showLine(line2);
 
-    await wait(450);
+    await wait(400);
 
 
     B3.element.classList.add(
       "is-visible"
     );
 
-    line3.classList.add(
-      "is-visible"
-    );
+    showLine(line3);
 
-    await wait(900);
+    await wait(850);
 
-
-    /*
-      The dependent structures degrade differently.
-    */
 
     B1.element.classList.add(
       "is-weakened"
     );
 
-    await wait(500);
+    await wait(450);
 
 
     B2.element.classList.add(
       "is-collapsed"
     );
 
-    await wait(500);
+    await wait(450);
 
 
     B3.element.classList.add(
-      "is-weakened"
-    );
-
-    B3.element.classList.add(
+      "is-weakened",
       "is-persistent"
     );
 
@@ -1205,37 +1187,239 @@ document.addEventListener("DOMContentLoaded", () => {
       "is-residual"
     );
 
+    centerLine.classList.add(
+      "is-faint"
+    );
+
+    await wait(1300);
+  }
+
+
+  /* -------------------------------------------------------
+     C — BROAD PROPAGATION
+     ------------------------------------------------------- */
+
+  async function runProfileC() {
+    const node =
+      getNode("C");
+
+    const centerLine =
+      getOrCreateLine(
+        "center-C"
+      );
+
+    const C1 =
+      getOrCreateDependent(
+        "C1",
+        "C",
+        -34,
+        68
+      );
+
+    const C2 =
+      getOrCreateDependent(
+        "C2",
+        "C",
+        8,
+        86
+      );
+
+    const C3 =
+      getOrCreateDependent(
+        "C3",
+        "C",
+        43,
+        76
+      );
+
+
+    const line1 =
+      getOrCreateLine(
+        "C-C1"
+      );
+
+    const line2 =
+      getOrCreateLine(
+        "C-C2"
+      );
+
+    const line3 =
+      getOrCreateLine(
+        "C-C3"
+      );
+
+
+    updateDynamicGeometry();
+
+    showLine(centerLine);
+
+    await wait(350);
+
+
+    node.element.classList.add(
+      "effect-moderate"
+    );
+
+    await wait(900);
+
+
+    C1.element.classList.add(
+      "is-visible"
+    );
+
+    showLine(line1);
+
+    await wait(350);
+
+
+    C2.element.classList.add(
+      "is-visible"
+    );
+
+    showLine(line2);
+
+    await wait(350);
+
+
+    C3.element.classList.add(
+      "is-visible"
+    );
+
+    showLine(line3);
+
+    await wait(900);
+
+
+    node.element.classList.remove(
+      "effect-moderate"
+    );
+
+
+    C1.element.classList.add(
+      "is-weakened"
+    );
+
+    C2.element.classList.add(
+      "is-weakened"
+    );
+
+    C3.element.classList.add(
+      "is-persistent"
+    );
+
+
+    line1.classList.add(
+      "is-faint"
+    );
+
+    line2.classList.add(
+      "is-faint"
+    );
+
+    line3.classList.add(
+      "is-residual"
+    );
 
     centerLine.classList.add(
       "is-faint"
     );
 
-    await wait(1600);
+    await wait(1200);
   }
 
 
   /* -------------------------------------------------------
-     PROFILE F
-     -------------------------------------------------------
+     D — SEVERE BUT REVERSIBLE
+     ------------------------------------------------------- */
 
-     Moderate direct alteration.
-     No dramatic cascade.
-     State persists.
-  ------------------------------------------------------- */
+  async function runProfileD() {
+    const node =
+      getNode("D");
+
+    const line =
+      getOrCreateLine(
+        "center-D"
+      );
+
+    updateDynamicGeometry();
+
+    showLine(line);
+
+    await wait(350);
+
+
+    node.element.classList.add(
+      "effect-collapse"
+    );
+
+    await wait(1500);
+
+
+    node.element.classList.remove(
+      "effect-collapse"
+    );
+
+    await wait(900);
+
+
+    hideLine(line);
+
+    await wait(450);
+  }
+
+
+  /* -------------------------------------------------------
+     E — GENUINELY CONTAINED
+     ------------------------------------------------------- */
+
+  async function runProfileE() {
+    const node =
+      getNode("E");
+
+    const line =
+      getOrCreateLine(
+        "center-E"
+      );
+
+    updateDynamicGeometry();
+
+    showLine(line);
+
+    await wait(350);
+
+
+    node.element.classList.add(
+      "effect-small"
+    );
+
+    await wait(800);
+
+
+    node.element.classList.remove(
+      "effect-small"
+    );
+
+    await wait(500);
+
+
+    hideLine(line);
+
+    await wait(450);
+  }
+
+
+  /* -------------------------------------------------------
+     F — PERSISTENCE
+     ------------------------------------------------------- */
 
   async function runProfileF() {
     const node =
       getNode("F");
 
-    if (!node) {
-      return;
-    }
-
     const centerLine =
       getOrCreateLine(
         "center-F"
       );
-
 
     const F1 =
       getOrCreateDependent(
@@ -1245,7 +1429,6 @@ document.addEventListener("DOMContentLoaded", () => {
         67
       );
 
-
     const dependentLine =
       getOrCreateLine(
         "F-F1"
@@ -1254,18 +1437,16 @@ document.addEventListener("DOMContentLoaded", () => {
 
     updateDynamicGeometry();
 
-    showLine(
-      centerLine
-    );
+    showLine(centerLine);
 
-    await wait(450);
+    await wait(400);
 
 
     node.element.classList.add(
       "effect-moderate"
     );
 
-    await wait(1300);
+    await wait(1200);
 
 
     node.element.classList.remove(
@@ -1281,12 +1462,7 @@ document.addEventListener("DOMContentLoaded", () => {
       "is-faint"
     );
 
-
-    /*
-      The persistent state later propagates very slightly.
-    */
-
-    await wait(1300);
+    await wait(1200);
 
 
     F1.element.classList.add(
@@ -1299,8 +1475,367 @@ document.addEventListener("DOMContentLoaded", () => {
       "is-residual"
     );
 
+    await wait(1300);
+  }
 
-    await wait(1800);
+
+  /* -------------------------------------------------------
+     G — SUBSTANTIAL PROPAGATION
+     ------------------------------------------------------- */
+
+  async function runProfileG() {
+    const node =
+      getNode("G");
+
+    const centerLine =
+      getOrCreateLine(
+        "center-G"
+      );
+
+    const G1 =
+      getOrCreateDependent(
+        "G1",
+        "G",
+        -25,
+        72
+      );
+
+    const G2 =
+      getOrCreateDependent(
+        "G2",
+        "G",
+        31,
+        82
+      );
+
+    const line1 =
+      getOrCreateLine(
+        "G-G1"
+      );
+
+    const line2 =
+      getOrCreateLine(
+        "G-G2"
+      );
+
+
+    updateDynamicGeometry();
+
+    showLine(centerLine);
+
+    await wait(350);
+
+
+    node.element.classList.add(
+      "effect-substantial"
+    );
+
+    await wait(850);
+
+
+    G1.element.classList.add(
+      "is-visible"
+    );
+
+    showLine(line1);
+
+    await wait(450);
+
+
+    G2.element.classList.add(
+      "is-visible"
+    );
+
+    showLine(line2);
+
+    await wait(900);
+
+
+    node.element.classList.remove(
+      "effect-substantial"
+    );
+
+    G1.element.classList.add(
+      "is-weakened"
+    );
+
+    G2.element.classList.add(
+      "is-persistent"
+    );
+
+    centerLine.classList.add(
+      "is-faint"
+    );
+
+    line1.classList.add(
+      "is-faint"
+    );
+
+    line2.classList.add(
+      "is-residual"
+    );
+
+    await wait(1100);
+  }
+
+
+  /* -------------------------------------------------------
+     H — DELAYED BOUNDARY-CROSSING CONSEQUENCE
+     ------------------------------------------------------- */
+
+  async function runProfileH() {
+    const node =
+      getNode("H");
+
+    const centerLine =
+      getOrCreateLine(
+        "center-H"
+      );
+
+
+    /*
+      These distances are intentionally much larger than
+      the ordinary dependency structures.
+
+      The consequence should appear near or beyond the
+      apparent field boundary.
+    */
+
+    const H1 =
+      getOrCreateDependent(
+        "H1",
+        "H",
+        2,
+        118,
+        {
+          remote: true
+        }
+      );
+
+    const H2 =
+      getOrCreateDependent(
+        "H2",
+        "H",
+        2,
+        188,
+        {
+          remote: true
+        }
+      );
+
+    const H3 =
+      getOrCreateDependent(
+        "H3",
+        "H",
+        2,
+        252,
+        {
+          remote: true
+        }
+      );
+
+
+    const line1 =
+      getOrCreateLine(
+        "H-H1"
+      );
+
+    const line2 =
+      getOrCreateLine(
+        "H1-H2"
+      );
+
+    const line3 =
+      getOrCreateLine(
+        "H2-H3"
+      );
+
+
+    line1.classList.add(
+      "is-remote"
+    );
+
+    line2.classList.add(
+      "is-remote"
+    );
+
+    line3.classList.add(
+      "is-remote"
+    );
+
+
+    updateDynamicGeometry();
+
+    showLine(centerLine);
+
+    node.element.classList.add(
+      "effect-subtle"
+    );
+
+    await wait(650);
+
+
+    node.element.classList.remove(
+      "effect-subtle"
+    );
+
+    centerLine.classList.add(
+      "is-faint"
+    );
+
+
+    /*
+      Deliberately long uncertainty interval.
+    */
+
+    await wait(2100);
+
+
+    H1.element.classList.add(
+      "is-visible"
+    );
+
+    showLine(line1);
+
+    await wait(650);
+
+
+    H2.element.classList.add(
+      "is-visible"
+    );
+
+    showLine(line2);
+
+    await wait(650);
+
+
+    H3.element.classList.add(
+      "is-visible",
+      "is-persistent"
+    );
+
+    showLine(line3);
+
+
+    line1.classList.add(
+      "is-residual"
+    );
+
+    line2.classList.add(
+      "is-residual"
+    );
+
+    line3.classList.add(
+      "is-residual"
+    );
+
+
+    await wait(1500);
+  }
+
+
+  /* -------------------------------------------------------
+     I — MODERATE / CONTAINED DEPENDENCY
+     ------------------------------------------------------- */
+
+  async function runProfileI() {
+    const node =
+      getNode("I");
+
+    const centerLine =
+      getOrCreateLine(
+        "center-I"
+      );
+
+    const I1 =
+      getOrCreateDependent(
+        "I1",
+        "I",
+        25,
+        62
+      );
+
+    const line =
+      getOrCreateLine(
+        "I-I1"
+      );
+
+
+    updateDynamicGeometry();
+
+    showLine(centerLine);
+
+    node.element.classList.add(
+      "effect-moderate"
+    );
+
+    await wait(750);
+
+
+    I1.element.classList.add(
+      "is-visible"
+    );
+
+    showLine(line);
+
+    await wait(850);
+
+
+    node.element.classList.remove(
+      "effect-moderate"
+    );
+
+    I1.element.classList.add(
+      "is-weakened"
+    );
+
+    await wait(650);
+
+
+    I1.element.classList.remove(
+      "is-visible",
+      "is-weakened"
+    );
+
+    hideLine(line);
+
+    hideLine(centerLine);
+
+    await wait(400);
+  }
+
+
+  /* -------------------------------------------------------
+     COMPARATIVE EVENT GROUPS
+     ------------------------------------------------------- */
+
+  async function runADPair() {
+    /*
+      A and D intentionally happen close together.
+
+      Both look severe.
+
+      Both recover.
+    */
+
+    await Promise.all([
+      runProfileA(),
+      runProfileD()
+    ]);
+  }
+
+
+  async function runGIPair() {
+    /*
+      G and I begin similarly.
+
+      Their downstream consequences diverge.
+    */
+
+    await Promise.all([
+      runProfileG(),
+      runProfileI()
+    ]);
   }
 
 
@@ -1311,59 +1846,108 @@ document.addEventListener("DOMContentLoaded", () => {
   async function runObservationCycle() {
     while (true) {
 
-      /*
-        Restore neutral state before the next cycle.
-      */
-
       fullReset();
 
       updateDynamicGeometry();
 
-      await wait(3500);
+      await wait(3200);
 
 
       /*
-        A:
-        high visual intensity,
-        low persistence.
+        A / D
+
+        Spectacular immediate disturbance.
+        Both ultimately recover.
       */
 
-      await runProfileA();
+      await runADPair();
 
-      await wait(1200);
+      await wait(900);
 
 
       /*
-        B:
-        almost invisible direct response,
-        substantial downstream consequence.
+        C
+
+        Moderate direct effect.
+        Broader downstream propagation.
+      */
+
+      await runProfileC();
+
+      await wait(1000);
+
+
+      /*
+        B
+
+        Weak direct response.
+        Strong dependency consequence.
       */
 
       await runProfileB();
 
-      await wait(1500);
+      await wait(1100);
 
 
       /*
-        F:
-        modest direct response,
-        persistent alteration.
+        G / I
+
+        Similar initial magnitude.
+        Different downstream reach.
+      */
+
+      await runGIPair();
+
+      await wait(1000);
+
+
+      /*
+        F
+
+        Moderate effect.
+        Persistent alteration.
       */
 
       await runProfileF();
 
+      await wait(1100);
+
 
       /*
-        Hold the end state long enough for comparison.
+        H
 
-        A has completely recovered.
-
-        B retains damaged dependents.
-
-        F remains altered.
+        Almost invisible direct effect.
+        Long delay.
+        Consequence appears outside the assumed field.
       */
 
-      await wait(5500);
+      await runProfileH();
+
+      await wait(1100);
+
+
+      /*
+        E
+
+        Small effect.
+        No hidden reversal of meaning.
+        Genuinely contained.
+      */
+
+      await runProfileE();
+
+
+      /*
+        Hold the accumulated state.
+
+        At this point the reader can compare:
+        - what recovered
+        - what persisted
+        - what propagated
+        - what crossed the visible field
+      */
+
+      await wait(6000);
     }
   }
 
@@ -1390,11 +1974,6 @@ document.addEventListener("DOMContentLoaded", () => {
   );
 
 
-  /*
-    Give the browser one frame to fully establish geometry
-    before beginning the observation sequence.
-  */
-
   window.requestAnimationFrame(
     () => {
       updateDynamicGeometry();
@@ -1403,10 +1982,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   );
 
-
-  /* -------------------------------------------------------
-     RESPONSIVE POSITIONING
-     ------------------------------------------------------- */
 
   window.addEventListener(
     "resize",

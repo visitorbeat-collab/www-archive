@@ -56,7 +56,7 @@ body.gate-test-page::after {
 
 
 /* ---------------------------------------------------------
-   SHELL
+   SHELL / FIELD
    --------------------------------------------------------- */
 
 .gate-shell {
@@ -75,15 +75,6 @@ body.gate-test-page::after {
   padding: 4vh 4vw;
 }
 
-
-/* ---------------------------------------------------------
-   FIELD
-
-   Important:
-   the field must remain a true square so CSS contours and
-   JavaScript radial positioning use identical geometry.
-   --------------------------------------------------------- */
-
 .gate-field {
   position: relative;
 
@@ -98,11 +89,6 @@ body.gate-test-page::after {
 
 /* ---------------------------------------------------------
    PERMANENT STRUCTURAL TRACES
-
-   These are decorative/relational traces only.
-
-   The old permanent concentric field rings have been
-   intentionally removed.
    --------------------------------------------------------- */
 
 .field-traces {
@@ -113,11 +99,14 @@ body.gate-test-page::after {
   width: 100%;
   height: 100%;
 
-  overflow: visible;
-
   pointer-events: none;
 
   z-index: 0;
+
+  opacity: 1;
+
+  transition:
+    opacity 1000ms ease;
 }
 
 .trace-circle {
@@ -142,12 +131,7 @@ body.gate-test-page::after {
 
 
 /* ---------------------------------------------------------
-   INTERACTION GUIDANCE
-
-   These four contours correspond exactly to the four radial
-   centerlines used by JavaScript.
-
-   They remain invisible until a node is dragged.
+   DRAG GUIDANCE
    --------------------------------------------------------- */
 
 .guidance-layer {
@@ -166,15 +150,16 @@ body.gate-test-page::after {
   left: 50%;
   top: 50%;
 
-  border-radius: 50%;
-
-  transform: translate(-50%, -50%);
-
-  box-sizing: border-box;
+  transform:
+    translate(-50%, -50%);
 
   border:
     1px solid
     rgba(220, 230, 235, 0);
+
+  border-radius: 50%;
+
+  box-sizing: border-box;
 
   opacity: 0;
 
@@ -182,23 +167,6 @@ body.gate-test-page::after {
     opacity 420ms ease,
     border-color 420ms ease;
 }
-
-
-/*
-  JS usable radius = 49% of field width.
-
-  Therefore a radial ratio of R corresponds to a CSS
-  diameter of:
-
-  2 × 49% × R
-
-  The four JS radii are:
-
-  0.155
-  0.350
-  0.570
-  0.795
-*/
 
 .guidance-ring-0 {
   width: 15.19%;
@@ -219,11 +187,6 @@ body.gate-test-page::after {
   width: 77.91%;
   height: 77.91%;
 }
-
-
-/*
-  The field grammar becomes visible only during adjustment.
-*/
 
 .gate-field.is-adjusting
 .guidance-ring {
@@ -256,9 +219,7 @@ body.gate-test-page::after {
 
 
 /* ---------------------------------------------------------
-   RESOLUTION STRUCTURE
-
-   Uses the exact same geometry as the drag contours.
+   RESOLUTION RINGS
    --------------------------------------------------------- */
 
 .resolution-layer {
@@ -277,19 +238,20 @@ body.gate-test-page::after {
   left: 50%;
   top: 50%;
 
+  transform:
+    translate(-50%, -50%);
+
   border:
     1px solid
     rgba(224, 233, 237, 0);
 
   border-radius: 50%;
 
-  transform: translate(-50%, -50%);
-
   opacity: 0;
 
   transition:
-    border-color 1000ms ease,
-    opacity 1000ms ease;
+    opacity 900ms ease,
+    border-color 900ms ease;
 }
 
 .resolution-ring-0 {
@@ -312,17 +274,25 @@ body.gate-test-page::after {
   height: 77.91%;
 }
 
-.gate-field.is-resolved
+.gate-field.is-resolving
 .resolution-ring {
   opacity: 1;
 
   border-color:
-    rgba(224, 233, 237, 0.07);
+    rgba(224, 233, 237, 0.075);
+}
+
+.gate-field.is-map-visible
+.resolution-ring {
+  opacity: 0;
+
+  border-color:
+    rgba(224, 233, 237, 0);
 }
 
 
 /* ---------------------------------------------------------
-   CAUSAL LAYER
+   CAUSAL LINES
    --------------------------------------------------------- */
 
 .causal-layer {
@@ -333,18 +303,21 @@ body.gate-test-page::after {
   width: 100%;
   height: 100%;
 
-  overflow: visible;
-
   pointer-events: none;
 
+  overflow: visible;
+
   z-index: 2;
+
+  transition:
+    opacity 700ms ease;
 }
 
 .causal-line {
   fill: none;
 
   stroke:
-    rgba(206, 217, 222, 0.22);
+    rgba(206, 217, 222, 0.27);
 
   stroke-width: 1;
 
@@ -353,26 +326,23 @@ body.gate-test-page::after {
   opacity: 0;
 
   transition:
-    opacity 500ms ease,
-    stroke 500ms ease;
+    opacity 420ms ease;
 }
 
 .causal-line.is-visible {
   opacity: 1;
 }
 
-.causal-line.is-faint {
-  opacity: 0.3;
+.causal-line.is-hold {
+  opacity: 0.42;
 }
 
-.causal-line.is-residual {
-  opacity: 0.16;
+.causal-line.is-faint {
+  opacity: 0.2;
 }
 
 .causal-line.is-remote {
   stroke-dasharray: 1 13;
-
-  opacity: 0.13;
 }
 
 
@@ -388,6 +358,9 @@ body.gate-test-page::after {
   pointer-events: none;
 
   z-index: 3;
+
+  transition:
+    opacity 700ms ease;
 }
 
 .dependent-node {
@@ -401,7 +374,7 @@ body.gate-test-page::after {
 
   border:
     1px solid
-    rgba(214, 224, 229, 0.38);
+    rgba(214, 224, 229, 0.4);
 
   border-radius: 50%;
 
@@ -410,14 +383,14 @@ body.gate-test-page::after {
   opacity: 0;
 
   transition:
-    opacity 500ms ease,
-    transform 500ms ease,
-    border-color 700ms ease,
-    background 700ms ease;
+    opacity 420ms ease,
+    transform 520ms ease,
+    border-color 520ms ease,
+    background 520ms ease;
 }
 
 .dependent-node.is-visible {
-  opacity: 0.72;
+  opacity: 0.78;
 }
 
 .dependent-node.is-weakened {
@@ -446,7 +419,7 @@ body.gate-test-page::after {
 }
 
 .dependent-node.is-persistent {
-  opacity: 0.42;
+  opacity: 0.5;
 }
 
 .dependent-node.is-remote {
@@ -454,16 +427,16 @@ body.gate-test-page::after {
   height: 8px;
 
   border-color:
-    rgba(214, 224, 229, 0.23);
+    rgba(214, 224, 229, 0.26);
 }
 
 .dependent-node.is-remote.is-visible {
-  opacity: 0.48;
+  opacity: 0.55;
 }
 
 
 /* ---------------------------------------------------------
-   CENTRAL NODE
+   CENTRAL ACTOR
    --------------------------------------------------------- */
 
 .gate-center {
@@ -485,6 +458,10 @@ body.gate-test-page::after {
   border-radius: 50%;
 
   z-index: 6;
+
+  transition:
+    opacity 800ms ease,
+    transform 800ms ease;
 }
 
 .gate-center::before {
@@ -500,11 +477,6 @@ body.gate-test-page::after {
     rgba(225, 233, 237, 0.11);
 
   border-radius: 50%;
-
-  transition:
-    width 800ms ease,
-    height 800ms ease,
-    border-color 800ms ease;
 }
 
 .gate-center::after {
@@ -520,11 +492,6 @@ body.gate-test-page::after {
     rgba(229, 236, 239, 0.21);
 
   border-radius: 50%;
-
-  transition:
-    width 800ms ease,
-    height 800ms ease,
-    border-color 800ms ease;
 }
 
 .gate-center-core {
@@ -547,39 +514,6 @@ body.gate-test-page::after {
     6.5s
     ease-in-out
     infinite;
-
-  transition:
-    width 800ms ease,
-    height 800ms ease,
-    box-shadow 800ms ease;
-}
-
-.gate-field.is-resolved
-.gate-center::before {
-  width: 46px;
-  height: 46px;
-
-  border-color:
-    rgba(229, 236, 239, 0.19);
-}
-
-.gate-field.is-resolved
-.gate-center::after {
-  width: 23px;
-  height: 23px;
-
-  border-color:
-    rgba(229, 236, 239, 0.34);
-}
-
-.gate-field.is-resolved
-.gate-center-core {
-  width: 6px;
-  height: 6px;
-
-  box-shadow:
-    0 0 18px
-    rgba(230, 238, 241, 0.18);
 }
 
 
@@ -609,17 +543,14 @@ body.gate-test-page::after {
 
   touch-action: none;
 
+  opacity: 1;
+
   transition:
     left 220ms ease,
     top 220ms ease,
-    opacity 240ms ease;
+    opacity 480ms ease,
+    transform 800ms ease;
 }
-
-
-/*
-  Positional easing is removed while dragging so the
-  node follows the pointer cleanly.
-*/
 
 .gate-node.is-dragging {
   cursor: grabbing;
@@ -672,28 +603,60 @@ body.gate-test-page::after {
 
   border-radius: 50%;
 
+  pointer-events: none;
+
   transition:
     width 450ms ease,
     height 450ms ease,
     opacity 450ms ease,
     border-color 450ms ease;
-
-  pointer-events: none;
 }
 
-.gate-node:hover .node-body,
-.gate-node.is-dragging .node-body {
+.gate-node:hover
+.node-body,
+.gate-node.is-dragging
+.node-body {
   opacity: 1;
-}
-
-.gate-field.is-resolved
-.gate-node {
-  cursor: default;
 }
 
 
 /* ---------------------------------------------------------
-   EFFECT STATES
+   ACTIVE-CASE FOCUS
+   --------------------------------------------------------- */
+
+/*
+  During an observation case, unrelated primaries recede
+  slightly.
+
+  The active node stays fully legible.
+*/
+
+.gate-field.has-active-case
+.gate-node {
+  opacity: 0.22;
+}
+
+.gate-field.has-active-case
+.gate-node.is-active-case {
+  opacity: 1;
+}
+
+.gate-node.is-active-case
+.node-body {
+  border-color:
+    rgba(230, 237, 240, 0.68);
+
+  opacity: 1;
+}
+
+.gate-node.is-active-case::after {
+  border-color:
+    rgba(220, 230, 235, 0.065);
+}
+
+
+/* ---------------------------------------------------------
+   PROFILE EFFECTS
    --------------------------------------------------------- */
 
 .gate-node.effect-strong
@@ -731,9 +694,6 @@ body.gate-test-page::after {
 .gate-node.effect-collapse::after {
   width: 22px;
   height: 22px;
-
-  border-color:
-    rgba(221, 231, 235, 0.07);
 }
 
 .gate-node.effect-subtle
@@ -742,9 +702,6 @@ body.gate-test-page::after {
 
   transform:
     scale(0.94);
-
-  border-color:
-    rgba(222, 230, 234, 0.35);
 }
 
 .gate-node.effect-moderate
@@ -754,9 +711,6 @@ body.gate-test-page::after {
 
   border-color:
     rgba(229, 236, 239, 0.72);
-
-  background:
-    rgba(220, 230, 234, 0.025);
 
   box-shadow:
     0 0 12px
@@ -782,9 +736,6 @@ body.gate-test-page::after {
     scale(1.06);
 
   opacity: 0.78;
-
-  border-color:
-    rgba(222, 230, 234, 0.46);
 }
 
 .gate-node.effect-persistent
@@ -803,25 +754,9 @@ body.gate-test-page::after {
     rgba(220, 230, 234, 0.055);
 }
 
-.gate-node.effect-persistent::after {
-  border-color:
-    rgba(219, 228, 232, 0.06);
-}
-
-.gate-node.effect-residual
-.node-body {
-  border-color:
-    rgba(222, 231, 235, 0.38);
-
-  background:
-    rgba(220, 229, 233, 0.025);
-
-  opacity: 0.74;
-}
-
 
 /* ---------------------------------------------------------
-   INTERNAL MARKS
+   NODE MARKS
    --------------------------------------------------------- */
 
 .node-mark {
@@ -846,8 +781,7 @@ body.gate-test-page::after {
   width: 2px;
   height: 2px;
 
-  background:
-    var(--gate-node);
+  background: var(--gate-node);
 
   border-radius: 50%;
 
@@ -866,8 +800,7 @@ body.gate-test-page::after {
   width: 1px;
   height: 7px;
 
-  background:
-    var(--gate-node);
+  background: var(--gate-node);
 
   transform:
     translate(-50%, -50%)
@@ -885,8 +818,7 @@ body.gate-test-page::after {
   width: 1px;
   height: 7px;
 
-  background:
-    var(--gate-node);
+  background: var(--gate-node);
 }
 
 .mark-double::before {
@@ -908,8 +840,7 @@ body.gate-test-page::after {
   width: 8px;
   height: 1px;
 
-  background:
-    var(--gate-node);
+  background: var(--gate-node);
 
   transform:
     translate(-50%, -50%)
@@ -925,8 +856,7 @@ body.gate-test-page::after {
   left: 50%;
   top: 50%;
 
-  background:
-    var(--gate-node);
+  background: var(--gate-node);
 
   transform:
     translate(-50%, -50%);
@@ -974,8 +904,7 @@ body.gate-test-page::after {
   width: 1px;
   height: 7px;
 
-  background:
-    var(--gate-node);
+  background: var(--gate-node);
 
   transform:
     translate(-50%, -50%);
@@ -992,8 +921,7 @@ body.gate-test-page::after {
   width: 2px;
   height: 2px;
 
-  background:
-    var(--gate-node);
+  background: var(--gate-node);
 
   border-radius: 50%;
 
@@ -1020,11 +948,194 @@ body.gate-test-page::after {
   width: 7px;
   height: 1px;
 
-  background:
-    var(--gate-node);
+  background: var(--gate-node);
 
   transform:
     translate(-50%, -50%);
+}
+
+
+/* ---------------------------------------------------------
+   RESOLVED MAP
+   --------------------------------------------------------- */
+
+.resolution-map {
+  position: absolute;
+
+  inset: 0;
+
+  z-index: 8;
+
+  pointer-events: none;
+
+  opacity: 0;
+
+  transform:
+    scale(0.965);
+
+  transition:
+    opacity 1200ms ease,
+    transform 1400ms ease;
+}
+
+.resolution-map-lines {
+  position: absolute;
+
+  inset: 0;
+
+  width: 100%;
+  height: 100%;
+}
+
+.resolved-link {
+  stroke:
+    rgba(214, 225, 230, 0.22);
+
+  stroke-width: 1;
+
+  opacity: 0;
+
+  transition:
+    opacity 900ms ease;
+}
+
+.resolved-link-secondary {
+  stroke:
+    rgba(214, 225, 230, 0.12);
+
+  stroke-dasharray: 3 9;
+}
+
+.resolved-node {
+  position: absolute;
+
+  transform:
+    translate(-50%, -50%)
+    scale(0.8);
+
+  width: 36px;
+  height: 36px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-family:
+    "IBM Plex Mono",
+    monospace;
+
+  font-size: 19px;
+
+  color:
+    rgba(228, 235, 239, 0.77);
+
+  opacity: 0;
+
+  transition:
+    opacity 900ms ease,
+    transform 1100ms ease;
+}
+
+.resolved-condition {
+  left: 50%;
+  top: 50%;
+
+  font-size: 26px;
+
+  color:
+    rgba(239, 243, 245, 0.94);
+}
+
+.resolved-boundary {
+  left: 27%;
+  top: 45.5%;
+}
+
+.resolved-exposure {
+  left: 71%;
+  top: 30%;
+}
+
+.resolved-participation {
+  left: 73.5%;
+  top: 63.5%;
+}
+
+.resolved-retention {
+  left: 25.5%;
+  top: 70.5%;
+}
+
+.resolved-effect {
+  left: 47.5%;
+  top: 76.5%;
+}
+
+.resolved-nontext {
+  left: 65.5%;
+  top: 84.5%;
+}
+
+
+/* ---------------------------------------------------------
+   RESOLUTION CHOREOGRAPHY
+   --------------------------------------------------------- */
+
+.gate-field.is-condensing
+.gate-node {
+  opacity: 0;
+
+  transform:
+    translate(-50%, -50%)
+    scale(0.72);
+}
+
+.gate-field.is-condensing
+.dependent-layer,
+.gate-field.is-condensing
+.causal-layer {
+  opacity: 0;
+}
+
+.gate-field.is-condensing
+.field-traces {
+  opacity: 0.18;
+}
+
+.gate-field.is-condensing
+.gate-center {
+  opacity: 0;
+
+  transform:
+    translate(-50%, -50%)
+    scale(0.65);
+}
+
+.gate-field.is-map-visible
+.resolution-map {
+  opacity: 1;
+
+  transform:
+    scale(1);
+}
+
+.gate-field.is-map-visible
+.resolved-node {
+  opacity: 1;
+
+  transform:
+    translate(-50%, -50%)
+    scale(1);
+}
+
+.gate-field.is-map-visible
+.resolved-link {
+  opacity: 1;
+}
+
+.gate-field.is-map-visible
+.resolved-link-secondary {
+  opacity: 0.55;
 }
 
 
@@ -1054,7 +1165,8 @@ body.gate-test-page::after {
   }
 
   .gate-field {
-    width: min(96vw, 88vh, 700px);
+    width:
+      min(96vw, 88vh, 700px);
   }
 
   .gate-center {
@@ -1070,5 +1182,16 @@ body.gate-test-page::after {
   .node-body {
     width: 17px;
     height: 17px;
+  }
+
+  .resolved-node {
+    width: 30px;
+    height: 30px;
+
+    font-size: 17px;
+  }
+
+  .resolved-condition {
+    font-size: 23px;
   }
 }

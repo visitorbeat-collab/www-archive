@@ -2,6 +2,7 @@
 
 
 document.addEventListener("DOMContentLoaded", () => {
+
   const field =
     document.getElementById("gate-field");
 
@@ -25,13 +26,16 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
 
-  const nodeElements = Array.from(
-    field.querySelectorAll(".gate-node")
-  );
+  const nodeElements =
+    Array.from(
+      field.querySelectorAll(
+        ".gate-node"
+      )
+    );
 
 
   /* -------------------------------------------------------
-     CONFIGURATION
+     CONFIG
      ------------------------------------------------------- */
 
   const MIN_ANGLE_GAP = 28;
@@ -42,15 +46,6 @@ document.addEventListener("DOMContentLoaded", () => {
   const DRAG_MIN_RATIO = 0.08;
   const DRAG_MAX_RATIO = 0.88;
 
-
-  /*
-    Hidden required relational classes.
-
-    0 = innermost
-    1 = second
-    2 = third
-    3 = outermost
-  */
 
   const TARGET_CLASS = {
     A: 2,
@@ -64,13 +59,6 @@ document.addEventListener("DOMContentLoaded", () => {
     I: 2
   };
 
-
-  /*
-    The exact four radial contour centerlines.
-
-    Every released node snaps to whichever of these
-    four radii is physically closest.
-  */
 
   const RADIAL_CLASSES = [
     0.155,
@@ -94,7 +82,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
   let resolved = false;
-
   let cycleToken = 0;
 
 
@@ -117,30 +104,34 @@ document.addEventListener("DOMContentLoaded", () => {
   function shuffle(array) {
     const copy = [...array];
 
-
     for (
       let i = copy.length - 1;
       i > 0;
       i -= 1
     ) {
-      const j = Math.floor(
-        Math.random() *
-        (i + 1)
-      );
+      const j =
+        Math.floor(
+          Math.random() *
+          (i + 1)
+        );
 
-
-      [copy[i], copy[j]] = [
+      [
+        copy[i],
+        copy[j]
+      ] = [
         copy[j],
         copy[i]
       ];
     }
 
-
     return copy;
   }
 
 
-  function randomBetween(min, max) {
+  function randomBetween(
+    min,
+    max
+  ) {
     return (
       min +
       Math.random() *
@@ -149,7 +140,9 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
 
-  function degreesToRadians(degrees) {
+  function degreesToRadians(
+    degrees
+  ) {
     return (
       degrees *
       Math.PI /
@@ -162,23 +155,23 @@ document.addEventListener("DOMContentLoaded", () => {
     let normalized =
       angle % 360;
 
-
     if (normalized < 0) {
       normalized += 360;
     }
-
 
     return normalized;
   }
 
 
-  function angularDistance(a, b) {
+  function angularDistance(
+    a,
+    b
+  ) {
     const difference =
       Math.abs(
         normalizeAngle(a) -
         normalizeAngle(b)
       );
-
 
     return Math.min(
       difference,
@@ -188,20 +181,18 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
   /* -------------------------------------------------------
-     FIELD GEOMETRY
+     GEOMETRY
      ------------------------------------------------------- */
 
   function getFieldGeometry() {
     const rect =
       field.getBoundingClientRect();
 
-
     const size =
       Math.min(
         rect.width,
         rect.height
       );
-
 
     return {
       rect,
@@ -218,14 +209,14 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
 
-  function getElementCenter(element) {
+  function getElementCenter(
+    element
+  ) {
     const fieldRect =
       field.getBoundingClientRect();
 
-
     const rect =
       element.getBoundingClientRect();
-
 
     return {
       x:
@@ -242,17 +233,15 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
   /* -------------------------------------------------------
-     ANGLE GENERATION
+     RANDOM ANGLES
      ------------------------------------------------------- */
 
   function generateAngles(count) {
     const baseGap =
       360 / count;
 
-
     const rotation =
       Math.random() * 360;
-
 
     const angles = [];
 
@@ -304,7 +293,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
   /* -------------------------------------------------------
-     PRIMARY NODE STATE
+     PRIMARY STATE
      ------------------------------------------------------- */
 
   const profiles =
@@ -345,11 +334,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function assignMarkers() {
     const shuffledMarkers =
-      shuffle(markerClasses);
+      shuffle(
+        markerClasses
+      );
 
 
     profiles.forEach(
       (node, index) => {
+
         const mark =
           node.element.querySelector(
             ".node-mark"
@@ -413,6 +405,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     profiles.forEach(
       (node, index) => {
+
         node.angle =
           angles[index];
 
@@ -484,13 +477,12 @@ document.addEventListener("DOMContentLoaded", () => {
       positionNode
     );
 
-
     updateDynamicGeometry();
   }
 
 
   /* -------------------------------------------------------
-     SNAP TO NEAREST CONTOUR
+     SNAP
      ------------------------------------------------------- */
 
   function getNearestClass(
@@ -507,7 +499,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
     for (
       let index = 1;
-      index < RADIAL_CLASSES.length;
+      index <
+      RADIAL_CLASSES.length;
       index += 1
     ) {
       const distance =
@@ -560,7 +553,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
   /* -------------------------------------------------------
-     RADIAL DRAGGING
+     DRAGGING
      ------------------------------------------------------- */
 
   function calculatePointerRadiusRatio(
@@ -720,19 +713,10 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
 
-    /*
-      Every release now snaps exactly to one of the
-      four visible radial contours.
-    */
-
     snapNodeToNearestContour(
       node
     );
 
-
-    /*
-      Validation happens only after the snap.
-    */
 
     evaluateWholeModel();
   }
@@ -785,7 +769,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
   /* -------------------------------------------------------
-     WHOLE-MODEL VALIDATION
+     VALIDATION
      ------------------------------------------------------- */
 
   function evaluateWholeModel() {
@@ -793,14 +777,6 @@ document.addEventListener("DOMContentLoaded", () => {
       return;
     }
 
-
-    /*
-      Every primary node must first have been deliberately
-      assigned to a contour.
-
-      This avoids treating a random starting position as an
-      intentional interpretation.
-    */
 
     const allAssigned =
       profiles.every(
@@ -816,14 +792,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const coherent =
       profiles.every(
-        node => {
-          return (
-            node.currentClass ===
-            TARGET_CLASS[
-              node.profile
-            ]
-          );
-        }
+        node =>
+          node.currentClass ===
+          TARGET_CLASS[
+            node.profile
+          ]
       );
 
 
@@ -899,18 +872,15 @@ document.addEventListener("DOMContentLoaded", () => {
       start.x
     );
 
-
     line.setAttribute(
       "y1",
       start.y
     );
 
-
     line.setAttribute(
       "x2",
       end.x
     );
-
 
     line.setAttribute(
       "y2",
@@ -929,8 +899,8 @@ document.addEventListener("DOMContentLoaded", () => {
   function hideLine(line) {
     line.classList.remove(
       "is-visible",
+      "is-hold",
       "is-faint",
-      "is-residual",
       "is-remote"
     );
   }
@@ -1251,6 +1221,45 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
   /* -------------------------------------------------------
+     CASE FOCUS
+     ------------------------------------------------------- */
+
+  function focusCase(
+    profileId
+  ) {
+    field.classList.add(
+      "has-active-case"
+    );
+
+
+    profiles.forEach(
+      node => {
+        node.element.classList.toggle(
+          "is-active-case",
+          node.profile === profileId
+        );
+      }
+    );
+  }
+
+
+  function clearCaseFocus() {
+    field.classList.remove(
+      "has-active-case"
+    );
+
+
+    profiles.forEach(
+      node => {
+        node.element.classList.remove(
+          "is-active-case"
+        );
+      }
+    );
+  }
+
+
+  /* -------------------------------------------------------
      RESET
      ------------------------------------------------------- */
 
@@ -1264,8 +1273,7 @@ document.addEventListener("DOMContentLoaded", () => {
           "effect-moderate",
           "effect-substantial",
           "effect-small",
-          "effect-persistent",
-          "effect-residual"
+          "effect-persistent"
         );
       }
     );
@@ -1293,22 +1301,24 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
 
-  function fullReset() {
+  function resetObservationState() {
     if (resolved) {
       return;
     }
 
 
     clearPrimaryEffects();
-
     hideAllLines();
-
     hideAllDependents();
+    clearCaseFocus();
   }
 
 
   /* -------------------------------------------------------
-     A — dramatic / reversible
+     CASE A
+     0 dependents
+     dramatic outward response
+     full recovery
      ------------------------------------------------------- */
 
   async function runProfileA() {
@@ -1319,20 +1329,24 @@ document.addEventListener("DOMContentLoaded", () => {
       getNode("A");
 
 
-    const line =
+    const centerLine =
       getOrCreateLine(
         "center-A"
       );
 
 
+    focusCase("A");
+
     updateDynamicGeometry();
 
-    showLine(line);
 
-    await wait(400);
+    await wait(700);
 
 
-    if (resolved) return;
+    showLine(centerLine);
+
+
+    await wait(700);
 
 
     node.element.classList.add(
@@ -1340,7 +1354,7 @@ document.addEventListener("DOMContentLoaded", () => {
     );
 
 
-    await wait(1300);
+    await wait(1500);
 
 
     node.element.classList.remove(
@@ -1348,18 +1362,20 @@ document.addEventListener("DOMContentLoaded", () => {
     );
 
 
-    await wait(700);
+    centerLine.classList.add(
+      "is-hold"
+    );
 
 
-    hideLine(line);
-
-
-    await wait(500);
+    await wait(2400);
   }
 
 
   /* -------------------------------------------------------
-     B — silent dependency hub
+     CASE B
+     3 dependents
+     weak direct response
+     downstream degradation
      ------------------------------------------------------- */
 
   async function runProfileB() {
@@ -1421,9 +1437,18 @@ document.addEventListener("DOMContentLoaded", () => {
       );
 
 
+    focusCase("B");
+
     updateDynamicGeometry();
 
+
+    await wait(700);
+
+
     showLine(centerLine);
+
+
+    await wait(700);
 
 
     node.element.classList.add(
@@ -1431,7 +1456,7 @@ document.addEventListener("DOMContentLoaded", () => {
     );
 
 
-    await wait(800);
+    await wait(850);
 
 
     node.element.classList.remove(
@@ -1439,10 +1464,12 @@ document.addEventListener("DOMContentLoaded", () => {
     );
 
 
+    /*
+      Important delay:
+      the primary appears almost unaffected.
+    */
+
     await wait(1100);
-
-
-    if (resolved) return;
 
 
     B1.element.classList.add(
@@ -1452,7 +1479,7 @@ document.addEventListener("DOMContentLoaded", () => {
     showLine(line1);
 
 
-    await wait(400);
+    await wait(500);
 
 
     B2.element.classList.add(
@@ -1462,7 +1489,7 @@ document.addEventListener("DOMContentLoaded", () => {
     showLine(line2);
 
 
-    await wait(400);
+    await wait(500);
 
 
     B3.element.classList.add(
@@ -1480,7 +1507,7 @@ document.addEventListener("DOMContentLoaded", () => {
     );
 
 
-    await wait(450);
+    await wait(500);
 
 
     B2.element.classList.add(
@@ -1488,7 +1515,7 @@ document.addEventListener("DOMContentLoaded", () => {
     );
 
 
-    await wait(450);
+    await wait(500);
 
 
     B3.element.classList.add(
@@ -1497,32 +1524,32 @@ document.addEventListener("DOMContentLoaded", () => {
     );
 
 
-    line1.classList.add(
-      "is-faint"
+    centerLine.classList.add(
+      "is-hold"
     );
 
+    line1.classList.add(
+      "is-hold"
+    );
 
     line2.classList.add(
-      "is-faint"
+      "is-hold"
     );
-
 
     line3.classList.add(
-      "is-residual"
+      "is-hold"
     );
 
 
-    centerLine.classList.add(
-      "is-faint"
-    );
-
-
-    await wait(1300);
+    await wait(3000);
   }
 
 
   /* -------------------------------------------------------
-     C — broad propagation
+     CASE C
+     3 dependents
+     moderate propagation
+     one residual remains
      ------------------------------------------------------- */
 
   async function runProfileC() {
@@ -1584,12 +1611,18 @@ document.addEventListener("DOMContentLoaded", () => {
       );
 
 
+    focusCase("C");
+
     updateDynamicGeometry();
+
+
+    await wait(700);
+
 
     showLine(centerLine);
 
 
-    await wait(350);
+    await wait(700);
 
 
     node.element.classList.add(
@@ -1600,9 +1633,6 @@ document.addEventListener("DOMContentLoaded", () => {
     await wait(900);
 
 
-    if (resolved) return;
-
-
     C1.element.classList.add(
       "is-visible"
     );
@@ -1610,7 +1640,7 @@ document.addEventListener("DOMContentLoaded", () => {
     showLine(line1);
 
 
-    await wait(350);
+    await wait(450);
 
 
     C2.element.classList.add(
@@ -1620,7 +1650,7 @@ document.addEventListener("DOMContentLoaded", () => {
     showLine(line2);
 
 
-    await wait(350);
+    await wait(450);
 
 
     C3.element.classList.add(
@@ -1638,6 +1668,11 @@ document.addEventListener("DOMContentLoaded", () => {
     );
 
 
+    /*
+      Two largely recover.
+      One remains as residue.
+    */
+
     C1.element.classList.add(
       "is-weakened"
     );
@@ -1653,32 +1688,32 @@ document.addEventListener("DOMContentLoaded", () => {
     );
 
 
+    centerLine.classList.add(
+      "is-hold"
+    );
+
     line1.classList.add(
       "is-faint"
     );
-
 
     line2.classList.add(
       "is-faint"
     );
 
-
     line3.classList.add(
-      "is-residual"
+      "is-hold"
     );
 
 
-    centerLine.classList.add(
-      "is-faint"
-    );
-
-
-    await wait(1200);
+    await wait(3000);
   }
 
 
   /* -------------------------------------------------------
-     D — severe / reversible
+     CASE D
+     0 dependents
+     dramatic inward collapse
+     full recovery
      ------------------------------------------------------- */
 
   async function runProfileD() {
@@ -1689,18 +1724,24 @@ document.addEventListener("DOMContentLoaded", () => {
       getNode("D");
 
 
-    const line =
+    const centerLine =
       getOrCreateLine(
         "center-D"
       );
 
 
+    focusCase("D");
+
     updateDynamicGeometry();
 
-    showLine(line);
+
+    await wait(700);
 
 
-    await wait(350);
+    showLine(centerLine);
+
+
+    await wait(700);
 
 
     node.element.classList.add(
@@ -1708,7 +1749,7 @@ document.addEventListener("DOMContentLoaded", () => {
     );
 
 
-    await wait(1500);
+    await wait(1600);
 
 
     node.element.classList.remove(
@@ -1716,18 +1757,20 @@ document.addEventListener("DOMContentLoaded", () => {
     );
 
 
-    await wait(900);
+    centerLine.classList.add(
+      "is-hold"
+    );
 
 
-    hideLine(line);
-
-
-    await wait(450);
+    await wait(2400);
   }
 
 
   /* -------------------------------------------------------
-     E — contained
+     CASE E
+     0 dependents
+     small contained response
+     full recovery
      ------------------------------------------------------- */
 
   async function runProfileE() {
@@ -1738,18 +1781,24 @@ document.addEventListener("DOMContentLoaded", () => {
       getNode("E");
 
 
-    const line =
+    const centerLine =
       getOrCreateLine(
         "center-E"
       );
 
 
+    focusCase("E");
+
     updateDynamicGeometry();
 
-    showLine(line);
+
+    await wait(700);
 
 
-    await wait(350);
+    showLine(centerLine);
+
+
+    await wait(700);
 
 
     node.element.classList.add(
@@ -1757,7 +1806,7 @@ document.addEventListener("DOMContentLoaded", () => {
     );
 
 
-    await wait(800);
+    await wait(1000);
 
 
     node.element.classList.remove(
@@ -1765,18 +1814,20 @@ document.addEventListener("DOMContentLoaded", () => {
     );
 
 
-    await wait(500);
+    centerLine.classList.add(
+      "is-hold"
+    );
 
 
-    hideLine(line);
-
-
-    await wait(450);
+    await wait(2400);
   }
 
 
   /* -------------------------------------------------------
-     F — persistent
+     CASE F
+     1 dependent
+     moderate direct change
+     both states persist
      ------------------------------------------------------- */
 
   async function runProfileF() {
@@ -1808,12 +1859,18 @@ document.addEventListener("DOMContentLoaded", () => {
       );
 
 
+    focusCase("F");
+
     updateDynamicGeometry();
+
+
+    await wait(700);
+
 
     showLine(centerLine);
 
 
-    await wait(400);
+    await wait(700);
 
 
     node.element.classList.add(
@@ -1834,15 +1891,7 @@ document.addEventListener("DOMContentLoaded", () => {
     );
 
 
-    centerLine.classList.add(
-      "is-faint"
-    );
-
-
     await wait(1200);
-
-
-    if (resolved) return;
 
 
     F1.element.classList.add(
@@ -1851,18 +1900,29 @@ document.addEventListener("DOMContentLoaded", () => {
     );
 
 
-    dependentLine.classList.add(
-      "is-visible",
-      "is-residual"
+    showLine(
+      dependentLine
     );
 
 
-    await wait(1300);
+    centerLine.classList.add(
+      "is-hold"
+    );
+
+    dependentLine.classList.add(
+      "is-hold"
+    );
+
+
+    await wait(3000);
   }
 
 
   /* -------------------------------------------------------
-     G — substantial propagation
+     CASE G
+     2 dependents
+     substantial propagation
+     one residual remains
      ------------------------------------------------------- */
 
   async function runProfileG() {
@@ -1909,12 +1969,18 @@ document.addEventListener("DOMContentLoaded", () => {
       );
 
 
+    focusCase("G");
+
     updateDynamicGeometry();
+
+
+    await wait(700);
+
 
     showLine(centerLine);
 
 
-    await wait(350);
+    await wait(700);
 
 
     node.element.classList.add(
@@ -1922,10 +1988,7 @@ document.addEventListener("DOMContentLoaded", () => {
     );
 
 
-    await wait(850);
-
-
-    if (resolved) return;
+    await wait(900);
 
 
     G1.element.classList.add(
@@ -1935,7 +1998,7 @@ document.addEventListener("DOMContentLoaded", () => {
     showLine(line1);
 
 
-    await wait(450);
+    await wait(500);
 
 
     G2.element.classList.add(
@@ -1964,26 +2027,27 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     centerLine.classList.add(
-      "is-faint"
+      "is-hold"
     );
-
 
     line1.classList.add(
       "is-faint"
     );
 
-
     line2.classList.add(
-      "is-residual"
+      "is-hold"
     );
 
 
-    await wait(1100);
+    await wait(3000);
   }
 
 
   /* -------------------------------------------------------
-     H — delayed boundary-crossing consequence
+     CASE H
+     3 dependents in a long outward chain
+     almost no direct response
+     consequence crosses apparent boundary
      ------------------------------------------------------- */
 
   async function runProfileH() {
@@ -2058,20 +2122,27 @@ document.addEventListener("DOMContentLoaded", () => {
       "is-remote"
     );
 
-
     line2.classList.add(
       "is-remote"
     );
-
 
     line3.classList.add(
       "is-remote"
     );
 
 
+    focusCase("H");
+
     updateDynamicGeometry();
 
+
+    await wait(700);
+
+
     showLine(centerLine);
+
+
+    await wait(700);
 
 
     node.element.classList.add(
@@ -2079,7 +2150,7 @@ document.addEventListener("DOMContentLoaded", () => {
     );
 
 
-    await wait(650);
+    await wait(700);
 
 
     node.element.classList.remove(
@@ -2087,15 +2158,11 @@ document.addEventListener("DOMContentLoaded", () => {
     );
 
 
-    centerLine.classList.add(
-      "is-faint"
-    );
+    /*
+      Long delay is important.
+    */
 
-
-    await wait(2100);
-
-
-    if (resolved) return;
+    await wait(1800);
 
 
     H1.element.classList.add(
@@ -2105,7 +2172,7 @@ document.addEventListener("DOMContentLoaded", () => {
     showLine(line1);
 
 
-    await wait(650);
+    await wait(700);
 
 
     H2.element.classList.add(
@@ -2115,7 +2182,7 @@ document.addEventListener("DOMContentLoaded", () => {
     showLine(line2);
 
 
-    await wait(650);
+    await wait(700);
 
 
     H3.element.classList.add(
@@ -2126,27 +2193,32 @@ document.addEventListener("DOMContentLoaded", () => {
     showLine(line3);
 
 
-    line1.classList.add(
-      "is-residual"
+    centerLine.classList.add(
+      "is-hold"
     );
 
+    line1.classList.add(
+      "is-hold"
+    );
 
     line2.classList.add(
-      "is-residual"
+      "is-hold"
     );
-
 
     line3.classList.add(
-      "is-residual"
+      "is-hold"
     );
 
 
-    await wait(1500);
+    await wait(3200);
   }
 
 
   /* -------------------------------------------------------
-     I — contained dependency
+     CASE I
+     1 dependent
+     moderate response
+     both recover
      ------------------------------------------------------- */
 
   async function runProfileI() {
@@ -2172,15 +2244,24 @@ document.addEventListener("DOMContentLoaded", () => {
       );
 
 
-    const line =
+    const dependentLine =
       getOrCreateLine(
         "I-I1"
       );
 
 
+    focusCase("I");
+
     updateDynamicGeometry();
 
+
+    await wait(700);
+
+
     showLine(centerLine);
+
+
+    await wait(700);
 
 
     node.element.classList.add(
@@ -2188,20 +2269,19 @@ document.addEventListener("DOMContentLoaded", () => {
     );
 
 
-    await wait(750);
-
-
-    if (resolved) return;
+    await wait(900);
 
 
     I1.element.classList.add(
       "is-visible"
     );
 
-    showLine(line);
+    showLine(
+      dependentLine
+    );
 
 
-    await wait(850);
+    await wait(1000);
 
 
     node.element.classList.remove(
@@ -2214,7 +2294,7 @@ document.addEventListener("DOMContentLoaded", () => {
     );
 
 
-    await wait(650);
+    await wait(700);
 
 
     I1.element.classList.remove(
@@ -2223,48 +2303,28 @@ document.addEventListener("DOMContentLoaded", () => {
     );
 
 
-    hideLine(line);
+    hideLine(
+      dependentLine
+    );
 
-    hideLine(centerLine);
+
+    centerLine.classList.add(
+      "is-hold"
+    );
 
 
-    await wait(400);
+    await wait(2400);
   }
 
 
   /* -------------------------------------------------------
-     COMPARISON GROUPS
+     CASE TABLE
      ------------------------------------------------------- */
 
-  async function runADPair() {
-    await Promise.all([
-      runProfileA(),
-      runProfileD()
-    ]);
-  }
-
-
-  async function runGIPair() {
-    await Promise.all([
-      runProfileG(),
-      runProfileI()
-    ]);
-  }
-
-
-  /* -------------------------------------------------------
-     RANDOMIZED OBSERVATION ORDER
-     ------------------------------------------------------- */
-
-  const eventGroups = [
+  const observationCases = [
     {
-      id: "AD",
-      run: runADPair
-    },
-
-    {
-      id: "C",
-      run: runProfileC
+      id: "A",
+      run: runProfileA
     },
 
     {
@@ -2273,8 +2333,18 @@ document.addEventListener("DOMContentLoaded", () => {
     },
 
     {
-      id: "GI",
-      run: runGIPair
+      id: "C",
+      run: runProfileC
+    },
+
+    {
+      id: "D",
+      run: runProfileD
+    },
+
+    {
+      id: "E",
+      run: runProfileE
     },
 
     {
@@ -2283,16 +2353,33 @@ document.addEventListener("DOMContentLoaded", () => {
     },
 
     {
+      id: "G",
+      run: runProfileG
+    },
+
+    {
       id: "H",
       run: runProfileH
     },
 
     {
-      id: "E",
-      run: runProfileE
+      id: "I",
+      run: runProfileI
     }
   ];
 
+
+  /* -------------------------------------------------------
+     OBSERVATION CYCLE
+     -------------------------------------------------------
+
+     Important change:
+
+     Only one case is visible at a time.
+
+     Case order is still randomized between cycles, so the
+     reader cannot memorize a fixed temporal sequence.
+     ------------------------------------------------------- */
 
   async function runObservationCycle() {
     const myToken =
@@ -2303,23 +2390,41 @@ document.addEventListener("DOMContentLoaded", () => {
       !resolved &&
       myToken === cycleToken
     ) {
-      fullReset();
 
-      updateDynamicGeometry();
+      resetObservationState();
 
 
-      await wait(3200);
+      await wait(2600);
 
 
       const sequence =
         shuffle(
-          eventGroups
+          observationCases
         );
 
 
       for (
-        const eventGroup of sequence
+        const observationCase
+        of sequence
       ) {
+
+        if (
+          resolved ||
+          myToken !== cycleToken
+        ) {
+          return;
+        }
+
+
+        resetObservationState();
+
+
+        await wait(900);
+
+
+        await observationCase.run();
+
+
         if (
           resolved ||
           myToken !== cycleToken
@@ -2328,35 +2433,26 @@ document.addEventListener("DOMContentLoaded", () => {
         }
 
 
-        await eventGroup.run();
+        /*
+          Entire case clears before the next relationship.
+        */
 
-
-        if (
-          resolved ||
-          myToken !== cycleToken
-        ) {
-          return;
-        }
+        resetObservationState();
 
 
         await wait(
           randomBetween(
-            850,
-            1350
+            1300,
+            1800
           )
         );
       }
 
 
-      if (
-        resolved ||
-        myToken !== cycleToken
-      ) {
-        return;
-      }
+      resetObservationState();
 
 
-      await wait(6000);
+      await wait(4200);
     }
   }
 
@@ -2373,7 +2469,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
     resolved = true;
 
-
     cycleToken += 1;
 
 
@@ -2382,10 +2477,13 @@ document.addEventListener("DOMContentLoaded", () => {
     );
 
 
+    clearCaseFocus();
+
+
     profiles.forEach(
       node => {
-        node.isDragging = false;
 
+        node.isDragging = false;
 
         node.element.classList.remove(
           "is-dragging"
@@ -2394,15 +2492,32 @@ document.addEventListener("DOMContentLoaded", () => {
     );
 
 
+    /*
+      Final placement appears ordinary at first.
+    */
+
     await wait(700);
 
 
     field.classList.add(
-      "is-resolved"
+      "is-resolving"
     );
 
 
-    await wait(1800);
+    await wait(1100);
+
+
+    field.classList.add(
+      "is-condensing"
+    );
+
+
+    await wait(1200);
+
+
+    field.classList.add(
+      "is-map-visible"
+    );
   }
 
 
@@ -2434,6 +2549,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   window.requestAnimationFrame(
     () => {
+
       updateDynamicGeometry();
 
       runObservationCycle();
@@ -2444,7 +2560,9 @@ document.addEventListener("DOMContentLoaded", () => {
   window.addEventListener(
     "resize",
     () => {
+
       positionAllNodes();
     }
   );
+
 });

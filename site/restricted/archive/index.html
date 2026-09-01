@@ -35,7 +35,7 @@
       aria-hidden="true"
     >
 
-      <!-- center → boundary -->
+      <!-- condition → boundary -->
       <line
         class="relation-line"
         x1="500"
@@ -53,7 +53,7 @@
         y2="125"
       />
 
-      <!-- center → exposure -->
+      <!-- condition → exposure -->
       <line
         class="relation-line"
         x1="500"
@@ -62,7 +62,7 @@
         y2="380"
       />
 
-      <!-- center → participation -->
+      <!-- condition → participation -->
       <line
         class="relation-line"
         x1="500"
@@ -71,7 +71,7 @@
         y2="380"
       />
 
-      <!-- center → effect -->
+      <!-- condition → effect -->
       <line
         class="relation-line"
         x1="500"
@@ -90,7 +90,7 @@
       />
 
 
-      <!-- progressive relation: exposure → retention -->
+      <!-- progressive: exposure → retention -->
       <line
         class="relation-line secondary-relation"
         id="relation-exposure-retention"
@@ -101,7 +101,7 @@
       />
 
 
-      <!-- progressive relation: participation → effect -->
+      <!-- progressive: participation → effect -->
       <line
         class="relation-line secondary-relation"
         id="relation-participation-effect"
@@ -112,7 +112,7 @@
       />
 
 
-      <!-- deeper convergence: retention → effect -->
+      <!-- convergence: retention → effect -->
       <line
         class="relation-line convergence-relation"
         id="relation-retention-effect"
@@ -125,7 +125,7 @@
     </svg>
 
 
-    <!-- CENTRAL CONDITION -->
+    <!-- CONDITION -->
 
     <a
       class="concept-node node-center"
@@ -142,9 +142,10 @@
     </a>
 
 
-    <!-- STATIC CONCEPT: BOUNDARY -->
+    <!-- BOUNDARY -->
 
     <div
+      id="boundary"
       class="concept-node concept-node-static node-boundary"
       data-relation="the limit of included consequence"
       aria-label="Boundary concept"
@@ -209,9 +210,10 @@
     </a>
 
 
-    <!-- STATIC CONCEPT: EFFECT -->
+    <!-- EFFECT -->
 
     <div
+      id="effect"
       class="concept-node concept-node-static node-effect"
       data-relation="that which persists beyond the initiating act"
       aria-label="Effect concept"
@@ -241,6 +243,8 @@
       </span>
     </a>
 
+
+    <!-- RELATION DISPLAY -->
 
     <div
       class="relation-display"

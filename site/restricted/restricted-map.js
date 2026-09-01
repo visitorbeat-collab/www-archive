@@ -99,14 +99,6 @@
   function revealRelations() {
     const visited = getVisitedNodes();
 
-
-    /*
-      RELATION 01
-      exposure ↔ retention
-
-      Requires both source nodes to have been visited.
-    */
-
     const exposureRetention =
       document.getElementById(
         "relation-exposure-retention"
@@ -124,14 +116,6 @@
     }
 
 
-    /*
-      RELATION 02
-      participation ↔ effect
-
-      The concept becomes available after participation
-      has been encountered.
-    */
-
     const participationEffect =
       document.getElementById(
         "relation-participation-effect"
@@ -147,17 +131,6 @@
       );
     }
 
-
-    /*
-      RELATION 03
-      retention ↔ effect
-
-      This is a convergence relationship.
-
-      It does not reveal from either endpoint alone.
-      Exposure, participation, and retention must all
-      have entered the reader's explored state.
-    */
 
     const retentionEffect =
       document.getElementById(
@@ -210,6 +183,35 @@
   }
 
 
+  function highlightRequestedConcept() {
+    const hash = window.location.hash.replace("#", "");
+
+    if (!hash) {
+      return;
+    }
+
+    const target = document.getElementById(hash);
+
+    if (
+      !target ||
+      !target.classList.contains("concept-node-static")
+    ) {
+      return;
+    }
+
+    target.classList.add("is-targeted");
+
+    target.scrollIntoView({
+      behavior: "smooth",
+      block: "center"
+    });
+
+    window.setTimeout(() => {
+      target.classList.remove("is-targeted");
+    }, 2200);
+  }
+
+
   allNodes.forEach((node) => {
     node.addEventListener("mouseenter", () => {
       showRelation(node);
@@ -237,14 +239,21 @@
 
 
   refreshMap();
+  highlightRequestedConcept();
 
 
   window.addEventListener("pageshow", () => {
     refreshMap();
+    highlightRequestedConcept();
   });
 
 
   window.addEventListener("storage", () => {
     refreshMap();
+  });
+
+
+  window.addEventListener("hashchange", () => {
+    highlightRequestedConcept();
   });
 })();

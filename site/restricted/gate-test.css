@@ -83,10 +83,10 @@ body.gate-test-page::after {
 .gate-field {
   position: relative;
 
-  width: min(82vw, 820px);
-  aspect-ratio: 1 / 1;
+  width: min(82vw, 88vh, 820px);
+  height: auto;
 
-  max-height: 88vh;
+  aspect-ratio: 1 / 1;
 
   isolation: isolate;
 }

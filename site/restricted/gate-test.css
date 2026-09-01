@@ -188,31 +188,26 @@ body.gate-test-page::after {
   height: 77.91%;
 }
 
-.gate-field.is-adjusting
-.guidance-ring {
+.gate-field.is-adjusting .guidance-ring {
   opacity: 1;
 }
 
-.gate-field.is-adjusting
-.guidance-ring-0 {
+.gate-field.is-adjusting .guidance-ring-0 {
   border-color:
     rgba(220, 230, 235, 0.125);
 }
 
-.gate-field.is-adjusting
-.guidance-ring-1 {
+.gate-field.is-adjusting .guidance-ring-1 {
   border-color:
     rgba(220, 230, 235, 0.105);
 }
 
-.gate-field.is-adjusting
-.guidance-ring-2 {
+.gate-field.is-adjusting .guidance-ring-2 {
   border-color:
     rgba(220, 230, 235, 0.09);
 }
 
-.gate-field.is-adjusting
-.guidance-ring-3 {
+.gate-field.is-adjusting .guidance-ring-3 {
   border-color:
     rgba(220, 230, 235, 0.075);
 }
@@ -274,16 +269,14 @@ body.gate-test-page::after {
   height: 77.91%;
 }
 
-.gate-field.is-resolving
-.resolution-ring {
+.gate-field.is-resolving .resolution-ring {
   opacity: 1;
 
   border-color:
     rgba(224, 233, 237, 0.075);
 }
 
-.gate-field.is-map-visible
-.resolution-ring {
+.gate-field.is-map-visible .resolution-ring {
   opacity: 0;
 
   border-color:
@@ -326,7 +319,8 @@ body.gate-test-page::after {
   opacity: 0;
 
   transition:
-    opacity 420ms ease;
+    opacity 520ms ease,
+    stroke 520ms ease;
 }
 
 .causal-line.is-visible {
@@ -343,6 +337,21 @@ body.gate-test-page::after {
 
 .causal-line.is-remote {
   stroke-dasharray: 1 13;
+}
+
+
+/*
+  A causal relationship that has survived the current case.
+
+  It remains visible through subsequent observations, but it
+  is deliberately quieter than the active relationship.
+*/
+
+.causal-line.is-cycle-residue {
+  opacity: 0.17;
+
+  stroke:
+    rgba(206, 217, 222, 0.20);
 }
 
 
@@ -383,7 +392,7 @@ body.gate-test-page::after {
   opacity: 0;
 
   transition:
-    opacity 420ms ease,
+    opacity 520ms ease,
     transform 520ms ease,
     border-color 520ms ease,
     background 520ms ease;
@@ -392,6 +401,11 @@ body.gate-test-page::after {
 .dependent-node.is-visible {
   opacity: 0.78;
 }
+
+
+/*
+  Weakened means diminished but unmistakably still present.
+*/
 
 .dependent-node.is-weakened {
   opacity: 0.42;
@@ -403,6 +417,11 @@ body.gate-test-page::after {
   border-color:
     rgba(214, 224, 229, 0.30);
 }
+
+
+/*
+  Collapsed means an extremely diminished remnant.
+*/
 
 .dependent-node.is-collapsed {
   opacity: 0.18;
@@ -418,6 +437,11 @@ body.gate-test-page::after {
     rgba(214, 224, 229, 0.08);
 }
 
+
+/*
+  Persistent means this state survives the observation.
+*/
+
 .dependent-node.is-persistent {
   opacity: 0.62;
 
@@ -428,13 +452,48 @@ body.gate-test-page::after {
   border-color:
     rgba(220, 230, 235, 0.48);
 }
+
+
+/*
+  Once a persistent consequence becomes historical residue,
+  it remains clearly visible but recedes behind the new case.
+*/
+
+.dependent-node.is-cycle-residue {
+  opacity: 0.46;
+
+  border-color:
+    rgba(217, 227, 232, 0.34);
+}
+
+
+/*
+  Persistent + cycle-residue must remain distinctly visible.
+*/
+
+.dependent-node.is-persistent.is-cycle-residue {
+  opacity: 0.50;
+
+  transform:
+    translate(-50%, -50%)
+    scale(0.88);
+}
+
+
+/*
+  Explicit disappearance state.
+*/
+
 .dependent-node.is-gone {
   opacity: 0;
 
   transform:
     translate(-50%, -50%)
-    scale(0.45);
+    scale(0.40);
 }
+
+
+/* remote consequences */
 
 .dependent-node.is-remote {
   width: 8px;
@@ -446,6 +505,14 @@ body.gate-test-page::after {
 
 .dependent-node.is-remote.is-visible {
   opacity: 0.55;
+}
+
+.dependent-node.is-remote.is-persistent {
+  opacity: 0.62;
+}
+
+.dependent-node.is-remote.is-cycle-residue {
+  opacity: 0.48;
 }
 
 
@@ -626,37 +693,40 @@ body.gate-test-page::after {
     border-color 450ms ease;
 }
 
-.gate-node:hover
-.node-body,
-.gate-node.is-dragging
-.node-body {
+.gate-node:hover .node-body,
+.gate-node.is-dragging .node-body {
   opacity: 1;
 }
 
 
 /* ---------------------------------------------------------
-   ACTIVE-CASE FOCUS
+   ACTIVE CASE FOCUS
    --------------------------------------------------------- */
 
-/*
-  During an observation case, unrelated primaries recede
-  slightly.
-
-  The active node stays fully legible.
-*/
-
-.gate-field.has-active-case
-.gate-node {
+.gate-field.has-active-case .gate-node {
   opacity: 0.22;
 }
 
-.gate-field.has-active-case
-.gate-node.is-active-case {
+.gate-field.has-active-case .gate-node.is-active-case {
   opacity: 1;
 }
 
-.gate-node.is-active-case
-.node-body {
+
+/*
+  A primary that itself retained a lasting altered state
+  remains more visible than an ordinary inactive primary.
+*/
+
+.gate-field.has-active-case .gate-node.is-cycle-residue {
+  opacity: 0.43;
+}
+
+.gate-field.has-active-case
+.gate-node.is-cycle-residue.is-active-case {
+  opacity: 1;
+}
+
+.gate-node.is-active-case .node-body {
   border-color:
     rgba(230, 237, 240, 0.68);
 
@@ -670,11 +740,10 @@ body.gate-test-page::after {
 
 
 /* ---------------------------------------------------------
-   PROFILE EFFECTS
+   PRIMARY EFFECT STATES
    --------------------------------------------------------- */
 
-.gate-node.effect-strong
-.node-body {
+.gate-node.effect-strong .node-body {
   transform:
     scale(1.65);
 
@@ -694,8 +763,7 @@ body.gate-test-page::after {
     rgba(221, 231, 235, 0.11);
 }
 
-.gate-node.effect-collapse
-.node-body {
+.gate-node.effect-collapse .node-body {
   transform:
     scale(0.52);
 
@@ -710,16 +778,14 @@ body.gate-test-page::after {
   height: 22px;
 }
 
-.gate-node.effect-subtle
-.node-body {
+.gate-node.effect-subtle .node-body {
   opacity: 0.56;
 
   transform:
     scale(0.94);
 }
 
-.gate-node.effect-moderate
-.node-body {
+.gate-node.effect-moderate .node-body {
   transform:
     scale(1.14);
 
@@ -731,8 +797,7 @@ body.gate-test-page::after {
     rgba(226, 234, 238, 0.08);
 }
 
-.gate-node.effect-substantial
-.node-body {
+.gate-node.effect-substantial .node-body {
   transform:
     scale(1.29);
 
@@ -744,16 +809,14 @@ body.gate-test-page::after {
     rgba(226, 234, 238, 0.11);
 }
 
-.gate-node.effect-small
-.node-body {
+.gate-node.effect-small .node-body {
   transform:
     scale(1.06);
 
   opacity: 0.78;
 }
 
-.gate-node.effect-persistent
-.node-body {
+.gate-node.effect-persistent .node-body {
   transform:
     scale(1.08);
 
@@ -766,6 +829,19 @@ body.gate-test-page::after {
   box-shadow:
     inset 0 0 8px
     rgba(220, 230, 234, 0.055);
+}
+
+
+/*
+  Persistent primary after its own observation has ended.
+*/
+
+.gate-node.effect-persistent.is-cycle-residue .node-body {
+  border-color:
+    rgba(226, 234, 238, 0.40);
+
+  background:
+    rgba(219, 228, 233, 0.035);
 }
 
 
@@ -870,7 +946,8 @@ body.gate-test-page::after {
   left: 50%;
   top: 50%;
 
-  background: var(--gate-node);
+  background:
+    var(--gate-node);
 
   transform:
     translate(-50%, -50%);
@@ -918,7 +995,8 @@ body.gate-test-page::after {
   width: 1px;
   height: 7px;
 
-  background: var(--gate-node);
+  background:
+    var(--gate-node);
 
   transform:
     translate(-50%, -50%);
@@ -935,7 +1013,8 @@ body.gate-test-page::after {
   width: 2px;
   height: 2px;
 
-  background: var(--gate-node);
+  background:
+    var(--gate-node);
 
   border-radius: 50%;
 
@@ -962,7 +1041,8 @@ body.gate-test-page::after {
   width: 7px;
   height: 1px;
 
-  background: var(--gate-node);
+  background:
+    var(--gate-node);
 
   transform:
     translate(-50%, -50%);
@@ -1095,8 +1175,7 @@ body.gate-test-page::after {
    RESOLUTION CHOREOGRAPHY
    --------------------------------------------------------- */
 
-.gate-field.is-condensing
-.gate-node {
+.gate-field.is-condensing .gate-node {
   opacity: 0;
 
   transform:
@@ -1104,20 +1183,16 @@ body.gate-test-page::after {
     scale(0.72);
 }
 
-.gate-field.is-condensing
-.dependent-layer,
-.gate-field.is-condensing
-.causal-layer {
+.gate-field.is-condensing .dependent-layer,
+.gate-field.is-condensing .causal-layer {
   opacity: 0;
 }
 
-.gate-field.is-condensing
-.field-traces {
+.gate-field.is-condensing .field-traces {
   opacity: 0.18;
 }
 
-.gate-field.is-condensing
-.gate-center {
+.gate-field.is-condensing .gate-center {
   opacity: 0;
 
   transform:
@@ -1125,16 +1200,14 @@ body.gate-test-page::after {
     scale(0.65);
 }
 
-.gate-field.is-map-visible
-.resolution-map {
+.gate-field.is-map-visible .resolution-map {
   opacity: 1;
 
   transform:
     scale(1);
 }
 
-.gate-field.is-map-visible
-.resolved-node {
+.gate-field.is-map-visible .resolved-node {
   opacity: 1;
 
   transform:
@@ -1142,8 +1215,7 @@ body.gate-test-page::after {
     scale(1);
 }
 
-.gate-field.is-map-visible
-.resolved-link {
+.gate-field.is-map-visible .resolved-link {
   opacity: 1;
 }
 
@@ -1174,6 +1246,7 @@ body.gate-test-page::after {
    --------------------------------------------------------- */
 
 @media (max-width: 700px) {
+
   .gate-shell {
     padding: 2vh 2vw;
   }

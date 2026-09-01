@@ -906,6 +906,14 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
 
+  function markLineAsResidue(line) {
+    line.classList.add(
+      "is-visible",
+      "is-cycle-residue"
+    );
+  }
+
+
   function createDependent(
     id,
     parentProfile,
@@ -972,6 +980,17 @@ document.addEventListener("DOMContentLoaded", () => {
       angleOffset,
       distance,
       options
+    );
+  }
+
+
+  function markDependentAsResidue(
+    dependent
+  ) {
+    dependent.element.classList.add(
+      "is-visible",
+      "is-persistent",
+      "is-cycle-residue"
     );
   }
 
@@ -1260,10 +1279,149 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
   /* -------------------------------------------------------
-     RESET
+     RESET LOGIC
+
+     Two intentionally different resets now exist.
+
+     clearCurrentCase()
+       clears temporary information but preserves genuine
+       consequences from earlier cases.
+
+     clearEntireCycle()
+       removes absolutely everything before a new nine-case
+       observation cycle begins.
      ------------------------------------------------------- */
 
-  function clearPrimaryEffects() {
+  function clearTemporaryPrimaryEffects() {
+    profiles.forEach(
+      node => {
+
+        node.element.classList.remove(
+          "effect-strong",
+          "effect-collapse",
+          "effect-subtle",
+          "effect-moderate",
+          "effect-substantial",
+          "effect-small"
+        );
+
+
+        /*
+          Only a primary explicitly marked as cycle residue
+          is allowed to keep its persistent state.
+        */
+
+        if (
+          !node.element.classList.contains(
+            "is-cycle-residue"
+          )
+        ) {
+          node.element.classList.remove(
+            "effect-persistent"
+          );
+        }
+      }
+    );
+  }
+
+
+  function clearTemporaryLines() {
+    dynamicLines.forEach(
+      line => {
+
+        if (
+          line.classList.contains(
+            "is-cycle-residue"
+          )
+        ) {
+          line.classList.remove(
+            "is-hold",
+            "is-faint"
+          );
+
+          line.classList.add(
+            "is-visible"
+          );
+
+          return;
+        }
+
+
+        line.classList.remove(
+          "is-visible",
+          "is-hold",
+          "is-faint"
+        );
+      }
+    );
+  }
+
+
+  function clearTemporaryDependents() {
+    dependents.forEach(
+      dependent => {
+
+        const element =
+          dependent.element;
+
+
+        if (
+          element.classList.contains(
+            "is-cycle-residue"
+          )
+        ) {
+          element.classList.remove(
+            "is-weakened",
+            "is-collapsed",
+            "is-gone"
+          );
+
+          element.classList.add(
+            "is-visible",
+            "is-persistent"
+          );
+
+          return;
+        }
+
+
+        element.classList.remove(
+          "is-visible",
+          "is-weakened",
+          "is-collapsed",
+          "is-persistent",
+          "is-gone"
+        );
+      }
+    );
+  }
+
+
+  function clearCurrentCase() {
+    if (resolved) {
+      return;
+    }
+
+
+    clearTemporaryPrimaryEffects();
+
+    clearTemporaryLines();
+
+    clearTemporaryDependents();
+
+    clearCaseFocus();
+  }
+
+
+  function clearEntireCycle() {
+    if (resolved) {
+      return;
+    }
+
+
+    clearCaseFocus();
+
+
     profiles.forEach(
       node => {
         node.element.classList.remove(
@@ -1273,52 +1431,47 @@ document.addEventListener("DOMContentLoaded", () => {
           "effect-moderate",
           "effect-substantial",
           "effect-small",
-          "effect-persistent"
+          "effect-persistent",
+          "is-cycle-residue"
         );
       }
     );
-  }
 
 
-  function hideAllLines() {
     dynamicLines.forEach(
-      hideLine
+      line => {
+        line.classList.remove(
+          "is-visible",
+          "is-hold",
+          "is-faint",
+          "is-cycle-residue"
+        );
+      }
     );
-  }
 
 
-  function hideAllDependents() {
     dependents.forEach(
       dependent => {
         dependent.element.classList.remove(
           "is-visible",
           "is-weakened",
           "is-collapsed",
-          "is-persistent"
+          "is-persistent",
+          "is-cycle-residue",
+          "is-gone"
         );
       }
     );
   }
 
 
-  function resetObservationState() {
-    if (resolved) {
-      return;
-    }
-
-
-    clearPrimaryEffects();
-    hideAllLines();
-    hideAllDependents();
-    clearCaseFocus();
-  }
-
-
   /* -------------------------------------------------------
      CASE A
-     0 dependents
-     dramatic outward response
-     full recovery
+
+     Dramatic direct reaction.
+     No dependents.
+     Full recovery.
+     Nothing survives.
      ------------------------------------------------------- */
 
   async function runProfileA() {
@@ -1373,9 +1526,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
   /* -------------------------------------------------------
      CASE B
-     3 dependents
-     weak direct response
-     downstream degradation
+
+     Weak direct response.
+
+     Three downstream dependents appear.
+
+     B1 weakens.
+     B2 collapses.
+     B3 remains as lasting downstream residue.
      ------------------------------------------------------- */
 
   async function runProfileB() {
@@ -1464,11 +1622,6 @@ document.addEventListener("DOMContentLoaded", () => {
     );
 
 
-    /*
-      Important delay:
-      the primary appears almost unaffected.
-    */
-
     await wait(1100);
 
 
@@ -1519,25 +1672,28 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     B3.element.classList.add(
-      "is-weakened",
       "is-persistent"
     );
 
 
-    centerLine.classList.add(
-      "is-hold"
+    /*
+      B3 is the lasting consequence.
+
+      Preserve the route from the center through B to B3.
+    */
+
+    markDependentAsResidue(
+      B3
     );
 
-    line1.classList.add(
-      "is-hold"
+
+    markLineAsResidue(
+      centerLine
     );
 
-    line2.classList.add(
-      "is-hold"
-    );
 
-    line3.classList.add(
-      "is-hold"
+    markLineAsResidue(
+      line3
     );
 
 
@@ -1547,9 +1703,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
   /* -------------------------------------------------------
      CASE C
-     3 dependents
-     moderate propagation
-     one residual remains
+
+     Three downstream dependents.
+
+     Most diminish.
+
+     C3 survives as a residual consequence.
      ------------------------------------------------------- */
 
   async function runProfileC() {
@@ -1668,11 +1827,6 @@ document.addEventListener("DOMContentLoaded", () => {
     );
 
 
-    /*
-      Two largely recover.
-      One remains as residue.
-    */
-
     C1.element.classList.add(
       "is-weakened"
     );
@@ -1688,20 +1842,18 @@ document.addEventListener("DOMContentLoaded", () => {
     );
 
 
-    centerLine.classList.add(
-      "is-hold"
+    markDependentAsResidue(
+      C3
     );
 
-    line1.classList.add(
-      "is-faint"
+
+    markLineAsResidue(
+      centerLine
     );
 
-    line2.classList.add(
-      "is-faint"
-    );
 
-    line3.classList.add(
-      "is-hold"
+    markLineAsResidue(
+      line3
     );
 
 
@@ -1711,9 +1863,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
   /* -------------------------------------------------------
      CASE D
-     0 dependents
-     dramatic inward collapse
-     full recovery
+
+     Dramatic inward collapse.
+     Full recovery.
+     No lasting consequence.
      ------------------------------------------------------- */
 
   async function runProfileD() {
@@ -1768,9 +1921,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
   /* -------------------------------------------------------
      CASE E
-     0 dependents
-     small contained response
-     full recovery
+
+     Small contained response.
+     Full recovery.
+     Nothing survives.
      ------------------------------------------------------- */
 
   async function runProfileE() {
@@ -1825,9 +1979,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
   /* -------------------------------------------------------
      CASE F
-     1 dependent
-     moderate direct change
-     both states persist
+
+     Primary itself remains altered.
+
+     One dependent appears later and also remains.
+
+     Both persist through the rest of the cycle.
      ------------------------------------------------------- */
 
   async function runProfileF() {
@@ -1905,12 +2062,27 @@ document.addEventListener("DOMContentLoaded", () => {
     );
 
 
-    centerLine.classList.add(
-      "is-hold"
+    /*
+      Unlike other profiles, F itself remains altered.
+    */
+
+    node.element.classList.add(
+      "is-cycle-residue"
     );
 
-    dependentLine.classList.add(
-      "is-hold"
+
+    markDependentAsResidue(
+      F1
+    );
+
+
+    markLineAsResidue(
+      centerLine
+    );
+
+
+    markLineAsResidue(
+      dependentLine
     );
 
 
@@ -1920,9 +2092,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
   /* -------------------------------------------------------
      CASE G
-     2 dependents
-     substantial propagation
-     one residual remains
+
+     Two downstream dependents.
+
+     One diminishes.
+
+     G2 remains.
      ------------------------------------------------------- */
 
   async function runProfileG() {
@@ -2026,16 +2201,18 @@ document.addEventListener("DOMContentLoaded", () => {
     );
 
 
-    centerLine.classList.add(
-      "is-hold"
+    markDependentAsResidue(
+      G2
     );
 
-    line1.classList.add(
-      "is-faint"
+
+    markLineAsResidue(
+      centerLine
     );
 
-    line2.classList.add(
-      "is-hold"
+
+    markLineAsResidue(
+      line2
     );
 
 
@@ -2045,9 +2222,15 @@ document.addEventListener("DOMContentLoaded", () => {
 
   /* -------------------------------------------------------
      CASE H
-     3 dependents in a long outward chain
-     almost no direct response
-     consequence crosses apparent boundary
+
+     Very small local response.
+
+     After a delay, a causal chain propagates well beyond the
+     original local field.
+
+     Only the far consequence remains as an entity, but the
+     faint causal path remains visible so its origin can still
+     be reconstructed.
      ------------------------------------------------------- */
 
   async function runProfileH() {
@@ -2159,7 +2342,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     /*
-      Long delay is important.
+      Long delay before the remote consequence appears.
     */
 
     await wait(1800);
@@ -2193,20 +2376,52 @@ document.addEventListener("DOMContentLoaded", () => {
     showLine(line3);
 
 
-    centerLine.classList.add(
-      "is-hold"
+    await wait(700);
+
+
+    /*
+      Intermediate states disappear.
+
+      The distant terminal consequence survives.
+    */
+
+    H1.element.classList.add(
+      "is-gone"
     );
 
-    line1.classList.add(
-      "is-hold"
+
+    H2.element.classList.add(
+      "is-gone"
     );
 
-    line2.classList.add(
-      "is-hold"
+
+    markDependentAsResidue(
+      H3
     );
 
-    line3.classList.add(
-      "is-hold"
+
+    /*
+      Preserve the causal trace even though H1 and H2
+      themselves no longer remain.
+    */
+
+    markLineAsResidue(
+      centerLine
+    );
+
+
+    markLineAsResidue(
+      line1
+    );
+
+
+    markLineAsResidue(
+      line2
+    );
+
+
+    markLineAsResidue(
+      line3
     );
 
 
@@ -2216,9 +2431,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
   /* -------------------------------------------------------
      CASE I
-     1 dependent
-     moderate response
-     both recover
+
+     One dependent appears.
+
+     Both primary and dependent recover completely.
+
+     The dependent explicitly fades all the way out before
+     the observation hold begins.
      ------------------------------------------------------- */
 
   async function runProfileI() {
@@ -2276,6 +2495,7 @@ document.addEventListener("DOMContentLoaded", () => {
       "is-visible"
     );
 
+
     showLine(
       dependentLine
     );
@@ -2297,15 +2517,26 @@ document.addEventListener("DOMContentLoaded", () => {
     await wait(700);
 
 
+    /*
+      Explicit complete disappearance.
+    */
+
     I1.element.classList.remove(
-      "is-visible",
       "is-weakened"
     );
 
 
-    hideLine(
-      dependentLine
+    I1.element.classList.add(
+      "is-gone"
     );
+
+
+    dependentLine.classList.remove(
+      "is-visible"
+    );
+
+
+    await wait(700);
 
 
     centerLine.classList.add(
@@ -2371,14 +2602,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
   /* -------------------------------------------------------
      OBSERVATION CYCLE
-     -------------------------------------------------------
 
-     Important change:
+     Persistent consequences now accumulate.
 
-     Only one case is visible at a time.
-
-     Case order is still randomized between cycles, so the
-     reader cannot memorize a fixed temporal sequence.
+     They are cleared only when all nine observations have
+     finished and a completely new cycle begins.
      ------------------------------------------------------- */
 
   async function runObservationCycle() {
@@ -2391,7 +2619,11 @@ document.addEventListener("DOMContentLoaded", () => {
       myToken === cycleToken
     ) {
 
-      resetObservationState();
+      /*
+        Start a genuinely fresh observational cycle.
+      */
+
+      clearEntireCycle();
 
 
       await wait(2600);
@@ -2416,7 +2648,14 @@ document.addEventListener("DOMContentLoaded", () => {
         }
 
 
-        resetObservationState();
+        /*
+          Remove only temporary information from the
+          previous case.
+
+          Existing residues remain.
+        */
+
+        clearCurrentCase();
 
 
         await wait(900);
@@ -2434,10 +2673,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
         /*
-          Entire case clears before the next relationship.
+          Case ends.
+
+          Temporary effects vanish, but persistent
+          consequences remain in the field.
         */
 
-        resetObservationState();
+        clearCurrentCase();
 
 
         await wait(
@@ -2449,10 +2691,23 @@ document.addEventListener("DOMContentLoaded", () => {
       }
 
 
-      resetObservationState();
+      /*
+        Once all nine observations have occurred, hold the
+        accumulated system state for a while.
+
+        This lets the reader see how much consequence has
+        survived the full observation cycle.
+      */
+
+      clearCurrentCase();
 
 
-      await wait(4200);
+      await wait(5000);
+
+
+      /*
+        The next pass begins with an entirely clean field.
+      */
     }
   }
 
@@ -2493,7 +2748,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     /*
-      Final placement appears ordinary at first.
+      Final placement appears ordinary for a moment.
     */
 
     await wait(700);

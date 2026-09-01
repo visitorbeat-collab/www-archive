@@ -12,6 +12,7 @@
   - randomized starting radii
   - randomized visual marker assignment
   - radial-only dragging
+  - expanded radial movement range
   - responsive recalculation
 
   It does NOT yet include:
@@ -48,22 +49,27 @@ document.addEventListener("DOMContentLoaded", () => {
   const MIN_ANGLE_GAP = 28;
 
   /*
-    Radius values are proportions of the usable field radius.
+    Starting radius values are proportions of the usable
+    field radius.
 
-    0.26 = relatively close to center
-    0.43 = relatively far from center
+    These only control where nodes begin.
   */
 
-  const MIN_RADIUS_RATIO = 0.26;
-  const MAX_RADIUS_RATIO = 0.43;
+  const MIN_RADIUS_RATIO = 0.24;
+  const MAX_RADIUS_RATIO = 0.44;
 
   /*
-    Nodes cannot be dragged all the way into the central actor
-    or all the way outside the visible assessment field.
+    Expanded draggable range.
+
+    Nodes can now approach much closer to the center and move
+    much farther toward the outer field.
+
+    0.08 = very close to the central actor
+    0.88 = near the outer edge of the field
   */
 
-  const DRAG_MIN_RATIO = 0.14;
-  const DRAG_MAX_RATIO = 0.46;
+  const DRAG_MIN_RATIO = 0.08;
+  const DRAG_MAX_RATIO = 0.88;
 
 
   /* -------------------------------------------------------
@@ -150,11 +156,12 @@ document.addEventListener("DOMContentLoaded", () => {
     const centerY = rect.height / 2;
 
     /*
-      Leave a little room around the edge so the node bodies
-      never collide with the viewport boundary.
+      Slightly smaller than half the field so nodes remain
+      comfortably inside the visible assessment area even at
+      the largest allowed radius.
     */
 
-    const usableRadius = size * 0.48;
+    const usableRadius = size * 0.49;
 
     return {
       rect,
@@ -304,23 +311,23 @@ document.addEventListener("DOMContentLoaded", () => {
       );
 
     /*
-      Use three broad starting-radius neighborhoods.
+      Use a spread of starting-radius neighborhoods.
 
       These are NOT the eventual answer bands.
 
-      They exist only to produce a varied starting field.
+      They only establish an irregular starting field.
     */
 
     const startingRadiusGroups = [
-      0.28,
-      0.31,
-      0.34,
-      0.36,
-      0.38,
-      0.40,
-      0.42,
+      0.27,
+      0.30,
+      0.33,
       0.35,
-      0.30
+      0.37,
+      0.39,
+      0.41,
+      0.43,
+      0.31
     ];
 
     const shuffledRadii =
@@ -329,10 +336,6 @@ document.addEventListener("DOMContentLoaded", () => {
     profiles.forEach(
       (node, index) => {
         node.angle = angles[index];
-
-        /*
-          Add a small amount of radial variation.
-        */
 
         node.radiusRatio =
           Math.max(

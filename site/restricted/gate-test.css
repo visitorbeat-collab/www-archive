@@ -624,3 +624,29 @@ body.gate-test-page::after {
     height: 17px;
   }
 }
+/* ---------------------------------------------------------
+   RADIAL INTERACTION
+   --------------------------------------------------------- */
+
+.gate-node {
+  cursor: grab;
+
+  touch-action: none;
+
+  transition:
+    opacity 160ms ease;
+}
+
+.gate-node:hover .node-body {
+  opacity: 1;
+}
+
+.gate-node.is-dragging {
+  cursor: grabbing;
+
+  z-index: 10;
+}
+
+.gate-node.is-dragging .node-body {
+  opacity: 1;
+}

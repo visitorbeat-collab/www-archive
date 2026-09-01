@@ -24,9 +24,22 @@
       aria-label="Relational field"
     >
 
-      <div class="field-ring field-ring-1" aria-hidden="true"></div>
-      <div class="field-ring field-ring-2" aria-hidden="true"></div>
-      <div class="field-ring field-ring-3" aria-hidden="true"></div>
+      <!-- Permanent, nearly invisible field structure -->
+
+      <div
+        class="field-ring field-ring-1"
+        aria-hidden="true"
+      ></div>
+
+      <div
+        class="field-ring field-ring-2"
+        aria-hidden="true"
+      ></div>
+
+      <div
+        class="field-ring field-ring-3"
+        aria-hidden="true"
+      ></div>
 
 
       <svg
@@ -107,12 +120,35 @@
       </svg>
 
 
+      <!--
+        These four contours appear only while the reader
+        is actively moving a node.
+
+        They reveal the grammar of the field without
+        revealing the correct classification.
+      -->
+
+      <div
+        class="guidance-layer"
+        aria-hidden="true"
+      >
+        <div class="guidance-ring guidance-ring-0"></div>
+        <div class="guidance-ring guidance-ring-1"></div>
+        <div class="guidance-ring guidance-ring-2"></div>
+        <div class="guidance-ring guidance-ring-3"></div>
+      </div>
+
+
+      <!-- Dynamic consequence lines -->
+
       <svg
         class="causal-layer"
         id="causal-layer"
         aria-hidden="true"
       ></svg>
 
+
+      <!-- Dynamically generated dependent structures -->
 
       <div
         class="dependent-layer"
@@ -121,9 +157,13 @@
       ></div>
 
 
+      <!--
+        These become visible only after the complete
+        interpretation has been accepted.
+      -->
+
       <div
         class="resolution-layer"
-        id="resolution-layer"
         aria-hidden="true"
       >
         <div class="resolution-ring resolution-ring-0"></div>
@@ -132,6 +172,8 @@
         <div class="resolution-ring resolution-ring-3"></div>
       </div>
 
+
+      <!-- Central actor -->
 
       <div
         class="gate-center"
@@ -142,55 +184,101 @@
       </div>
 
 
-      <div class="gate-node" data-profile="A" aria-label="Entity 1">
+      <!-- Primary relational entities -->
+
+      <div
+        class="gate-node"
+        data-profile="A"
+        aria-label="Entity 1"
+      >
         <span class="node-body">
           <span class="node-mark mark-dot"></span>
         </span>
       </div>
 
-      <div class="gate-node" data-profile="B" aria-label="Entity 2">
+
+      <div
+        class="gate-node"
+        data-profile="B"
+        aria-label="Entity 2"
+      >
         <span class="node-body">
           <span class="node-mark mark-line"></span>
         </span>
       </div>
 
-      <div class="gate-node" data-profile="C" aria-label="Entity 3">
+
+      <div
+        class="gate-node"
+        data-profile="C"
+        aria-label="Entity 3"
+      >
         <span class="node-body">
           <span class="node-mark mark-double"></span>
         </span>
       </div>
 
-      <div class="gate-node" data-profile="D" aria-label="Entity 4">
+
+      <div
+        class="gate-node"
+        data-profile="D"
+        aria-label="Entity 4"
+      >
         <span class="node-body">
           <span class="node-mark mark-slash"></span>
         </span>
       </div>
 
-      <div class="gate-node" data-profile="E" aria-label="Entity 5">
+
+      <div
+        class="gate-node"
+        data-profile="E"
+        aria-label="Entity 5"
+      >
         <span class="node-body">
           <span class="node-mark mark-cross"></span>
         </span>
       </div>
 
-      <div class="gate-node" data-profile="F" aria-label="Entity 6">
+
+      <div
+        class="gate-node"
+        data-profile="F"
+        aria-label="Entity 6"
+      >
         <span class="node-body">
           <span class="node-mark mark-small-ring"></span>
         </span>
       </div>
 
-      <div class="gate-node" data-profile="G" aria-label="Entity 7">
+
+      <div
+        class="gate-node"
+        data-profile="G"
+        aria-label="Entity 7"
+      >
         <span class="node-body">
           <span class="node-mark mark-vertical"></span>
         </span>
       </div>
 
-      <div class="gate-node" data-profile="H" aria-label="Entity 8">
+
+      <div
+        class="gate-node"
+        data-profile="H"
+        aria-label="Entity 8"
+      >
         <span class="node-body">
           <span class="node-mark mark-two-dots"></span>
         </span>
       </div>
 
-      <div class="gate-node" data-profile="I" aria-label="Entity 9">
+
+      <div
+        class="gate-node"
+        data-profile="I"
+        aria-label="Entity 9"
+      >
         <span class="node-body">
           <span class="node-mark mark-horizontal"></span>
         </span>

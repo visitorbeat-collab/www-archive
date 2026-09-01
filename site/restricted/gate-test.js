@@ -44,13 +44,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
   /*
-    Hidden interpretation classes.
+    Hidden required relational classes.
 
-    These are deliberately broad radial zones rather than
-    exact pixel positions.
-
-    0 = closest inclusion
-    3 = most peripheral inclusion
+    The browser never gives feedback about whether an
+    individual node has been placed in its correct class.
   */
 
   const TARGET_CLASS = {
@@ -67,30 +64,40 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
   /*
-    The four invisible bands.
+    Valid radial bands.
 
-    These values refer to radiusRatio.
+    Narrow gaps are left between each one.
 
-    Small gaps between classes make ambiguous "between"
-    placements unresolved rather than automatically accepted.
+    If a node is released inside a band it settles to that
+    band's centerline.
+
+    This confirms only that the position is grammatically
+    valid, not that the interpretation is correct.
   */
 
   const RADIAL_BANDS = [
     {
       min: 0.08,
-      max: 0.23
+      max: 0.23,
+      center: 0.155
     },
+
     {
       min: 0.27,
-      max: 0.43
+      max: 0.43,
+      center: 0.350
     },
+
     {
       min: 0.48,
-      max: 0.66
+      max: 0.66,
+      center: 0.570
     },
+
     {
       min: 0.71,
-      max: 0.88
+      max: 0.88,
+      center: 0.795
     }
   ];
 
@@ -109,6 +116,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
   let resolved = false;
+
   let cycleToken = 0;
 
 
@@ -131,20 +139,24 @@ document.addEventListener("DOMContentLoaded", () => {
   function shuffle(array) {
     const copy = [...array];
 
+
     for (
       let i = copy.length - 1;
       i > 0;
       i -= 1
     ) {
       const j = Math.floor(
-        Math.random() * (i + 1)
+        Math.random() *
+        (i + 1)
       );
+
 
       [copy[i], copy[j]] = [
         copy[j],
         copy[i]
       ];
     }
+
 
     return copy;
   }
@@ -172,9 +184,11 @@ document.addEventListener("DOMContentLoaded", () => {
     let normalized =
       angle % 360;
 
+
     if (normalized < 0) {
       normalized += 360;
     }
+
 
     return normalized;
   }
@@ -186,6 +200,7 @@ document.addEventListener("DOMContentLoaded", () => {
         normalizeAngle(a) -
         normalizeAngle(b)
       );
+
 
     return Math.min(
       difference,
@@ -202,11 +217,13 @@ document.addEventListener("DOMContentLoaded", () => {
     const rect =
       field.getBoundingClientRect();
 
+
     const size =
       Math.min(
         rect.width,
         rect.height
       );
+
 
     return {
       rect,
@@ -227,8 +244,10 @@ document.addEventListener("DOMContentLoaded", () => {
     const fieldRect =
       field.getBoundingClientRect();
 
+
     const rect =
       element.getBoundingClientRect();
+
 
     return {
       x:
@@ -252,8 +271,10 @@ document.addEventListener("DOMContentLoaded", () => {
     const baseGap =
       360 / count;
 
+
     const rotation =
       Math.random() * 360;
+
 
     const angles = [];
 
@@ -339,7 +360,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
   /* -------------------------------------------------------
-     RANDOM IDENTITIES
+     RANDOM MARKERS
      ------------------------------------------------------- */
 
   function assignMarkers() {
@@ -353,6 +374,7 @@ document.addEventListener("DOMContentLoaded", () => {
           node.element.querySelector(
             ".node-mark"
           );
+
 
         if (!mark) {
           return;
@@ -385,7 +407,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
   /* -------------------------------------------------------
-     RANDOM STARTING GEOMETRY
+     STARTING GEOMETRY
      ------------------------------------------------------- */
 
   function assignGeometry() {
@@ -414,6 +436,7 @@ document.addEventListener("DOMContentLoaded", () => {
         node.angle =
           angles[index];
 
+
         node.radiusRatio =
           Math.max(
             MIN_RADIUS_RATIO,
@@ -430,14 +453,6 @@ document.addEventListener("DOMContentLoaded", () => {
           );
       }
     );
-
-
-    /*
-      Prevent accidental initial completion.
-
-      The starting zone is intentionally clustered around
-      the middle and therefore cannot satisfy all classes.
-    */
   }
 
 
@@ -486,6 +501,58 @@ document.addEventListener("DOMContentLoaded", () => {
       positionNode
     );
 
+
+    updateDynamicGeometry();
+  }
+
+
+  /* -------------------------------------------------------
+     RADIAL CLASS HELPERS
+     ------------------------------------------------------- */
+
+  function getBandIndex(radiusRatio) {
+    for (
+      let index = 0;
+      index < RADIAL_BANDS.length;
+      index += 1
+    ) {
+      const band =
+        RADIAL_BANDS[index];
+
+
+      if (
+        radiusRatio >= band.min &&
+        radiusRatio <= band.max
+      ) {
+        return index;
+      }
+    }
+
+
+    return null;
+  }
+
+
+  function settleNodeIntoValidBand(node) {
+    const bandIndex =
+      getBandIndex(
+        node.radiusRatio
+      );
+
+
+    if (bandIndex === null) {
+      return;
+    }
+
+
+    node.radiusRatio =
+      RADIAL_BANDS[
+        bandIndex
+      ].center;
+
+
+    positionNode(node);
+
     updateDynamicGeometry();
   }
 
@@ -510,6 +577,7 @@ document.addEventListener("DOMContentLoaded", () => {
       clientX -
       rect.left;
 
+
     const pointerY =
       clientY -
       rect.top;
@@ -518,6 +586,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const dx =
       pointerX -
       centerX;
+
 
     const dy =
       pointerY -
@@ -570,12 +639,17 @@ document.addEventListener("DOMContentLoaded", () => {
     );
 
 
+    field.classList.add(
+      "is-adjusting"
+    );
+
+
     try {
       node.element.setPointerCapture(
         event.pointerId
       );
     } catch (error) {
-      /* optional */
+      /* pointer capture is optional */
     }
 
 
@@ -630,13 +704,30 @@ document.addEventListener("DOMContentLoaded", () => {
     );
 
 
+    field.classList.remove(
+      "is-adjusting"
+    );
+
+
     try {
       node.element.releasePointerCapture(
         event.pointerId
       );
     } catch (error) {
-      /* optional */
+      /* pointer capture may not be active */
     }
+
+
+    /*
+      If the reader has expressed a valid radial class,
+      the node quietly settles onto that class's centerline.
+
+      This does NOT indicate correctness.
+    */
+
+    settleNodeIntoValidBand(
+      node
+    );
 
 
     evaluateWholeModel();
@@ -690,35 +781,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
   /* -------------------------------------------------------
-     HIDDEN RADIAL CLASSIFICATION
+     WHOLE-MODEL VALIDATION
      ------------------------------------------------------- */
-
-  function getRadialClass(radiusRatio) {
-    for (
-      let index = 0;
-      index < RADIAL_BANDS.length;
-      index += 1
-    ) {
-      const band =
-        RADIAL_BANDS[index];
-
-
-      if (
-        radiusRatio >= band.min &&
-        radiusRatio <= band.max
-      ) {
-        return index;
-      }
-    }
-
-
-    /*
-      Any gap between bands is deliberately unresolved.
-    */
-
-    return null;
-  }
-
 
   function evaluateWholeModel() {
     if (resolved) {
@@ -730,7 +794,7 @@ document.addEventListener("DOMContentLoaded", () => {
       profiles.every(
         node => {
           const currentClass =
-            getRadialClass(
+            getBandIndex(
               node.radiusRatio
             );
 
@@ -761,6 +825,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const dynamicLines =
     new Map();
+
 
   const dependents =
     new Map();
@@ -820,15 +885,18 @@ document.addEventListener("DOMContentLoaded", () => {
       start.x
     );
 
+
     line.setAttribute(
       "y1",
       start.y
     );
 
+
     line.setAttribute(
       "x2",
       end.x
     );
+
 
     line.setAttribute(
       "y2",
@@ -888,11 +956,7 @@ document.addEventListener("DOMContentLoaded", () => {
       parentProfile,
       angleOffset,
       distance,
-      element,
-      remote:
-        Boolean(
-          options.remote
-        )
+      element
     };
 
 
@@ -955,23 +1019,20 @@ document.addEventListener("DOMContentLoaded", () => {
       );
 
 
-    const x =
-      parentCenter.x +
-      Math.cos(radians) *
-      dependent.distance;
-
-
-    const y =
-      parentCenter.y +
-      Math.sin(radians) *
-      dependent.distance;
-
-
     dependent.element.style.left =
-      `${x}px`;
+      `${
+        parentCenter.x +
+        Math.cos(radians) *
+        dependent.distance
+      }px`;
+
 
     dependent.element.style.top =
-      `${y}px`;
+      `${
+        parentCenter.y +
+        Math.sin(radians) *
+        dependent.distance
+      }px`;
   }
 
 
@@ -989,8 +1050,11 @@ document.addEventListener("DOMContentLoaded", () => {
     const node =
       getNode(profileId);
 
+
     const line =
-      dynamicLines.get(lineId);
+      dynamicLines.get(
+        lineId
+      );
 
 
     if (
@@ -1023,13 +1087,17 @@ document.addEventListener("DOMContentLoaded", () => {
     const node =
       getNode(profileId);
 
+
     const dependent =
       dependents.get(
         dependentId
       );
 
+
     const line =
-      dynamicLines.get(lineId);
+      dynamicLines.get(
+        lineId
+      );
 
 
     if (
@@ -1065,13 +1133,17 @@ document.addEventListener("DOMContentLoaded", () => {
         startDependentId
       );
 
+
     const end =
       dependents.get(
         endDependentId
       );
 
+
     const line =
-      dynamicLines.get(lineId);
+      dynamicLines.get(
+        lineId
+      );
 
 
     if (
@@ -1212,26 +1284,33 @@ document.addEventListener("DOMContentLoaded", () => {
       return;
     }
 
+
     clearPrimaryEffects();
+
     hideAllLines();
+
     hideAllDependents();
   }
 
 
   /* -------------------------------------------------------
-     PROFILE EVENTS
+     A
+     Dramatic, reversible, contained
      ------------------------------------------------------- */
 
   async function runProfileA() {
     if (resolved) return;
 
+
     const node =
       getNode("A");
+
 
     const line =
       getOrCreateLine(
         "center-A"
       );
+
 
     updateDynamicGeometry();
 
@@ -1239,36 +1318,51 @@ document.addEventListener("DOMContentLoaded", () => {
 
     await wait(400);
 
+
     if (resolved) return;
+
 
     node.element.classList.add(
       "effect-strong"
     );
 
+
     await wait(1300);
+
 
     node.element.classList.remove(
       "effect-strong"
     );
 
+
     await wait(700);
 
+
     hideLine(line);
+
 
     await wait(500);
   }
 
 
+  /* -------------------------------------------------------
+     B
+     Silent dependency hub
+     ------------------------------------------------------- */
+
   async function runProfileB() {
     if (resolved) return;
 
+
     const node =
       getNode("B");
+
 
     const centerLine =
       getOrCreateLine(
         "center-B"
       );
+
 
     const B1 =
       getOrCreateDependent(
@@ -1278,6 +1372,7 @@ document.addEventListener("DOMContentLoaded", () => {
         72
       );
 
+
     const B2 =
       getOrCreateDependent(
         "B2",
@@ -1285,6 +1380,7 @@ document.addEventListener("DOMContentLoaded", () => {
         0,
         88
       );
+
 
     const B3 =
       getOrCreateDependent(
@@ -1294,15 +1390,18 @@ document.addEventListener("DOMContentLoaded", () => {
         70
       );
 
+
     const line1 =
       getOrCreateLine(
         "B-B1"
       );
 
+
     const line2 =
       getOrCreateLine(
         "B-B2"
       );
+
 
     const line3 =
       getOrCreateLine(
@@ -1314,17 +1413,22 @@ document.addEventListener("DOMContentLoaded", () => {
 
     showLine(centerLine);
 
+
     node.element.classList.add(
       "effect-subtle"
     );
 
+
     await wait(800);
+
 
     node.element.classList.remove(
       "effect-subtle"
     );
 
+
     await wait(1100);
+
 
     if (resolved) return;
 
@@ -1335,6 +1439,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     showLine(line1);
 
+
     await wait(400);
 
 
@@ -1343,6 +1448,7 @@ document.addEventListener("DOMContentLoaded", () => {
     );
 
     showLine(line2);
+
 
     await wait(400);
 
@@ -1353,6 +1459,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     showLine(line3);
 
+
     await wait(850);
 
 
@@ -1360,12 +1467,14 @@ document.addEventListener("DOMContentLoaded", () => {
       "is-weakened"
     );
 
+
     await wait(450);
 
 
     B2.element.classList.add(
       "is-collapsed"
     );
+
 
     await wait(450);
 
@@ -1380,32 +1489,44 @@ document.addEventListener("DOMContentLoaded", () => {
       "is-faint"
     );
 
+
     line2.classList.add(
       "is-faint"
     );
+
 
     line3.classList.add(
       "is-residual"
     );
 
+
     centerLine.classList.add(
       "is-faint"
     );
+
 
     await wait(1300);
   }
 
 
+  /* -------------------------------------------------------
+     C
+     Broad propagation
+     ------------------------------------------------------- */
+
   async function runProfileC() {
     if (resolved) return;
 
+
     const node =
       getNode("C");
+
 
     const centerLine =
       getOrCreateLine(
         "center-C"
       );
+
 
     const C1 =
       getOrCreateDependent(
@@ -1415,6 +1536,7 @@ document.addEventListener("DOMContentLoaded", () => {
         68
       );
 
+
     const C2 =
       getOrCreateDependent(
         "C2",
@@ -1422,6 +1544,7 @@ document.addEventListener("DOMContentLoaded", () => {
         8,
         86
       );
+
 
     const C3 =
       getOrCreateDependent(
@@ -1437,10 +1560,12 @@ document.addEventListener("DOMContentLoaded", () => {
         "C-C1"
       );
 
+
     const line2 =
       getOrCreateLine(
         "C-C2"
       );
+
 
     const line3 =
       getOrCreateLine(
@@ -1452,13 +1577,17 @@ document.addEventListener("DOMContentLoaded", () => {
 
     showLine(centerLine);
 
+
     await wait(350);
+
 
     node.element.classList.add(
       "effect-moderate"
     );
 
+
     await wait(900);
+
 
     if (resolved) return;
 
@@ -1469,6 +1598,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     showLine(line1);
 
+
     await wait(350);
 
 
@@ -1478,6 +1608,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     showLine(line2);
 
+
     await wait(350);
 
 
@@ -1486,6 +1617,7 @@ document.addEventListener("DOMContentLoaded", () => {
     );
 
     showLine(line3);
+
 
     await wait(900);
 
@@ -1499,9 +1631,11 @@ document.addEventListener("DOMContentLoaded", () => {
       "is-weakened"
     );
 
+
     C2.element.classList.add(
       "is-weakened"
     );
+
 
     C3.element.classList.add(
       "is-persistent"
@@ -1512,102 +1646,144 @@ document.addEventListener("DOMContentLoaded", () => {
       "is-faint"
     );
 
+
     line2.classList.add(
       "is-faint"
     );
+
 
     line3.classList.add(
       "is-residual"
     );
 
+
     centerLine.classList.add(
       "is-faint"
     );
+
 
     await wait(1200);
   }
 
 
+  /* -------------------------------------------------------
+     D
+     Severe but reversible
+     ------------------------------------------------------- */
+
   async function runProfileD() {
     if (resolved) return;
 
+
     const node =
       getNode("D");
+
 
     const line =
       getOrCreateLine(
         "center-D"
       );
 
+
     updateDynamicGeometry();
 
     showLine(line);
 
+
     await wait(350);
+
 
     node.element.classList.add(
       "effect-collapse"
     );
 
+
     await wait(1500);
+
 
     node.element.classList.remove(
       "effect-collapse"
     );
 
+
     await wait(900);
 
+
     hideLine(line);
+
 
     await wait(450);
   }
 
 
+  /* -------------------------------------------------------
+     E
+     Genuinely contained
+     ------------------------------------------------------- */
+
   async function runProfileE() {
     if (resolved) return;
 
+
     const node =
       getNode("E");
+
 
     const line =
       getOrCreateLine(
         "center-E"
       );
 
+
     updateDynamicGeometry();
 
     showLine(line);
 
+
     await wait(350);
+
 
     node.element.classList.add(
       "effect-small"
     );
 
+
     await wait(800);
+
 
     node.element.classList.remove(
       "effect-small"
     );
 
+
     await wait(500);
 
+
     hideLine(line);
+
 
     await wait(450);
   }
 
 
+  /* -------------------------------------------------------
+     F
+     Persistent alteration
+     ------------------------------------------------------- */
+
   async function runProfileF() {
     if (resolved) return;
 
+
     const node =
       getNode("F");
+
 
     const centerLine =
       getOrCreateLine(
         "center-F"
       );
+
 
     const F1 =
       getOrCreateDependent(
@@ -1616,6 +1792,7 @@ document.addEventListener("DOMContentLoaded", () => {
         30,
         67
       );
+
 
     const dependentLine =
       getOrCreateLine(
@@ -1627,27 +1804,35 @@ document.addEventListener("DOMContentLoaded", () => {
 
     showLine(centerLine);
 
+
     await wait(400);
+
 
     node.element.classList.add(
       "effect-moderate"
     );
 
+
     await wait(1200);
+
 
     node.element.classList.remove(
       "effect-moderate"
     );
 
+
     node.element.classList.add(
       "effect-persistent"
     );
+
 
     centerLine.classList.add(
       "is-faint"
     );
 
+
     await wait(1200);
+
 
     if (resolved) return;
 
@@ -1657,25 +1842,35 @@ document.addEventListener("DOMContentLoaded", () => {
       "is-persistent"
     );
 
+
     dependentLine.classList.add(
       "is-visible",
       "is-residual"
     );
 
+
     await wait(1300);
   }
 
 
+  /* -------------------------------------------------------
+     G
+     Substantial propagation
+     ------------------------------------------------------- */
+
   async function runProfileG() {
     if (resolved) return;
 
+
     const node =
       getNode("G");
+
 
     const centerLine =
       getOrCreateLine(
         "center-G"
       );
+
 
     const G1 =
       getOrCreateDependent(
@@ -1685,6 +1880,7 @@ document.addEventListener("DOMContentLoaded", () => {
         72
       );
 
+
     const G2 =
       getOrCreateDependent(
         "G2",
@@ -1693,10 +1889,12 @@ document.addEventListener("DOMContentLoaded", () => {
         82
       );
 
+
     const line1 =
       getOrCreateLine(
         "G-G1"
       );
+
 
     const line2 =
       getOrCreateLine(
@@ -1708,13 +1906,17 @@ document.addEventListener("DOMContentLoaded", () => {
 
     showLine(centerLine);
 
+
     await wait(350);
+
 
     node.element.classList.add(
       "effect-substantial"
     );
 
+
     await wait(850);
+
 
     if (resolved) return;
 
@@ -1725,6 +1927,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     showLine(line1);
 
+
     await wait(450);
 
 
@@ -1734,6 +1937,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     showLine(line2);
 
+
     await wait(900);
 
 
@@ -1741,35 +1945,48 @@ document.addEventListener("DOMContentLoaded", () => {
       "effect-substantial"
     );
 
+
     G1.element.classList.add(
       "is-weakened"
     );
+
 
     G2.element.classList.add(
       "is-persistent"
     );
 
+
     centerLine.classList.add(
       "is-faint"
     );
+
 
     line1.classList.add(
       "is-faint"
     );
 
+
     line2.classList.add(
       "is-residual"
     );
+
 
     await wait(1100);
   }
 
 
+  /* -------------------------------------------------------
+     H
+     Delayed boundary-crossing consequence
+     ------------------------------------------------------- */
+
   async function runProfileH() {
     if (resolved) return;
 
+
     const node =
       getNode("H");
+
 
     const centerLine =
       getOrCreateLine(
@@ -1788,6 +2005,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
       );
 
+
     const H2 =
       getOrCreateDependent(
         "H2",
@@ -1798,6 +2016,7 @@ document.addEventListener("DOMContentLoaded", () => {
           remote: true
         }
       );
+
 
     const H3 =
       getOrCreateDependent(
@@ -1816,10 +2035,12 @@ document.addEventListener("DOMContentLoaded", () => {
         "H-H1"
       );
 
+
     const line2 =
       getOrCreateLine(
         "H1-H2"
       );
+
 
     const line3 =
       getOrCreateLine(
@@ -1831,9 +2052,11 @@ document.addEventListener("DOMContentLoaded", () => {
       "is-remote"
     );
 
+
     line2.classList.add(
       "is-remote"
     );
+
 
     line3.classList.add(
       "is-remote"
@@ -1844,21 +2067,27 @@ document.addEventListener("DOMContentLoaded", () => {
 
     showLine(centerLine);
 
+
     node.element.classList.add(
       "effect-subtle"
     );
 
+
     await wait(650);
+
 
     node.element.classList.remove(
       "effect-subtle"
     );
 
+
     centerLine.classList.add(
       "is-faint"
     );
 
+
     await wait(2100);
+
 
     if (resolved) return;
 
@@ -1869,6 +2098,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     showLine(line1);
 
+
     await wait(650);
 
 
@@ -1877,6 +2107,7 @@ document.addEventListener("DOMContentLoaded", () => {
     );
 
     showLine(line2);
+
 
     await wait(650);
 
@@ -1893,9 +2124,11 @@ document.addEventListener("DOMContentLoaded", () => {
       "is-residual"
     );
 
+
     line2.classList.add(
       "is-residual"
     );
+
 
     line3.classList.add(
       "is-residual"
@@ -1906,16 +2139,24 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
 
+  /* -------------------------------------------------------
+     I
+     Moderate contained dependency
+     ------------------------------------------------------- */
+
   async function runProfileI() {
     if (resolved) return;
 
+
     const node =
       getNode("I");
+
 
     const centerLine =
       getOrCreateLine(
         "center-I"
       );
+
 
     const I1 =
       getOrCreateDependent(
@@ -1924,6 +2165,7 @@ document.addEventListener("DOMContentLoaded", () => {
         25,
         62
       );
+
 
     const line =
       getOrCreateLine(
@@ -1935,11 +2177,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
     showLine(centerLine);
 
+
     node.element.classList.add(
       "effect-moderate"
     );
 
+
     await wait(750);
+
 
     if (resolved) return;
 
@@ -1950,6 +2195,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     showLine(line);
 
+
     await wait(850);
 
 
@@ -1957,9 +2203,11 @@ document.addEventListener("DOMContentLoaded", () => {
       "effect-moderate"
     );
 
+
     I1.element.classList.add(
       "is-weakened"
     );
+
 
     await wait(650);
 
@@ -1969,9 +2217,11 @@ document.addEventListener("DOMContentLoaded", () => {
       "is-weakened"
     );
 
+
     hideLine(line);
 
     hideLine(centerLine);
+
 
     await wait(400);
   }
@@ -1998,7 +2248,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
   /* -------------------------------------------------------
-     RANDOMIZED EVENT ORDER
+     RANDOMIZED OBSERVATION ORDER
      ------------------------------------------------------- */
 
   const eventGroups = [
@@ -2052,11 +2302,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
       updateDynamicGeometry();
 
+
       await wait(3200);
 
 
       const sequence =
-        shuffle(eventGroups);
+        shuffle(
+          eventGroups
+        );
 
 
       for (
@@ -2115,12 +2368,19 @@ document.addEventListener("DOMContentLoaded", () => {
 
     resolved = true;
 
+
     cycleToken += 1;
+
+
+    field.classList.remove(
+      "is-adjusting"
+    );
 
 
     profiles.forEach(
       node => {
         node.isDragging = false;
+
 
         node.element.classList.remove(
           "is-dragging"
@@ -2130,8 +2390,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     /*
-      No success text.
-      No immediate visual reward.
+      Deliberate silence.
+
+      The whole configuration has been accepted, but the
+      interface does not congratulate or explain.
     */
 
     await wait(700);
@@ -2143,18 +2405,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     /*
-      Preserve the current relational evidence rather than
-      wiping it immediately.
+      Prototype stopping point.
+
+      The next production stage will continue from here into
+      the restricted relational system.
     */
 
     await wait(1800);
-
-
-    /*
-      This is intentionally only a prototype resolution.
-      In the next phase this becomes the transition into the
-      restricted relational map and the server access handoff.
-    */
   }
 
 
@@ -2163,12 +2420,15 @@ document.addEventListener("DOMContentLoaded", () => {
      ------------------------------------------------------- */
 
   assignMarkers();
+
   assignGeometry();
 
 
   profiles.forEach(
     node => {
-      attachDragHandlers(node);
+      attachDragHandlers(
+        node
+      );
     }
   );
 

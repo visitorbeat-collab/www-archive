@@ -56,7 +56,7 @@ body.gate-test-page::after {
 
 
 /* ---------------------------------------------------------
-   SHELL / FIELD
+   SHELL
    --------------------------------------------------------- */
 
 .gate-shell {
@@ -75,6 +75,11 @@ body.gate-test-page::after {
   padding: 4vh 4vw;
 }
 
+
+/* ---------------------------------------------------------
+   FIELD
+   --------------------------------------------------------- */
+
 .gate-field {
   position: relative;
 
@@ -88,7 +93,7 @@ body.gate-test-page::after {
 
 
 /* ---------------------------------------------------------
-   FAINT FIELD STRUCTURE
+   PERMANENT FAINT FIELD STRUCTURE
    --------------------------------------------------------- */
 
 .field-ring {
@@ -166,7 +171,117 @@ body.gate-test-page::after {
 
 
 /* ---------------------------------------------------------
-   RESOLUTION RINGS
+   INTERACTION GUIDANCE
+   ---------------------------------------------------------
+
+   These rings correspond to the CENTER of each valid radial
+   class.
+
+   They are invisible at rest.
+
+   They become perceptible while the reader is actively
+   changing a relationship.
+   --------------------------------------------------------- */
+
+.guidance-layer {
+  position: absolute;
+
+  inset: 0;
+
+  pointer-events: none;
+
+  z-index: 1;
+}
+
+.guidance-ring {
+  position: absolute;
+
+  left: 50%;
+  top: 50%;
+
+  border-radius: 50%;
+
+  transform: translate(-50%, -50%);
+
+  box-sizing: border-box;
+
+  border:
+    1px solid
+    rgba(220, 230, 235, 0);
+
+  opacity: 0;
+
+  transition:
+    opacity 420ms ease,
+    border-color 420ms ease;
+}
+
+
+/*
+  These diameters correspond approximately to:
+
+  radiusRatio 0.155
+  radiusRatio 0.350
+  radiusRatio 0.570
+  radiusRatio 0.795
+*/
+
+.guidance-ring-0 {
+  width: 15.2%;
+  height: 15.2%;
+}
+
+.guidance-ring-1 {
+  width: 34.3%;
+  height: 34.3%;
+}
+
+.guidance-ring-2 {
+  width: 55.9%;
+  height: 55.9%;
+}
+
+.guidance-ring-3 {
+  width: 77.9%;
+  height: 77.9%;
+}
+
+
+/*
+  During adjustment the structure becomes detectable,
+  but it should remain much fainter than the primary nodes.
+*/
+
+.gate-field.is-adjusting .guidance-ring {
+  opacity: 1;
+
+  border-color:
+    rgba(220, 230, 235, 0.105);
+}
+
+.gate-field.is-adjusting .guidance-ring-0 {
+  border-color:
+    rgba(220, 230, 235, 0.125);
+}
+
+.gate-field.is-adjusting .guidance-ring-1 {
+  border-color:
+    rgba(220, 230, 235, 0.105);
+}
+
+.gate-field.is-adjusting .guidance-ring-2 {
+  border-color:
+    rgba(220, 230, 235, 0.09);
+}
+
+.gate-field.is-adjusting .guidance-ring-3 {
+  border-color:
+    rgba(220, 230, 235, 0.075);
+}
+
+
+/* ---------------------------------------------------------
+   RESOLUTION STRUCTURE
    --------------------------------------------------------- */
 
 .resolution-layer {
@@ -185,44 +300,46 @@ body.gate-test-page::after {
   left: 50%;
   top: 50%;
 
-  border: 1px solid rgba(224, 233, 237, 0);
+  border:
+    1px solid
+    rgba(224, 233, 237, 0);
 
   border-radius: 50%;
 
   transform: translate(-50%, -50%);
 
+  opacity: 0;
+
   transition:
     border-color 1000ms ease,
     opacity 1000ms ease;
-
-  opacity: 0;
 }
 
 .resolution-ring-0 {
-  width: 24%;
-  height: 24%;
+  width: 15.2%;
+  height: 15.2%;
 }
 
 .resolution-ring-1 {
-  width: 42%;
-  height: 42%;
+  width: 34.3%;
+  height: 34.3%;
 }
 
 .resolution-ring-2 {
-  width: 63%;
-  height: 63%;
+  width: 55.9%;
+  height: 55.9%;
 }
 
 .resolution-ring-3 {
-  width: 86%;
-  height: 86%;
+  width: 77.9%;
+  height: 77.9%;
 }
 
 .gate-field.is-resolved .resolution-ring {
   opacity: 1;
 
   border-color:
-    rgba(224, 233, 237, 0.055);
+    rgba(224, 233, 237, 0.07);
 }
 
 
@@ -248,7 +365,9 @@ body.gate-test-page::after {
 .causal-line {
   fill: none;
 
-  stroke: rgba(206, 217, 222, 0.22);
+  stroke:
+    rgba(206, 217, 222, 0.22);
+
   stroke-width: 1;
 
   stroke-dasharray: 2 8;
@@ -299,9 +418,13 @@ body.gate-test-page::after {
   width: 9px;
   height: 9px;
 
-  transform: translate(-50%, -50%);
+  transform:
+    translate(-50%, -50%);
 
-  border: 1px solid rgba(214, 224, 229, 0.38);
+  border:
+    1px solid
+    rgba(214, 224, 229, 0.38);
+
   border-radius: 50%;
 
   box-sizing: border-box;
@@ -374,7 +497,8 @@ body.gate-test-page::after {
   width: 42px;
   height: 42px;
 
-  transform: translate(-50%, -50%);
+  transform:
+    translate(-50%, -50%);
 
   display: flex;
   align-items: center;
@@ -393,7 +517,9 @@ body.gate-test-page::after {
   width: 100%;
   height: 100%;
 
-  border: 1px solid rgba(225, 233, 237, 0.11);
+  border:
+    1px solid
+    rgba(225, 233, 237, 0.11);
 
   border-radius: 50%;
 
@@ -411,7 +537,9 @@ body.gate-test-page::after {
   width: 16px;
   height: 16px;
 
-  border: 1px solid rgba(229, 236, 239, 0.21);
+  border:
+    1px solid
+    rgba(229, 236, 239, 0.21);
 
   border-radius: 50%;
 
@@ -429,10 +557,12 @@ body.gate-test-page::after {
 
   border-radius: 50%;
 
-  background: var(--gate-center);
+  background:
+    var(--gate-center);
 
   box-shadow:
-    0 0 11px rgba(230, 238, 241, 0.1);
+    0 0 11px
+    rgba(230, 238, 241, 0.1);
 
   animation:
     center-breathe
@@ -446,7 +576,8 @@ body.gate-test-page::after {
     box-shadow 800ms ease;
 }
 
-.gate-field.is-resolved .gate-center::before {
+.gate-field.is-resolved
+.gate-center::before {
   width: 46px;
   height: 46px;
 
@@ -454,7 +585,8 @@ body.gate-test-page::after {
     rgba(229, 236, 239, 0.19);
 }
 
-.gate-field.is-resolved .gate-center::after {
+.gate-field.is-resolved
+.gate-center::after {
   width: 23px;
   height: 23px;
 
@@ -462,12 +594,14 @@ body.gate-test-page::after {
     rgba(229, 236, 239, 0.34);
 }
 
-.gate-field.is-resolved .gate-center-core {
+.gate-field.is-resolved
+.gate-center-core {
   width: 6px;
   height: 6px;
 
   box-shadow:
-    0 0 18px rgba(230, 238, 241, 0.18);
+    0 0 18px
+    rgba(230, 238, 241, 0.18);
 }
 
 
@@ -481,7 +615,8 @@ body.gate-test-page::after {
   width: 34px;
   height: 34px;
 
-  transform: translate(-50%, -50%);
+  transform:
+    translate(-50%, -50%);
 
   display: flex;
   align-items: center;
@@ -497,6 +632,23 @@ body.gate-test-page::after {
   touch-action: none;
 
   transition:
+    left 220ms ease,
+    top 220ms ease,
+    opacity 240ms ease;
+}
+
+
+/*
+  While dragging we do NOT want positional easing,
+  otherwise the node lags behind the pointer.
+*/
+
+.gate-node.is-dragging {
+  cursor: grabbing;
+
+  z-index: 20;
+
+  transition:
     opacity 240ms ease;
 }
 
@@ -510,7 +662,10 @@ body.gate-test-page::after {
   align-items: center;
   justify-content: center;
 
-  border: 1px solid var(--gate-node-soft);
+  border:
+    1px solid
+    var(--gate-node-soft);
+
   border-radius: 50%;
 
   box-sizing: border-box;
@@ -533,7 +688,9 @@ body.gate-test-page::after {
   width: 29px;
   height: 29px;
 
-  border: 1px solid rgba(219, 228, 232, 0.025);
+  border:
+    1px solid
+    rgba(219, 228, 232, 0.025);
 
   border-radius: 50%;
 
@@ -546,20 +703,13 @@ body.gate-test-page::after {
   pointer-events: none;
 }
 
-.gate-node:hover .node-body {
-  opacity: 1;
-}
-
-.gate-node.is-dragging {
-  cursor: grabbing;
-  z-index: 20;
-}
-
+.gate-node:hover .node-body,
 .gate-node.is-dragging .node-body {
   opacity: 1;
 }
 
-.gate-field.is-resolved .gate-node {
+.gate-field.is-resolved
+.gate-node {
   cursor: default;
 }
 
@@ -568,14 +718,17 @@ body.gate-test-page::after {
    EFFECT STATES
    --------------------------------------------------------- */
 
-.gate-node.effect-strong .node-body {
-  transform: scale(1.65);
+.gate-node.effect-strong
+.node-body {
+  transform:
+    scale(1.65);
 
   border-color:
     rgba(231, 238, 241, 0.86);
 
   box-shadow:
-    0 0 18px rgba(227, 235, 239, 0.16);
+    0 0 18px
+    rgba(227, 235, 239, 0.16);
 }
 
 .gate-node.effect-strong::after {
@@ -586,8 +739,10 @@ body.gate-test-page::after {
     rgba(221, 231, 235, 0.11);
 }
 
-.gate-node.effect-collapse .node-body {
-  transform: scale(0.52);
+.gate-node.effect-collapse
+.node-body {
+  transform:
+    scale(0.52);
 
   opacity: 0.5;
 
@@ -603,17 +758,21 @@ body.gate-test-page::after {
     rgba(221, 231, 235, 0.07);
 }
 
-.gate-node.effect-subtle .node-body {
+.gate-node.effect-subtle
+.node-body {
   opacity: 0.56;
 
-  transform: scale(0.94);
+  transform:
+    scale(0.94);
 
   border-color:
     rgba(222, 230, 234, 0.35);
 }
 
-.gate-node.effect-moderate .node-body {
-  transform: scale(1.14);
+.gate-node.effect-moderate
+.node-body {
+  transform:
+    scale(1.14);
 
   border-color:
     rgba(229, 236, 239, 0.72);
@@ -622,21 +781,27 @@ body.gate-test-page::after {
     rgba(220, 230, 234, 0.025);
 
   box-shadow:
-    0 0 12px rgba(226, 234, 238, 0.08);
+    0 0 12px
+    rgba(226, 234, 238, 0.08);
 }
 
-.gate-node.effect-substantial .node-body {
-  transform: scale(1.29);
+.gate-node.effect-substantial
+.node-body {
+  transform:
+    scale(1.29);
 
   border-color:
     rgba(232, 238, 241, 0.77);
 
   box-shadow:
-    0 0 14px rgba(226, 234, 238, 0.11);
+    0 0 14px
+    rgba(226, 234, 238, 0.11);
 }
 
-.gate-node.effect-small .node-body {
-  transform: scale(1.06);
+.gate-node.effect-small
+.node-body {
+  transform:
+    scale(1.06);
 
   opacity: 0.78;
 
@@ -644,8 +809,10 @@ body.gate-test-page::after {
     rgba(222, 230, 234, 0.46);
 }
 
-.gate-node.effect-persistent .node-body {
-  transform: scale(1.08);
+.gate-node.effect-persistent
+.node-body {
+  transform:
+    scale(1.08);
 
   border-color:
     rgba(226, 234, 238, 0.56);
@@ -663,7 +830,8 @@ body.gate-test-page::after {
     rgba(219, 228, 232, 0.06);
 }
 
-.gate-node.effect-residual .node-body {
+.gate-node.effect-residual
+.node-body {
   border-color:
     rgba(222, 231, 235, 0.38);
 
@@ -700,11 +868,13 @@ body.gate-test-page::after {
   width: 2px;
   height: 2px;
 
-  background: var(--gate-node);
+  background:
+    var(--gate-node);
 
   border-radius: 50%;
 
-  transform: translate(-50%, -50%);
+  transform:
+    translate(-50%, -50%);
 }
 
 .mark-line::before {
@@ -718,7 +888,8 @@ body.gate-test-page::after {
   width: 1px;
   height: 7px;
 
-  background: var(--gate-node);
+  background:
+    var(--gate-node);
 
   transform:
     translate(-50%, -50%)
@@ -736,7 +907,8 @@ body.gate-test-page::after {
   width: 1px;
   height: 7px;
 
-  background: var(--gate-node);
+  background:
+    var(--gate-node);
 }
 
 .mark-double::before {
@@ -758,7 +930,8 @@ body.gate-test-page::after {
   width: 8px;
   height: 1px;
 
-  background: var(--gate-node);
+  background:
+    var(--gate-node);
 
   transform:
     translate(-50%, -50%)
@@ -774,9 +947,11 @@ body.gate-test-page::after {
   left: 50%;
   top: 50%;
 
-  background: var(--gate-node);
+  background:
+    var(--gate-node);
 
-  transform: translate(-50%, -50%);
+  transform:
+    translate(-50%, -50%);
 }
 
 .mark-cross::before {
@@ -800,11 +975,14 @@ body.gate-test-page::after {
   width: 4px;
   height: 4px;
 
-  border: 1px solid var(--gate-node);
+  border:
+    1px solid
+    var(--gate-node);
 
   border-radius: 50%;
 
-  transform: translate(-50%, -50%);
+  transform:
+    translate(-50%, -50%);
 }
 
 .mark-vertical::before {
@@ -818,9 +996,11 @@ body.gate-test-page::after {
   width: 1px;
   height: 7px;
 
-  background: var(--gate-node);
+  background:
+    var(--gate-node);
 
-  transform: translate(-50%, -50%);
+  transform:
+    translate(-50%, -50%);
 }
 
 .mark-two-dots::before,
@@ -834,11 +1014,13 @@ body.gate-test-page::after {
   width: 2px;
   height: 2px;
 
-  background: var(--gate-node);
+  background:
+    var(--gate-node);
 
   border-radius: 50%;
 
-  transform: translateY(-50%);
+  transform:
+    translateY(-50%);
 }
 
 .mark-two-dots::before {
@@ -860,9 +1042,11 @@ body.gate-test-page::after {
   width: 7px;
   height: 1px;
 
-  background: var(--gate-node);
+  background:
+    var(--gate-node);
 
-  transform: translate(-50%, -50%);
+  transform:
+    translate(-50%, -50%);
 }
 
 

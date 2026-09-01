@@ -78,6 +78,10 @@ body.gate-test-page::after {
 
 /* ---------------------------------------------------------
    FIELD
+
+   Important:
+   the field must remain a true square so CSS contours and
+   JavaScript radial positioning use identical geometry.
    --------------------------------------------------------- */
 
 .gate-field {
@@ -93,46 +97,13 @@ body.gate-test-page::after {
 
 
 /* ---------------------------------------------------------
-   PERMANENT FAINT FIELD STRUCTURE
+   PERMANENT STRUCTURAL TRACES
+
+   These are decorative/relational traces only.
+
+   The old permanent concentric field rings have been
+   intentionally removed.
    --------------------------------------------------------- */
-
-.field-ring {
-  position: absolute;
-
-  left: 50%;
-  top: 50%;
-
-  border-radius: 50%;
-
-  pointer-events: none;
-
-  transform: translate(-50%, -50%);
-
-  box-sizing: border-box;
-
-  z-index: 0;
-}
-
-.field-ring-1 {
-  width: 30%;
-  height: 30%;
-
-  border: 1px solid rgba(210, 221, 226, 0.035);
-}
-
-.field-ring-2 {
-  width: 55%;
-  height: 55%;
-
-  border: 1px solid rgba(210, 221, 226, 0.027);
-}
-
-.field-ring-3 {
-  width: 79%;
-  height: 79%;
-
-  border: 1px solid rgba(210, 221, 226, 0.022);
-}
 
 .field-traces {
   position: absolute;
@@ -172,15 +143,11 @@ body.gate-test-page::after {
 
 /* ---------------------------------------------------------
    INTERACTION GUIDANCE
-   ---------------------------------------------------------
 
-   These rings correspond to the CENTER of each valid radial
-   class.
+   These four contours correspond exactly to the four radial
+   centerlines used by JavaScript.
 
-   They are invisible at rest.
-
-   They become perceptible while the reader is actively
-   changing a relationship.
+   They remain invisible until a node is dragged.
    --------------------------------------------------------- */
 
 .guidance-layer {
@@ -218,63 +185,71 @@ body.gate-test-page::after {
 
 
 /*
-  These diameters correspond approximately to:
+  JS usable radius = 49% of field width.
 
-  radiusRatio 0.155
-  radiusRatio 0.350
-  radiusRatio 0.570
-  radiusRatio 0.795
+  Therefore a radial ratio of R corresponds to a CSS
+  diameter of:
+
+  2 × 49% × R
+
+  The four JS radii are:
+
+  0.155
+  0.350
+  0.570
+  0.795
 */
 
 .guidance-ring-0 {
-  width: 15.2%;
-  height: 15.2%;
+  width: 15.19%;
+  height: 15.19%;
 }
 
 .guidance-ring-1 {
-  width: 34.3%;
-  height: 34.3%;
+  width: 34.30%;
+  height: 34.30%;
 }
 
 .guidance-ring-2 {
-  width: 55.9%;
-  height: 55.9%;
+  width: 55.86%;
+  height: 55.86%;
 }
 
 .guidance-ring-3 {
-  width: 77.9%;
-  height: 77.9%;
+  width: 77.91%;
+  height: 77.91%;
 }
 
 
 /*
-  During adjustment the structure becomes detectable,
-  but it should remain much fainter than the primary nodes.
+  The field grammar becomes visible only during adjustment.
 */
 
-.gate-field.is-adjusting .guidance-ring {
+.gate-field.is-adjusting
+.guidance-ring {
   opacity: 1;
-
-  border-color:
-    rgba(220, 230, 235, 0.105);
 }
 
-.gate-field.is-adjusting .guidance-ring-0 {
+.gate-field.is-adjusting
+.guidance-ring-0 {
   border-color:
     rgba(220, 230, 235, 0.125);
 }
 
-.gate-field.is-adjusting .guidance-ring-1 {
+.gate-field.is-adjusting
+.guidance-ring-1 {
   border-color:
     rgba(220, 230, 235, 0.105);
 }
 
-.gate-field.is-adjusting .guidance-ring-2 {
+.gate-field.is-adjusting
+.guidance-ring-2 {
   border-color:
     rgba(220, 230, 235, 0.09);
 }
 
-.gate-field.is-adjusting .guidance-ring-3 {
+.gate-field.is-adjusting
+.guidance-ring-3 {
   border-color:
     rgba(220, 230, 235, 0.075);
 }
@@ -282,6 +257,8 @@ body.gate-test-page::after {
 
 /* ---------------------------------------------------------
    RESOLUTION STRUCTURE
+
+   Uses the exact same geometry as the drag contours.
    --------------------------------------------------------- */
 
 .resolution-layer {
@@ -316,26 +293,27 @@ body.gate-test-page::after {
 }
 
 .resolution-ring-0 {
-  width: 15.2%;
-  height: 15.2%;
+  width: 15.19%;
+  height: 15.19%;
 }
 
 .resolution-ring-1 {
-  width: 34.3%;
-  height: 34.3%;
+  width: 34.30%;
+  height: 34.30%;
 }
 
 .resolution-ring-2 {
-  width: 55.9%;
-  height: 55.9%;
+  width: 55.86%;
+  height: 55.86%;
 }
 
 .resolution-ring-3 {
-  width: 77.9%;
-  height: 77.9%;
+  width: 77.91%;
+  height: 77.91%;
 }
 
-.gate-field.is-resolved .resolution-ring {
+.gate-field.is-resolved
+.resolution-ring {
   opacity: 1;
 
   border-color:
@@ -639,8 +617,8 @@ body.gate-test-page::after {
 
 
 /*
-  While dragging we do NOT want positional easing,
-  otherwise the node lags behind the pointer.
+  Positional easing is removed while dragging so the
+  node follows the pointer cleanly.
 */
 
 .gate-node.is-dragging {
@@ -1076,7 +1054,7 @@ body.gate-test-page::after {
   }
 
   .gate-field {
-    width: min(96vw, 700px);
+    width: min(96vw, 88vh, 700px);
   }
 
   .gate-center {

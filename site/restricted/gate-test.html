@@ -24,23 +24,11 @@
       aria-label="Relational field"
     >
 
-      <!-- Permanent, nearly invisible field structure -->
-
-      <div
-        class="field-ring field-ring-1"
-        aria-hidden="true"
-      ></div>
-
-      <div
-        class="field-ring field-ring-2"
-        aria-hidden="true"
-      ></div>
-
-      <div
-        class="field-ring field-ring-3"
-        aria-hidden="true"
-      ></div>
-
+      <!--
+        Permanent structural traces.
+        These remain visible at rest, but no permanent
+        concentric classification rings are shown.
+      -->
 
       <svg
         class="field-traces"
@@ -121,11 +109,10 @@
 
 
       <!--
-        These four contours appear only while the reader
-        is actively moving a node.
+        Exact radial classification contours.
 
-        They reveal the grammar of the field without
-        revealing the correct classification.
+        These are invisible at rest and appear only while
+        a primary node is being dragged.
       -->
 
       <div
@@ -139,7 +126,7 @@
       </div>
 
 
-      <!-- Dynamic consequence lines -->
+      <!-- Dynamic causal lines -->
 
       <svg
         class="causal-layer"
@@ -148,7 +135,7 @@
       ></svg>
 
 
-      <!-- Dynamically generated dependent structures -->
+      <!-- Dynamic downstream structures -->
 
       <div
         class="dependent-layer"
@@ -158,8 +145,8 @@
 
 
       <!--
-        These become visible only after the complete
-        interpretation has been accepted.
+        Resolution contours become visible only after the
+        entire relational model has been interpreted correctly.
       -->
 
       <div

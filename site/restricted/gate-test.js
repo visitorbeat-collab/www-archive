@@ -46,8 +46,10 @@ document.addEventListener("DOMContentLoaded", () => {
   /*
     Hidden required relational classes.
 
-    The browser never gives feedback about whether an
-    individual node has been placed in its correct class.
+    0 = innermost
+    1 = second
+    2 = third
+    3 = outermost
   */
 
   const TARGET_CLASS = {
@@ -64,41 +66,17 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
   /*
-    Valid radial bands.
+    The exact four radial contour centerlines.
 
-    Narrow gaps are left between each one.
-
-    If a node is released inside a band it settles to that
-    band's centerline.
-
-    This confirms only that the position is grammatically
-    valid, not that the interpretation is correct.
+    Every released node snaps to whichever of these
+    four radii is physically closest.
   */
 
-  const RADIAL_BANDS = [
-    {
-      min: 0.08,
-      max: 0.23,
-      center: 0.155
-    },
-
-    {
-      min: 0.27,
-      max: 0.43,
-      center: 0.350
-    },
-
-    {
-      min: 0.48,
-      max: 0.66,
-      center: 0.570
-    },
-
-    {
-      min: 0.71,
-      max: 0.88,
-      center: 0.795
-    }
+  const RADIAL_CLASSES = [
+    0.155,
+    0.350,
+    0.570,
+    0.795
   ];
 
 
@@ -344,6 +322,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
         radiusRatio: 0,
 
+        currentClass: null,
+
         markerClass: null,
 
         isDragging: false
@@ -451,6 +431,9 @@ document.addEventListener("DOMContentLoaded", () => {
               )
             )
           );
+
+
+        node.currentClass = null;
       }
     );
   }
@@ -507,48 +490,67 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
   /* -------------------------------------------------------
-     RADIAL CLASS HELPERS
+     SNAP TO NEAREST CONTOUR
      ------------------------------------------------------- */
 
-  function getBandIndex(radiusRatio) {
+  function getNearestClass(
+    radiusRatio
+  ) {
+    let nearestIndex = 0;
+
+    let nearestDistance =
+      Math.abs(
+        radiusRatio -
+        RADIAL_CLASSES[0]
+      );
+
+
     for (
-      let index = 0;
-      index < RADIAL_BANDS.length;
+      let index = 1;
+      index < RADIAL_CLASSES.length;
       index += 1
     ) {
-      const band =
-        RADIAL_BANDS[index];
+      const distance =
+        Math.abs(
+          radiusRatio -
+          RADIAL_CLASSES[index]
+        );
 
 
       if (
-        radiusRatio >= band.min &&
-        radiusRatio <= band.max
+        distance <
+        nearestDistance
       ) {
-        return index;
+        nearestDistance =
+          distance;
+
+        nearestIndex =
+          index;
       }
     }
 
 
-    return null;
+    return nearestIndex;
   }
 
 
-  function settleNodeIntoValidBand(node) {
-    const bandIndex =
-      getBandIndex(
+  function snapNodeToNearestContour(
+    node
+  ) {
+    const nearestClass =
+      getNearestClass(
         node.radiusRatio
       );
 
 
-    if (bandIndex === null) {
-      return;
-    }
+    node.currentClass =
+      nearestClass;
 
 
     node.radiusRatio =
-      RADIAL_BANDS[
-        bandIndex
-      ].center;
+      RADIAL_CLASSES[
+        nearestClass
+      ];
 
 
     positionNode(node);
@@ -649,7 +651,7 @@ document.addEventListener("DOMContentLoaded", () => {
         event.pointerId
       );
     } catch (error) {
-      /* pointer capture is optional */
+      /* optional */
     }
 
 
@@ -714,21 +716,23 @@ document.addEventListener("DOMContentLoaded", () => {
         event.pointerId
       );
     } catch (error) {
-      /* pointer capture may not be active */
+      /* optional */
     }
 
 
     /*
-      If the reader has expressed a valid radial class,
-      the node quietly settles onto that class's centerline.
-
-      This does NOT indicate correctness.
+      Every release now snaps exactly to one of the
+      four visible radial contours.
     */
 
-    settleNodeIntoValidBand(
+    snapNodeToNearestContour(
       node
     );
 
+
+    /*
+      Validation happens only after the snap.
+    */
 
     evaluateWholeModel();
   }
@@ -790,24 +794,34 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
 
+    /*
+      Every primary node must first have been deliberately
+      assigned to a contour.
+
+      This avoids treating a random starting position as an
+      intentional interpretation.
+    */
+
+    const allAssigned =
+      profiles.every(
+        node =>
+          node.currentClass !== null
+      );
+
+
+    if (!allAssigned) {
+      return;
+    }
+
+
     const coherent =
       profiles.every(
         node => {
-          const currentClass =
-            getBandIndex(
-              node.radiusRatio
-            );
-
-
-          const requiredClass =
+          return (
+            node.currentClass ===
             TARGET_CLASS[
               node.profile
-            ];
-
-
-          return (
-            currentClass ===
-            requiredClass
+            ]
           );
         }
       );
@@ -1294,8 +1308,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
   /* -------------------------------------------------------
-     A
-     Dramatic, reversible, contained
+     A — dramatic / reversible
      ------------------------------------------------------- */
 
   async function runProfileA() {
@@ -1346,8 +1359,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
   /* -------------------------------------------------------
-     B
-     Silent dependency hub
+     B — silent dependency hub
      ------------------------------------------------------- */
 
   async function runProfileB() {
@@ -1510,8 +1522,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
   /* -------------------------------------------------------
-     C
-     Broad propagation
+     C — broad propagation
      ------------------------------------------------------- */
 
   async function runProfileC() {
@@ -1667,8 +1678,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
   /* -------------------------------------------------------
-     D
-     Severe but reversible
+     D — severe / reversible
      ------------------------------------------------------- */
 
   async function runProfileD() {
@@ -1717,8 +1727,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
   /* -------------------------------------------------------
-     E
-     Genuinely contained
+     E — contained
      ------------------------------------------------------- */
 
   async function runProfileE() {
@@ -1767,8 +1776,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
   /* -------------------------------------------------------
-     F
-     Persistent alteration
+     F — persistent
      ------------------------------------------------------- */
 
   async function runProfileF() {
@@ -1854,8 +1862,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
   /* -------------------------------------------------------
-     G
-     Substantial propagation
+     G — substantial propagation
      ------------------------------------------------------- */
 
   async function runProfileG() {
@@ -1976,8 +1983,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
   /* -------------------------------------------------------
-     H
-     Delayed boundary-crossing consequence
+     H — delayed boundary-crossing consequence
      ------------------------------------------------------- */
 
   async function runProfileH() {
@@ -2140,8 +2146,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
   /* -------------------------------------------------------
-     I
-     Moderate contained dependency
+     I — contained dependency
      ------------------------------------------------------- */
 
   async function runProfileI() {
@@ -2389,13 +2394,6 @@ document.addEventListener("DOMContentLoaded", () => {
     );
 
 
-    /*
-      Deliberate silence.
-
-      The whole configuration has been accepted, but the
-      interface does not congratulate or explain.
-    */
-
     await wait(700);
 
 
@@ -2403,13 +2401,6 @@ document.addEventListener("DOMContentLoaded", () => {
       "is-resolved"
     );
 
-
-    /*
-      Prototype stopping point.
-
-      The next production stage will continue from here into
-      the restricted relational system.
-    */
 
     await wait(1800);
   }

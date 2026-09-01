@@ -21,13 +21,26 @@
 
 html,
 body {
-  margin: 0;
+  margin: 0 !important;
+  padding: 0 !important;
+
   width: 100%;
   min-height: 100%;
+
+  background: var(--gate-bg) !important;
 }
 
 body.gate-test-page {
+  position: fixed;
+
+  inset: 0;
+
+  width: 100vw;
+  height: 100vh;
   min-height: 100vh;
+
+  margin: 0 !important;
+  padding: 0 !important;
 
   background:
     radial-gradient(
@@ -35,9 +48,14 @@ body.gate-test-page {
       rgba(24, 30, 35, 0.45) 0%,
       rgba(15, 19, 23, 0.4) 35%,
       var(--gate-bg) 75%
-    );
+    ) !important;
 
   overflow: hidden;
+}
+
+body.gate-test-page::before,
+body.gate-test-page::after {
+  display: none !important;
 }
 
 
@@ -48,6 +66,9 @@ body.gate-test-page {
 .gate-shell {
   width: 100vw;
   height: 100vh;
+
+  margin: 0 !important;
+  max-width: none !important;
 
   display: flex;
   align-items: center;

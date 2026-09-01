@@ -42,6 +42,59 @@ document.addEventListener("DOMContentLoaded", () => {
   const DRAG_MIN_RATIO = 0.08;
   const DRAG_MAX_RATIO = 0.88;
 
+
+  /*
+    Hidden interpretation classes.
+
+    These are deliberately broad radial zones rather than
+    exact pixel positions.
+
+    0 = closest inclusion
+    3 = most peripheral inclusion
+  */
+
+  const TARGET_CLASS = {
+    A: 2,
+    B: 0,
+    C: 1,
+    D: 2,
+    E: 3,
+    F: 0,
+    G: 1,
+    H: 0,
+    I: 2
+  };
+
+
+  /*
+    The four invisible bands.
+
+    These values refer to radiusRatio.
+
+    Small gaps between classes make ambiguous "between"
+    placements unresolved rather than automatically accepted.
+  */
+
+  const RADIAL_BANDS = [
+    {
+      min: 0.08,
+      max: 0.23
+    },
+    {
+      min: 0.27,
+      max: 0.43
+    },
+    {
+      min: 0.48,
+      max: 0.66
+    },
+    {
+      min: 0.71,
+      max: 0.88
+    }
+  ];
+
+
   const markerClasses = [
     "mark-dot",
     "mark-line",
@@ -53,6 +106,10 @@ document.addEventListener("DOMContentLoaded", () => {
     "mark-two-dots",
     "mark-horizontal"
   ];
+
+
+  let resolved = false;
+  let cycleToken = 0;
 
 
   /* -------------------------------------------------------
@@ -200,6 +257,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const angles = [];
 
+
     for (
       let i = 0;
       i < count;
@@ -217,6 +275,7 @@ document.addEventListener("DOMContentLoaded", () => {
       );
     }
 
+
     for (
       let i = 0;
       i < angles.length;
@@ -233,10 +292,13 @@ document.addEventListener("DOMContentLoaded", () => {
             angles[j]
           ) < MIN_ANGLE_GAP
         ) {
-          return generateAngles(count);
+          return generateAngles(
+            count
+          );
         }
       }
     }
+
 
     return angles;
   }
@@ -277,12 +339,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
   /* -------------------------------------------------------
-     MARKER RANDOMIZATION
+     RANDOM IDENTITIES
      ------------------------------------------------------- */
 
   function assignMarkers() {
     const shuffledMarkers =
       shuffle(markerClasses);
+
 
     profiles.forEach(
       (node, index) => {
@@ -295,6 +358,7 @@ document.addEventListener("DOMContentLoaded", () => {
           return;
         }
 
+
         markerClasses.forEach(
           markerClass => {
             mark.classList.remove(
@@ -303,12 +367,15 @@ document.addEventListener("DOMContentLoaded", () => {
           }
         );
 
+
         const markerClass =
           shuffledMarkers[index];
+
 
         mark.classList.add(
           markerClass
         );
+
 
         node.markerClass =
           markerClass;
@@ -318,7 +385,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
   /* -------------------------------------------------------
-     STARTING GEOMETRY
+     RANDOM STARTING GEOMETRY
      ------------------------------------------------------- */
 
   function assignGeometry() {
@@ -327,17 +394,19 @@ document.addEventListener("DOMContentLoaded", () => {
         profiles.length
       );
 
-    const startingRadii = shuffle([
-      0.27,
-      0.30,
-      0.33,
-      0.35,
-      0.37,
-      0.39,
-      0.41,
-      0.43,
-      0.31
-    ]);
+
+    const startingRadii =
+      shuffle([
+        0.27,
+        0.30,
+        0.33,
+        0.35,
+        0.37,
+        0.39,
+        0.41,
+        0.43,
+        0.31
+      ]);
 
 
     profiles.forEach(
@@ -361,11 +430,19 @@ document.addEventListener("DOMContentLoaded", () => {
           );
       }
     );
+
+
+    /*
+      Prevent accidental initial completion.
+
+      The starting zone is intentionally clustered around
+      the middle and therefore cannot satisfy all classes.
+    */
   }
 
 
   /* -------------------------------------------------------
-     PRIMARY POSITIONING
+     POSITIONING
      ------------------------------------------------------- */
 
   function positionNode(node) {
@@ -375,14 +452,17 @@ document.addEventListener("DOMContentLoaded", () => {
       usableRadius
     } = getFieldGeometry();
 
+
     const radians =
       degreesToRadians(
         node.angle
       );
 
+
     const radius =
       usableRadius *
       node.radiusRatio;
+
 
     node.element.style.left =
       `${
@@ -390,6 +470,7 @@ document.addEventListener("DOMContentLoaded", () => {
         Math.cos(radians) *
         radius
       }px`;
+
 
     node.element.style.top =
       `${
@@ -424,6 +505,7 @@ document.addEventListener("DOMContentLoaded", () => {
       usableRadius
     } = getFieldGeometry();
 
+
     const pointerX =
       clientX -
       rect.left;
@@ -431,6 +513,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const pointerY =
       clientY -
       rect.top;
+
 
     const dx =
       pointerX -
@@ -440,11 +523,13 @@ document.addEventListener("DOMContentLoaded", () => {
       pointerY -
       centerY;
 
+
     const distance =
       Math.sqrt(
         dx * dx +
         dy * dy
       );
+
 
     return (
       distance /
@@ -469,13 +554,21 @@ document.addEventListener("DOMContentLoaded", () => {
     event,
     node
   ) {
+    if (resolved) {
+      return;
+    }
+
+
     event.preventDefault();
 
+
     node.isDragging = true;
+
 
     node.element.classList.add(
       "is-dragging"
     );
+
 
     try {
       node.element.setPointerCapture(
@@ -484,6 +577,7 @@ document.addEventListener("DOMContentLoaded", () => {
     } catch (error) {
       /* optional */
     }
+
 
     updateDrag(
       event,
@@ -496,9 +590,13 @@ document.addEventListener("DOMContentLoaded", () => {
     event,
     node
   ) {
-    if (!node.isDragging) {
+    if (
+      !node.isDragging ||
+      resolved
+    ) {
       return;
     }
+
 
     node.radiusRatio =
       clampRadiusRatio(
@@ -507,6 +605,7 @@ document.addEventListener("DOMContentLoaded", () => {
           event.clientY
         )
       );
+
 
     positionNode(node);
 
@@ -522,11 +621,14 @@ document.addEventListener("DOMContentLoaded", () => {
       return;
     }
 
+
     node.isDragging = false;
+
 
     node.element.classList.remove(
       "is-dragging"
     );
+
 
     try {
       node.element.releasePointerCapture(
@@ -535,6 +637,9 @@ document.addEventListener("DOMContentLoaded", () => {
     } catch (error) {
       /* optional */
     }
+
+
+    evaluateWholeModel();
   }
 
 
@@ -549,6 +654,7 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     );
 
+
     node.element.addEventListener(
       "pointermove",
       event => {
@@ -558,6 +664,7 @@ document.addEventListener("DOMContentLoaded", () => {
         );
       }
     );
+
 
     node.element.addEventListener(
       "pointerup",
@@ -569,6 +676,7 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     );
 
+
     node.element.addEventListener(
       "pointercancel",
       event => {
@@ -578,6 +686,72 @@ document.addEventListener("DOMContentLoaded", () => {
         );
       }
     );
+  }
+
+
+  /* -------------------------------------------------------
+     HIDDEN RADIAL CLASSIFICATION
+     ------------------------------------------------------- */
+
+  function getRadialClass(radiusRatio) {
+    for (
+      let index = 0;
+      index < RADIAL_BANDS.length;
+      index += 1
+    ) {
+      const band =
+        RADIAL_BANDS[index];
+
+
+      if (
+        radiusRatio >= band.min &&
+        radiusRatio <= band.max
+      ) {
+        return index;
+      }
+    }
+
+
+    /*
+      Any gap between bands is deliberately unresolved.
+    */
+
+    return null;
+  }
+
+
+  function evaluateWholeModel() {
+    if (resolved) {
+      return;
+    }
+
+
+    const coherent =
+      profiles.every(
+        node => {
+          const currentClass =
+            getRadialClass(
+              node.radiusRatio
+            );
+
+
+          const requiredClass =
+            TARGET_CLASS[
+              node.profile
+            ];
+
+
+          return (
+            currentClass ===
+            requiredClass
+          );
+        }
+      );
+
+
+    if (coherent) {
+      resolveAssessment();
+    }
   }
 
 
@@ -596,27 +770,33 @@ document.addEventListener("DOMContentLoaded", () => {
     const namespace =
       "http://www.w3.org/2000/svg";
 
+
     const line =
       document.createElementNS(
         namespace,
         "line"
       );
 
+
     line.classList.add(
       "causal-line"
     );
 
+
     line.dataset.lineId =
       id;
+
 
     causalLayer.appendChild(
       line
     );
 
+
     dynamicLines.set(
       id,
       line
     );
+
 
     return line;
   }
@@ -686,8 +866,10 @@ document.addEventListener("DOMContentLoaded", () => {
         "div"
       );
 
+
     element.className =
       "dependent-node";
+
 
     if (options.remote) {
       element.classList.add(
@@ -695,31 +877,30 @@ document.addEventListener("DOMContentLoaded", () => {
       );
     }
 
+
     dependentLayer.appendChild(
       element
     );
 
+
     const dependent = {
       id,
-
       parentProfile,
-
       angleOffset,
-
       distance,
-
       element,
-
       remote:
         Boolean(
           options.remote
         )
     };
 
+
     dependents.set(
       id,
       dependent
     );
+
 
     return dependent;
   }
@@ -735,6 +916,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (dependents.has(id)) {
       return dependents.get(id);
     }
+
 
     return createDependent(
       id,
@@ -754,14 +936,17 @@ document.addEventListener("DOMContentLoaded", () => {
         dependent.parentProfile
       );
 
+
     if (!parent) {
       return;
     }
+
 
     const parentCenter =
       getElementCenter(
         parent.element
       );
+
 
     const radians =
       degreesToRadians(
@@ -769,15 +954,18 @@ document.addEventListener("DOMContentLoaded", () => {
         dependent.angleOffset
       );
 
+
     const x =
       parentCenter.x +
       Math.cos(radians) *
       dependent.distance;
 
+
     const y =
       parentCenter.y +
       Math.sin(radians) *
       dependent.distance;
+
 
     dependent.element.style.left =
       `${x}px`;
@@ -804,12 +992,14 @@ document.addEventListener("DOMContentLoaded", () => {
     const line =
       dynamicLines.get(lineId);
 
+
     if (
       !node ||
       !line
     ) {
       return;
     }
+
 
     setLineCoordinates(
       line,
@@ -841,6 +1031,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const line =
       dynamicLines.get(lineId);
 
+
     if (
       !node ||
       !dependent ||
@@ -848,6 +1039,7 @@ document.addEventListener("DOMContentLoaded", () => {
     ) {
       return;
     }
+
 
     setLineCoordinates(
       line,
@@ -881,6 +1073,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const line =
       dynamicLines.get(lineId);
 
+
     if (
       !start ||
       !end ||
@@ -888,6 +1081,7 @@ document.addEventListener("DOMContentLoaded", () => {
     ) {
       return;
     }
+
 
     setLineCoordinates(
       line,
@@ -927,7 +1121,7 @@ document.addEventListener("DOMContentLoaded", () => {
     );
 
 
-    const relations = [
+    [
       ["B", "B1", "B-B1"],
       ["B", "B2", "B-B2"],
       ["B", "B3", "B-B3"],
@@ -944,10 +1138,7 @@ document.addEventListener("DOMContentLoaded", () => {
       ["H", "H1", "H-H1"],
 
       ["I", "I1", "I-I1"]
-    ];
-
-
-    relations.forEach(
+    ].forEach(
       relation => {
         updateDependentLine(
           relation[0],
@@ -963,6 +1154,7 @@ document.addEventListener("DOMContentLoaded", () => {
       "H2",
       "H1-H2"
     );
+
 
     updateDependentToDependentLine(
       "H2",
@@ -1016,6 +1208,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
   function fullReset() {
+    if (resolved) {
+      return;
+    }
+
     clearPrimaryEffects();
     hideAllLines();
     hideAllDependents();
@@ -1023,10 +1219,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
   /* -------------------------------------------------------
-     A — SPECTACULAR / REVERSIBLE
+     PROFILE EVENTS
      ------------------------------------------------------- */
 
   async function runProfileA() {
+    if (resolved) return;
+
     const node =
       getNode("A");
 
@@ -1040,6 +1238,8 @@ document.addEventListener("DOMContentLoaded", () => {
     showLine(line);
 
     await wait(400);
+
+    if (resolved) return;
 
     node.element.classList.add(
       "effect-strong"
@@ -1059,11 +1259,9 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
 
-  /* -------------------------------------------------------
-     B — SILENT DEPENDENCY HUB
-     ------------------------------------------------------- */
-
   async function runProfileB() {
+    if (resolved) return;
+
     const node =
       getNode("B");
 
@@ -1111,6 +1309,7 @@ document.addEventListener("DOMContentLoaded", () => {
         "B-B3"
       );
 
+
     updateDynamicGeometry();
 
     showLine(centerLine);
@@ -1126,6 +1325,8 @@ document.addEventListener("DOMContentLoaded", () => {
     );
 
     await wait(1100);
+
+    if (resolved) return;
 
 
     B1.element.classList.add(
@@ -1195,11 +1396,9 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
 
-  /* -------------------------------------------------------
-     C — BROAD PROPAGATION
-     ------------------------------------------------------- */
-
   async function runProfileC() {
+    if (resolved) return;
+
     const node =
       getNode("C");
 
@@ -1255,12 +1454,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
     await wait(350);
 
-
     node.element.classList.add(
       "effect-moderate"
     );
 
     await wait(900);
+
+    if (resolved) return;
 
 
     C1.element.classList.add(
@@ -1328,11 +1528,9 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
 
-  /* -------------------------------------------------------
-     D — SEVERE BUT REVERSIBLE
-     ------------------------------------------------------- */
-
   async function runProfileD() {
+    if (resolved) return;
+
     const node =
       getNode("D");
 
@@ -1347,13 +1545,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
     await wait(350);
 
-
     node.element.classList.add(
       "effect-collapse"
     );
 
     await wait(1500);
-
 
     node.element.classList.remove(
       "effect-collapse"
@@ -1361,18 +1557,15 @@ document.addEventListener("DOMContentLoaded", () => {
 
     await wait(900);
 
-
     hideLine(line);
 
     await wait(450);
   }
 
 
-  /* -------------------------------------------------------
-     E — GENUINELY CONTAINED
-     ------------------------------------------------------- */
-
   async function runProfileE() {
+    if (resolved) return;
+
     const node =
       getNode("E");
 
@@ -1387,13 +1580,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
     await wait(350);
 
-
     node.element.classList.add(
       "effect-small"
     );
 
     await wait(800);
-
 
     node.element.classList.remove(
       "effect-small"
@@ -1401,18 +1592,15 @@ document.addEventListener("DOMContentLoaded", () => {
 
     await wait(500);
 
-
     hideLine(line);
 
     await wait(450);
   }
 
 
-  /* -------------------------------------------------------
-     F — PERSISTENCE
-     ------------------------------------------------------- */
-
   async function runProfileF() {
+    if (resolved) return;
+
     const node =
       getNode("F");
 
@@ -1441,13 +1629,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
     await wait(400);
 
-
     node.element.classList.add(
       "effect-moderate"
     );
 
     await wait(1200);
-
 
     node.element.classList.remove(
       "effect-moderate"
@@ -1457,12 +1643,13 @@ document.addEventListener("DOMContentLoaded", () => {
       "effect-persistent"
     );
 
-
     centerLine.classList.add(
       "is-faint"
     );
 
     await wait(1200);
+
+    if (resolved) return;
 
 
     F1.element.classList.add(
@@ -1479,11 +1666,9 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
 
-  /* -------------------------------------------------------
-     G — SUBSTANTIAL PROPAGATION
-     ------------------------------------------------------- */
-
   async function runProfileG() {
+    if (resolved) return;
+
     const node =
       getNode("G");
 
@@ -1525,12 +1710,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
     await wait(350);
 
-
     node.element.classList.add(
       "effect-substantial"
     );
 
     await wait(850);
+
+    if (resolved) return;
 
 
     G1.element.classList.add(
@@ -1579,11 +1765,9 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
 
-  /* -------------------------------------------------------
-     H — DELAYED BOUNDARY-CROSSING CONSEQUENCE
-     ------------------------------------------------------- */
-
   async function runProfileH() {
+    if (resolved) return;
+
     const node =
       getNode("H");
 
@@ -1592,14 +1776,6 @@ document.addEventListener("DOMContentLoaded", () => {
         "center-H"
       );
 
-
-    /*
-      These distances are intentionally much larger than
-      the ordinary dependency structures.
-
-      The consequence should appear near or beyond the
-      apparent field boundary.
-    */
 
     const H1 =
       getOrCreateDependent(
@@ -1674,7 +1850,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
     await wait(650);
 
-
     node.element.classList.remove(
       "effect-subtle"
     );
@@ -1683,12 +1858,9 @@ document.addEventListener("DOMContentLoaded", () => {
       "is-faint"
     );
 
-
-    /*
-      Deliberately long uncertainty interval.
-    */
-
     await wait(2100);
+
+    if (resolved) return;
 
 
     H1.element.classList.add(
@@ -1734,11 +1906,9 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
 
-  /* -------------------------------------------------------
-     I — MODERATE / CONTAINED DEPENDENCY
-     ------------------------------------------------------- */
-
   async function runProfileI() {
+    if (resolved) return;
+
     const node =
       getNode("I");
 
@@ -1770,6 +1940,8 @@ document.addEventListener("DOMContentLoaded", () => {
     );
 
     await wait(750);
+
+    if (resolved) return;
 
 
     I1.element.classList.add(
@@ -1806,18 +1978,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
   /* -------------------------------------------------------
-     COMPARATIVE EVENT GROUPS
+     COMPARISON GROUPS
      ------------------------------------------------------- */
 
   async function runADPair() {
-    /*
-      A and D intentionally happen close together.
-
-      Both look severe.
-
-      Both recover.
-    */
-
     await Promise.all([
       runProfileA(),
       runProfileD()
@@ -1826,12 +1990,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
   async function runGIPair() {
-    /*
-      G and I begin similarly.
-
-      Their downstream consequences diverge.
-    */
-
     await Promise.all([
       runProfileG(),
       runProfileI()
@@ -1840,12 +1998,56 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
   /* -------------------------------------------------------
-     OBSERVATION CYCLE
+     RANDOMIZED EVENT ORDER
      ------------------------------------------------------- */
 
-  async function runObservationCycle() {
-    while (true) {
+  const eventGroups = [
+    {
+      id: "AD",
+      run: runADPair
+    },
 
+    {
+      id: "C",
+      run: runProfileC
+    },
+
+    {
+      id: "B",
+      run: runProfileB
+    },
+
+    {
+      id: "GI",
+      run: runGIPair
+    },
+
+    {
+      id: "F",
+      run: runProfileF
+    },
+
+    {
+      id: "H",
+      run: runProfileH
+    },
+
+    {
+      id: "E",
+      run: runProfileE
+    }
+  ];
+
+
+  async function runObservationCycle() {
+    const myToken =
+      ++cycleToken;
+
+
+    while (
+      !resolved &&
+      myToken === cycleToken
+    ) {
       fullReset();
 
       updateDynamicGeometry();
@@ -1853,102 +2055,106 @@ document.addEventListener("DOMContentLoaded", () => {
       await wait(3200);
 
 
-      /*
-        A / D
-
-        Spectacular immediate disturbance.
-        Both ultimately recover.
-      */
-
-      await runADPair();
-
-      await wait(900);
+      const sequence =
+        shuffle(eventGroups);
 
 
-      /*
-        C
-
-        Moderate direct effect.
-        Broader downstream propagation.
-      */
-
-      await runProfileC();
-
-      await wait(1000);
-
-
-      /*
-        B
-
-        Weak direct response.
-        Strong dependency consequence.
-      */
-
-      await runProfileB();
-
-      await wait(1100);
+      for (
+        const eventGroup of sequence
+      ) {
+        if (
+          resolved ||
+          myToken !== cycleToken
+        ) {
+          return;
+        }
 
 
-      /*
-        G / I
-
-        Similar initial magnitude.
-        Different downstream reach.
-      */
-
-      await runGIPair();
-
-      await wait(1000);
+        await eventGroup.run();
 
 
-      /*
-        F
-
-        Moderate effect.
-        Persistent alteration.
-      */
-
-      await runProfileF();
-
-      await wait(1100);
+        if (
+          resolved ||
+          myToken !== cycleToken
+        ) {
+          return;
+        }
 
 
-      /*
-        H
-
-        Almost invisible direct effect.
-        Long delay.
-        Consequence appears outside the assumed field.
-      */
-
-      await runProfileH();
-
-      await wait(1100);
+        await wait(
+          randomBetween(
+            850,
+            1350
+          )
+        );
+      }
 
 
-      /*
-        E
+      if (
+        resolved ||
+        myToken !== cycleToken
+      ) {
+        return;
+      }
 
-        Small effect.
-        No hidden reversal of meaning.
-        Genuinely contained.
-      */
-
-      await runProfileE();
-
-
-      /*
-        Hold the accumulated state.
-
-        At this point the reader can compare:
-        - what recovered
-        - what persisted
-        - what propagated
-        - what crossed the visible field
-      */
 
       await wait(6000);
     }
+  }
+
+
+  /* -------------------------------------------------------
+     RESOLUTION
+     ------------------------------------------------------- */
+
+  async function resolveAssessment() {
+    if (resolved) {
+      return;
+    }
+
+
+    resolved = true;
+
+    cycleToken += 1;
+
+
+    profiles.forEach(
+      node => {
+        node.isDragging = false;
+
+        node.element.classList.remove(
+          "is-dragging"
+        );
+      }
+    );
+
+
+    /*
+      No success text.
+      No immediate visual reward.
+    */
+
+    await wait(700);
+
+
+    field.classList.add(
+      "is-resolved"
+    );
+
+
+    /*
+      Preserve the current relational evidence rather than
+      wiping it immediately.
+    */
+
+    await wait(1800);
+
+
+    /*
+      This is intentionally only a prototype resolution.
+      In the next phase this becomes the transition into the
+      restricted relational map and the server access handoff.
+    */
   }
 
 
@@ -1968,6 +2174,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
   positionAllNodes();
+
 
   field.classList.add(
     "is-ready"

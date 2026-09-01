@@ -3,43 +3,69 @@
 
 /*
   ---------------------------------------------------------
-  RESTRICTED THRESHOLD — GEOMETRY + RADIAL INTERACTION
+  RESTRICTED THRESHOLD — CONSEQUENCE PROTOTYPE
   ---------------------------------------------------------
 
-  This version adds:
+  CURRENTLY IMPLEMENTED:
 
   - randomized angular placement
   - randomized starting radii
-  - randomized visual marker assignment
+  - randomized visual markers
   - radial-only dragging
-  - expanded radial movement range
-  - responsive recalculation
+  - expanded movement range
+  - dynamic causal lines
+  - temporary dependent structures
 
-  It does NOT yet include:
+  CURRENT TEST PROFILES:
 
-  - consequence animation
-  - hidden relational classes
+  A
+    dramatic direct effect
+    complete recovery
+
+  B
+    very weak direct response
+    delayed dependent degradation
+
+  F
+    moderate direct effect
+    persistent alteration
+
+  NOT YET IMPLEMENTED:
+
+  - C / D / E / G / H / I behaviors
+  - randomized event order
+  - hidden radial classes
   - validation
-  - successful completion
+  - completion state
 */
 
 
 document.addEventListener("DOMContentLoaded", () => {
-  const field = document.getElementById("gate-field");
+  const field =
+    document.getElementById("gate-field");
 
-  if (!field) {
+  const centerElement =
+    document.getElementById("gate-center");
+
+  const causalLayer =
+    document.getElementById("causal-layer");
+
+  const dependentLayer =
+    document.getElementById("dependent-layer");
+
+  if (
+    !field ||
+    !centerElement ||
+    !causalLayer ||
+    !dependentLayer
+  ) {
     return;
   }
+
 
   const nodeElements = Array.from(
     field.querySelectorAll(".gate-node")
   );
-
-  if (nodeElements.length !== 9) {
-    console.warn(
-      "Restricted gate expected 9 primary nodes."
-    );
-  }
 
 
   /* -------------------------------------------------------
@@ -48,33 +74,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const MIN_ANGLE_GAP = 28;
 
-  /*
-    Starting radius values are proportions of the usable
-    field radius.
-
-    These only control where nodes begin.
-  */
-
   const MIN_RADIUS_RATIO = 0.24;
   const MAX_RADIUS_RATIO = 0.44;
 
-  /*
-    Expanded draggable range.
-
-    Nodes can now approach much closer to the center and move
-    much farther toward the outer field.
-
-    0.08 = very close to the central actor
-    0.88 = near the outer edge of the field
-  */
-
   const DRAG_MIN_RATIO = 0.08;
   const DRAG_MAX_RATIO = 0.88;
-
-
-  /* -------------------------------------------------------
-     INTERNAL NODE MARK CLASSES
-     ------------------------------------------------------- */
 
   const markerClasses = [
     "mark-dot",
@@ -93,12 +97,29 @@ document.addEventListener("DOMContentLoaded", () => {
      UTILITIES
      ------------------------------------------------------- */
 
+  function wait(milliseconds) {
+    return new Promise(
+      resolve => {
+        window.setTimeout(
+          resolve,
+          milliseconds
+        );
+      }
+    );
+  }
+
+
   function shuffle(array) {
     const copy = [...array];
 
-    for (let i = copy.length - 1; i > 0; i -= 1) {
+    for (
+      let i = copy.length - 1;
+      i > 0;
+      i -= 1
+    ) {
       const j = Math.floor(
-        Math.random() * (i + 1)
+        Math.random() *
+        (i + 1)
       );
 
       [copy[i], copy[j]] = [
@@ -112,17 +133,26 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
   function randomBetween(min, max) {
-    return min + Math.random() * (max - min);
+    return (
+      min +
+      Math.random() *
+      (max - min)
+    );
   }
 
 
   function degreesToRadians(degrees) {
-    return degrees * Math.PI / 180;
+    return (
+      degrees *
+      Math.PI /
+      180
+    );
   }
 
 
   function normalizeAngle(angle) {
-    let normalized = angle % 360;
+    let normalized =
+      angle % 360;
 
     if (normalized < 0) {
       normalized += 360;
@@ -133,9 +163,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
   function angularDistance(a, b) {
-    const difference = Math.abs(
-      normalizeAngle(a) - normalizeAngle(b)
-    );
+    const difference =
+      Math.abs(
+        normalizeAngle(a) -
+        normalizeAngle(b)
+      );
 
     return Math.min(
       difference,
@@ -144,73 +176,95 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
 
+  /* -------------------------------------------------------
+     FIELD GEOMETRY
+     ------------------------------------------------------- */
+
   function getFieldGeometry() {
-    const rect = field.getBoundingClientRect();
+    const rect =
+      field.getBoundingClientRect();
 
-    const size = Math.min(
-      rect.width,
-      rect.height
-    );
-
-    const centerX = rect.width / 2;
-    const centerY = rect.height / 2;
-
-    /*
-      Slightly smaller than half the field so nodes remain
-      comfortably inside the visible assessment area even at
-      the largest allowed radius.
-    */
-
-    const usableRadius = size * 0.49;
+    const size =
+      Math.min(
+        rect.width,
+        rect.height
+      );
 
     return {
       rect,
-      centerX,
-      centerY,
-      usableRadius
+      centerX:
+        rect.width / 2,
+
+      centerY:
+        rect.height / 2,
+
+      usableRadius:
+        size * 0.49
+    };
+  }
+
+
+  function getElementCenter(element) {
+    const fieldRect =
+      field.getBoundingClientRect();
+
+    const rect =
+      element.getBoundingClientRect();
+
+    return {
+      x:
+        rect.left -
+        fieldRect.left +
+        rect.width / 2,
+
+      y:
+        rect.top -
+        fieldRect.top +
+        rect.height / 2
     };
   }
 
 
   /* -------------------------------------------------------
-     RANDOM ANGLE GENERATION
+     RANDOM ANGLES
      ------------------------------------------------------- */
 
   function generateAngles(count) {
-    /*
-      Start from roughly even spacing, then perturb each angle.
+    const baseGap =
+      360 / count;
 
-      This gives us randomness without accidental crowding.
-    */
-
-    const baseGap = 360 / count;
-    const globalRotation = Math.random() * 360;
+    const globalRotation =
+      Math.random() * 360;
 
     const angles = [];
 
-    for (let i = 0; i < count; i += 1) {
+    for (
+      let i = 0;
+      i < count;
+      i += 1
+    ) {
       const base =
         globalRotation +
         i * baseGap;
 
-      const jitter = randomBetween(
-        -10,
-        10
-      );
+      const jitter =
+        randomBetween(
+          -10,
+          10
+        );
 
       angles.push(
-        normalizeAngle(base + jitter)
+        normalizeAngle(
+          base + jitter
+        )
       );
     }
 
-    /*
-      Safety check.
-
-      If the random jitter somehow produces two nodes that are
-      too close, regenerate the set.
-    */
-
-    for (let i = 0; i < angles.length; i += 1) {
+    for (
+      let i = 0;
+      i < angles.length;
+      i += 1
+    ) {
       for (
         let j = i + 1;
         j < angles.length;
@@ -222,7 +276,9 @@ document.addEventListener("DOMContentLoaded", () => {
             angles[j]
           ) < MIN_ANGLE_GAP
         ) {
-          return generateAngles(count);
+          return generateAngles(
+            count
+          );
         }
       }
     }
@@ -232,35 +288,41 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
   /* -------------------------------------------------------
-     NODE SESSION STATE
+     PRIMARY NODE STATE
      ------------------------------------------------------- */
 
-  const profiles = nodeElements.map(
-    (element, index) => ({
-      element,
+  const profiles =
+    nodeElements.map(
+      (element, index) => ({
+        element,
 
-      /*
-        A–I remain internal only.
+        profile:
+          element.dataset.profile ||
+          String.fromCharCode(
+            65 + index
+          ),
 
-        The visual marker assigned to each profile changes
-        every session.
-      */
+        angle: 0,
 
-      profile:
-        element.dataset.profile ||
-        String.fromCharCode(65 + index),
+        radiusRatio: 0,
 
-      angle: 0,
-      radiusRatio: 0,
-      markerClass: null,
+        markerClass: null,
 
-      isDragging: false
-    })
-  );
+        isDragging: false
+      })
+    );
+
+
+  function getNode(profileId) {
+    return profiles.find(
+      node =>
+        node.profile === profileId
+    );
+  }
 
 
   /* -------------------------------------------------------
-     RANDOMIZE VISUAL IDENTIFIERS
+     MARKER RANDOMIZATION
      ------------------------------------------------------- */
 
   function assignMarkers() {
@@ -301,7 +363,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
   /* -------------------------------------------------------
-     RANDOMIZE GEOMETRY
+     RANDOMIZED GEOMETRY
      ------------------------------------------------------- */
 
   function assignGeometry() {
@@ -309,14 +371,6 @@ document.addEventListener("DOMContentLoaded", () => {
       generateAngles(
         profiles.length
       );
-
-    /*
-      Use a spread of starting-radius neighborhoods.
-
-      These are NOT the eventual answer bands.
-
-      They only establish an irregular starting field.
-    */
 
     const startingRadiusGroups = [
       0.27,
@@ -331,17 +385,22 @@ document.addEventListener("DOMContentLoaded", () => {
     ];
 
     const shuffledRadii =
-      shuffle(startingRadiusGroups);
+      shuffle(
+        startingRadiusGroups
+      );
 
     profiles.forEach(
       (node, index) => {
-        node.angle = angles[index];
+        node.angle =
+          angles[index];
 
         node.radiusRatio =
           Math.max(
             MIN_RADIUS_RATIO,
+
             Math.min(
               MAX_RADIUS_RATIO,
+
               shuffledRadii[index] +
               randomBetween(
                 -0.012,
@@ -355,7 +414,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
   /* -------------------------------------------------------
-     POSITIONING
+     PRIMARY NODE POSITIONING
      ------------------------------------------------------- */
 
   function positionNode(node) {
@@ -396,11 +455,13 @@ document.addEventListener("DOMContentLoaded", () => {
     profiles.forEach(
       positionNode
     );
+
+    updateDynamicGeometry();
   }
 
 
   /* -------------------------------------------------------
-     POINTER → RADIAL DISTANCE
+     RADIAL DRAGGING
      ------------------------------------------------------- */
 
   function calculatePointerRadiusRatio(
@@ -415,16 +476,20 @@ document.addEventListener("DOMContentLoaded", () => {
     } = getFieldGeometry();
 
     const pointerX =
-      clientX - rect.left;
+      clientX -
+      rect.left;
 
     const pointerY =
-      clientY - rect.top;
+      clientY -
+      rect.top;
 
     const dx =
-      pointerX - centerX;
+      pointerX -
+      centerX;
 
     const dy =
-      pointerY - centerY;
+      pointerY -
+      centerY;
 
     const distance =
       Math.sqrt(
@@ -432,8 +497,10 @@ document.addEventListener("DOMContentLoaded", () => {
         dy * dy
       );
 
-    return distance /
-      usableRadius;
+    return (
+      distance /
+      usableRadius
+    );
   }
 
 
@@ -442,6 +509,7 @@ document.addEventListener("DOMContentLoaded", () => {
   ) {
     return Math.max(
       DRAG_MIN_RATIO,
+
       Math.min(
         DRAG_MAX_RATIO,
         radiusRatio
@@ -449,10 +517,6 @@ document.addEventListener("DOMContentLoaded", () => {
     );
   }
 
-
-  /* -------------------------------------------------------
-     DRAGGING
-     ------------------------------------------------------- */
 
   function beginDrag(
     event,
@@ -471,9 +535,7 @@ document.addEventListener("DOMContentLoaded", () => {
         event.pointerId
       );
     } catch (error) {
-      /*
-        Pointer capture is helpful but not required.
-      */
+      /* optional */
     }
 
     updateDrag(
@@ -503,6 +565,8 @@ document.addEventListener("DOMContentLoaded", () => {
       );
 
     positionNode(node);
+
+    updateDynamicGeometry();
   }
 
 
@@ -525,22 +589,12 @@ document.addEventListener("DOMContentLoaded", () => {
         event.pointerId
       );
     } catch (error) {
-      /*
-        Ignore if capture was not active.
-      */
+      /* optional */
     }
-
-    /*
-      Future step:
-
-      evaluate the complete relational model here.
-    */
   }
 
 
-  function attachDragHandlers(
-    node
-  ) {
+  function attachDragHandlers(node) {
     node.element.addEventListener(
       "pointerdown",
       event => {
@@ -584,11 +638,743 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
   /* -------------------------------------------------------
+     DYNAMIC CAUSAL STRUCTURES
+     ------------------------------------------------------- */
+
+  const dynamicLines =
+    new Map();
+
+  const dependents =
+    new Map();
+
+
+  function createLine(id) {
+    const namespace =
+      "http://www.w3.org/2000/svg";
+
+    const line =
+      document.createElementNS(
+        namespace,
+        "line"
+      );
+
+    line.classList.add(
+      "causal-line"
+    );
+
+    line.dataset.lineId =
+      id;
+
+    causalLayer.appendChild(
+      line
+    );
+
+    dynamicLines.set(
+      id,
+      line
+    );
+
+    return line;
+  }
+
+
+  function getOrCreateLine(id) {
+    return (
+      dynamicLines.get(id) ||
+      createLine(id)
+    );
+  }
+
+
+  function setLineCoordinates(
+    line,
+    start,
+    end
+  ) {
+    line.setAttribute(
+      "x1",
+      start.x
+    );
+
+    line.setAttribute(
+      "y1",
+      start.y
+    );
+
+    line.setAttribute(
+      "x2",
+      end.x
+    );
+
+    line.setAttribute(
+      "y2",
+      end.y
+    );
+  }
+
+
+  function showLine(line) {
+    line.classList.add(
+      "is-visible"
+    );
+  }
+
+
+  function hideLine(line) {
+    line.classList.remove(
+      "is-visible",
+      "is-faint",
+      "is-residual"
+    );
+  }
+
+
+  function createDependent(
+    id,
+    parentProfile,
+    angleOffset,
+    distance
+  ) {
+    const element =
+      document.createElement(
+        "div"
+      );
+
+    element.className =
+      "dependent-node";
+
+    dependentLayer.appendChild(
+      element
+    );
+
+    const dependent = {
+      id,
+      parentProfile,
+      angleOffset,
+      distance,
+      element
+    };
+
+    dependents.set(
+      id,
+      dependent
+    );
+
+    return dependent;
+  }
+
+
+  function getOrCreateDependent(
+    id,
+    parentProfile,
+    angleOffset,
+    distance
+  ) {
+    if (dependents.has(id)) {
+      return dependents.get(id);
+    }
+
+    return createDependent(
+      id,
+      parentProfile,
+      angleOffset,
+      distance
+    );
+  }
+
+
+  function positionDependent(
+    dependent
+  ) {
+    const parent =
+      getNode(
+        dependent.parentProfile
+      );
+
+    if (!parent) {
+      return;
+    }
+
+    const parentCenter =
+      getElementCenter(
+        parent.element
+      );
+
+    const radians =
+      degreesToRadians(
+        parent.angle +
+        dependent.angleOffset
+      );
+
+    const x =
+      parentCenter.x +
+      Math.cos(radians) *
+      dependent.distance;
+
+    const y =
+      parentCenter.y +
+      Math.sin(radians) *
+      dependent.distance;
+
+    dependent.element.style.left =
+      `${x}px`;
+
+    dependent.element.style.top =
+      `${y}px`;
+  }
+
+
+  function positionAllDependents() {
+    dependents.forEach(
+      positionDependent
+    );
+  }
+
+
+  function updateCenterLine(
+    profileId,
+    lineId
+  ) {
+    const node =
+      getNode(profileId);
+
+    const line =
+      dynamicLines.get(
+        lineId
+      );
+
+    if (
+      !node ||
+      !line
+    ) {
+      return;
+    }
+
+    const center =
+      getElementCenter(
+        centerElement
+      );
+
+    const target =
+      getElementCenter(
+        node.element
+      );
+
+    setLineCoordinates(
+      line,
+      center,
+      target
+    );
+  }
+
+
+  function updateDependentLine(
+    profileId,
+    dependentId,
+    lineId
+  ) {
+    const node =
+      getNode(profileId);
+
+    const dependent =
+      dependents.get(
+        dependentId
+      );
+
+    const line =
+      dynamicLines.get(
+        lineId
+      );
+
+    if (
+      !node ||
+      !dependent ||
+      !line
+    ) {
+      return;
+    }
+
+    setLineCoordinates(
+      line,
+      getElementCenter(
+        node.element
+      ),
+      getElementCenter(
+        dependent.element
+      )
+    );
+  }
+
+
+  function updateDynamicGeometry() {
+    positionAllDependents();
+
+    updateCenterLine(
+      "A",
+      "center-A"
+    );
+
+    updateCenterLine(
+      "B",
+      "center-B"
+    );
+
+    updateCenterLine(
+      "F",
+      "center-F"
+    );
+
+    updateDependentLine(
+      "B",
+      "B1",
+      "B-B1"
+    );
+
+    updateDependentLine(
+      "B",
+      "B2",
+      "B-B2"
+    );
+
+    updateDependentLine(
+      "B",
+      "B3",
+      "B-B3"
+    );
+
+    updateDependentLine(
+      "F",
+      "F1",
+      "F-F1"
+    );
+  }
+
+
+  /* -------------------------------------------------------
+     EFFECT RESET
+     ------------------------------------------------------- */
+
+  function clearPrimaryEffects() {
+    profiles.forEach(
+      node => {
+        node.element.classList.remove(
+          "effect-strong",
+          "effect-subtle",
+          "effect-moderate",
+          "effect-persistent"
+        );
+      }
+    );
+  }
+
+
+  function hideAllLines() {
+    dynamicLines.forEach(
+      line => {
+        hideLine(line);
+      }
+    );
+  }
+
+
+  function hideAllDependents() {
+    dependents.forEach(
+      dependent => {
+        dependent.element.classList.remove(
+          "is-visible",
+          "is-weakened",
+          "is-collapsed",
+          "is-persistent"
+        );
+      }
+    );
+  }
+
+
+  function fullReset() {
+    clearPrimaryEffects();
+    hideAllLines();
+    hideAllDependents();
+  }
+
+
+  /* -------------------------------------------------------
+     PROFILE A
+     -------------------------------------------------------
+
+     Strong immediate visual response.
+     Complete recovery.
+     No downstream structure.
+  ------------------------------------------------------- */
+
+  async function runProfileA() {
+    const node =
+      getNode("A");
+
+    if (!node) {
+      return;
+    }
+
+    const line =
+      getOrCreateLine(
+        "center-A"
+      );
+
+    updateDynamicGeometry();
+
+    showLine(line);
+
+    await wait(450);
+
+    node.element.classList.add(
+      "effect-strong"
+    );
+
+    await wait(1300);
+
+    node.element.classList.remove(
+      "effect-strong"
+    );
+
+    await wait(700);
+
+    hideLine(line);
+
+    await wait(600);
+  }
+
+
+  /* -------------------------------------------------------
+     PROFILE B
+     -------------------------------------------------------
+
+     Very weak direct response.
+     Delayed dependency cascade.
+     Partial residual damage.
+  ------------------------------------------------------- */
+
+  async function runProfileB() {
+    const node =
+      getNode("B");
+
+    if (!node) {
+      return;
+    }
+
+    const centerLine =
+      getOrCreateLine(
+        "center-B"
+      );
+
+
+    const B1 =
+      getOrCreateDependent(
+        "B1",
+        "B",
+        -38,
+        72
+      );
+
+    const B2 =
+      getOrCreateDependent(
+        "B2",
+        "B",
+        0,
+        88
+      );
+
+    const B3 =
+      getOrCreateDependent(
+        "B3",
+        "B",
+        42,
+        70
+      );
+
+
+    const line1 =
+      getOrCreateLine(
+        "B-B1"
+      );
+
+    const line2 =
+      getOrCreateLine(
+        "B-B2"
+      );
+
+    const line3 =
+      getOrCreateLine(
+        "B-B3"
+      );
+
+
+    updateDynamicGeometry();
+
+    showLine(
+      centerLine
+    );
+
+    node.element.classList.add(
+      "effect-subtle"
+    );
+
+    await wait(850);
+
+    node.element.classList.remove(
+      "effect-subtle"
+    );
+
+    /*
+      Deliberate pause.
+
+      The direct event appears almost inconsequential.
+    */
+
+    await wait(1200);
+
+
+    B1.element.classList.add(
+      "is-visible"
+    );
+
+    line1.classList.add(
+      "is-visible"
+    );
+
+    await wait(450);
+
+
+    B2.element.classList.add(
+      "is-visible"
+    );
+
+    line2.classList.add(
+      "is-visible"
+    );
+
+    await wait(450);
+
+
+    B3.element.classList.add(
+      "is-visible"
+    );
+
+    line3.classList.add(
+      "is-visible"
+    );
+
+    await wait(900);
+
+
+    /*
+      The dependent structures degrade differently.
+    */
+
+    B1.element.classList.add(
+      "is-weakened"
+    );
+
+    await wait(500);
+
+
+    B2.element.classList.add(
+      "is-collapsed"
+    );
+
+    await wait(500);
+
+
+    B3.element.classList.add(
+      "is-weakened"
+    );
+
+    B3.element.classList.add(
+      "is-persistent"
+    );
+
+
+    line1.classList.add(
+      "is-faint"
+    );
+
+    line2.classList.add(
+      "is-faint"
+    );
+
+    line3.classList.add(
+      "is-residual"
+    );
+
+
+    centerLine.classList.add(
+      "is-faint"
+    );
+
+    await wait(1600);
+  }
+
+
+  /* -------------------------------------------------------
+     PROFILE F
+     -------------------------------------------------------
+
+     Moderate direct alteration.
+     No dramatic cascade.
+     State persists.
+  ------------------------------------------------------- */
+
+  async function runProfileF() {
+    const node =
+      getNode("F");
+
+    if (!node) {
+      return;
+    }
+
+    const centerLine =
+      getOrCreateLine(
+        "center-F"
+      );
+
+
+    const F1 =
+      getOrCreateDependent(
+        "F1",
+        "F",
+        30,
+        67
+      );
+
+
+    const dependentLine =
+      getOrCreateLine(
+        "F-F1"
+      );
+
+
+    updateDynamicGeometry();
+
+    showLine(
+      centerLine
+    );
+
+    await wait(450);
+
+
+    node.element.classList.add(
+      "effect-moderate"
+    );
+
+    await wait(1300);
+
+
+    node.element.classList.remove(
+      "effect-moderate"
+    );
+
+    node.element.classList.add(
+      "effect-persistent"
+    );
+
+
+    centerLine.classList.add(
+      "is-faint"
+    );
+
+
+    /*
+      The persistent state later propagates very slightly.
+    */
+
+    await wait(1300);
+
+
+    F1.element.classList.add(
+      "is-visible",
+      "is-persistent"
+    );
+
+    dependentLine.classList.add(
+      "is-visible",
+      "is-residual"
+    );
+
+
+    await wait(1800);
+  }
+
+
+  /* -------------------------------------------------------
+     OBSERVATION CYCLE
+     ------------------------------------------------------- */
+
+  async function runObservationCycle() {
+    while (true) {
+
+      /*
+        Restore neutral state before the next cycle.
+      */
+
+      fullReset();
+
+      updateDynamicGeometry();
+
+      await wait(3500);
+
+
+      /*
+        A:
+        high visual intensity,
+        low persistence.
+      */
+
+      await runProfileA();
+
+      await wait(1200);
+
+
+      /*
+        B:
+        almost invisible direct response,
+        substantial downstream consequence.
+      */
+
+      await runProfileB();
+
+      await wait(1500);
+
+
+      /*
+        F:
+        modest direct response,
+        persistent alteration.
+      */
+
+      await runProfileF();
+
+
+      /*
+        Hold the end state long enough for comparison.
+
+        A has completely recovered.
+
+        B retains damaged dependents.
+
+        F remains altered.
+      */
+
+      await wait(5500);
+    }
+  }
+
+
+  /* -------------------------------------------------------
      INITIALIZE
      ------------------------------------------------------- */
 
   assignMarkers();
   assignGeometry();
+
 
   profiles.forEach(
     node => {
@@ -596,10 +1382,25 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   );
 
+
   positionAllNodes();
 
   field.classList.add(
     "is-ready"
+  );
+
+
+  /*
+    Give the browser one frame to fully establish geometry
+    before beginning the observation sequence.
+  */
+
+  window.requestAnimationFrame(
+    () => {
+      updateDynamicGeometry();
+
+      runObservationCycle();
+    }
   );
 
 

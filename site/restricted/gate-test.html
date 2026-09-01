@@ -25,16 +25,16 @@
     >
 
       <!--
-        These circles are intentionally very faint.
-        They are not presented as explicit puzzle rings.
+        Faint structural field.
+        These are not yet the final assessment bands.
       -->
       <div class="field-ring field-ring-1" aria-hidden="true"></div>
       <div class="field-ring field-ring-2" aria-hidden="true"></div>
       <div class="field-ring field-ring-3" aria-hidden="true"></div>
 
+
       <!--
-        Faint structural traces.
-        These are visual only in this first prototype.
+        Permanent background structure.
       -->
       <svg
         class="field-traces"
@@ -112,6 +112,26 @@
           class="trace-line"
         />
       </svg>
+
+
+      <!--
+        Dynamic causal lines are inserted here by JavaScript.
+      -->
+      <svg
+        class="causal-layer"
+        id="causal-layer"
+        aria-hidden="true"
+      ></svg>
+
+
+      <!--
+        Temporary downstream structures are inserted here.
+      -->
+      <div
+        class="dependent-layer"
+        id="dependent-layer"
+        aria-hidden="true"
+      ></div>
 
 
       <!-- CENTRAL ACTOR -->

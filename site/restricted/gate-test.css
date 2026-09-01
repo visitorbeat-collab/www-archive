@@ -1,5 +1,5 @@
 /* ---------------------------------------------------------
-   RESTRICTED THRESHOLD — VISUAL PROTOTYPE
+   RESTRICTED THRESHOLD — CONSEQUENCE PROTOTYPE
    --------------------------------------------------------- */
 
 :root {
@@ -113,6 +113,8 @@ body.gate-test-page::after {
   transform: translate(-50%, -50%);
 
   box-sizing: border-box;
+
+  z-index: 0;
 }
 
 .field-ring-1 {
@@ -138,7 +140,7 @@ body.gate-test-page::after {
 
 
 /* ---------------------------------------------------------
-   STRUCTURAL SVG
+   BACKGROUND STRUCTURE
    --------------------------------------------------------- */
 
 .field-traces {
@@ -178,6 +180,123 @@ body.gate-test-page::after {
 
 
 /* ---------------------------------------------------------
+   DYNAMIC CAUSAL LAYER
+   --------------------------------------------------------- */
+
+.causal-layer {
+  position: absolute;
+
+  inset: 0;
+
+  width: 100%;
+  height: 100%;
+
+  overflow: visible;
+
+  pointer-events: none;
+
+  z-index: 2;
+}
+
+.causal-line {
+  fill: none;
+
+  stroke: rgba(206, 217, 222, 0.22);
+  stroke-width: 1;
+
+  stroke-dasharray: 2 8;
+
+  opacity: 0;
+
+  transition:
+    opacity 500ms ease,
+    stroke 500ms ease;
+}
+
+.causal-line.is-visible {
+  opacity: 1;
+}
+
+.causal-line.is-faint {
+  opacity: 0.3;
+}
+
+.causal-line.is-residual {
+  opacity: 0.17;
+}
+
+
+/* ---------------------------------------------------------
+   DEPENDENT LAYER
+   --------------------------------------------------------- */
+
+.dependent-layer {
+  position: absolute;
+
+  inset: 0;
+
+  pointer-events: none;
+
+  z-index: 3;
+}
+
+.dependent-node {
+  position: absolute;
+
+  width: 9px;
+  height: 9px;
+
+  transform: translate(-50%, -50%);
+
+  border: 1px solid rgba(214, 224, 229, 0.38);
+  border-radius: 50%;
+
+  box-sizing: border-box;
+
+  opacity: 0;
+
+  transition:
+    opacity 500ms ease,
+    transform 500ms ease,
+    border-color 700ms ease,
+    background 700ms ease;
+}
+
+.dependent-node.is-visible {
+  opacity: 0.72;
+}
+
+.dependent-node.is-weakened {
+  opacity: 0.28;
+
+  transform:
+    translate(-50%, -50%)
+    scale(0.72);
+
+  border-color:
+    rgba(214, 224, 229, 0.18);
+}
+
+.dependent-node.is-collapsed {
+  opacity: 0.12;
+
+  transform:
+    translate(-50%, -50%)
+    scale(0.22);
+
+  border-color:
+    rgba(214, 224, 229, 0.08);
+
+  background:
+    rgba(214, 224, 229, 0.12);
+}
+
+.dependent-node.is-persistent {
+  opacity: 0.42;
+}
+
+
+/* ---------------------------------------------------------
    CENTRAL NODE
    --------------------------------------------------------- */
 
@@ -198,7 +317,7 @@ body.gate-test-page::after {
 
   border-radius: 50%;
 
-  z-index: 5;
+  z-index: 6;
 }
 
 .gate-center::before {
@@ -258,10 +377,17 @@ body.gate-test-page::after {
   align-items: center;
   justify-content: center;
 
-  z-index: 4;
+  z-index: 5;
 
   user-select: none;
   -webkit-user-select: none;
+
+  cursor: grab;
+
+  touch-action: none;
+
+  transition:
+    opacity 240ms ease;
 }
 
 .node-body {
@@ -280,6 +406,13 @@ body.gate-test-page::after {
   box-sizing: border-box;
 
   opacity: 0.88;
+
+  transition:
+    opacity 250ms ease,
+    transform 450ms ease,
+    border-color 450ms ease,
+    box-shadow 450ms ease,
+    background 450ms ease;
 }
 
 .gate-node::after {
@@ -293,63 +426,118 @@ body.gate-test-page::after {
   border: 1px solid rgba(219, 228, 232, 0.025);
 
   border-radius: 50%;
+
+  transition:
+    width 450ms ease,
+    height 450ms ease,
+    opacity 450ms ease,
+    border-color 450ms ease;
+
+  pointer-events: none;
 }
 
 
 /* ---------------------------------------------------------
-   NODE POSITIONS
+   INTERACTION
+   --------------------------------------------------------- */
+
+.gate-node:hover .node-body {
+  opacity: 1;
+}
+
+.gate-node.is-dragging {
+  cursor: grabbing;
+
+  z-index: 20;
+}
+
+.gate-node.is-dragging .node-body {
+  opacity: 1;
+}
+
+
+/* ---------------------------------------------------------
+   PROFILE EFFECT STATES
    --------------------------------------------------------- */
 
 /*
-   These positions are intentionally irregular.
-
-   In the next development stage they will be generated
-   dynamically rather than hard-coded.
+   Strong direct disturbance.
 */
 
-.node-1 {
-  left: 50%;
-  top: 13%;
+.gate-node.effect-strong .node-body {
+  transform: scale(1.65);
+
+  border-color:
+    rgba(231, 238, 241, 0.86);
+
+  box-shadow:
+    0 0 18px rgba(227, 235, 239, 0.16);
 }
 
-.node-2 {
-  left: 72%;
-  top: 22%;
+.gate-node.effect-strong::after {
+  width: 46px;
+  height: 46px;
+
+  border-color:
+    rgba(221, 231, 235, 0.11);
 }
 
-.node-3 {
-  left: 84%;
-  top: 45%;
+
+/*
+   Very subtle direct response.
+*/
+
+.gate-node.effect-subtle .node-body {
+  opacity: 0.56;
+
+  transform: scale(0.94);
+
+  border-color:
+    rgba(222, 230, 234, 0.35);
 }
 
-.node-4 {
-  left: 77%;
-  top: 70%;
+
+/*
+   Moderate direct alteration.
+*/
+
+.gate-node.effect-moderate .node-body {
+  transform: scale(1.14);
+
+  border-color:
+    rgba(229, 236, 239, 0.72);
+
+  background:
+    rgba(220, 230, 234, 0.025);
+
+  box-shadow:
+    0 0 12px rgba(226, 234, 238, 0.08);
 }
 
-.node-5 {
-  left: 58%;
-  top: 84%;
+
+/*
+   Persistent state.
+
+   This intentionally remains visually understated.
+*/
+
+.gate-node.effect-persistent .node-body {
+  transform: scale(1.08);
+
+  border-color:
+    rgba(226, 234, 238, 0.56);
+
+  background:
+    rgba(219, 228, 233, 0.045);
+
+  box-shadow:
+    inset 0 0 8px
+    rgba(220, 230, 234, 0.055);
 }
 
-.node-6 {
-  left: 34%;
-  top: 79%;
-}
-
-.node-7 {
-  left: 17%;
-  top: 61%;
-}
-
-.node-8 {
-  left: 20%;
-  top: 34%;
-}
-
-.node-9 {
-  left: 38%;
-  top: 24%;
+.gate-node.effect-persistent::after {
+  border-color:
+    rgba(219, 228, 232, 0.06);
 }
 
 
@@ -573,7 +761,7 @@ body.gate-test-page::after {
 
 
 /* ---------------------------------------------------------
-   VERY SUBTLE MOTION
+   SUBTLE MOTION
    --------------------------------------------------------- */
 
 @keyframes center-breathe {
@@ -623,30 +811,4 @@ body.gate-test-page::after {
     width: 17px;
     height: 17px;
   }
-}
-/* ---------------------------------------------------------
-   RADIAL INTERACTION
-   --------------------------------------------------------- */
-
-.gate-node {
-  cursor: grab;
-
-  touch-action: none;
-
-  transition:
-    opacity 160ms ease;
-}
-
-.gate-node:hover .node-body {
-  opacity: 1;
-}
-
-.gate-node.is-dragging {
-  cursor: grabbing;
-
-  z-index: 10;
-}
-
-.gate-node.is-dragging .node-body {
-  opacity: 1;
 }

@@ -3024,55 +3024,77 @@ async function resolveAssessment(
   field.classList.add(
     "is-ready"
   );
-const params =
-  new URLSearchParams(
-    window.location.search
-  );
-
-const devBypass =
-  params.get("dev") === "1";
-requestAssessmentChallenge();
-window.requestAnimationFrame(
-  () => {
-
-if (devBypass) {
-
-  profiles.forEach(
-    node => {
-
-      const targetClass =
-        TARGET_CLASS[
-          node.profile
-        ];
+  const params =
+    new URLSearchParams(
+      window.location.search
+    );
 
 
-      node.currentClass =
-        targetClass;
+  const devBypass =
+    params.get("dev") === "1";
 
 
-      node.radiusRatio =
-        RADIAL_CLASSES[
-          targetClass
-        ];
+  /*
+    The normal assessment quietly requests a server challenge
+    in advance.
+
+    Development mode does not depend on it.
+  */
+
+  if (!devBypass) {
+    requestAssessmentChallenge();
+  }
 
 
-      positionNode(
-        node
-      );
+  window.requestAnimationFrame(
+    () => {
+
+      updateDynamicGeometry();
+
+
+      if (devBypass) {
+
+        profiles.forEach(
+          node => {
+
+            const targetClass =
+              TARGET_CLASS[
+                node.profile
+              ];
+
+
+            node.currentClass =
+              targetClass;
+
+
+            node.radiusRatio =
+              RADIAL_CLASSES[
+                targetClass
+              ];
+
+
+            positionNode(
+              node
+            );
+          }
+        );
+
+
+        updateDynamicGeometry();
+
+
+        resolveAssessment({
+          bypassAuthorization: true
+        });
+
+
+        return;
+      }
+
+
+      runObservationCycle();
     }
   );
-
-
-  updateDynamicGeometry();
-
-
-  resolveAssessment({
-    bypassAuthorization: true
-  });
-
-
-  return;
-}
 
 
   window.addEventListener(

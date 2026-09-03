@@ -3030,8 +3030,11 @@ async function resolveAssessment(
     );
 
 
-  const devBypass =
-    params.get("dev") === "1";
+const devBypass =
+  window.location.pathname.endsWith(
+    "/restricted/gate-test.html"
+  ) &&
+  params.get("dev") === "1";
 
 
   /*

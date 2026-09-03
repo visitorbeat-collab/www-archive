@@ -2,157 +2,252 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>restricted</title>
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>restricted threshold</title>
 
   <link rel="stylesheet" href="/style.css">
-  <link rel="stylesheet" href="/restricted/restricted.css">
+  <link rel="stylesheet" href="/restricted/gate-test.css">
 </head>
 
-<body>
+<body class="gate-test-page">
 
-<main class="document">
+  <main class="gate-shell">
 
-  <header class="document-header">
-
-    <div class="eyebrow">
-      /restricted/
-    </div>
-
-    <h1 class="document-title">
-      classification boundary
-    </h1>
-
-    <div class="document-metadata">
-      <span>status: restricted</span>
-      <span>interpretation required</span>
-    </div>
-
-  </header>
-
-
-  <section class="recovered-section">
-
-    <p>
-      Observation is not sufficient.
-    </p>
-
-    <p>
-      Interpretation is required.
-    </p>
-
-  </section>
-
-
-  <section class="recovered-section">
-
-    <p class="mono">
-      observation<br>
-      ↓<br>
-      interpretation<br>
-      ↓<br>
-      consequence<br>
-      ↓<br>
-      ?
-    </p>
-
-  </section>
-
-
-  <section class="recovered-section">
-
-    <p>
-      Complete the relationship.
-    </p>
-
-    <form
-      method="POST"
-      action="/restricted/access"
-      autocomplete="off"
+    <section
+      class="gate-field"
+      id="gate-field"
+      aria-label="Relational field"
     >
 
-      <p>
-        <label
-          class="mono"
-          for="response"
+      <!-- Permanent structural traces -->
+
+      <svg
+        class="field-traces"
+        viewBox="0 0 1000 1000"
+        preserveAspectRatio="none"
+        aria-hidden="true"
+      >
+        <circle
+          cx="500"
+          cy="500"
+          r="360"
+          class="trace-circle"
+        />
+
+        <circle
+          cx="500"
+          cy="500"
+          r="255"
+          class="trace-circle trace-circle-secondary"
+        />
+
+        <line x1="500" y1="500" x2="500" y2="155" class="trace-line" />
+        <line x1="500" y1="500" x2="775" y2="285" class="trace-line" />
+        <line x1="500" y1="500" x2="810" y2="610" class="trace-line" />
+        <line x1="500" y1="500" x2="630" y2="825" class="trace-line" />
+        <line x1="500" y1="500" x2="330" y2="805" class="trace-line" />
+        <line x1="500" y1="500" x2="185" y2="610" class="trace-line" />
+        <line x1="500" y1="500" x2="235" y2="325" class="trace-line" />
+      </svg>
+
+
+      <!-- Exact radial placement contours -->
+
+      <div
+        class="guidance-layer"
+        aria-hidden="true"
+      >
+        <div class="guidance-ring guidance-ring-0"></div>
+        <div class="guidance-ring guidance-ring-1"></div>
+        <div class="guidance-ring guidance-ring-2"></div>
+        <div class="guidance-ring guidance-ring-3"></div>
+      </div>
+
+
+      <!-- Dynamic causal lines -->
+
+      <svg
+        class="causal-layer"
+        id="causal-layer"
+        aria-hidden="true"
+      ></svg>
+
+
+      <!-- Dynamic dependent structures -->
+
+      <div
+        class="dependent-layer"
+        id="dependent-layer"
+        aria-hidden="true"
+      ></div>
+
+
+      <!-- Resolution contours -->
+
+      <div
+        class="resolution-layer"
+        aria-hidden="true"
+      >
+        <div class="resolution-ring resolution-ring-0"></div>
+        <div class="resolution-ring resolution-ring-1"></div>
+        <div class="resolution-ring resolution-ring-2"></div>
+        <div class="resolution-ring resolution-ring-3"></div>
+      </div>
+
+
+      <!-- Resolved relational grammar -->
+
+      <div
+        class="resolution-map"
+        aria-hidden="true"
+      >
+
+        <svg
+          class="resolution-map-lines"
+          viewBox="0 0 1000 1000"
+          preserveAspectRatio="none"
         >
-          interpretation:
-        </label>
-      </p>
+          <line x1="500" y1="500" x2="270" y2="455" class="resolved-link" />
+          <line x1="270" y1="455" x2="255" y2="705" class="resolved-link" />
+          <line x1="500" y1="500" x2="710" y2="300" class="resolved-link" />
+          <line x1="500" y1="500" x2="735" y2="635" class="resolved-link" />
+          <line x1="500" y1="500" x2="475" y2="765" class="resolved-link" />
+          <line x1="475" y1="765" x2="655" y2="845" class="resolved-link" />
 
-      <p>
-        <input
-          id="response"
-          name="response"
-          type="text"
-          spellcheck="false"
-          autocapitalize="none"
-          autocomplete="off"
-          required
-          style="
-            width: 100%;
-            max-width: 500px;
-            box-sizing: border-box;
-            background: transparent;
-            color: inherit;
-            border: 1px solid rgba(255,255,255,0.25);
-            padding: 12px;
-            font-family: 'IBM Plex Mono', monospace;
-            font-size: 1rem;
-          "
-        >
-      </p>
+          <line
+            x1="710"
+            y1="300"
+            x2="255"
+            y2="705"
+            class="resolved-link resolved-link-secondary"
+          />
 
-      <p>
-        <button
-          type="submit"
-          style="
-            background: transparent;
-            color: inherit;
-            border: 1px solid rgba(255,255,255,0.25);
-            padding: 10px 16px;
-            font-family: 'IBM Plex Mono', monospace;
-            cursor: pointer;
-          "
-        >
-          submit
-        </button>
-      </p>
+          <line
+            x1="735"
+            y1="635"
+            x2="475"
+            y2="765"
+            class="resolved-link resolved-link-secondary"
+          />
 
-    </form>
-
-    <p
-      id="restricted-response"
-      class="mono"
-      style="display: none;"
-    >
-      condition not satisfied
-    </p>
-
-  </section>
+          <line
+            x1="255"
+            y1="705"
+            x2="475"
+            y2="765"
+            class="resolved-link resolved-link-secondary"
+          />
+        </svg>
 
 
-  <footer class="document-footer">
-    <a class="up-link" href="/">← up</a>
-  </footer>
+        <div class="resolved-node resolved-condition">
+          <span>◎</span>
+        </div>
 
-</main>
+        <div class="resolved-node resolved-boundary">
+          <span>⊙</span>
+        </div>
+
+        <div class="resolved-node resolved-exposure">
+          <span>◉</span>
+        </div>
+
+        <div class="resolved-node resolved-participation">
+          <span>◉</span>
+        </div>
+
+        <div class="resolved-node resolved-retention">
+          <span>◉</span>
+        </div>
+
+        <div class="resolved-node resolved-effect">
+          <span>⊙</span>
+        </div>
+
+        <div class="resolved-node resolved-nontext">
+          <span>◆</span>
+        </div>
+
+      </div>
 
 
-<script>
-  const params = new URLSearchParams(window.location.search);
+      <!-- Central actor -->
 
-  if (params.get("error") === "1") {
-    document.getElementById("restricted-response").style.display = "block";
+      <div
+        class="gate-center"
+        id="gate-center"
+        aria-label="Central node"
+      >
+        <span class="gate-center-core"></span>
+      </div>
 
-    history.replaceState(
-      {},
-      "",
-      window.location.pathname
-    );
-  }
-</script>
+
+      <!-- Assessment entities -->
+
+      <div class="gate-node" data-profile="A" aria-label="Entity 1">
+        <span class="node-body">
+          <span class="node-mark mark-dot"></span>
+        </span>
+      </div>
+
+      <div class="gate-node" data-profile="B" aria-label="Entity 2">
+        <span class="node-body">
+          <span class="node-mark mark-line"></span>
+        </span>
+      </div>
+
+      <div class="gate-node" data-profile="C" aria-label="Entity 3">
+        <span class="node-body">
+          <span class="node-mark mark-double"></span>
+        </span>
+      </div>
+
+      <div class="gate-node" data-profile="D" aria-label="Entity 4">
+        <span class="node-body">
+          <span class="node-mark mark-slash"></span>
+        </span>
+      </div>
+
+      <div class="gate-node" data-profile="E" aria-label="Entity 5">
+        <span class="node-body">
+          <span class="node-mark mark-cross"></span>
+        </span>
+      </div>
+
+      <div class="gate-node" data-profile="F" aria-label="Entity 6">
+        <span class="node-body">
+          <span class="node-mark mark-small-ring"></span>
+        </span>
+      </div>
+
+      <div class="gate-node" data-profile="G" aria-label="Entity 7">
+        <span class="node-body">
+          <span class="node-mark mark-vertical"></span>
+        </span>
+      </div>
+
+      <div class="gate-node" data-profile="H" aria-label="Entity 8">
+        <span class="node-body">
+          <span class="node-mark mark-two-dots"></span>
+        </span>
+      </div>
+
+      <div class="gate-node" data-profile="I" aria-label="Entity 9">
+        <span class="node-body">
+          <span class="node-mark mark-horizontal"></span>
+        </span>
+      </div>
+
+    </section>
+
+  </main>
+
+  <script src="/restricted/gate-test.js"></script>
 
 </body>
 </html>

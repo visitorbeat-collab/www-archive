@@ -3024,24 +3024,23 @@ async function resolveAssessment(
   field.classList.add(
     "is-ready"
   );
-  const params =
+    const params =
     new URLSearchParams(
       window.location.search
     );
 
 
-const devBypass =
-  window.location.pathname.endsWith(
-    "/restricted/gate-test.html"
-  ) &&
-  params.get("dev") === "1";
+  const devBypass =
+    window.location.pathname.endsWith(
+      "/restricted/gate-test.html"
+    ) &&
+    params.get("dev") === "1";
 
 
   /*
-    The normal assessment quietly requests a server challenge
-    in advance.
+    The real gate requests a server challenge in advance.
 
-    Development mode does not depend on it.
+    The development test does not need one.
   */
 
   if (!devBypass) {
@@ -3054,6 +3053,13 @@ const devBypass =
 
       updateDynamicGeometry();
 
+
+      /*
+        Development-only shortcut.
+
+        Automatically place every node in its correct radial
+        class, then play the normal resolution choreography.
+      */
 
       if (devBypass) {
 
@@ -3094,6 +3100,10 @@ const devBypass =
         return;
       }
 
+
+      /*
+        Normal production behavior.
+      */
 
       runObservationCycle();
     }

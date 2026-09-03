@@ -3024,7 +3024,9 @@ async function resolveAssessment(
   field.classList.add(
     "is-ready"
   );
-    const params =
+
+
+  const params =
     new URLSearchParams(
       window.location.search
     );
@@ -3038,10 +3040,9 @@ async function resolveAssessment(
 
 
   /*
-    The production gate quietly obtains a server challenge.
+    The production gate quietly requests its server challenge.
 
-    The development bypass does not need one because it is
-    only being used to inspect the visual transition.
+    Development mode is visual-only and does not require one.
   */
 
   if (!devBypass) {
@@ -3058,11 +3059,10 @@ async function resolveAssessment(
       /*
         DEVELOPMENT-ONLY BYPASS
 
-        Automatically place all nine primary entities into
-        their correct radial classes, then play the existing
-        resolution choreography.
+        Automatically place all nine nodes into the correct
+        radial classes and play the resolution choreography.
 
-        This bypass works only on gate-test.html.
+        This works only on gate-test.html?dev=1.
       */
 
       if (devBypass) {
@@ -3106,7 +3106,7 @@ async function resolveAssessment(
 
 
       /*
-        NORMAL PRODUCTION BEHAVIOR
+        NORMAL GATE
       */
 
       runObservationCycle();

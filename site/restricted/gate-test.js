@@ -81,8 +81,11 @@ document.addEventListener("DOMContentLoaded", () => {
   ];
 
 
-  let resolved = false;
-  let cycleToken = 0;
+let resolved = false;
+let cycleToken = 0;
+
+let assessmentChallenge = null;
+let accessAuthorized = false;
 
 
   /* -------------------------------------------------------
@@ -2710,70 +2713,284 @@ document.addEventListener("DOMContentLoaded", () => {
       */
     }
   }
+/* -------------------------------------------------------
+   SERVER ASSESSMENT HANDOFF
+   ------------------------------------------------------- */
 
+async function requestAssessmentChallenge() {
+  try {
+    const response =
+      await fetch(
+        "/restricted/access",
+        {
+          method: "GET",
+
+          headers: {
+            "Accept":
+              "application/json"
+          },
+
+          cache:
+            "no-store"
+        }
+      );
+
+
+    if (!response.ok) {
+      return null;
+    }
+
+
+    const data =
+      await response.json();
+
+
+    if (
+      !data.ok ||
+      !data.challenge
+    ) {
+      return null;
+    }
+
+
+    assessmentChallenge =
+      data.challenge;
+
+
+    return assessmentChallenge;
+
+  } catch (error) {
+
+    return null;
+  }
+}
+
+
+function getInterpretation() {
+  const interpretation = {};
+
+
+  profiles.forEach(
+    node => {
+      interpretation[
+        node.profile
+      ] =
+        node.currentClass;
+    }
+  );
+
+
+  return interpretation;
+}
+
+
+async function authorizeInterpretation() {
+  /*
+    If the challenge has expired or was not acquired,
+    obtain a fresh one.
+  */
+
+  if (!assessmentChallenge) {
+    await requestAssessmentChallenge();
+  }
+
+
+  if (!assessmentChallenge) {
+    return false;
+  }
+
+
+  try {
+    let response =
+      await fetch(
+        "/restricted/access",
+        {
+          method: "POST",
+
+          headers: {
+            "Content-Type":
+              "application/json",
+
+            "Accept":
+              "application/json"
+          },
+
+          body:
+            JSON.stringify({
+              challenge:
+                assessmentChallenge,
+
+              interpretation:
+                getInterpretation()
+            })
+        }
+      );
+
+
+    let data =
+      await response.json();
+
+
+    /*
+      If the challenge simply aged out while the reader was
+      studying the field, quietly obtain a fresh one and retry.
+    */
+
+    if (
+      !response.ok &&
+      data.expired
+    ) {
+      assessmentChallenge =
+        await requestAssessmentChallenge();
+
+
+      if (!assessmentChallenge) {
+        return false;
+      }
+
+
+      response =
+        await fetch(
+          "/restricted/access",
+          {
+            method: "POST",
+
+            headers: {
+              "Content-Type":
+                "application/json",
+
+              "Accept":
+                "application/json"
+            },
+
+            body:
+              JSON.stringify({
+                challenge:
+                  assessmentChallenge,
+
+                interpretation:
+                  getInterpretation()
+              })
+          }
+        );
+
+
+      data =
+        await response.json();
+    }
+
+
+    if (
+      !response.ok ||
+      !data.ok
+    ) {
+      return false;
+    }
+
+
+    accessAuthorized = true;
+
+    return true;
+
+  } catch (error) {
+
+    return false;
+  }
+}
 
   /* -------------------------------------------------------
      RESOLUTION
      ------------------------------------------------------- */
 
-  async function resolveAssessment() {
-    if (resolved) {
-      return;
-    }
-
-
-    resolved = true;
-
-    cycleToken += 1;
-
-
-    field.classList.remove(
-      "is-adjusting"
-    );
-
-
-    clearCaseFocus();
-
-
-    profiles.forEach(
-      node => {
-
-        node.isDragging = false;
-
-        node.element.classList.remove(
-          "is-dragging"
-        );
-      }
-    );
-
-
-    /*
-      Final placement appears ordinary for a moment.
-    */
-
-    await wait(700);
-
-
-    field.classList.add(
-      "is-resolving"
-    );
-
-
-    await wait(1100);
-
-
-    field.classList.add(
-      "is-condensing"
-    );
-
-
-    await wait(1200);
-
-
-    field.classList.add(
-      "is-map-visible"
-    );
+async function resolveAssessment() {
+  if (resolved) {
+    return;
   }
+
+
+  /*
+    First ask the server whether the complete relationship
+    presented by the browser satisfies the protected
+    condition.
+
+    Nothing visible happens yet.
+  */
+
+  const authorized =
+    await authorizeInterpretation();
+
+
+  if (!authorized) {
+    return;
+  }
+
+
+  resolved = true;
+
+  cycleToken += 1;
+
+
+  field.classList.remove(
+    "is-adjusting"
+  );
+
+
+  clearCaseFocus();
+
+
+  profiles.forEach(
+    node => {
+
+      node.isDragging = false;
+
+      node.element.classList.remove(
+        "is-dragging"
+      );
+    }
+  );
+
+
+  /*
+    Final placement appears ordinary for a moment.
+  */
+
+  await wait(700);
+
+
+  field.classList.add(
+    "is-resolving"
+  );
+
+
+  await wait(1100);
+
+
+  field.classList.add(
+    "is-condensing"
+  );
+
+
+  await wait(1200);
+
+
+  field.classList.add(
+    "is-map-visible"
+  );
+
+
+  /*
+    Let the revealed relational grammar exist on screen
+    briefly before continuing into the protected system.
+  */
+
+  await wait(2200);
+
+
+  if (accessAuthorized) {
+    window.location.href =
+      "/restricted/archive/";
+  }
+}
 
 
   /* -------------------------------------------------------
@@ -2807,20 +3024,44 @@ const params =
 
 const devBypass =
   params.get("dev") === "1";
-
+requestAssessmentChallenge();
 window.requestAnimationFrame(
   () => {
 
-    updateDynamicGeometry();
+if (devBypass) {
 
-    if (devBypass) {
-      resolveAssessment();
-      return;
+  profiles.forEach(
+    node => {
+
+      const targetClass =
+        TARGET_CLASS[
+          node.profile
+        ];
+
+
+      node.currentClass =
+        targetClass;
+
+
+      node.radiusRatio =
+        RADIAL_CLASSES[
+          targetClass
+        ];
+
+
+      positionNode(
+        node
+      );
     }
+  );
 
-    runObservationCycle();
-  }
-);
+
+  updateDynamicGeometry();
+
+  resolveAssessment();
+
+  return;
+}
 
 
   window.addEventListener(

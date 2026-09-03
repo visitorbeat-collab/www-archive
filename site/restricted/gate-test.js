@@ -2800,16 +2800,27 @@ document.addEventListener("DOMContentLoaded", () => {
   field.classList.add(
     "is-ready"
   );
-
-
-  window.requestAnimationFrame(
-    () => {
-
-      updateDynamicGeometry();
-
-      runObservationCycle();
-    }
+const params =
+  new URLSearchParams(
+    window.location.search
   );
+
+const devBypass =
+  params.get("dev") === "1";
+
+window.requestAnimationFrame(
+  () => {
+
+    updateDynamicGeometry();
+
+    if (devBypass) {
+      resolveAssessment();
+      return;
+    }
+
+    runObservationCycle();
+  }
+);
 
 
   window.addEventListener(

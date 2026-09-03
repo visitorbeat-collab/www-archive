@@ -3038,9 +3038,10 @@ async function resolveAssessment(
 
 
   /*
-    The real gate requests a server challenge in advance.
+    The production gate quietly obtains a server challenge.
 
-    The development test does not need one.
+    The development bypass does not need one because it is
+    only being used to inspect the visual transition.
   */
 
   if (!devBypass) {
@@ -3055,10 +3056,13 @@ async function resolveAssessment(
 
 
       /*
-        Development-only shortcut.
+        DEVELOPMENT-ONLY BYPASS
 
-        Automatically place every node in its correct radial
-        class, then play the normal resolution choreography.
+        Automatically place all nine primary entities into
+        their correct radial classes, then play the existing
+        resolution choreography.
+
+        This bypass works only on gate-test.html.
       */
 
       if (devBypass) {
@@ -3102,7 +3106,7 @@ async function resolveAssessment(
 
 
       /*
-        Normal production behavior.
+        NORMAL PRODUCTION BEHAVIOR
       */
 
       runObservationCycle();

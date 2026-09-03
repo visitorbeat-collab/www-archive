@@ -2902,26 +2902,35 @@ async function authorizeInterpretation() {
      RESOLUTION
      ------------------------------------------------------- */
 
-async function resolveAssessment() {
+async function resolveAssessment(
+  options = {}
+) {
   if (resolved) {
     return;
   }
 
 
-  /*
-    First ask the server whether the complete relationship
-    presented by the browser satisfies the protected
-    condition.
+  const bypassAuthorization =
+    options.bypassAuthorization === true;
 
-    Nothing visible happens yet.
+
+  /*
+    Normal use must be authorized by the server.
+
+    Development mode can bypass this so we can repeatedly
+    inspect the transition without solving or requesting
+    an access token.
   */
 
-  const authorized =
-    await authorizeInterpretation();
+  if (!bypassAuthorization) {
+
+    const authorized =
+      await authorizeInterpretation();
 
 
-  if (!authorized) {
-    return;
+    if (!authorized) {
+      return;
+    }
   }
 
 
@@ -2950,10 +2959,6 @@ async function resolveAssessment() {
   );
 
 
-  /*
-    Final placement appears ordinary for a moment.
-  */
-
   await wait(700);
 
 
@@ -2978,20 +2983,22 @@ async function resolveAssessment() {
   );
 
 
-  /*
-    Let the revealed relational grammar exist on screen
-    briefly before continuing into the protected system.
-  */
-
   await wait(2200);
 
 
-  if (accessAuthorized) {
+  /*
+    Only the real authorized path enters the protected archive.
+    Development mode stops here.
+  */
+
+  if (
+    !bypassAuthorization &&
+    accessAuthorized
+  ) {
     window.location.href =
       "/restricted/archive/";
   }
 }
-
 
   /* -------------------------------------------------------
      INITIALIZE
@@ -3058,7 +3065,11 @@ if (devBypass) {
 
   updateDynamicGeometry();
 
-  resolveAssessment();
+
+  resolveAssessment({
+    bypassAuthorization: true
+  });
+
 
   return;
 }

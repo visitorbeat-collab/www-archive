@@ -2,10 +2,17 @@
 
 document.addEventListener("DOMContentLoaded", () => {
 
-  const field = document.getElementById("gate-field");
-  const centerElement = document.getElementById("gate-center");
-  const causalLayer = document.getElementById("causal-layer");
-  const dependentLayer = document.getElementById("dependent-layer");
+  const field =
+    document.getElementById("gate-field");
+
+  const centerElement =
+    document.getElementById("gate-center");
+
+  const causalLayer =
+    document.getElementById("causal-layer");
+
+  const dependentLayer =
+    document.getElementById("dependent-layer");
 
   if (
     !field ||
@@ -82,8 +89,16 @@ document.addEventListener("DOMContentLoaded", () => {
   function shuffle(array) {
     const copy = [...array];
 
-    for (let i = copy.length - 1; i > 0; i -= 1) {
-      const j = Math.floor(Math.random() * (i + 1));
+    for (
+      let i = copy.length - 1;
+      i > 0;
+      i -= 1
+    ) {
+      const j =
+        Math.floor(
+          Math.random() *
+          (i + 1)
+        );
 
       [
         copy[i],
@@ -98,28 +113,44 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function radians(degrees) {
-    return degrees * Math.PI / 180;
+    return (
+      degrees *
+      Math.PI /
+      180
+    );
   }
 
 
   /* =========================================================
-     PRIMARY NODES
+     PRIMARY STATE
      ========================================================= */
 
-  const profiles = Array.from(
-    field.querySelectorAll(".gate-node")
-  ).map(element => ({
-    element,
-    profile: element.dataset.profile,
-    angle: 0,
-    radiusRatio: 0,
-    currentClass: null,
-    isDragging: false
-  }));
+  const profiles =
+    Array.from(
+      field.querySelectorAll(
+        ".gate-node"
+      )
+    ).map(
+      element => ({
+        element,
+
+        profile:
+          element.dataset.profile,
+
+        angle: 0,
+
+        radiusRatio: 0,
+
+        currentClass: null,
+
+        isDragging: false
+      })
+    );
 
   function getNode(profileId) {
     return profiles.find(
-      node => node.profile === profileId
+      node =>
+        node.profile === profileId
     );
   }
 
@@ -129,24 +160,35 @@ document.addEventListener("DOMContentLoaded", () => {
      ========================================================= */
 
   function getFieldGeometry() {
-    const rect = field.getBoundingClientRect();
+    const rect =
+      field.getBoundingClientRect();
 
-    const size = Math.min(
-      rect.width,
-      rect.height
-    );
+    const size =
+      Math.min(
+        rect.width,
+        rect.height
+      );
 
     return {
       rect,
-      centerX: rect.width / 2,
-      centerY: rect.height / 2,
-      usableRadius: size * 0.49
+
+      centerX:
+        rect.width / 2,
+
+      centerY:
+        rect.height / 2,
+
+      usableRadius:
+        size * 0.49
     };
   }
 
   function getElementCenter(element) {
-    const fieldRect = field.getBoundingClientRect();
-    const rect = element.getBoundingClientRect();
+    const fieldRect =
+      field.getBoundingClientRect();
+
+    const rect =
+      element.getBoundingClientRect();
 
     return {
       x:
@@ -162,50 +204,71 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function generateAngles(count) {
-    const step = 360 / count;
-    const rotation = Math.random() * 360;
+    const step =
+      360 / count;
+
+    const rotation =
+      Math.random() * 360;
 
     return Array.from(
-      { length: count },
+      {
+        length: count
+      },
+
       (_, index) =>
         rotation +
         index * step +
-        randomBetween(-8, 8)
+        randomBetween(
+          -5,
+          5
+        )
     );
   }
 
   function assignGeometry() {
-    const angles = generateAngles(
-      profiles.length
-    );
-
-    const radii = shuffle([
-      0.27,
-      0.30,
-      0.31,
-      0.33,
-      0.35,
-      0.37,
-      0.39,
-      0.41,
-      0.43
-    ]);
-
-    profiles.forEach((node, index) => {
-
-      node.angle = angles[index];
-
-      node.radiusRatio = Math.max(
-        MIN_RADIUS_RATIO,
-        Math.min(
-          MAX_RADIUS_RATIO,
-          radii[index] +
-          randomBetween(-0.012, 0.012)
-        )
+    const angles =
+      generateAngles(
+        profiles.length
       );
 
-      node.currentClass = null;
-    });
+    const radii =
+      shuffle([
+        0.27,
+        0.30,
+        0.31,
+        0.33,
+        0.35,
+        0.37,
+        0.39,
+        0.41,
+        0.43
+      ]);
+
+    profiles.forEach(
+      (node, index) => {
+
+        node.angle =
+          angles[index];
+
+        node.radiusRatio =
+          Math.max(
+            MIN_RADIUS_RATIO,
+
+            Math.min(
+              MAX_RADIUS_RATIO,
+
+              radii[index] +
+              randomBetween(
+                -0.012,
+                0.012
+              )
+            )
+          );
+
+        node.currentClass =
+          null;
+      }
+    );
   }
 
   function positionNode(node) {
@@ -215,7 +278,10 @@ document.addEventListener("DOMContentLoaded", () => {
       usableRadius
     } = getFieldGeometry();
 
-    const angle = radians(node.angle);
+    const angle =
+      radians(
+        node.angle
+      );
 
     const radius =
       usableRadius *
@@ -237,19 +303,23 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function positionAllNodes() {
-    profiles.forEach(positionNode);
+    profiles.forEach(
+      positionNode
+    );
 
     updateDynamicGeometry();
   }
 
 
   /* =========================================================
-     RANDOM MARKERS
+     MARKERS
      ========================================================= */
 
   function assignMarkers() {
     const shuffled =
-      shuffle(markerClasses);
+      shuffle(
+        markerClasses
+      );
 
     profiles.forEach(
       (node, index) => {
@@ -265,7 +335,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
         markerClasses.forEach(
           marker => {
-            mark.classList.remove(marker);
+            mark.classList.remove(
+              marker
+            );
           }
         );
 
@@ -281,7 +353,9 @@ document.addEventListener("DOMContentLoaded", () => {
      SNAP
      ========================================================= */
 
-  function getNearestClass(radiusRatio) {
+  function getNearestClass(
+    radiusRatio
+  ) {
     let nearest = 0;
 
     let distance =
@@ -292,7 +366,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
     for (
       let i = 1;
-      i < RADIAL_CLASSES.length;
+      i <
+      RADIAL_CLASSES.length;
       i += 1
     ) {
       const candidate =
@@ -301,7 +376,10 @@ document.addEventListener("DOMContentLoaded", () => {
           RADIAL_CLASSES[i]
         );
 
-      if (candidate < distance) {
+      if (
+        candidate <
+        distance
+      ) {
         nearest = i;
         distance = candidate;
       }
@@ -325,6 +403,7 @@ document.addEventListener("DOMContentLoaded", () => {
       ];
 
     positionNode(node);
+
     updateDynamicGeometry();
   }
 
@@ -365,14 +444,18 @@ document.addEventListener("DOMContentLoaded", () => {
     );
   }
 
-  function beginDrag(event, node) {
+  function beginDrag(
+    event,
+    node
+  ) {
     if (resolved) {
       return;
     }
 
     event.preventDefault();
 
-    node.isDragging = true;
+    node.isDragging =
+      true;
 
     node.element.classList.add(
       "is-dragging"
@@ -390,10 +473,16 @@ document.addEventListener("DOMContentLoaded", () => {
       /* optional */
     }
 
-    updateDrag(event, node);
+    updateDrag(
+      event,
+      node
+    );
   }
 
-  function updateDrag(event, node) {
+  function updateDrag(
+    event,
+    node
+  ) {
     if (
       !node.isDragging ||
       resolved
@@ -404,8 +493,10 @@ document.addEventListener("DOMContentLoaded", () => {
     node.radiusRatio =
       Math.max(
         DRAG_MIN_RATIO,
+
         Math.min(
           DRAG_MAX_RATIO,
+
           pointerRadiusRatio(
             event.clientX,
             event.clientY
@@ -414,15 +505,20 @@ document.addEventListener("DOMContentLoaded", () => {
       );
 
     positionNode(node);
+
     updateDynamicGeometry();
   }
 
-  function endDrag(event, node) {
+  function endDrag(
+    event,
+    node
+  ) {
     if (!node.isDragging) {
       return;
     }
 
-    node.isDragging = false;
+    node.isDragging =
+      false;
 
     node.element.classList.remove(
       "is-dragging"
@@ -441,33 +537,49 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     snapNode(node);
+
     evaluateWholeModel();
   }
 
   function attachDragHandlers(node) {
-
     node.element.addEventListener(
       "pointerdown",
+
       event =>
-        beginDrag(event, node)
+        beginDrag(
+          event,
+          node
+        )
     );
 
     node.element.addEventListener(
       "pointermove",
+
       event =>
-        updateDrag(event, node)
+        updateDrag(
+          event,
+          node
+        )
     );
 
     node.element.addEventListener(
       "pointerup",
+
       event =>
-        endDrag(event, node)
+        endDrag(
+          event,
+          node
+        )
     );
 
     node.element.addEventListener(
       "pointercancel",
+
       event =>
-        endDrag(event, node)
+        endDrag(
+          event,
+          node
+        )
     );
   }
 
@@ -507,13 +619,20 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
   /* =========================================================
-     DYNAMIC LINES / DEPENDENTS
+     DYNAMIC STRUCTURES
      ========================================================= */
 
-  const dynamicLines = new Map();
-  const dependents = new Map();
+  const dynamicLines =
+    new Map();
 
-  function createLine(id) {
+  const dependents =
+    new Map();
+
+
+  function createLine(
+    id,
+    classes = []
+  ) {
     const line =
       document.createElementNS(
         "http://www.w3.org/2000/svg",
@@ -521,12 +640,16 @@ document.addEventListener("DOMContentLoaded", () => {
       );
 
     line.classList.add(
-      "causal-line"
+      "causal-line",
+      ...classes
     );
 
-    line.dataset.lineId = id;
+    line.dataset.lineId =
+      id;
 
-    causalLayer.appendChild(line);
+    causalLayer.appendChild(
+      line
+    );
 
     dynamicLines.set(
       id,
@@ -536,25 +659,87 @@ document.addEventListener("DOMContentLoaded", () => {
     return line;
   }
 
-  function getOrCreateLine(id) {
-    return (
-      dynamicLines.get(id) ||
-      createLine(id)
+  function getOrCreateLine(
+    id,
+    classes = []
+  ) {
+    if (
+      dynamicLines.has(id)
+    ) {
+      return dynamicLines.get(
+        id
+      );
+    }
+
+    return createLine(
+      id,
+      classes
     );
   }
 
-  function showLine(line) {
-    line.classList.add(
-      "is-visible"
+
+  /* ---------------------------------------------------------
+     PERMANENT LANES
+     --------------------------------------------------------- */
+
+  function createPrimaryLanes() {
+    profiles.forEach(
+      node => {
+
+        const line =
+          getOrCreateLine(
+            `center-${node.profile}`,
+            [
+              "is-visible",
+              "is-lane"
+            ]
+          );
+
+        line.dataset.profile =
+          node.profile;
+      }
+    );
+
+    updateDynamicGeometry();
+  }
+
+  function activateLane(
+    profileId
+  ) {
+    profiles.forEach(
+      node => {
+
+        const line =
+          dynamicLines.get(
+            `center-${node.profile}`
+          );
+
+        if (!line) {
+          return;
+        }
+
+        line.classList.toggle(
+          "is-active-lane",
+          node.profile === profileId
+        );
+      }
     );
   }
 
-  function markLineAsResidue(line) {
-    line.classList.add(
-      "is-visible",
-      "is-cycle-residue"
+  function clearActiveLane() {
+    dynamicLines.forEach(
+      line => {
+        line.classList.remove(
+          "is-active-lane"
+        );
+      }
     );
   }
+
+
+  /* ---------------------------------------------------------
+     DEPENDENTS
+     --------------------------------------------------------- */
 
   function createDependent(
     id,
@@ -571,7 +756,9 @@ document.addEventListener("DOMContentLoaded", () => {
     element.className =
       "dependent-node";
 
-    if (options.remote) {
+    if (
+      options.remote
+    ) {
       element.classList.add(
         "is-remote"
       );
@@ -604,19 +791,24 @@ document.addEventListener("DOMContentLoaded", () => {
     distance,
     options = {}
   ) {
-    return (
-      dependents.get(id) ||
-      createDependent(
-        id,
-        parentProfile,
-        angleOffset,
-        distance,
-        options
-      )
+    if (
+      dependents.has(id)
+    ) {
+      return dependents.get(
+        id
+      );
+    }
+
+    return createDependent(
+      id,
+      parentProfile,
+      angleOffset,
+      distance,
+      options
     );
   }
 
-  function markDependentAsResidue(
+  function markDependentPersistent(
     dependent
   ) {
     dependent.element.classList.add(
@@ -625,6 +817,68 @@ document.addEventListener("DOMContentLoaded", () => {
       "is-cycle-residue"
     );
   }
+
+  function markDependentHistory(
+    dependent
+  ) {
+    dependent.element.classList.remove(
+      "is-weakened",
+      "is-collapsed",
+      "is-persistent"
+    );
+
+    dependent.element.classList.add(
+      "is-visible",
+      "is-history"
+    );
+  }
+
+  function showDependentLine(
+    id,
+    extraClasses = []
+  ) {
+    const line =
+      getOrCreateLine(
+        id,
+        [
+          "is-dependent-line",
+          ...extraClasses
+        ]
+      );
+
+    line.classList.add(
+      "is-visible"
+    );
+
+    return line;
+  }
+
+  function markLinePersistent(
+    line
+  ) {
+    line.classList.add(
+      "is-visible",
+      "is-cycle-residue"
+    );
+  }
+
+  function markLineHistory(
+    line
+  ) {
+    line.classList.remove(
+      "is-cycle-residue"
+    );
+
+    line.classList.add(
+      "is-visible",
+      "is-history"
+    );
+  }
+
+
+  /* ---------------------------------------------------------
+     POSITION DEPENDENTS
+     --------------------------------------------------------- */
 
   function positionDependent(
     dependent
@@ -664,6 +918,11 @@ document.addEventListener("DOMContentLoaded", () => {
       }px`;
   }
 
+
+  /* ---------------------------------------------------------
+     UPDATE LINES
+     --------------------------------------------------------- */
+
   function setLine(
     line,
     start,
@@ -690,7 +949,9 @@ document.addEventListener("DOMContentLoaded", () => {
     );
   }
 
-  function updateCenterLine(profileId) {
+  function updateCenterLine(
+    profileId
+  ) {
     const node =
       getNode(profileId);
 
@@ -699,15 +960,20 @@ document.addEventListener("DOMContentLoaded", () => {
         `center-${profileId}`
       );
 
-    if (!node || !line) {
+    if (
+      !node ||
+      !line
+    ) {
       return;
     }
 
     setLine(
       line,
+
       getElementCenter(
         centerElement
       ),
+
       getElementCenter(
         node.element
       )
@@ -728,7 +994,9 @@ document.addEventListener("DOMContentLoaded", () => {
       );
 
     const line =
-      dynamicLines.get(lineId);
+      dynamicLines.get(
+        lineId
+      );
 
     if (
       !node ||
@@ -740,9 +1008,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
     setLine(
       line,
+
       getElementCenter(
         node.element
       ),
+
       getElementCenter(
         dependent.element
       )
@@ -755,13 +1025,19 @@ document.addEventListener("DOMContentLoaded", () => {
     lineId
   ) {
     const first =
-      dependents.get(firstId);
+      dependents.get(
+        firstId
+      );
 
     const second =
-      dependents.get(secondId);
+      dependents.get(
+        secondId
+      );
 
     const line =
-      dynamicLines.get(lineId);
+      dynamicLines.get(
+        lineId
+      );
 
     if (
       !first ||
@@ -773,9 +1049,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
     setLine(
       line,
+
       getElementCenter(
         first.element
       ),
+
       getElementCenter(
         second.element
       )
@@ -783,7 +1061,6 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function updateDynamicGeometry() {
-
     dependents.forEach(
       positionDependent
     );
@@ -813,12 +1090,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
       ["I", "I1", "I-I1"]
     ].forEach(
-      ([profile, dependent, line]) =>
+      relation => {
         updateDependentLine(
-          profile,
-          dependent,
-          line
-        )
+          relation[0],
+          relation[1],
+          relation[2]
+        );
+      }
     );
 
     updateDependentChain(
@@ -836,15 +1114,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
   /* =========================================================
-     ACTIVE CASE
+     CASE FOCUS
      ========================================================= */
 
-  function focusCase(profileId) {
-
-    field.classList.add(
-      "has-active-case"
-    );
-
+  function focusCase(
+    profileId
+  ) {
     profiles.forEach(
       node => {
         node.element.classList.toggle(
@@ -853,14 +1128,13 @@ document.addEventListener("DOMContentLoaded", () => {
         );
       }
     );
+
+    activateLane(
+      profileId
+    );
   }
 
   function clearCaseFocus() {
-
-    field.classList.remove(
-      "has-active-case"
-    );
-
     profiles.forEach(
       node => {
         node.element.classList.remove(
@@ -868,19 +1142,18 @@ document.addEventListener("DOMContentLoaded", () => {
         );
       }
     );
+
+    clearActiveLane();
   }
 
 
   /* =========================================================
-     RESET BEHAVIOR
+     CYCLE RESET
+
+     This is the ONLY place cumulative history is erased.
      ========================================================= */
 
-  function clearCurrentCase() {
-
-    if (resolved) {
-      return;
-    }
-
+  function clearEntireCycle() {
     clearCaseFocus();
 
     profiles.forEach(
@@ -892,18 +1165,14 @@ document.addEventListener("DOMContentLoaded", () => {
           "effect-subtle",
           "effect-moderate",
           "effect-substantial",
-          "effect-small"
-        );
+          "effect-small",
 
-        if (
-          !node.element.classList.contains(
-            "is-cycle-residue"
-          )
-        ) {
-          node.element.classList.remove(
-            "effect-persistent"
-          );
-        }
+          "history-expand",
+          "history-collapse",
+          "history-small",
+
+          "primary-persistent"
+        );
       }
     );
 
@@ -912,91 +1181,24 @@ document.addEventListener("DOMContentLoaded", () => {
 
         if (
           line.classList.contains(
-            "is-cycle-residue"
+            "is-lane"
           )
         ) {
+          line.classList.remove(
+            "is-active-lane"
+          );
+
           line.classList.add(
             "is-visible"
           );
 
-          line.classList.remove(
-            "is-hold",
-            "is-faint"
-          );
-
           return;
         }
 
         line.classList.remove(
           "is-visible",
-          "is-hold",
-          "is-faint"
-        );
-      }
-    );
-
-    dependents.forEach(
-      dependent => {
-
-        const element =
-          dependent.element;
-
-        if (
-          element.classList.contains(
-            "is-cycle-residue"
-          )
-        ) {
-          element.classList.remove(
-            "is-weakened",
-            "is-collapsed",
-            "is-gone"
-          );
-
-          element.classList.add(
-            "is-visible",
-            "is-persistent"
-          );
-
-          return;
-        }
-
-        element.classList.remove(
-          "is-visible",
-          "is-weakened",
-          "is-collapsed",
-          "is-persistent",
-          "is-gone"
-        );
-      }
-    );
-  }
-
-  function clearEntireCycle() {
-
-    clearCaseFocus();
-
-    profiles.forEach(
-      node => {
-        node.element.classList.remove(
-          "effect-strong",
-          "effect-collapse",
-          "effect-subtle",
-          "effect-moderate",
-          "effect-substantial",
-          "effect-small",
-          "effect-persistent",
-          "is-cycle-residue"
-        );
-      }
-    );
-
-    dynamicLines.forEach(
-      line => {
-        line.classList.remove(
-          "is-visible",
-          "is-hold",
-          "is-faint",
-          "is-cycle-residue"
+          "is-cycle-residue",
+          "is-history"
         );
       }
     );
@@ -1009,7 +1211,31 @@ document.addEventListener("DOMContentLoaded", () => {
           "is-collapsed",
           "is-persistent",
           "is-cycle-residue",
-          "is-gone"
+          "is-history"
+        );
+      }
+    );
+  }
+
+
+  /*
+    Between cases we clear only temporary animation states.
+
+    Historical and persistent states remain.
+  */
+
+  function endCurrentCase() {
+    clearCaseFocus();
+
+    profiles.forEach(
+      node => {
+        node.element.classList.remove(
+          "effect-strong",
+          "effect-collapse",
+          "effect-subtle",
+          "effect-moderate",
+          "effect-substantial",
+          "effect-small"
         );
       }
     );
@@ -1017,24 +1243,17 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
   /* =========================================================
-     OBSERVATION A
-     dramatic / reversible
+     A
+     BIG EXPANSION → RETURNS
      ========================================================= */
 
   async function runA() {
-
     if (resolved) return;
 
-    const node = getNode("A");
-    const line =
-      getOrCreateLine("center-A");
+    const node =
+      getNode("A");
 
     focusCase("A");
-    updateDynamicGeometry();
-
-    await wait(700);
-
-    showLine(line);
 
     await wait(700);
 
@@ -1048,33 +1267,35 @@ document.addEventListener("DOMContentLoaded", () => {
       "effect-strong"
     );
 
-    line.classList.add(
-      "is-hold"
+    /*
+      Record the temporary outward excursion.
+    */
+
+    node.element.classList.add(
+      "history-expand"
     );
 
-    await wait(2400);
+    await wait(2200);
   }
 
 
   /* =========================================================
-     OBSERVATION B
-     weak local response / downstream degradation
+     B
+     THREE DEPENDENTS
+     ALL FINAL STATES REMAIN
      ========================================================= */
 
   async function runB() {
-
     if (resolved) return;
 
-    const node = getNode("B");
-
-    const centerLine =
-      getOrCreateLine("center-B");
+    const node =
+      getNode("B");
 
     const B1 =
       getOrCreateDependent(
         "B1",
         "B",
-        -38,
+        -11,
         72
       );
 
@@ -1083,32 +1304,35 @@ document.addEventListener("DOMContentLoaded", () => {
         "B2",
         "B",
         0,
-        88
+        90
       );
 
     const B3 =
       getOrCreateDependent(
         "B3",
         "B",
-        42,
-        70
+        11,
+        108
       );
 
     const line1 =
-      getOrCreateLine("B-B1");
+      showDependentLine(
+        "B-B1"
+      );
 
     const line2 =
-      getOrCreateLine("B-B2");
+      showDependentLine(
+        "B-B2"
+      );
 
     const line3 =
-      getOrCreateLine("B-B3");
+      showDependentLine(
+        "B-B3"
+      );
 
     focusCase("B");
+
     updateDynamicGeometry();
-
-    await wait(700);
-
-    showLine(centerLine);
 
     await wait(700);
 
@@ -1122,109 +1346,128 @@ document.addEventListener("DOMContentLoaded", () => {
       "effect-subtle"
     );
 
-    await wait(1100);
+    await wait(900);
 
     B1.element.classList.add(
       "is-visible"
     );
 
-    showLine(line1);
-
-    await wait(500);
+    await wait(450);
 
     B2.element.classList.add(
       "is-visible"
     );
 
-    showLine(line2);
-
-    await wait(500);
+    await wait(450);
 
     B3.element.classList.add(
       "is-visible"
     );
 
-    showLine(line3);
-
-    await wait(850);
+    await wait(800);
 
     B1.element.classList.add(
       "is-weakened"
     );
 
-    await wait(500);
+    await wait(450);
 
     B2.element.classList.add(
       "is-collapsed"
     );
 
-    await wait(500);
+    await wait(450);
 
     B3.element.classList.add(
       "is-persistent"
     );
 
-    markDependentAsResidue(B3);
-    markLineAsResidue(centerLine);
-    markLineAsResidue(line3);
+    /*
+      All three final states remain.
+    */
 
-    await wait(3000);
+    B1.element.classList.add(
+      "is-cycle-residue"
+    );
+
+    B2.element.classList.add(
+      "is-cycle-residue"
+    );
+
+    B3.element.classList.add(
+      "is-cycle-residue"
+    );
+
+    markLinePersistent(
+      line1
+    );
+
+    markLinePersistent(
+      line2
+    );
+
+    markLinePersistent(
+      line3
+    );
+
+    await wait(2600);
   }
 
 
   /* =========================================================
-     OBSERVATION C
-     three dependents / one lasting
+     C
+     THREE DEPENDENTS
+     TWO WEAKENED + ONE PERSISTENT
      ========================================================= */
 
   async function runC() {
-
     if (resolved) return;
 
-    const node = getNode("C");
-
-    const centerLine =
-      getOrCreateLine("center-C");
+    const node =
+      getNode("C");
 
     const C1 =
       getOrCreateDependent(
         "C1",
         "C",
-        -34,
-        68
+        -11,
+        72
       );
 
     const C2 =
       getOrCreateDependent(
         "C2",
         "C",
-        8,
-        86
+        0,
+        90
       );
 
     const C3 =
       getOrCreateDependent(
         "C3",
         "C",
-        43,
-        76
+        11,
+        108
       );
 
     const line1 =
-      getOrCreateLine("C-C1");
+      showDependentLine(
+        "C-C1"
+      );
 
     const line2 =
-      getOrCreateLine("C-C2");
+      showDependentLine(
+        "C-C2"
+      );
 
     const line3 =
-      getOrCreateLine("C-C3");
+      showDependentLine(
+        "C-C3"
+      );
 
     focusCase("C");
+
     updateDynamicGeometry();
-
-    await wait(700);
-
-    showLine(centerLine);
 
     await wait(700);
 
@@ -1238,15 +1481,11 @@ document.addEventListener("DOMContentLoaded", () => {
       "is-visible"
     );
 
-    showLine(line1);
-
     await wait(450);
 
     C2.element.classList.add(
       "is-visible"
     );
-
-    showLine(line2);
 
     await wait(450);
 
@@ -1254,54 +1493,55 @@ document.addEventListener("DOMContentLoaded", () => {
       "is-visible"
     );
 
-    showLine(line3);
-
-    await wait(900);
+    await wait(850);
 
     node.element.classList.remove(
       "effect-moderate"
     );
 
     C1.element.classList.add(
-      "is-weakened"
+      "is-weakened",
+      "is-cycle-residue"
     );
 
     C2.element.classList.add(
-      "is-weakened"
+      "is-weakened",
+      "is-cycle-residue"
     );
 
     C3.element.classList.add(
-      "is-persistent"
+      "is-persistent",
+      "is-cycle-residue"
     );
 
-    markDependentAsResidue(C3);
-    markLineAsResidue(centerLine);
-    markLineAsResidue(line3);
+    markLinePersistent(
+      line1
+    );
 
-    await wait(3000);
+    markLinePersistent(
+      line2
+    );
+
+    markLinePersistent(
+      line3
+    );
+
+    await wait(2600);
   }
 
 
   /* =========================================================
-     OBSERVATION D
-     dramatic collapse / reversible
+     D
+     BIG COLLAPSE → RETURNS
      ========================================================= */
 
   async function runD() {
-
     if (resolved) return;
 
-    const node = getNode("D");
-
-    const line =
-      getOrCreateLine("center-D");
+    const node =
+      getNode("D");
 
     focusCase("D");
-    updateDynamicGeometry();
-
-    await wait(700);
-
-    showLine(line);
 
     await wait(700);
 
@@ -1315,34 +1555,26 @@ document.addEventListener("DOMContentLoaded", () => {
       "effect-collapse"
     );
 
-    line.classList.add(
-      "is-hold"
+    node.element.classList.add(
+      "history-collapse"
     );
 
-    await wait(2400);
+    await wait(2200);
   }
 
 
   /* =========================================================
-     OBSERVATION E
-     small / contained / reversible
+     E
+     SMALL TEMPORARY REACTION
      ========================================================= */
 
   async function runE() {
-
     if (resolved) return;
 
-    const node = getNode("E");
-
-    const line =
-      getOrCreateLine("center-E");
+    const node =
+      getNode("E");
 
     focusCase("E");
-    updateDynamicGeometry();
-
-    await wait(700);
-
-    showLine(line);
 
     await wait(700);
 
@@ -1356,45 +1588,42 @@ document.addEventListener("DOMContentLoaded", () => {
       "effect-small"
     );
 
-    line.classList.add(
-      "is-hold"
+    node.element.classList.add(
+      "history-small"
     );
 
-    await wait(2400);
+    await wait(2200);
   }
 
 
   /* =========================================================
-     OBSERVATION F
-     primary + dependent persist
+     F
+     PRIMARY ITSELF REMAINS ALTERED
+     ONE DEPENDENT REMAINS
      ========================================================= */
 
   async function runF() {
-
     if (resolved) return;
 
-    const node = getNode("F");
-
-    const centerLine =
-      getOrCreateLine("center-F");
+    const node =
+      getNode("F");
 
     const F1 =
       getOrCreateDependent(
         "F1",
         "F",
-        30,
-        67
+        7,
+        82
       );
 
     const line =
-      getOrCreateLine("F-F1");
+      showDependentLine(
+        "F-F1"
+      );
 
     focusCase("F");
+
     updateDynamicGeometry();
-
-    await wait(700);
-
-    showLine(centerLine);
 
     await wait(700);
 
@@ -1408,73 +1637,71 @@ document.addEventListener("DOMContentLoaded", () => {
       "effect-moderate"
     );
 
+    /*
+      The primary itself changes state permanently.
+    */
+
     node.element.classList.add(
-      "effect-persistent"
+      "primary-persistent"
     );
 
-    await wait(1200);
+    await wait(1000);
 
     F1.element.classList.add(
       "is-visible",
-      "is-persistent"
-    );
-
-    showLine(line);
-
-    node.element.classList.add(
+      "is-persistent",
       "is-cycle-residue"
     );
 
-    markDependentAsResidue(F1);
-    markLineAsResidue(centerLine);
-    markLineAsResidue(line);
+    markLinePersistent(
+      line
+    );
 
-    await wait(3000);
+    await wait(2800);
   }
 
 
   /* =========================================================
-     OBSERVATION G
-     two dependents / one lasting
+     G
+     TWO DEPENDENTS
+     ONE WEAKENED + ONE PERSISTENT
      ========================================================= */
 
   async function runG() {
-
     if (resolved) return;
 
-    const node = getNode("G");
-
-    const centerLine =
-      getOrCreateLine("center-G");
+    const node =
+      getNode("G");
 
     const G1 =
       getOrCreateDependent(
         "G1",
         "G",
-        -25,
-        72
+        -9,
+        76
       );
 
     const G2 =
       getOrCreateDependent(
         "G2",
         "G",
-        31,
-        82
+        9,
+        98
       );
 
     const line1 =
-      getOrCreateLine("G-G1");
+      showDependentLine(
+        "G-G1"
+      );
 
     const line2 =
-      getOrCreateLine("G-G2");
+      showDependentLine(
+        "G-G2"
+      );
 
     focusCase("G");
+
     updateDynamicGeometry();
-
-    await wait(700);
-
-    showLine(centerLine);
 
     await wait(700);
 
@@ -1487,8 +1714,6 @@ document.addEventListener("DOMContentLoaded", () => {
     G1.element.classList.add(
       "is-visible"
     );
-
-    showLine(line1);
 
     await wait(500);
 
@@ -1496,98 +1721,105 @@ document.addEventListener("DOMContentLoaded", () => {
       "is-visible"
     );
 
-    showLine(line2);
-
-    await wait(900);
+    await wait(850);
 
     node.element.classList.remove(
       "effect-substantial"
     );
 
     G1.element.classList.add(
-      "is-weakened"
+      "is-weakened",
+      "is-cycle-residue"
     );
 
     G2.element.classList.add(
-      "is-persistent"
+      "is-persistent",
+      "is-cycle-residue"
     );
 
-    markDependentAsResidue(G2);
-    markLineAsResidue(centerLine);
-    markLineAsResidue(line2);
+    markLinePersistent(
+      line1
+    );
 
-    await wait(3000);
+    markLinePersistent(
+      line2
+    );
+
+    await wait(2600);
   }
 
 
   /* =========================================================
-     OBSERVATION H
-     delayed remote chain
+     H
+     DELAYED LONG OUTWARD CHAIN
      ========================================================= */
 
   async function runH() {
-
     if (resolved) return;
 
-    const node = getNode("H");
-
-    const centerLine =
-      getOrCreateLine("center-H");
+    const node =
+      getNode("H");
 
     const H1 =
       getOrCreateDependent(
         "H1",
         "H",
-        2,
-        118,
-        { remote: true }
+        0,
+        115,
+        {
+          remote: true
+        }
       );
 
     const H2 =
       getOrCreateDependent(
         "H2",
         "H",
-        2,
-        188,
-        { remote: true }
+        0,
+        185,
+        {
+          remote: true
+        }
       );
 
     const H3 =
       getOrCreateDependent(
         "H3",
         "H",
-        2,
-        252,
-        { remote: true }
+        0,
+        255,
+        {
+          remote: true
+        }
       );
 
     const line1 =
-      getOrCreateLine("H-H1");
+      showDependentLine(
+        "H-H1",
+        [
+          "is-remote"
+        ]
+      );
 
     const line2 =
-      getOrCreateLine("H1-H2");
+      showDependentLine(
+        "H1-H2",
+        [
+          "is-remote"
+        ]
+      );
 
     const line3 =
-      getOrCreateLine("H2-H3");
-
-    line1.classList.add(
-      "is-remote"
-    );
-
-    line2.classList.add(
-      "is-remote"
-    );
-
-    line3.classList.add(
-      "is-remote"
-    );
+      showDependentLine(
+        "H2-H3",
+        [
+          "is-remote"
+        ]
+      );
 
     focusCase("H");
+
     updateDynamicGeometry();
-
-    await wait(700);
-
-    showLine(centerLine);
 
     await wait(700);
 
@@ -1601,83 +1833,91 @@ document.addEventListener("DOMContentLoaded", () => {
       "effect-subtle"
     );
 
+    /*
+      Delayed propagation.
+    */
+
     await wait(1800);
 
     H1.element.classList.add(
       "is-visible"
     );
 
-    showLine(line1);
-
-    await wait(700);
+    await wait(650);
 
     H2.element.classList.add(
       "is-visible"
     );
 
-    showLine(line2);
-
-    await wait(700);
+    await wait(650);
 
     H3.element.classList.add(
       "is-visible",
       "is-persistent"
     );
 
-    showLine(line3);
-
-    await wait(700);
+    /*
+      The entire chain is retained for inspection.
+    */
 
     H1.element.classList.add(
-      "is-gone"
+      "is-cycle-residue"
     );
 
     H2.element.classList.add(
-      "is-gone"
+      "is-cycle-residue"
     );
 
-    markDependentAsResidue(H3);
+    H3.element.classList.add(
+      "is-cycle-residue"
+    );
 
-    markLineAsResidue(centerLine);
-    markLineAsResidue(line1);
-    markLineAsResidue(line2);
-    markLineAsResidue(line3);
+    markLinePersistent(
+      line1
+    );
 
-    await wait(3200);
+    markLinePersistent(
+      line2
+    );
+
+    markLinePersistent(
+      line3
+    );
+
+    await wait(3000);
   }
 
 
   /* =========================================================
-     OBSERVATION I
-     one dependent / complete recovery
+     I
+     ONE DEPENDENT APPEARS AND THEN DISAPPEARS
+
+     A dashed history trace remains so the reader no longer
+     has to remember that it existed.
      ========================================================= */
 
   async function runI() {
-
     if (resolved) return;
 
-    const node = getNode("I");
-
-    const centerLine =
-      getOrCreateLine("center-I");
+    const node =
+      getNode("I");
 
     const I1 =
       getOrCreateDependent(
         "I1",
         "I",
-        25,
-        62
+        7,
+        80
       );
 
     const line =
-      getOrCreateLine("I-I1");
+      showDependentLine(
+        "I-I1"
+      );
 
     focusCase("I");
+
     updateDynamicGeometry();
-
-    await wait(700);
-
-    showLine(centerLine);
 
     await wait(700);
 
@@ -1690,8 +1930,6 @@ document.addEventListener("DOMContentLoaded", () => {
     I1.element.classList.add(
       "is-visible"
     );
-
-    showLine(line);
 
     await wait(1000);
 
@@ -1705,22 +1943,19 @@ document.addEventListener("DOMContentLoaded", () => {
 
     await wait(700);
 
-    I1.element.classList.remove(
-      "is-weakened"
+    /*
+      The physical dependent is gone.
+
+      Its dashed outline remains solely as observational
+      history.
+    */
+
+    markDependentHistory(
+      I1
     );
 
-    I1.element.classList.add(
-      "is-gone"
-    );
-
-    line.classList.remove(
-      "is-visible"
-    );
-
-    await wait(700);
-
-    centerLine.classList.add(
-      "is-hold"
+    markLineHistory(
+      line
     );
 
     await wait(2400);
@@ -1744,7 +1979,6 @@ document.addEventListener("DOMContentLoaded", () => {
   ];
 
   async function runObservationCycle() {
-
     const myToken =
       ++cycleToken;
 
@@ -1752,10 +1986,9 @@ document.addEventListener("DOMContentLoaded", () => {
       !resolved &&
       myToken === cycleToken
     ) {
-
       clearEntireCycle();
 
-      await wait(2600);
+      await wait(2200);
 
       const sequence =
         shuffle(
@@ -1766,7 +1999,6 @@ document.addEventListener("DOMContentLoaded", () => {
         const runCase
         of sequence
       ) {
-
         if (
           resolved ||
           myToken !== cycleToken
@@ -1774,9 +2006,7 @@ document.addEventListener("DOMContentLoaded", () => {
           return;
         }
 
-        clearCurrentCase();
-
-        await wait(900);
+        await wait(750);
 
         await runCase();
 
@@ -1787,19 +2017,29 @@ document.addEventListener("DOMContentLoaded", () => {
           return;
         }
 
-        clearCurrentCase();
+        /*
+          Only active animation state is cleared.
+
+          Every historical or persistent observation remains.
+        */
+
+        endCurrentCase();
 
         await wait(
           randomBetween(
-            1300,
-            1800
+            1000,
+            1400
           )
         );
       }
 
-      clearCurrentCase();
+      /*
+        Hold the complete accumulated record.
+      */
 
-      await wait(5000);
+      endCurrentCase();
+
+      await wait(7000);
     }
   }
 
@@ -1809,9 +2049,7 @@ document.addEventListener("DOMContentLoaded", () => {
      ========================================================= */
 
   async function requestAssessmentChallenge() {
-
     try {
-
       const response =
         await fetch(
           "/restricted/access",
@@ -1846,13 +2084,11 @@ document.addEventListener("DOMContentLoaded", () => {
       return assessmentChallenge;
 
     } catch (error) {
-
       return null;
     }
   }
 
   function getInterpretation() {
-
     const interpretation = {};
 
     profiles.forEach(
@@ -1868,7 +2104,6 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   async function authorizeInterpretation() {
-
     if (!assessmentChallenge) {
       await requestAssessmentChallenge();
     }
@@ -1878,7 +2113,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     async function submit() {
-
       return fetch(
         "/restricted/access",
         {
@@ -1905,7 +2139,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     try {
-
       let response =
         await submit();
 
@@ -1916,7 +2149,6 @@ document.addEventListener("DOMContentLoaded", () => {
         !response.ok &&
         data.expired
       ) {
-
         assessmentChallenge =
           await requestAssessmentChallenge();
 
@@ -1938,12 +2170,12 @@ document.addEventListener("DOMContentLoaded", () => {
         return false;
       }
 
-      accessAuthorized = true;
+      accessAuthorized =
+        true;
 
       return true;
 
     } catch (error) {
-
       return false;
     }
   }
@@ -1956,16 +2188,15 @@ document.addEventListener("DOMContentLoaded", () => {
   async function resolveAssessment(
     options = {}
   ) {
-
     if (resolved) {
       return;
     }
 
     const bypassAuthorization =
-      options.bypassAuthorization === true;
+      options.bypassAuthorization ===
+      true;
 
     if (!bypassAuthorization) {
-
       const authorized =
         await authorizeInterpretation();
 
@@ -1986,7 +2217,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
     profiles.forEach(
       node => {
-        node.isDragging = false;
+        node.isDragging =
+          false;
 
         node.element.classList.remove(
           "is-dragging"
@@ -2014,13 +2246,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
     await wait(2200);
 
-    /*
-      Development mode deliberately stops on the
-      resolved map.
-
-      The real authorized gate enters the protected archive.
-    */
-
     if (
       !bypassAuthorization &&
       accessAuthorized
@@ -2036,6 +2261,7 @@ document.addEventListener("DOMContentLoaded", () => {
      ========================================================= */
 
   assignMarkers();
+
   assignGeometry();
 
   profiles.forEach(
@@ -2044,24 +2270,17 @@ document.addEventListener("DOMContentLoaded", () => {
 
   positionAllNodes();
 
+  /*
+    Permanent lanes are created only after the nodes already
+    have valid positions.
+  */
+
+  createPrimaryLanes();
+
   field.classList.add(
     "is-ready"
   );
 
-
-  /*
-    IMPORTANT:
-
-    Cloudflare Pages may canonicalize:
-
-      /restricted/gate-test.html
-
-    to:
-
-      /restricted/gate-test
-
-    Therefore both pathnames are intentionally accepted here.
-  */
 
   const params =
     new URLSearchParams(
@@ -2083,11 +2302,6 @@ document.addEventListener("DOMContentLoaded", () => {
     params.get("dev") === "1";
 
 
-  /*
-    Production requests its server challenge immediately.
-    The development visualization does not need one.
-  */
-
   if (!devBypass) {
     requestAssessmentChallenge();
   }
@@ -2098,12 +2312,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
       updateDynamicGeometry();
 
-
       if (devBypass) {
-
-        /*
-          Place every node into its canonical radial class.
-        */
 
         profiles.forEach(
           node => {
@@ -2121,16 +2330,13 @@ document.addEventListener("DOMContentLoaded", () => {
                 targetClass
               ];
 
-            positionNode(node);
+            positionNode(
+              node
+            );
           }
         );
 
         updateDynamicGeometry();
-
-
-        /*
-          Development bypass is visual-only.
-        */
 
         resolveAssessment({
           bypassAuthorization: true
@@ -2138,7 +2344,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
         return;
       }
-
 
       runObservationCycle();
     }

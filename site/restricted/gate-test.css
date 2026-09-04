@@ -4,7 +4,7 @@
   --gate-node: rgba(240, 244, 246, 0.96);
   --gate-node-soft: rgba(232, 238, 241, 0.78);
 
-  --gate-line: rgba(220, 230, 235, 0.18);
+  --gate-line: rgba(226, 235, 239, 0.34);
   --gate-line-soft: rgba(220, 230, 235, 0.10);
 
   --gate-center: rgba(248, 250, 251, 0.98);
@@ -121,12 +121,12 @@ body.gate-test-page::after {
 }
 
 .trace-line {
-  stroke: var(--gate-line);
-  stroke-width: 0.85;
+  stroke: rgba(220, 230, 235, 0.12);
+  stroke-width: 0.8;
 
-  stroke-dasharray: 1 11;
+  stroke-dasharray: 1 12;
 
-  opacity: 0.72;
+  opacity: 0.6;
 }
 
 
@@ -196,25 +196,25 @@ body.gate-test-page::after {
 .gate-field.is-adjusting
 .guidance-ring-0 {
   border-color:
-    rgba(235, 241, 244, 0.34);
+    rgba(235, 241, 244, 0.38);
 }
 
 .gate-field.is-adjusting
 .guidance-ring-1 {
   border-color:
-    rgba(235, 241, 244, 0.30);
+    rgba(235, 241, 244, 0.34);
 }
 
 .gate-field.is-adjusting
 .guidance-ring-2 {
   border-color:
-    rgba(235, 241, 244, 0.26);
+    rgba(235, 241, 244, 0.30);
 }
 
 .gate-field.is-adjusting
 .guidance-ring-3 {
   border-color:
-    rgba(235, 241, 244, 0.22);
+    rgba(235, 241, 244, 0.26);
 }
 
 
@@ -279,7 +279,7 @@ body.gate-test-page::after {
   opacity: 1;
 
   border-color:
-    rgba(234, 240, 243, 0.16);
+    rgba(234, 240, 243, 0.18);
 }
 
 .gate-field.is-map-visible
@@ -292,7 +292,7 @@ body.gate-test-page::after {
 
 
 /* ---------------------------------------------------------
-   CAUSAL LINES
+   CAUSAL / LANE LINES
    --------------------------------------------------------- */
 
 .causal-layer {
@@ -317,7 +317,7 @@ body.gate-test-page::after {
   fill: none;
 
   stroke:
-    rgba(226, 235, 239, 0.42);
+    rgba(226, 235, 239, 0.46);
 
   stroke-width: 1.05;
 
@@ -326,31 +326,98 @@ body.gate-test-page::after {
   opacity: 0;
 
   transition:
-    opacity 520ms ease,
-    stroke 520ms ease;
+    opacity 420ms ease,
+    stroke-width 420ms ease,
+    stroke 420ms ease;
 }
 
 .causal-line.is-visible {
   opacity: 1;
 }
 
-.causal-line.is-hold {
-  opacity: 0.58;
+
+/*
+  Every primary has a permanent radial lane.
+
+  These are structural rather than semantic. All lanes use
+  exactly the same styling.
+*/
+
+.causal-line.is-lane {
+  opacity: 0.30;
+
+  stroke:
+    rgba(226, 235, 239, 0.38);
+
+  stroke-width: 0.85;
+
+  stroke-dasharray: 2 10;
 }
 
-.causal-line.is-faint {
-  opacity: 0.32;
+
+/*
+  The currently observed lane becomes easier to follow
+  without changing colour.
+*/
+
+.causal-line.is-lane.is-active-lane {
+  opacity: 0.92;
+
+  stroke-width: 1.3;
+
+  stroke:
+    rgba(241, 246, 248, 0.78);
+}
+
+
+/*
+  Normal downstream connections.
+*/
+
+.causal-line.is-dependent-line {
+  opacity: 0;
+}
+
+.causal-line.is-dependent-line.is-visible {
+  opacity: 0.86;
+}
+
+
+/*
+  A solid cumulative consequence.
+*/
+
+.causal-line.is-cycle-residue {
+  opacity: 0.70;
+
+  stroke:
+    rgba(232, 239, 242, 0.62);
+}
+
+
+/*
+  Historical trace means the relationship existed but the
+  consequence itself is no longer present.
+
+  Pattern, rather than darkness, distinguishes history from
+  persistence.
+*/
+
+.causal-line.is-history {
+  opacity: 0.70;
+
+  stroke:
+    rgba(230, 238, 242, 0.68);
+
+  stroke-dasharray: 1 6;
 }
 
 .causal-line.is-remote {
-  stroke-dasharray: 1 13;
+  stroke-dasharray: 1 12;
 }
 
-.causal-line.is-cycle-residue {
-  opacity: 0.28;
-
-  stroke:
-    rgba(224, 233, 237, 0.34);
+.causal-line.is-remote.is-cycle-residue {
+  opacity: 0.72;
 }
 
 
@@ -382,7 +449,7 @@ body.gate-test-page::after {
 
   border:
     1px solid
-    rgba(235, 241, 244, 0.82);
+    rgba(238, 243, 245, 0.90);
 
   border-radius: 50%;
 
@@ -391,76 +458,100 @@ body.gate-test-page::after {
   opacity: 0;
 
   transition:
-    opacity 520ms ease,
+    opacity 420ms ease,
     transform 520ms ease,
     border-color 520ms ease,
     background 520ms ease;
 }
 
 .dependent-node.is-visible {
-  opacity: 0.95;
+  opacity: 1;
 }
+
+
+/*
+  Still present, but diminished.
+*/
 
 .dependent-node.is-weakened {
-  opacity: 0.62;
+  opacity: 0.90;
 
   transform:
     translate(-50%, -50%)
-    scale(0.82);
+    scale(0.72);
 
   border-color:
-    rgba(230, 237, 240, 0.60);
+    rgba(235, 241, 244, 0.90);
 }
+
+
+/*
+  Tiny but still physically present.
+*/
 
 .dependent-node.is-collapsed {
-  opacity: 0.32;
+  opacity: 0.90;
 
   transform:
     translate(-50%, -50%)
-    scale(0.42);
+    scale(0.38);
 
   border-color:
-    rgba(226, 234, 238, 0.34);
+    rgba(235, 241, 244, 0.86);
 
   background:
-    rgba(226, 234, 238, 0.12);
+    rgba(235, 241, 244, 0.32);
 }
 
+
+/*
+  Persistent consequence.
+*/
+
 .dependent-node.is-persistent {
-  opacity: 0.82;
+  opacity: 1;
 
   transform:
     translate(-50%, -50%)
-    scale(0.94);
+    scale(0.95);
 
   border-color:
-    rgba(238, 243, 245, 0.80);
+    rgba(246, 249, 250, 0.98);
+
+  background:
+    rgba(239, 245, 247, 0.10);
 }
 
-.dependent-node.is-cycle-residue {
-  opacity: 0.66;
 
-  border-color:
-    rgba(232, 239, 242, 0.58);
-}
+/*
+  History-only dependent.
 
-.dependent-node.is-persistent.is-cycle-residue {
-  opacity: 0.72;
+  This is intentionally dashed: the reader can still see
+  that a dependent existed, but the broken outline means it
+  is no longer physically present.
+*/
+
+.dependent-node.is-history {
+  opacity: 0.92;
+
+  border:
+    1px dashed
+    rgba(235, 242, 245, 0.86);
+
+  background: transparent;
 
   transform:
     translate(-50%, -50%)
     scale(0.92);
-
-  border-color:
-    rgba(238, 243, 245, 0.70);
 }
 
-.dependent-node.is-gone {
-  opacity: 0;
 
-  transform:
-    translate(-50%, -50%)
-    scale(0.40);
+/*
+  Cumulative consequences remain at full readability.
+*/
+
+.dependent-node.is-cycle-residue {
+  opacity: 1;
 }
 
 
@@ -471,19 +562,13 @@ body.gate-test-page::after {
   height: 9px;
 
   border-color:
-    rgba(230, 237, 240, 0.52);
+    rgba(238, 243, 245, 0.90);
 }
 
-.dependent-node.is-remote.is-visible {
-  opacity: 0.76;
-}
-
-.dependent-node.is-remote.is-persistent {
-  opacity: 0.84;
-}
-
+.dependent-node.is-remote.is-visible,
+.dependent-node.is-remote.is-persistent,
 .dependent-node.is-remote.is-cycle-residue {
-  opacity: 0.68;
+  opacity: 1;
 }
 
 
@@ -526,7 +611,7 @@ body.gate-test-page::after {
 
   border:
     1px solid
-    rgba(235, 241, 244, 0.24);
+    rgba(235, 241, 244, 0.28);
 
   border-radius: 50%;
 }
@@ -541,7 +626,7 @@ body.gate-test-page::after {
 
   border:
     1px solid
-    rgba(239, 244, 246, 0.38);
+    rgba(239, 244, 246, 0.42);
 
   border-radius: 50%;
 }
@@ -625,13 +710,13 @@ body.gate-test-page::after {
 
   border:
     1px solid
-    rgba(235, 241, 244, 0.78);
+    rgba(238, 243, 245, 0.90);
 
   border-radius: 50%;
 
   box-sizing: border-box;
 
-  opacity: 0.96;
+  opacity: 1;
 
   transition:
     opacity 250ms ease,
@@ -651,7 +736,7 @@ body.gate-test-page::after {
 
   border:
     1px solid
-    rgba(232, 239, 242, 0.08);
+    rgba(232, 239, 242, 0.10);
 
   border-radius: 50%;
 
@@ -661,7 +746,8 @@ body.gate-test-page::after {
     width 450ms ease,
     height 450ms ease,
     opacity 450ms ease,
-    border-color 450ms ease;
+    border-color 450ms ease,
+    border-style 450ms ease;
 }
 
 .gate-node:hover
@@ -673,44 +759,29 @@ body.gate-test-page::after {
 
 
 /* ---------------------------------------------------------
-   ACTIVE CASE FOCUS
+   ACTIVE CASE
    --------------------------------------------------------- */
 
-.gate-field.has-active-case
-.gate-node {
-  opacity: 0.28;
-}
+/*
+  Nothing dims.
 
-.gate-field.has-active-case
-.gate-node.is-active-case {
-  opacity: 1;
-}
-
-.gate-field.has-active-case
-.gate-node.is-cycle-residue {
-  opacity: 0.50;
-}
-
-.gate-field.has-active-case
-.gate-node.is-cycle-residue.is-active-case {
-  opacity: 1;
-}
+  The active primary is identified through its lane and a
+  modest halo only.
+*/
 
 .gate-node.is-active-case
 .node-body {
   border-color:
-    rgba(242, 246, 248, 0.94);
-
-  opacity: 1;
+    rgba(250, 252, 252, 1);
 
   box-shadow:
-    0 0 10px
-    rgba(230, 238, 242, 0.12);
+    0 0 12px
+    rgba(239, 245, 247, 0.18);
 }
 
 .gate-node.is-active-case::after {
   border-color:
-    rgba(232, 239, 242, 0.15);
+    rgba(244, 248, 249, 0.24);
 }
 
 
@@ -724,111 +795,163 @@ body.gate-test-page::after {
     scale(1.65);
 
   border-color:
-    rgba(245, 248, 249, 0.98);
+    rgba(250, 252, 252, 1);
 
   box-shadow:
     0 0 20px
-    rgba(235, 242, 245, 0.22);
-}
-
-.gate-node.effect-strong::after {
-  width: 46px;
-  height: 46px;
-
-  border-color:
-    rgba(235, 242, 245, 0.22);
+    rgba(235, 242, 245, 0.24);
 }
 
 .gate-node.effect-collapse
 .node-body {
   transform:
-    scale(0.52);
-
-  opacity: 0.62;
+    scale(0.50);
 
   border-color:
-    rgba(238, 243, 245, 0.84);
-}
-
-.gate-node.effect-collapse::after {
-  width: 22px;
-  height: 22px;
-
-  border-color:
-    rgba(232, 239, 242, 0.12);
+    rgba(244, 248, 249, 0.96);
 }
 
 .gate-node.effect-subtle
 .node-body {
-  opacity: 0.72;
-
   transform:
     scale(0.94);
-
-  border-color:
-    rgba(234, 240, 243, 0.62);
 }
 
 .gate-node.effect-moderate
 .node-body {
   transform:
-    scale(1.14);
+    scale(1.16);
 
   border-color:
-    rgba(242, 246, 248, 0.92);
+    rgba(246, 249, 250, 0.98);
 
   box-shadow:
     0 0 13px
-    rgba(235, 242, 245, 0.14);
+    rgba(235, 242, 245, 0.16);
 }
 
 .gate-node.effect-substantial
 .node-body {
   transform:
-    scale(1.29);
+    scale(1.30);
 
   border-color:
-    rgba(244, 247, 249, 0.96);
+    rgba(248, 250, 251, 1);
 
   box-shadow:
     0 0 16px
-    rgba(235, 242, 245, 0.17);
+    rgba(235, 242, 245, 0.20);
 }
 
 .gate-node.effect-small
 .node-body {
   transform:
     scale(1.06);
-
-  opacity: 0.90;
-
-  border-color:
-    rgba(236, 242, 244, 0.72);
 }
 
-.gate-node.effect-persistent
-.node-body {
+
+/* ---------------------------------------------------------
+   CUMULATIVE PRIMARY HISTORY
+   --------------------------------------------------------- */
+
+/*
+  A: dramatic expansion happened, but the primary returned.
+
+  Large dashed halo remains as the observational record.
+*/
+
+.gate-node.history-expand::after {
+  width: 46px;
+  height: 46px;
+
+  border:
+    1px dashed
+    rgba(239, 245, 247, 0.82);
+
+  opacity: 1;
+}
+
+
+/*
+  D: dramatic inward collapse happened, then returned.
+
+  An interior dashed ring records the direction of change.
+*/
+
+.gate-node.history-collapse
+.node-body::after {
+  content: "";
+
+  position: absolute;
+
+  left: 50%;
+  top: 50%;
+
+  width: 7px;
+  height: 7px;
+
   transform:
-    scale(1.08);
+    translate(-50%, -50%);
 
-  border-color:
-    rgba(240, 245, 247, 0.82);
+  border:
+    1px dashed
+    rgba(241, 246, 248, 0.84);
 
-  background:
-    rgba(228, 236, 240, 0.06);
+  border-radius: 50%;
 
-  box-shadow:
-    inset 0 0 8px
-    rgba(230, 238, 242, 0.10);
+  box-sizing: border-box;
 }
 
-.gate-node.effect-persistent.is-cycle-residue
-.node-body {
-  border-color:
-    rgba(236, 242, 244, 0.66);
+
+/*
+  E: small temporary response.
+
+  Small dashed external halo.
+*/
+
+.gate-node.history-small::after {
+  width: 25px;
+  height: 25px;
+
+  border:
+    1px dashed
+    rgba(239, 245, 247, 0.78);
+
+  opacity: 1;
+}
+
+
+/*
+  F: the primary itself did not return to its original state.
+
+  Unlike history traces, this interior ring is SOLID.
+*/
+
+.gate-node.primary-persistent
+.node-body::after {
+  content: "";
+
+  position: absolute;
+
+  left: 50%;
+  top: 50%;
+
+  width: 8px;
+  height: 8px;
+
+  transform:
+    translate(-50%, -50%);
+
+  border:
+    1px solid
+    rgba(248, 250, 251, 0.98);
+
+  border-radius: 50%;
+
+  box-sizing: border-box;
 
   background:
-    rgba(228, 236, 240, 0.05);
+    rgba(238, 244, 246, 0.10);
 }
 
 
@@ -844,7 +967,7 @@ body.gate-test-page::after {
   width: 7px;
   height: 7px;
 
-  opacity: 0.88;
+  opacity: 0.92;
 }
 
 .mark-dot::before {
@@ -1074,7 +1197,7 @@ body.gate-test-page::after {
 
 .resolved-link {
   stroke:
-    rgba(226, 235, 239, 0.36);
+    rgba(226, 235, 239, 0.38);
 
   stroke-width: 1;
 
@@ -1086,7 +1209,7 @@ body.gate-test-page::after {
 
 .resolved-link-secondary {
   stroke:
-    rgba(220, 230, 235, 0.22);
+    rgba(220, 230, 235, 0.24);
 
   stroke-dasharray: 3 9;
 }
@@ -1112,7 +1235,7 @@ body.gate-test-page::after {
   font-size: 19px;
 
   color:
-    rgba(240, 245, 247, 0.94);
+    rgba(240, 245, 247, 0.96);
 
   opacity: 0;
 
@@ -1220,7 +1343,7 @@ body.gate-test-page::after {
 
 .gate-field.is-map-visible
 .resolved-link-secondary {
-  opacity: 0.62;
+  opacity: 0.64;
 }
 
 
@@ -1231,7 +1354,7 @@ body.gate-test-page::after {
 @keyframes center-breathe {
   0%,
   100% {
-    opacity: 0.82;
+    opacity: 0.84;
   }
 
   50% {

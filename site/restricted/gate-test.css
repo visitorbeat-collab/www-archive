@@ -290,7 +290,6 @@ body.gate-test-page::after {
     rgba(234, 240, 243, 0);
 }
 
-
 /* ---------------------------------------------------------
    CAUSAL / LANE LINES
    --------------------------------------------------------- */
@@ -313,15 +312,21 @@ body.gate-test-page::after {
     opacity 700ms ease;
 }
 
+
+/*
+  BASE LINE
+
+  Hidden until one of the structural or causal classes
+  gives it a specific role.
+*/
+
 .causal-line {
   fill: none;
 
   stroke:
-    rgba(226, 235, 239, 0.46);
+    rgba(232, 239, 242, 0.72);
 
-  stroke-width: 1.05;
-
-  stroke-dasharray: 2 8;
+  stroke-width: 1;
 
   opacity: 0;
 
@@ -331,93 +336,137 @@ body.gate-test-page::after {
     stroke 420ms ease;
 }
 
-.causal-line.is-visible {
-  opacity: 1;
-}
 
+/* ---------------------------------------------------------
+   STRUCTURAL LANES
 
-/*
-  Every primary has a permanent radial lane.
+   Center → primary
 
-  These are structural rather than semantic. All lanes use
-  exactly the same styling.
-*/
+   These are NOT causal relationships.
+
+   They are faint continuous alignment guides and stop
+   slightly before reaching the primary node.
+   --------------------------------------------------------- */
 
 .causal-line.is-lane {
-  opacity: 0.30;
+  opacity: 0.18;
 
   stroke:
-    rgba(226, 235, 239, 0.38);
+    rgba(220, 230, 235, 0.34);
 
-  stroke-width: 0.85;
+  stroke-width: 0.7;
 
-  stroke-dasharray: 2 10;
+  stroke-dasharray: none;
 }
 
 
 /*
-  The currently observed lane becomes easier to follow
-  without changing colour.
+  The currently observed lane becomes brighter, but retains
+  exactly the same continuous structural appearance.
 */
 
 .causal-line.is-lane.is-active-lane {
-  opacity: 0.92;
-
-  stroke-width: 1.3;
+  opacity: 0.72;
 
   stroke:
-    rgba(241, 246, 248, 0.78);
+    rgba(239, 245, 247, 0.64);
+
+  stroke-width: 1;
 }
 
 
-/*
-  Normal downstream connections.
-*/
+/* ---------------------------------------------------------
+   CAUSAL CONNECTIONS
+
+   Primary → dependent
+
+   These represent actual downstream relationships.
+   --------------------------------------------------------- */
 
 .causal-line.is-dependent-line {
   opacity: 0;
+
+  stroke:
+    rgba(240, 245, 247, 0.88);
+
+  stroke-width: 1.15;
+
+  stroke-dasharray: none;
 }
+
+
+/*
+  A causal relationship appears only when its dependent
+  appears.
+*/
 
 .causal-line.is-dependent-line.is-visible {
-  opacity: 0.86;
+  opacity: 0.88;
 }
 
 
 /*
-  A solid cumulative consequence.
+  RETAINED CAUSAL RELATIONSHIP
+
+  Continuous line = consequence is still represented in the
+  final state.
 */
 
-.causal-line.is-cycle-residue {
-  opacity: 0.70;
+.causal-line.is-dependent-line.is-cycle-residue {
+  opacity: 0.92;
 
   stroke:
-    rgba(232, 239, 242, 0.62);
+    rgba(240, 245, 247, 0.88);
+
+  stroke-width: 1.15;
+
+  stroke-dasharray: none;
 }
 
 
 /*
-  Historical trace means the relationship existed but the
-  consequence itself is no longer present.
+  HISTORICAL CAUSAL RELATIONSHIP
 
-  Pattern, rather than darkness, distinguishes history from
-  persistence.
+  Clearly broken line = the relationship occurred, but its
+  resulting dependent no longer remains.
+
+  The longer dash pattern deliberately looks different from
+  both the structural lanes and retained causal links.
 */
 
-.causal-line.is-history {
-  opacity: 0.70;
+.causal-line.is-dependent-line.is-history {
+  opacity: 0.84;
 
   stroke:
-    rgba(230, 238, 242, 0.68);
+    rgba(236, 242, 245, 0.82);
 
-  stroke-dasharray: 1 6;
+  stroke-width: 1.05;
+
+  stroke-dasharray: 6 6;
 }
+
+
+/*
+  Remote links use the same causal grammar.
+
+  Distance has meaning through geometry, not through a
+  different line pattern.
+*/
 
 .causal-line.is-remote {
-  stroke-dasharray: 1 12;
+  stroke-dasharray: none;
 }
 
 .causal-line.is-remote.is-cycle-residue {
-  opacity: 0.72;
+  opacity: 0.92;
+
+  stroke-dasharray: none;
+}
+
+.causal-line.is-remote.is-history {
+  opacity: 0.84;
+
+  stroke-dasharray: 6 6;
 }
 
 

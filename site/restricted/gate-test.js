@@ -968,19 +968,67 @@ document.addEventListener("DOMContentLoaded", () => {
       return;
     }
 
-    setLine(
-      line,
-
+    const start =
       getElementCenter(
         centerElement
-      ),
+      );
 
+    const nodeCenter =
       getElementCenter(
         node.element
-      )
+      );
+
+    const dx =
+      nodeCenter.x -
+      start.x;
+
+    const dy =
+      nodeCenter.y -
+      start.y;
+
+    const distance =
+      Math.sqrt(
+        dx * dx +
+        dy * dy
+      );
+
+    /*
+      The structural lane deliberately stops before reaching
+      the primary node.
+
+      This makes it visually distinct from a causal
+      connection, which originates directly at a primary.
+    */
+
+    const gap = 23;
+
+    const usableDistance =
+      Math.max(
+        0,
+        distance - gap
+      );
+
+    const ratio =
+      distance > 0
+        ? usableDistance / distance
+        : 0;
+
+    const end = {
+      x:
+        start.x +
+        dx * ratio,
+
+      y:
+        start.y +
+        dy * ratio
+    };
+
+    setLine(
+      line,
+      start,
+      end
     );
   }
-
   function updateDependentLine(
     profileId,
     dependentId,

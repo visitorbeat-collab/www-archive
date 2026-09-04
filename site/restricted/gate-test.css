@@ -458,18 +458,9 @@ body.gate-test-page::after {
    DEPENDENTS
    --------------------------------------------------------- */
 
-.dependent-layer {
-  position: absolute;
-
-  inset: 0;
-
-  pointer-events: none;
-
-  z-index: 3;
-
-  transition:
-    opacity 700ms ease;
-}
+/* ---------------------------------------------------------
+   DEPENDENT SIZE / STATE HIERARCHY
+   --------------------------------------------------------- */
 
 .dependent-node {
   position: absolute;
@@ -493,6 +484,8 @@ body.gate-test-page::after {
 
   transition:
     opacity 300ms ease,
+    width 420ms ease,
+    height 420ms ease,
     transform 520ms ease,
     border-color 520ms ease,
     background 520ms ease;
@@ -502,11 +495,7 @@ body.gate-test-page::after {
 /*
   ARRIVAL
 
-  Every new dependent becomes dramatically larger for a
-  moment and then settles into its actual state.
-
-  This is an animation of appearance, not an indication of
-  consequence magnitude.
+  New dependents still bloom large, then settle.
 */
 
 .dependent-node.is-visible {
@@ -524,67 +513,93 @@ body.gate-test-page::after {
 
 
 /*
-  Still present, but diminished.
-*/
+  STRONG / PERSISTENT CONSEQUENCE
 
-.dependent-node.is-weakened {
-  opacity: 1;
-
-  transform:
-    translate(-50%, -50%)
-    scale(0.72);
-
-  border-color:
-    rgba(240, 245, 247, 0.94);
-}
-
-
-/*
-  Tiny but still physically present.
-*/
-
-.dependent-node.is-collapsed {
-  opacity: 1;
-
-  transform:
-    translate(-50%, -50%)
-    scale(0.38);
-
-  border-color:
-    rgba(240, 245, 247, 0.92);
-
-  background:
-    rgba(240, 245, 247, 0.34);
-}
-
-
-/*
-  Persistent consequence.
+  Visibly largest resting dependent.
 */
 
 .dependent-node.is-persistent {
+  width: 15px;
+  height: 15px;
+
   opacity: 1;
 
   transform:
     translate(-50%, -50%)
-    scale(0.95);
+    scale(1);
 
   border-color:
     rgba(250, 252, 252, 1);
 
   background:
-    rgba(244, 248, 249, 0.11);
+    rgba(244, 248, 249, 0.12);
 }
 
 
 /*
-  Historical dependent.
+  WEAKENED CONSEQUENCE
 
-  The object itself is gone; the dashed circle is only its
-  retained observational record.
+  Clearly smaller than a persistent dependent.
+*/
+
+.dependent-node.is-weakened {
+  width: 8px;
+  height: 8px;
+
+  opacity: 1;
+
+  transform:
+    translate(-50%, -50%)
+    scale(1);
+
+  border-color:
+    rgba(240, 245, 247, 0.94);
+
+  background: transparent;
+}
+
+
+/*
+  COLLAPSED REMNANT
+
+  Deliberately tiny.
+
+  This should read almost like a surviving point rather than
+  a normal dependent.
+*/
+
+.dependent-node.is-collapsed {
+  width: 4px;
+  height: 4px;
+
+  opacity: 1;
+
+  transform:
+    translate(-50%, -50%)
+    scale(1);
+
+  border:
+    1px solid
+    rgba(240, 245, 247, 0.94);
+
+  background:
+    rgba(240, 245, 247, 0.78);
+}
+
+
+/*
+  HISTORICAL / GONE
+
+  The physical consequence no longer exists.
+
+  The dashed outline is intentionally medium-sized because
+  its size is not meant to imply retained strength.
 */
 
 .dependent-node.is-history {
+  width: 10px;
+  height: 10px;
+
   opacity: 0.92;
 
   border:
@@ -595,14 +610,14 @@ body.gate-test-page::after {
 
   transform:
     translate(-50%, -50%)
-    scale(0.92);
+    scale(1);
 
   animation: none;
 }
 
 
 /*
-  Accumulated consequences remain fully readable.
+  Cumulative states remain fully readable.
 */
 
 .dependent-node.is-cycle-residue {
@@ -610,6 +625,45 @@ body.gate-test-page::after {
 }
 
 
+/* ---------------------------------------------------------
+   REMOTE DEPENDENTS
+   --------------------------------------------------------- */
+
+/*
+  Remote dependents use the same size hierarchy.
+
+  Distance already carries separate meaning, so they should
+  not be made smaller merely because they are remote.
+*/
+
+.dependent-node.is-remote {
+  width: 10px;
+  height: 10px;
+
+  border-color:
+    rgba(246, 249, 250, 0.96);
+}
+
+.dependent-node.is-remote.is-persistent {
+  width: 15px;
+  height: 15px;
+}
+
+.dependent-node.is-remote.is-weakened {
+  width: 8px;
+  height: 8px;
+}
+
+.dependent-node.is-remote.is-collapsed {
+  width: 4px;
+  height: 4px;
+}
+
+.dependent-node.is-remote.is-visible,
+.dependent-node.is-remote.is-persistent,
+.dependent-node.is-remote.is-cycle-residue {
+  opacity: 1;
+}
 /* ---------------------------------------------------------
    REMOTE DEPENDENTS
    --------------------------------------------------------- */

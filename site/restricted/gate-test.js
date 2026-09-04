@@ -1,20 +1,11 @@
 "use strict";
 
-
 document.addEventListener("DOMContentLoaded", () => {
 
-  const field =
-    document.getElementById("gate-field");
-
-  const centerElement =
-    document.getElementById("gate-center");
-
-  const causalLayer =
-    document.getElementById("causal-layer");
-
-  const dependentLayer =
-    document.getElementById("dependent-layer");
-
+  const field = document.getElementById("gate-field");
+  const centerElement = document.getElementById("gate-center");
+  const causalLayer = document.getElementById("causal-layer");
+  const dependentLayer = document.getElementById("dependent-layer");
 
   if (
     !field ||
@@ -26,26 +17,9 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
 
-  const nodeElements =
-    Array.from(
-      field.querySelectorAll(
-        ".gate-node"
-      )
-    );
-
-
-  /* -------------------------------------------------------
+  /* =========================================================
      CONFIG
-     ------------------------------------------------------- */
-
-  const MIN_ANGLE_GAP = 28;
-
-  const MIN_RADIUS_RATIO = 0.24;
-  const MAX_RADIUS_RATIO = 0.44;
-
-  const DRAG_MIN_RATIO = 0.08;
-  const DRAG_MAX_RATIO = 0.88;
-
+     ========================================================= */
 
   const TARGET_CLASS = {
     A: 2,
@@ -59,14 +33,12 @@ document.addEventListener("DOMContentLoaded", () => {
     I: 2
   };
 
-
   const RADIAL_CLASSES = [
     0.155,
     0.350,
     0.570,
     0.795
   ];
-
 
   const markerClasses = [
     "mark-dot",
@@ -80,43 +52,38 @@ document.addEventListener("DOMContentLoaded", () => {
     "mark-horizontal"
   ];
 
+  const MIN_RADIUS_RATIO = 0.24;
+  const MAX_RADIUS_RATIO = 0.44;
 
-let resolved = false;
-let cycleToken = 0;
+  const DRAG_MIN_RATIO = 0.08;
+  const DRAG_MAX_RATIO = 0.88;
 
-let assessmentChallenge = null;
-let accessAuthorized = false;
+  let resolved = false;
+  let cycleToken = 0;
+
+  let assessmentChallenge = null;
+  let accessAuthorized = false;
 
 
-  /* -------------------------------------------------------
+  /* =========================================================
      UTILITIES
-     ------------------------------------------------------- */
+     ========================================================= */
 
-  function wait(milliseconds) {
-    return new Promise(
-      resolve => {
-        window.setTimeout(
-          resolve,
-          milliseconds
-        );
-      }
-    );
+  function wait(ms) {
+    return new Promise(resolve => {
+      window.setTimeout(resolve, ms);
+    });
   }
 
+  function randomBetween(min, max) {
+    return min + Math.random() * (max - min);
+  }
 
   function shuffle(array) {
     const copy = [...array];
 
-    for (
-      let i = copy.length - 1;
-      i > 0;
-      i -= 1
-    ) {
-      const j =
-        Math.floor(
-          Math.random() *
-          (i + 1)
-        );
+    for (let i = copy.length - 1; i > 0; i -= 1) {
+      const j = Math.floor(Math.random() * (i + 1));
 
       [
         copy[i],
@@ -130,96 +97,56 @@ let accessAuthorized = false;
     return copy;
   }
 
+  function radians(degrees) {
+    return degrees * Math.PI / 180;
+  }
 
-  function randomBetween(
-    min,
-    max
-  ) {
-    return (
-      min +
-      Math.random() *
-      (max - min)
+
+  /* =========================================================
+     PRIMARY NODES
+     ========================================================= */
+
+  const profiles = Array.from(
+    field.querySelectorAll(".gate-node")
+  ).map(element => ({
+    element,
+    profile: element.dataset.profile,
+    angle: 0,
+    radiusRatio: 0,
+    currentClass: null,
+    isDragging: false
+  }));
+
+  function getNode(profileId) {
+    return profiles.find(
+      node => node.profile === profileId
     );
   }
 
 
-  function degreesToRadians(
-    degrees
-  ) {
-    return (
-      degrees *
-      Math.PI /
-      180
-    );
-  }
-
-
-  function normalizeAngle(angle) {
-    let normalized =
-      angle % 360;
-
-    if (normalized < 0) {
-      normalized += 360;
-    }
-
-    return normalized;
-  }
-
-
-  function angularDistance(
-    a,
-    b
-  ) {
-    const difference =
-      Math.abs(
-        normalizeAngle(a) -
-        normalizeAngle(b)
-      );
-
-    return Math.min(
-      difference,
-      360 - difference
-    );
-  }
-
-
-  /* -------------------------------------------------------
+  /* =========================================================
      GEOMETRY
-     ------------------------------------------------------- */
+     ========================================================= */
 
   function getFieldGeometry() {
-    const rect =
-      field.getBoundingClientRect();
+    const rect = field.getBoundingClientRect();
 
-    const size =
-      Math.min(
-        rect.width,
-        rect.height
-      );
+    const size = Math.min(
+      rect.width,
+      rect.height
+    );
 
     return {
       rect,
-
-      centerX:
-        rect.width / 2,
-
-      centerY:
-        rect.height / 2,
-
-      usableRadius:
-        size * 0.49
+      centerX: rect.width / 2,
+      centerY: rect.height / 2,
+      usableRadius: size * 0.49
     };
   }
 
-
-  function getElementCenter(
-    element
-  ) {
-    const fieldRect =
-      field.getBoundingClientRect();
-
-    const rect =
-      element.getBoundingClientRect();
+  function getElementCenter(element) {
+    const fieldRect = field.getBoundingClientRect();
+    const rect = element.getBoundingClientRect();
 
     return {
       x:
@@ -234,113 +161,95 @@ let accessAuthorized = false;
     };
   }
 
-
-  /* -------------------------------------------------------
-     RANDOM ANGLES
-     ------------------------------------------------------- */
-
   function generateAngles(count) {
-    const baseGap =
-      360 / count;
+    const step = 360 / count;
+    const rotation = Math.random() * 360;
 
-    const rotation =
-      Math.random() * 360;
+    return Array.from(
+      { length: count },
+      (_, index) =>
+        rotation +
+        index * step +
+        randomBetween(-8, 8)
+    );
+  }
 
-    const angles = [];
+  function assignGeometry() {
+    const angles = generateAngles(
+      profiles.length
+    );
 
+    const radii = shuffle([
+      0.27,
+      0.30,
+      0.31,
+      0.33,
+      0.35,
+      0.37,
+      0.39,
+      0.41,
+      0.43
+    ]);
 
-    for (
-      let i = 0;
-      i < count;
-      i += 1
-    ) {
-      angles.push(
-        normalizeAngle(
-          rotation +
-          i * baseGap +
-          randomBetween(
-            -10,
-            10
-          )
+    profiles.forEach((node, index) => {
+
+      node.angle = angles[index];
+
+      node.radiusRatio = Math.max(
+        MIN_RADIUS_RATIO,
+        Math.min(
+          MAX_RADIUS_RATIO,
+          radii[index] +
+          randomBetween(-0.012, 0.012)
         )
       );
-    }
 
+      node.currentClass = null;
+    });
+  }
 
-    for (
-      let i = 0;
-      i < angles.length;
-      i += 1
-    ) {
-      for (
-        let j = i + 1;
-        j < angles.length;
-        j += 1
-      ) {
-        if (
-          angularDistance(
-            angles[i],
-            angles[j]
-          ) < MIN_ANGLE_GAP
-        ) {
-          return generateAngles(
-            count
-          );
-        }
-      }
-    }
+  function positionNode(node) {
+    const {
+      centerX,
+      centerY,
+      usableRadius
+    } = getFieldGeometry();
 
+    const angle = radians(node.angle);
 
-    return angles;
+    const radius =
+      usableRadius *
+      node.radiusRatio;
+
+    node.element.style.left =
+      `${
+        centerX +
+        Math.cos(angle) *
+        radius
+      }px`;
+
+    node.element.style.top =
+      `${
+        centerY +
+        Math.sin(angle) *
+        radius
+      }px`;
+  }
+
+  function positionAllNodes() {
+    profiles.forEach(positionNode);
+
+    updateDynamicGeometry();
   }
 
 
-  /* -------------------------------------------------------
-     PRIMARY STATE
-     ------------------------------------------------------- */
-
-  const profiles =
-    nodeElements.map(
-      (element, index) => ({
-        element,
-
-        profile:
-          element.dataset.profile ||
-          String.fromCharCode(
-            65 + index
-          ),
-
-        angle: 0,
-
-        radiusRatio: 0,
-
-        currentClass: null,
-
-        markerClass: null,
-
-        isDragging: false
-      })
-    );
-
-
-  function getNode(profileId) {
-    return profiles.find(
-      node =>
-        node.profile === profileId
-    );
-  }
-
-
-  /* -------------------------------------------------------
+  /* =========================================================
      RANDOM MARKERS
-     ------------------------------------------------------- */
+     ========================================================= */
 
   function assignMarkers() {
-    const shuffledMarkers =
-      shuffle(
-        markerClasses
-      );
-
+    const shuffled =
+      shuffle(markerClasses);
 
     profiles.forEach(
       (node, index) => {
@@ -350,297 +259,128 @@ let accessAuthorized = false;
             ".node-mark"
           );
 
-
         if (!mark) {
           return;
         }
 
-
         markerClasses.forEach(
-          markerClass => {
-            mark.classList.remove(
-              markerClass
-            );
+          marker => {
+            mark.classList.remove(marker);
           }
         );
 
-
-        const markerClass =
-          shuffledMarkers[index];
-
-
         mark.classList.add(
-          markerClass
+          shuffled[index]
         );
-
-
-        node.markerClass =
-          markerClass;
       }
     );
   }
 
 
-  /* -------------------------------------------------------
-     STARTING GEOMETRY
-     ------------------------------------------------------- */
-
-  function assignGeometry() {
-    const angles =
-      generateAngles(
-        profiles.length
-      );
-
-
-    const startingRadii =
-      shuffle([
-        0.27,
-        0.30,
-        0.33,
-        0.35,
-        0.37,
-        0.39,
-        0.41,
-        0.43,
-        0.31
-      ]);
-
-
-    profiles.forEach(
-      (node, index) => {
-
-        node.angle =
-          angles[index];
-
-
-        node.radiusRatio =
-          Math.max(
-            MIN_RADIUS_RATIO,
-
-            Math.min(
-              MAX_RADIUS_RATIO,
-
-              startingRadii[index] +
-              randomBetween(
-                -0.012,
-                0.012
-              )
-            )
-          );
-
-
-        node.currentClass = null;
-      }
-    );
-  }
-
-
-  /* -------------------------------------------------------
-     POSITIONING
-     ------------------------------------------------------- */
-
-  function positionNode(node) {
-    const {
-      centerX,
-      centerY,
-      usableRadius
-    } = getFieldGeometry();
-
-
-    const radians =
-      degreesToRadians(
-        node.angle
-      );
-
-
-    const radius =
-      usableRadius *
-      node.radiusRatio;
-
-
-    node.element.style.left =
-      `${
-        centerX +
-        Math.cos(radians) *
-        radius
-      }px`;
-
-
-    node.element.style.top =
-      `${
-        centerY +
-        Math.sin(radians) *
-        radius
-      }px`;
-  }
-
-
-  function positionAllNodes() {
-    profiles.forEach(
-      positionNode
-    );
-
-    updateDynamicGeometry();
-  }
-
-
-  /* -------------------------------------------------------
+  /* =========================================================
      SNAP
-     ------------------------------------------------------- */
+     ========================================================= */
 
-  function getNearestClass(
-    radiusRatio
-  ) {
-    let nearestIndex = 0;
+  function getNearestClass(radiusRatio) {
+    let nearest = 0;
 
-    let nearestDistance =
+    let distance =
       Math.abs(
         radiusRatio -
         RADIAL_CLASSES[0]
       );
 
-
     for (
-      let index = 1;
-      index <
-      RADIAL_CLASSES.length;
-      index += 1
+      let i = 1;
+      i < RADIAL_CLASSES.length;
+      i += 1
     ) {
-      const distance =
+      const candidate =
         Math.abs(
           radiusRatio -
-          RADIAL_CLASSES[index]
+          RADIAL_CLASSES[i]
         );
 
-
-      if (
-        distance <
-        nearestDistance
-      ) {
-        nearestDistance =
-          distance;
-
-        nearestIndex =
-          index;
+      if (candidate < distance) {
+        nearest = i;
+        distance = candidate;
       }
     }
 
-
-    return nearestIndex;
+    return nearest;
   }
 
-
-  function snapNodeToNearestContour(
-    node
-  ) {
-    const nearestClass =
+  function snapNode(node) {
+    const radialClass =
       getNearestClass(
         node.radiusRatio
       );
 
-
     node.currentClass =
-      nearestClass;
-
+      radialClass;
 
     node.radiusRatio =
       RADIAL_CLASSES[
-        nearestClass
+        radialClass
       ];
 
-
     positionNode(node);
-
     updateDynamicGeometry();
   }
 
 
-  /* -------------------------------------------------------
+  /* =========================================================
      DRAGGING
-     ------------------------------------------------------- */
+     ========================================================= */
 
-  function calculatePointerRadiusRatio(
+  function pointerRadiusRatio(
     clientX,
     clientY
   ) {
-    const {
-      rect,
-      centerX,
-      centerY,
-      usableRadius
-    } = getFieldGeometry();
+    const geometry =
+      getFieldGeometry();
 
-
-    const pointerX =
+    const x =
       clientX -
-      rect.left;
+      geometry.rect.left;
 
-
-    const pointerY =
+    const y =
       clientY -
-      rect.top;
-
+      geometry.rect.top;
 
     const dx =
-      pointerX -
-      centerX;
-
+      x -
+      geometry.centerX;
 
     const dy =
-      pointerY -
-      centerY;
+      y -
+      geometry.centerY;
 
-
-    const distance =
+    return (
       Math.sqrt(
         dx * dx +
         dy * dy
-      );
-
-
-    return (
-      distance /
-      usableRadius
+      ) /
+      geometry.usableRadius
     );
   }
 
-
-  function clampRadiusRatio(value) {
-    return Math.max(
-      DRAG_MIN_RATIO,
-
-      Math.min(
-        DRAG_MAX_RATIO,
-        value
-      )
-    );
-  }
-
-
-  function beginDrag(
-    event,
-    node
-  ) {
+  function beginDrag(event, node) {
     if (resolved) {
       return;
     }
 
-
     event.preventDefault();
 
-
     node.isDragging = true;
-
 
     node.element.classList.add(
       "is-dragging"
     );
 
-
     field.classList.add(
       "is-adjusting"
     );
-
 
     try {
       node.element.setPointerCapture(
@@ -650,18 +390,10 @@ let accessAuthorized = false;
       /* optional */
     }
 
-
-    updateDrag(
-      event,
-      node
-    );
+    updateDrag(event, node);
   }
 
-
-  function updateDrag(
-    event,
-    node
-  ) {
+  function updateDrag(event, node) {
     if (
       !node.isDragging ||
       resolved
@@ -669,43 +401,36 @@ let accessAuthorized = false;
       return;
     }
 
-
     node.radiusRatio =
-      clampRadiusRatio(
-        calculatePointerRadiusRatio(
-          event.clientX,
-          event.clientY
+      Math.max(
+        DRAG_MIN_RATIO,
+        Math.min(
+          DRAG_MAX_RATIO,
+          pointerRadiusRatio(
+            event.clientX,
+            event.clientY
+          )
         )
       );
 
-
     positionNode(node);
-
     updateDynamicGeometry();
   }
 
-
-  function endDrag(
-    event,
-    node
-  ) {
+  function endDrag(event, node) {
     if (!node.isDragging) {
       return;
     }
 
-
     node.isDragging = false;
-
 
     node.element.classList.remove(
       "is-dragging"
     );
 
-
     field.classList.remove(
       "is-adjusting"
     );
-
 
     try {
       node.element.releasePointerCapture(
@@ -715,71 +440,46 @@ let accessAuthorized = false;
       /* optional */
     }
 
-
-    snapNodeToNearestContour(
-      node
-    );
-
-
+    snapNode(node);
     evaluateWholeModel();
   }
 
-
   function attachDragHandlers(node) {
+
     node.element.addEventListener(
       "pointerdown",
-      event => {
-        beginDrag(
-          event,
-          node
-        );
-      }
+      event =>
+        beginDrag(event, node)
     );
-
 
     node.element.addEventListener(
       "pointermove",
-      event => {
-        updateDrag(
-          event,
-          node
-        );
-      }
+      event =>
+        updateDrag(event, node)
     );
-
 
     node.element.addEventListener(
       "pointerup",
-      event => {
-        endDrag(
-          event,
-          node
-        );
-      }
+      event =>
+        endDrag(event, node)
     );
-
 
     node.element.addEventListener(
       "pointercancel",
-      event => {
-        endDrag(
-          event,
-          node
-        );
-      }
+      event =>
+        endDrag(event, node)
     );
   }
 
 
-  /* -------------------------------------------------------
+  /* =========================================================
      VALIDATION
-     ------------------------------------------------------- */
+     ========================================================= */
 
   function evaluateWholeModel() {
     if (resolved) {
       return;
     }
-
 
     const allAssigned =
       profiles.every(
@@ -787,11 +487,9 @@ let accessAuthorized = false;
           node.currentClass !== null
       );
 
-
     if (!allAssigned) {
       return;
     }
-
 
     const coherent =
       profiles.every(
@@ -802,60 +500,41 @@ let accessAuthorized = false;
           ]
       );
 
-
     if (coherent) {
       resolveAssessment();
     }
   }
 
 
-  /* -------------------------------------------------------
-     DYNAMIC STRUCTURES
-     ------------------------------------------------------- */
+  /* =========================================================
+     DYNAMIC LINES / DEPENDENTS
+     ========================================================= */
 
-  const dynamicLines =
-    new Map();
-
-
-  const dependents =
-    new Map();
-
+  const dynamicLines = new Map();
+  const dependents = new Map();
 
   function createLine(id) {
-    const namespace =
-      "http://www.w3.org/2000/svg";
-
-
     const line =
       document.createElementNS(
-        namespace,
+        "http://www.w3.org/2000/svg",
         "line"
       );
-
 
     line.classList.add(
       "causal-line"
     );
 
+    line.dataset.lineId = id;
 
-    line.dataset.lineId =
-      id;
-
-
-    causalLayer.appendChild(
-      line
-    );
-
+    causalLayer.appendChild(line);
 
     dynamicLines.set(
       id,
       line
     );
 
-
     return line;
   }
-
 
   function getOrCreateLine(id) {
     return (
@@ -864,8 +543,128 @@ let accessAuthorized = false;
     );
   }
 
+  function showLine(line) {
+    line.classList.add(
+      "is-visible"
+    );
+  }
 
-  function setLineCoordinates(
+  function markLineAsResidue(line) {
+    line.classList.add(
+      "is-visible",
+      "is-cycle-residue"
+    );
+  }
+
+  function createDependent(
+    id,
+    parentProfile,
+    angleOffset,
+    distance,
+    options = {}
+  ) {
+    const element =
+      document.createElement(
+        "div"
+      );
+
+    element.className =
+      "dependent-node";
+
+    if (options.remote) {
+      element.classList.add(
+        "is-remote"
+      );
+    }
+
+    dependentLayer.appendChild(
+      element
+    );
+
+    const dependent = {
+      id,
+      parentProfile,
+      angleOffset,
+      distance,
+      element
+    };
+
+    dependents.set(
+      id,
+      dependent
+    );
+
+    return dependent;
+  }
+
+  function getOrCreateDependent(
+    id,
+    parentProfile,
+    angleOffset,
+    distance,
+    options = {}
+  ) {
+    return (
+      dependents.get(id) ||
+      createDependent(
+        id,
+        parentProfile,
+        angleOffset,
+        distance,
+        options
+      )
+    );
+  }
+
+  function markDependentAsResidue(
+    dependent
+  ) {
+    dependent.element.classList.add(
+      "is-visible",
+      "is-persistent",
+      "is-cycle-residue"
+    );
+  }
+
+  function positionDependent(
+    dependent
+  ) {
+    const parent =
+      getNode(
+        dependent.parentProfile
+      );
+
+    if (!parent) {
+      return;
+    }
+
+    const parentCenter =
+      getElementCenter(
+        parent.element
+      );
+
+    const angle =
+      radians(
+        parent.angle +
+        dependent.angleOffset
+      );
+
+    dependent.element.style.left =
+      `${
+        parentCenter.x +
+        Math.cos(angle) *
+        dependent.distance
+      }px`;
+
+    dependent.element.style.top =
+      `${
+        parentCenter.y +
+        Math.sin(angle) *
+        dependent.distance
+      }px`;
+  }
+
+  function setLine(
     line,
     start,
     end
@@ -891,199 +690,29 @@ let accessAuthorized = false;
     );
   }
 
-
-  function showLine(line) {
-    line.classList.add(
-      "is-visible"
-    );
-  }
-
-
-  function hideLine(line) {
-    line.classList.remove(
-      "is-visible",
-      "is-hold",
-      "is-faint",
-      "is-remote"
-    );
-  }
-
-
-  function markLineAsResidue(line) {
-    line.classList.add(
-      "is-visible",
-      "is-cycle-residue"
-    );
-  }
-
-
-  function createDependent(
-    id,
-    parentProfile,
-    angleOffset,
-    distance,
-    options = {}
-  ) {
-    const element =
-      document.createElement(
-        "div"
-      );
-
-
-    element.className =
-      "dependent-node";
-
-
-    if (options.remote) {
-      element.classList.add(
-        "is-remote"
-      );
-    }
-
-
-    dependentLayer.appendChild(
-      element
-    );
-
-
-    const dependent = {
-      id,
-      parentProfile,
-      angleOffset,
-      distance,
-      element
-    };
-
-
-    dependents.set(
-      id,
-      dependent
-    );
-
-
-    return dependent;
-  }
-
-
-  function getOrCreateDependent(
-    id,
-    parentProfile,
-    angleOffset,
-    distance,
-    options = {}
-  ) {
-    if (dependents.has(id)) {
-      return dependents.get(id);
-    }
-
-
-    return createDependent(
-      id,
-      parentProfile,
-      angleOffset,
-      distance,
-      options
-    );
-  }
-
-
-  function markDependentAsResidue(
-    dependent
-  ) {
-    dependent.element.classList.add(
-      "is-visible",
-      "is-persistent",
-      "is-cycle-residue"
-    );
-  }
-
-
-  function positionDependent(
-    dependent
-  ) {
-    const parent =
-      getNode(
-        dependent.parentProfile
-      );
-
-
-    if (!parent) {
-      return;
-    }
-
-
-    const parentCenter =
-      getElementCenter(
-        parent.element
-      );
-
-
-    const radians =
-      degreesToRadians(
-        parent.angle +
-        dependent.angleOffset
-      );
-
-
-    dependent.element.style.left =
-      `${
-        parentCenter.x +
-        Math.cos(radians) *
-        dependent.distance
-      }px`;
-
-
-    dependent.element.style.top =
-      `${
-        parentCenter.y +
-        Math.sin(radians) *
-        dependent.distance
-      }px`;
-  }
-
-
-  function positionAllDependents() {
-    dependents.forEach(
-      positionDependent
-    );
-  }
-
-
-  function updateCenterLine(
-    profileId,
-    lineId
-  ) {
+  function updateCenterLine(profileId) {
     const node =
       getNode(profileId);
 
-
     const line =
       dynamicLines.get(
-        lineId
+        `center-${profileId}`
       );
 
-
-    if (
-      !node ||
-      !line
-    ) {
+    if (!node || !line) {
       return;
     }
 
-
-    setLineCoordinates(
+    setLine(
       line,
-
       getElementCenter(
         centerElement
       ),
-
       getElementCenter(
         node.element
       )
     );
   }
-
 
   function updateDependentLine(
     profileId,
@@ -1093,18 +722,13 @@ let accessAuthorized = false;
     const node =
       getNode(profileId);
 
-
     const dependent =
       dependents.get(
         dependentId
       );
 
-
     const line =
-      dynamicLines.get(
-        lineId
-      );
-
+      dynamicLines.get(lineId);
 
     if (
       !node ||
@@ -1114,90 +738,62 @@ let accessAuthorized = false;
       return;
     }
 
-
-    setLineCoordinates(
+    setLine(
       line,
-
       getElementCenter(
         node.element
       ),
-
       getElementCenter(
         dependent.element
       )
     );
   }
 
-
-  function updateDependentToDependentLine(
-    startDependentId,
-    endDependentId,
+  function updateDependentChain(
+    firstId,
+    secondId,
     lineId
   ) {
-    const start =
-      dependents.get(
-        startDependentId
-      );
+    const first =
+      dependents.get(firstId);
 
-
-    const end =
-      dependents.get(
-        endDependentId
-      );
-
+    const second =
+      dependents.get(secondId);
 
     const line =
-      dynamicLines.get(
-        lineId
-      );
-
+      dynamicLines.get(lineId);
 
     if (
-      !start ||
-      !end ||
+      !first ||
+      !second ||
       !line
     ) {
       return;
     }
 
-
-    setLineCoordinates(
+    setLine(
       line,
-
       getElementCenter(
-        start.element
+        first.element
       ),
-
       getElementCenter(
-        end.element
+        second.element
       )
     );
   }
 
-
   function updateDynamicGeometry() {
-    positionAllDependents();
 
-
-    [
-      "A",
-      "B",
-      "C",
-      "D",
-      "E",
-      "F",
-      "G",
-      "H",
-      "I"
-    ].forEach(
-      profile => {
-        updateCenterLine(
-          profile,
-          `center-${profile}`
-        );
-      }
+    dependents.forEach(
+      positionDependent
     );
 
+    profiles.forEach(
+      node =>
+        updateCenterLine(
+          node.profile
+        )
+    );
 
     [
       ["B", "B1", "B-B1"],
@@ -1217,24 +813,21 @@ let accessAuthorized = false;
 
       ["I", "I1", "I-I1"]
     ].forEach(
-      relation => {
+      ([profile, dependent, line]) =>
         updateDependentLine(
-          relation[0],
-          relation[1],
-          relation[2]
-        );
-      }
+          profile,
+          dependent,
+          line
+        )
     );
 
-
-    updateDependentToDependentLine(
+    updateDependentChain(
       "H1",
       "H2",
       "H1-H2"
     );
 
-
-    updateDependentToDependentLine(
+    updateDependentChain(
       "H2",
       "H3",
       "H2-H3"
@@ -1242,17 +835,15 @@ let accessAuthorized = false;
   }
 
 
-  /* -------------------------------------------------------
-     CASE FOCUS
-     ------------------------------------------------------- */
+  /* =========================================================
+     ACTIVE CASE
+     ========================================================= */
 
-  function focusCase(
-    profileId
-  ) {
+  function focusCase(profileId) {
+
     field.classList.add(
       "has-active-case"
     );
-
 
     profiles.forEach(
       node => {
@@ -1264,12 +855,11 @@ let accessAuthorized = false;
     );
   }
 
-
   function clearCaseFocus() {
+
     field.classList.remove(
       "has-active-case"
     );
-
 
     profiles.forEach(
       node => {
@@ -1281,21 +871,18 @@ let accessAuthorized = false;
   }
 
 
-  /* -------------------------------------------------------
-     RESET LOGIC
+  /* =========================================================
+     RESET BEHAVIOR
+     ========================================================= */
 
-     Two intentionally different resets now exist.
+  function clearCurrentCase() {
 
-     clearCurrentCase()
-       clears temporary information but preserves genuine
-       consequences from earlier cases.
+    if (resolved) {
+      return;
+    }
 
-     clearEntireCycle()
-       removes absolutely everything before a new nine-case
-       observation cycle begins.
-     ------------------------------------------------------- */
+    clearCaseFocus();
 
-  function clearTemporaryPrimaryEffects() {
     profiles.forEach(
       node => {
 
@@ -1308,12 +895,6 @@ let accessAuthorized = false;
           "effect-small"
         );
 
-
-        /*
-          Only a primary explicitly marked as cycle residue
-          is allowed to keep its persistent state.
-        */
-
         if (
           !node.element.classList.contains(
             "is-cycle-residue"
@@ -1325,10 +906,7 @@ let accessAuthorized = false;
         }
       }
     );
-  }
 
-
-  function clearTemporaryLines() {
     dynamicLines.forEach(
       line => {
 
@@ -1337,18 +915,17 @@ let accessAuthorized = false;
             "is-cycle-residue"
           )
         ) {
+          line.classList.add(
+            "is-visible"
+          );
+
           line.classList.remove(
             "is-hold",
             "is-faint"
           );
 
-          line.classList.add(
-            "is-visible"
-          );
-
           return;
         }
-
 
         line.classList.remove(
           "is-visible",
@@ -1357,16 +934,12 @@ let accessAuthorized = false;
         );
       }
     );
-  }
 
-
-  function clearTemporaryDependents() {
     dependents.forEach(
       dependent => {
 
         const element =
           dependent.element;
-
 
         if (
           element.classList.contains(
@@ -1387,7 +960,6 @@ let accessAuthorized = false;
           return;
         }
 
-
         element.classList.remove(
           "is-visible",
           "is-weakened",
@@ -1399,31 +971,9 @@ let accessAuthorized = false;
     );
   }
 
-
-  function clearCurrentCase() {
-    if (resolved) {
-      return;
-    }
-
-
-    clearTemporaryPrimaryEffects();
-
-    clearTemporaryLines();
-
-    clearTemporaryDependents();
-
-    clearCaseFocus();
-  }
-
-
   function clearEntireCycle() {
-    if (resolved) {
-      return;
-    }
-
 
     clearCaseFocus();
-
 
     profiles.forEach(
       node => {
@@ -1440,7 +990,6 @@ let accessAuthorized = false;
       }
     );
 
-
     dynamicLines.forEach(
       line => {
         line.classList.remove(
@@ -1451,7 +1000,6 @@ let accessAuthorized = false;
         );
       }
     );
-
 
     dependents.forEach(
       dependent => {
@@ -1468,90 +1016,59 @@ let accessAuthorized = false;
   }
 
 
-  /* -------------------------------------------------------
-     CASE A
+  /* =========================================================
+     OBSERVATION A
+     dramatic / reversible
+     ========================================================= */
 
-     Dramatic direct reaction.
-     No dependents.
-     Full recovery.
-     Nothing survives.
-     ------------------------------------------------------- */
+  async function runA() {
 
-  async function runProfileA() {
     if (resolved) return;
 
-
-    const node =
-      getNode("A");
-
-
-    const centerLine =
-      getOrCreateLine(
-        "center-A"
-      );
-
+    const node = getNode("A");
+    const line =
+      getOrCreateLine("center-A");
 
     focusCase("A");
-
     updateDynamicGeometry();
 
-
     await wait(700);
 
-
-    showLine(centerLine);
-
+    showLine(line);
 
     await wait(700);
-
 
     node.element.classList.add(
       "effect-strong"
     );
 
-
     await wait(1500);
-
 
     node.element.classList.remove(
       "effect-strong"
     );
 
-
-    centerLine.classList.add(
+    line.classList.add(
       "is-hold"
     );
-
 
     await wait(2400);
   }
 
 
-  /* -------------------------------------------------------
-     CASE B
+  /* =========================================================
+     OBSERVATION B
+     weak local response / downstream degradation
+     ========================================================= */
 
-     Weak direct response.
+  async function runB() {
 
-     Three downstream dependents appear.
-
-     B1 weakens.
-     B2 collapses.
-     B3 remains as lasting downstream residue.
-     ------------------------------------------------------- */
-
-  async function runProfileB() {
     if (resolved) return;
 
-
-    const node =
-      getNode("B");
-
+    const node = getNode("B");
 
     const centerLine =
-      getOrCreateLine(
-        "center-B"
-      );
-
+      getOrCreateLine("center-B");
 
     const B1 =
       getOrCreateDependent(
@@ -1561,7 +1078,6 @@ let accessAuthorized = false;
         72
       );
 
-
     const B2 =
       getOrCreateDependent(
         "B2",
@@ -1569,7 +1085,6 @@ let accessAuthorized = false;
         0,
         88
       );
-
 
     const B3 =
       getOrCreateDependent(
@@ -1579,54 +1094,35 @@ let accessAuthorized = false;
         70
       );
 
-
     const line1 =
-      getOrCreateLine(
-        "B-B1"
-      );
-
+      getOrCreateLine("B-B1");
 
     const line2 =
-      getOrCreateLine(
-        "B-B2"
-      );
-
+      getOrCreateLine("B-B2");
 
     const line3 =
-      getOrCreateLine(
-        "B-B3"
-      );
-
+      getOrCreateLine("B-B3");
 
     focusCase("B");
-
     updateDynamicGeometry();
 
-
     await wait(700);
-
 
     showLine(centerLine);
 
-
     await wait(700);
-
 
     node.element.classList.add(
       "effect-subtle"
     );
 
-
     await wait(850);
-
 
     node.element.classList.remove(
       "effect-subtle"
     );
 
-
     await wait(1100);
-
 
     B1.element.classList.add(
       "is-visible"
@@ -1634,9 +1130,7 @@ let accessAuthorized = false;
 
     showLine(line1);
 
-
     await wait(500);
-
 
     B2.element.classList.add(
       "is-visible"
@@ -1644,9 +1138,7 @@ let accessAuthorized = false;
 
     showLine(line2);
 
-
     await wait(500);
-
 
     B3.element.classList.add(
       "is-visible"
@@ -1654,79 +1146,45 @@ let accessAuthorized = false;
 
     showLine(line3);
 
-
     await wait(850);
-
 
     B1.element.classList.add(
       "is-weakened"
     );
 
-
     await wait(500);
-
 
     B2.element.classList.add(
       "is-collapsed"
     );
 
-
     await wait(500);
-
 
     B3.element.classList.add(
       "is-persistent"
     );
 
-
-    /*
-      B3 is the lasting consequence.
-
-      Preserve the route from the center through B to B3.
-    */
-
-    markDependentAsResidue(
-      B3
-    );
-
-
-    markLineAsResidue(
-      centerLine
-    );
-
-
-    markLineAsResidue(
-      line3
-    );
-
+    markDependentAsResidue(B3);
+    markLineAsResidue(centerLine);
+    markLineAsResidue(line3);
 
     await wait(3000);
   }
 
 
-  /* -------------------------------------------------------
-     CASE C
+  /* =========================================================
+     OBSERVATION C
+     three dependents / one lasting
+     ========================================================= */
 
-     Three downstream dependents.
+  async function runC() {
 
-     Most diminish.
-
-     C3 survives as a residual consequence.
-     ------------------------------------------------------- */
-
-  async function runProfileC() {
     if (resolved) return;
 
-
-    const node =
-      getNode("C");
-
+    const node = getNode("C");
 
     const centerLine =
-      getOrCreateLine(
-        "center-C"
-      );
-
+      getOrCreateLine("center-C");
 
     const C1 =
       getOrCreateDependent(
@@ -1736,7 +1194,6 @@ let accessAuthorized = false;
         68
       );
 
-
     const C2 =
       getOrCreateDependent(
         "C2",
@@ -1744,7 +1201,6 @@ let accessAuthorized = false;
         8,
         86
       );
-
 
     const C3 =
       getOrCreateDependent(
@@ -1754,46 +1210,29 @@ let accessAuthorized = false;
         76
       );
 
-
     const line1 =
-      getOrCreateLine(
-        "C-C1"
-      );
-
+      getOrCreateLine("C-C1");
 
     const line2 =
-      getOrCreateLine(
-        "C-C2"
-      );
-
+      getOrCreateLine("C-C2");
 
     const line3 =
-      getOrCreateLine(
-        "C-C3"
-      );
-
+      getOrCreateLine("C-C3");
 
     focusCase("C");
-
     updateDynamicGeometry();
 
-
     await wait(700);
-
 
     showLine(centerLine);
 
-
     await wait(700);
-
 
     node.element.classList.add(
       "effect-moderate"
     );
 
-
     await wait(900);
-
 
     C1.element.classList.add(
       "is-visible"
@@ -1801,9 +1240,7 @@ let accessAuthorized = false;
 
     showLine(line1);
 
-
     await wait(450);
-
 
     C2.element.classList.add(
       "is-visible"
@@ -1811,9 +1248,7 @@ let accessAuthorized = false;
 
     showLine(line2);
 
-
     await wait(450);
-
 
     C3.element.classList.add(
       "is-visible"
@@ -1821,188 +1256,127 @@ let accessAuthorized = false;
 
     showLine(line3);
 
-
     await wait(900);
-
 
     node.element.classList.remove(
       "effect-moderate"
     );
 
-
     C1.element.classList.add(
       "is-weakened"
     );
-
 
     C2.element.classList.add(
       "is-weakened"
     );
 
-
     C3.element.classList.add(
       "is-persistent"
     );
 
-
-    markDependentAsResidue(
-      C3
-    );
-
-
-    markLineAsResidue(
-      centerLine
-    );
-
-
-    markLineAsResidue(
-      line3
-    );
-
+    markDependentAsResidue(C3);
+    markLineAsResidue(centerLine);
+    markLineAsResidue(line3);
 
     await wait(3000);
   }
 
 
-  /* -------------------------------------------------------
-     CASE D
+  /* =========================================================
+     OBSERVATION D
+     dramatic collapse / reversible
+     ========================================================= */
 
-     Dramatic inward collapse.
-     Full recovery.
-     No lasting consequence.
-     ------------------------------------------------------- */
+  async function runD() {
 
-  async function runProfileD() {
     if (resolved) return;
 
+    const node = getNode("D");
 
-    const node =
-      getNode("D");
-
-
-    const centerLine =
-      getOrCreateLine(
-        "center-D"
-      );
-
+    const line =
+      getOrCreateLine("center-D");
 
     focusCase("D");
-
     updateDynamicGeometry();
 
-
     await wait(700);
 
-
-    showLine(centerLine);
-
+    showLine(line);
 
     await wait(700);
-
 
     node.element.classList.add(
       "effect-collapse"
     );
-
 
     await wait(1600);
 
-
     node.element.classList.remove(
       "effect-collapse"
     );
 
-
-    centerLine.classList.add(
+    line.classList.add(
       "is-hold"
     );
-
 
     await wait(2400);
   }
 
 
-  /* -------------------------------------------------------
-     CASE E
+  /* =========================================================
+     OBSERVATION E
+     small / contained / reversible
+     ========================================================= */
 
-     Small contained response.
-     Full recovery.
-     Nothing survives.
-     ------------------------------------------------------- */
+  async function runE() {
 
-  async function runProfileE() {
     if (resolved) return;
 
+    const node = getNode("E");
 
-    const node =
-      getNode("E");
-
-
-    const centerLine =
-      getOrCreateLine(
-        "center-E"
-      );
-
+    const line =
+      getOrCreateLine("center-E");
 
     focusCase("E");
-
     updateDynamicGeometry();
 
-
     await wait(700);
 
-
-    showLine(centerLine);
-
+    showLine(line);
 
     await wait(700);
-
 
     node.element.classList.add(
       "effect-small"
     );
 
-
     await wait(1000);
-
 
     node.element.classList.remove(
       "effect-small"
     );
 
-
-    centerLine.classList.add(
+    line.classList.add(
       "is-hold"
     );
-
 
     await wait(2400);
   }
 
 
-  /* -------------------------------------------------------
-     CASE F
+  /* =========================================================
+     OBSERVATION F
+     primary + dependent persist
+     ========================================================= */
 
-     Primary itself remains altered.
+  async function runF() {
 
-     One dependent appears later and also remains.
-
-     Both persist through the rest of the cycle.
-     ------------------------------------------------------- */
-
-  async function runProfileF() {
     if (resolved) return;
 
-
-    const node =
-      getNode("F");
-
+    const node = getNode("F");
 
     const centerLine =
-      getOrCreateLine(
-        "center-F"
-      );
-
+      getOrCreateLine("center-F");
 
     const F1 =
       getOrCreateDependent(
@@ -2012,110 +1386,66 @@ let accessAuthorized = false;
         67
       );
 
-
-    const dependentLine =
-      getOrCreateLine(
-        "F-F1"
-      );
-
+    const line =
+      getOrCreateLine("F-F1");
 
     focusCase("F");
-
     updateDynamicGeometry();
 
-
     await wait(700);
-
 
     showLine(centerLine);
 
-
     await wait(700);
-
 
     node.element.classList.add(
       "effect-moderate"
     );
 
-
     await wait(1200);
-
 
     node.element.classList.remove(
       "effect-moderate"
     );
 
-
     node.element.classList.add(
       "effect-persistent"
     );
 
-
     await wait(1200);
-
 
     F1.element.classList.add(
       "is-visible",
       "is-persistent"
     );
 
-
-    showLine(
-      dependentLine
-    );
-
-
-    /*
-      Unlike other profiles, F itself remains altered.
-    */
+    showLine(line);
 
     node.element.classList.add(
       "is-cycle-residue"
     );
 
-
-    markDependentAsResidue(
-      F1
-    );
-
-
-    markLineAsResidue(
-      centerLine
-    );
-
-
-    markLineAsResidue(
-      dependentLine
-    );
-
+    markDependentAsResidue(F1);
+    markLineAsResidue(centerLine);
+    markLineAsResidue(line);
 
     await wait(3000);
   }
 
 
-  /* -------------------------------------------------------
-     CASE G
+  /* =========================================================
+     OBSERVATION G
+     two dependents / one lasting
+     ========================================================= */
 
-     Two downstream dependents.
+  async function runG() {
 
-     One diminishes.
-
-     G2 remains.
-     ------------------------------------------------------- */
-
-  async function runProfileG() {
     if (resolved) return;
 
-
-    const node =
-      getNode("G");
-
+    const node = getNode("G");
 
     const centerLine =
-      getOrCreateLine(
-        "center-G"
-      );
-
+      getOrCreateLine("center-G");
 
     const G1 =
       getOrCreateDependent(
@@ -2125,7 +1455,6 @@ let accessAuthorized = false;
         72
       );
 
-
     const G2 =
       getOrCreateDependent(
         "G2",
@@ -2134,40 +1463,26 @@ let accessAuthorized = false;
         82
       );
 
-
     const line1 =
-      getOrCreateLine(
-        "G-G1"
-      );
-
+      getOrCreateLine("G-G1");
 
     const line2 =
-      getOrCreateLine(
-        "G-G2"
-      );
-
+      getOrCreateLine("G-G2");
 
     focusCase("G");
-
     updateDynamicGeometry();
 
-
     await wait(700);
-
 
     showLine(centerLine);
 
-
     await wait(700);
-
 
     node.element.classList.add(
       "effect-substantial"
     );
 
-
     await wait(900);
-
 
     G1.element.classList.add(
       "is-visible"
@@ -2175,9 +1490,7 @@ let accessAuthorized = false;
 
     showLine(line1);
 
-
     await wait(500);
-
 
     G2.element.classList.add(
       "is-visible"
@@ -2185,70 +1498,41 @@ let accessAuthorized = false;
 
     showLine(line2);
 
-
     await wait(900);
-
 
     node.element.classList.remove(
       "effect-substantial"
     );
 
-
     G1.element.classList.add(
       "is-weakened"
     );
-
 
     G2.element.classList.add(
       "is-persistent"
     );
 
-
-    markDependentAsResidue(
-      G2
-    );
-
-
-    markLineAsResidue(
-      centerLine
-    );
-
-
-    markLineAsResidue(
-      line2
-    );
-
+    markDependentAsResidue(G2);
+    markLineAsResidue(centerLine);
+    markLineAsResidue(line2);
 
     await wait(3000);
   }
 
 
-  /* -------------------------------------------------------
-     CASE H
+  /* =========================================================
+     OBSERVATION H
+     delayed remote chain
+     ========================================================= */
 
-     Very small local response.
+  async function runH() {
 
-     After a delay, a causal chain propagates well beyond the
-     original local field.
-
-     Only the far consequence remains as an entity, but the
-     faint causal path remains visible so its origin can still
-     be reconstructed.
-     ------------------------------------------------------- */
-
-  async function runProfileH() {
     if (resolved) return;
 
-
-    const node =
-      getNode("H");
-
+    const node = getNode("H");
 
     const centerLine =
-      getOrCreateLine(
-        "center-H"
-      );
-
+      getOrCreateLine("center-H");
 
     const H1 =
       getOrCreateDependent(
@@ -2256,11 +1540,8 @@ let accessAuthorized = false;
         "H",
         2,
         118,
-        {
-          remote: true
-        }
+        { remote: true }
       );
-
 
     const H2 =
       getOrCreateDependent(
@@ -2268,11 +1549,8 @@ let accessAuthorized = false;
         "H",
         2,
         188,
-        {
-          remote: true
-        }
+        { remote: true }
       );
-
 
     const H3 =
       getOrCreateDependent(
@@ -2280,29 +1558,17 @@ let accessAuthorized = false;
         "H",
         2,
         252,
-        {
-          remote: true
-        }
+        { remote: true }
       );
-
 
     const line1 =
-      getOrCreateLine(
-        "H-H1"
-      );
-
+      getOrCreateLine("H-H1");
 
     const line2 =
-      getOrCreateLine(
-        "H1-H2"
-      );
-
+      getOrCreateLine("H1-H2");
 
     const line3 =
-      getOrCreateLine(
-        "H2-H3"
-      );
-
+      getOrCreateLine("H2-H3");
 
     line1.classList.add(
       "is-remote"
@@ -2316,40 +1582,26 @@ let accessAuthorized = false;
       "is-remote"
     );
 
-
     focusCase("H");
-
     updateDynamicGeometry();
 
-
     await wait(700);
-
 
     showLine(centerLine);
 
-
     await wait(700);
-
 
     node.element.classList.add(
       "effect-subtle"
     );
 
-
     await wait(700);
-
 
     node.element.classList.remove(
       "effect-subtle"
     );
 
-
-    /*
-      Long delay before the remote consequence appears.
-    */
-
     await wait(1800);
-
 
     H1.element.classList.add(
       "is-visible"
@@ -2357,9 +1609,7 @@ let accessAuthorized = false;
 
     showLine(line1);
 
-
     await wait(700);
-
 
     H2.element.classList.add(
       "is-visible"
@@ -2367,9 +1617,7 @@ let accessAuthorized = false;
 
     showLine(line2);
 
-
     await wait(700);
-
 
     H3.element.classList.add(
       "is-visible",
@@ -2378,84 +1626,40 @@ let accessAuthorized = false;
 
     showLine(line3);
 
-
     await wait(700);
-
-
-    /*
-      Intermediate states disappear.
-
-      The distant terminal consequence survives.
-    */
 
     H1.element.classList.add(
       "is-gone"
     );
 
-
     H2.element.classList.add(
       "is-gone"
     );
 
+    markDependentAsResidue(H3);
 
-    markDependentAsResidue(
-      H3
-    );
-
-
-    /*
-      Preserve the causal trace even though H1 and H2
-      themselves no longer remain.
-    */
-
-    markLineAsResidue(
-      centerLine
-    );
-
-
-    markLineAsResidue(
-      line1
-    );
-
-
-    markLineAsResidue(
-      line2
-    );
-
-
-    markLineAsResidue(
-      line3
-    );
-
+    markLineAsResidue(centerLine);
+    markLineAsResidue(line1);
+    markLineAsResidue(line2);
+    markLineAsResidue(line3);
 
     await wait(3200);
   }
 
 
-  /* -------------------------------------------------------
-     CASE I
+  /* =========================================================
+     OBSERVATION I
+     one dependent / complete recovery
+     ========================================================= */
 
-     One dependent appears.
+  async function runI() {
 
-     Both primary and dependent recover completely.
-
-     The dependent explicitly fades all the way out before
-     the observation hold begins.
-     ------------------------------------------------------- */
-
-  async function runProfileI() {
     if (resolved) return;
 
-
-    const node =
-      getNode("I");
-
+    const node = getNode("I");
 
     const centerLine =
-      getOrCreateLine(
-        "center-I"
-      );
-
+      getOrCreateLine("center-I");
 
     const I1 =
       getOrCreateDependent(
@@ -2465,181 +1669,101 @@ let accessAuthorized = false;
         62
       );
 
-
-    const dependentLine =
-      getOrCreateLine(
-        "I-I1"
-      );
-
+    const line =
+      getOrCreateLine("I-I1");
 
     focusCase("I");
-
     updateDynamicGeometry();
 
-
     await wait(700);
-
 
     showLine(centerLine);
 
-
     await wait(700);
-
 
     node.element.classList.add(
       "effect-moderate"
     );
 
-
     await wait(900);
-
 
     I1.element.classList.add(
       "is-visible"
     );
 
-
-    showLine(
-      dependentLine
-    );
-
+    showLine(line);
 
     await wait(1000);
-
 
     node.element.classList.remove(
       "effect-moderate"
     );
 
-
     I1.element.classList.add(
       "is-weakened"
     );
 
-
     await wait(700);
-
-
-    /*
-      Explicit complete disappearance.
-    */
 
     I1.element.classList.remove(
       "is-weakened"
     );
 
-
     I1.element.classList.add(
       "is-gone"
     );
 
-
-    dependentLine.classList.remove(
+    line.classList.remove(
       "is-visible"
     );
 
-
     await wait(700);
-
 
     centerLine.classList.add(
       "is-hold"
     );
 
-
     await wait(2400);
   }
 
 
-  /* -------------------------------------------------------
-     CASE TABLE
-     ------------------------------------------------------- */
+  /* =========================================================
+     OBSERVATION CYCLE
+     ========================================================= */
 
   const observationCases = [
-    {
-      id: "A",
-      run: runProfileA
-    },
-
-    {
-      id: "B",
-      run: runProfileB
-    },
-
-    {
-      id: "C",
-      run: runProfileC
-    },
-
-    {
-      id: "D",
-      run: runProfileD
-    },
-
-    {
-      id: "E",
-      run: runProfileE
-    },
-
-    {
-      id: "F",
-      run: runProfileF
-    },
-
-    {
-      id: "G",
-      run: runProfileG
-    },
-
-    {
-      id: "H",
-      run: runProfileH
-    },
-
-    {
-      id: "I",
-      run: runProfileI
-    }
+    runA,
+    runB,
+    runC,
+    runD,
+    runE,
+    runF,
+    runG,
+    runH,
+    runI
   ];
 
-
-  /* -------------------------------------------------------
-     OBSERVATION CYCLE
-
-     Persistent consequences now accumulate.
-
-     They are cleared only when all nine observations have
-     finished and a completely new cycle begins.
-     ------------------------------------------------------- */
-
   async function runObservationCycle() {
+
     const myToken =
       ++cycleToken;
-
 
     while (
       !resolved &&
       myToken === cycleToken
     ) {
 
-      /*
-        Start a genuinely fresh observational cycle.
-      */
-
       clearEntireCycle();
 
-
       await wait(2600);
-
 
       const sequence =
         shuffle(
           observationCases
         );
 
-
       for (
-        const observationCase
+        const runCase
         of sequence
       ) {
 
@@ -2650,22 +1774,11 @@ let accessAuthorized = false;
           return;
         }
 
-
-        /*
-          Remove only temporary information from the
-          previous case.
-
-          Existing residues remain.
-        */
-
         clearCurrentCase();
-
 
         await wait(900);
 
-
-        await observationCase.run();
-
+        await runCase();
 
         if (
           resolved ||
@@ -2674,16 +1787,7 @@ let accessAuthorized = false;
           return;
         }
 
-
-        /*
-          Case ends.
-
-          Temporary effects vanish, but persistent
-          consequences remain in the field.
-        */
-
         clearCurrentCase();
-
 
         await wait(
           randomBetween(
@@ -2693,116 +1797,89 @@ let accessAuthorized = false;
         );
       }
 
-
-      /*
-        Once all nine observations have occurred, hold the
-        accumulated system state for a while.
-
-        This lets the reader see how much consequence has
-        survived the full observation cycle.
-      */
-
       clearCurrentCase();
 
-
       await wait(5000);
-
-
-      /*
-        The next pass begins with an entirely clean field.
-      */
     }
   }
-/* -------------------------------------------------------
-   SERVER ASSESSMENT HANDOFF
-   ------------------------------------------------------- */
-
-async function requestAssessmentChallenge() {
-  try {
-    const response =
-      await fetch(
-        "/restricted/access",
-        {
-          method: "GET",
-
-          headers: {
-            "Accept":
-              "application/json"
-          },
-
-          cache:
-            "no-store"
-        }
-      );
 
 
-    if (!response.ok) {
+  /* =========================================================
+     SERVER CHALLENGE
+     ========================================================= */
+
+  async function requestAssessmentChallenge() {
+
+    try {
+
+      const response =
+        await fetch(
+          "/restricted/access",
+          {
+            method: "GET",
+            cache: "no-store",
+
+            headers: {
+              "Accept":
+                "application/json"
+            }
+          }
+        );
+
+      if (!response.ok) {
+        return null;
+      }
+
+      const data =
+        await response.json();
+
+      if (
+        !data.ok ||
+        !data.challenge
+      ) {
+        return null;
+      }
+
+      assessmentChallenge =
+        data.challenge;
+
+      return assessmentChallenge;
+
+    } catch (error) {
+
       return null;
     }
+  }
 
+  function getInterpretation() {
 
-    const data =
-      await response.json();
+    const interpretation = {};
 
+    profiles.forEach(
+      node => {
+        interpretation[
+          node.profile
+        ] =
+          node.currentClass;
+      }
+    );
 
-    if (
-      !data.ok ||
-      !data.challenge
-    ) {
-      return null;
+    return interpretation;
+  }
+
+  async function authorizeInterpretation() {
+
+    if (!assessmentChallenge) {
+      await requestAssessmentChallenge();
     }
 
-
-    assessmentChallenge =
-      data.challenge;
-
-
-    return assessmentChallenge;
-
-  } catch (error) {
-
-    return null;
-  }
-}
-
-
-function getInterpretation() {
-  const interpretation = {};
-
-
-  profiles.forEach(
-    node => {
-      interpretation[
-        node.profile
-      ] =
-        node.currentClass;
+    if (!assessmentChallenge) {
+      return false;
     }
-  );
 
+    async function submit() {
 
-  return interpretation;
-}
-
-
-async function authorizeInterpretation() {
-  /*
-    If the challenge has expired or was not acquired,
-    obtain a fresh one.
-  */
-
-  if (!assessmentChallenge) {
-    await requestAssessmentChallenge();
-  }
-
-
-  if (!assessmentChallenge) {
-    return false;
-  }
-
-
-  try {
-    let response =
-      await fetch(
+      return fetch(
         "/restricted/access",
         {
           method: "POST",
@@ -2825,224 +1902,190 @@ async function authorizeInterpretation() {
             })
         }
       );
+    }
 
+    try {
 
-    let data =
-      await response.json();
+      let response =
+        await submit();
 
+      let data =
+        await response.json();
 
-    /*
-      If the challenge simply aged out while the reader was
-      studying the field, quietly obtain a fresh one and retry.
-    */
+      if (
+        !response.ok &&
+        data.expired
+      ) {
 
-    if (
-      !response.ok &&
-      data.expired
-    ) {
-      assessmentChallenge =
-        await requestAssessmentChallenge();
+        assessmentChallenge =
+          await requestAssessmentChallenge();
 
+        if (!assessmentChallenge) {
+          return false;
+        }
 
-      if (!assessmentChallenge) {
+        response =
+          await submit();
+
+        data =
+          await response.json();
+      }
+
+      if (
+        !response.ok ||
+        !data.ok
+      ) {
         return false;
       }
 
+      accessAuthorized = true;
 
-      response =
-        await fetch(
-          "/restricted/access",
-          {
-            method: "POST",
+      return true;
 
-            headers: {
-              "Content-Type":
-                "application/json",
+    } catch (error) {
 
-              "Accept":
-                "application/json"
-            },
-
-            body:
-              JSON.stringify({
-                challenge:
-                  assessmentChallenge,
-
-                interpretation:
-                  getInterpretation()
-              })
-          }
-        );
-
-
-      data =
-        await response.json();
-    }
-
-
-    if (
-      !response.ok ||
-      !data.ok
-    ) {
       return false;
     }
-
-
-    accessAuthorized = true;
-
-    return true;
-
-  } catch (error) {
-
-    return false;
   }
-}
 
-  /* -------------------------------------------------------
+
+  /* =========================================================
      RESOLUTION
-     ------------------------------------------------------- */
+     ========================================================= */
 
-async function resolveAssessment(
-  options = {}
-) {
-  if (resolved) {
-    return;
-  }
+  async function resolveAssessment(
+    options = {}
+  ) {
 
-
-  const bypassAuthorization =
-    options.bypassAuthorization === true;
-
-
-  /*
-    Normal use must be authorized by the server.
-
-    Development mode can bypass this so we can repeatedly
-    inspect the transition without solving or requesting
-    an access token.
-  */
-
-  if (!bypassAuthorization) {
-
-    const authorized =
-      await authorizeInterpretation();
-
-
-    if (!authorized) {
+    if (resolved) {
       return;
     }
-  }
 
+    const bypassAuthorization =
+      options.bypassAuthorization === true;
 
-  resolved = true;
+    if (!bypassAuthorization) {
 
-  cycleToken += 1;
+      const authorized =
+        await authorizeInterpretation();
 
-
-  field.classList.remove(
-    "is-adjusting"
-  );
-
-
-  clearCaseFocus();
-
-
-  profiles.forEach(
-    node => {
-
-      node.isDragging = false;
-
-      node.element.classList.remove(
-        "is-dragging"
-      );
+      if (!authorized) {
+        return;
+      }
     }
-  );
 
+    resolved = true;
 
-  await wait(700);
+    cycleToken += 1;
 
+    field.classList.remove(
+      "is-adjusting"
+    );
 
-  field.classList.add(
-    "is-resolving"
-  );
+    clearCaseFocus();
 
+    profiles.forEach(
+      node => {
+        node.isDragging = false;
 
-  await wait(1100);
+        node.element.classList.remove(
+          "is-dragging"
+        );
+      }
+    );
 
+    await wait(700);
 
-  field.classList.add(
-    "is-condensing"
-  );
+    field.classList.add(
+      "is-resolving"
+    );
 
+    await wait(1100);
 
-  await wait(1200);
+    field.classList.add(
+      "is-condensing"
+    );
 
+    await wait(1200);
 
-  field.classList.add(
-    "is-map-visible"
-  );
+    field.classList.add(
+      "is-map-visible"
+    );
 
+    await wait(2200);
 
-  await wait(2200);
+    /*
+      Development mode deliberately stops on the
+      resolved map.
 
+      The real authorized gate enters the protected archive.
+    */
 
-  /*
-    Only the real authorized path enters the protected archive.
-    Development mode stops here.
-  */
-
-  if (
-    !bypassAuthorization &&
-    accessAuthorized
-  ) {
-    window.location.href =
-      "/restricted/archive/";
+    if (
+      !bypassAuthorization &&
+      accessAuthorized
+    ) {
+      window.location.href =
+        "/restricted/archive/";
+    }
   }
-}
 
-  /* -------------------------------------------------------
+
+  /* =========================================================
      INITIALIZE
-     ------------------------------------------------------- */
+     ========================================================= */
 
   assignMarkers();
-
   assignGeometry();
 
-
   profiles.forEach(
-    node => {
-      attachDragHandlers(
-        node
-      );
-    }
+    attachDragHandlers
   );
 
-
   positionAllNodes();
-
 
   field.classList.add(
     "is-ready"
   );
 
 
+  /*
+    IMPORTANT:
+
+    Cloudflare Pages may canonicalize:
+
+      /restricted/gate-test.html
+
+    to:
+
+      /restricted/gate-test
+
+    Therefore both pathnames are intentionally accepted here.
+  */
+
   const params =
     new URLSearchParams(
       window.location.search
     );
 
+  const pathname =
+    window.location.pathname
+      .replace(/\/+$/, "");
+
+  const isGateTestPage =
+    pathname ===
+      "/restricted/gate-test" ||
+    pathname ===
+      "/restricted/gate-test.html";
 
   const devBypass =
-    window.location.pathname.endsWith(
-      "/restricted/gate-test.html"
-    ) &&
+    isGateTestPage &&
     params.get("dev") === "1";
 
 
   /*
-    The production gate quietly requests its server challenge.
-
-    Development mode is visual-only and does not require one.
+    Production requests its server challenge immediately.
+    The development visualization does not need one.
   */
 
   if (!devBypass) {
@@ -3056,16 +2099,11 @@ async function resolveAssessment(
       updateDynamicGeometry();
 
 
-      /*
-        DEVELOPMENT-ONLY BYPASS
-
-        Automatically place all nine nodes into the correct
-        radial classes and play the resolution choreography.
-
-        This works only on gate-test.html?dev=1.
-      */
-
       if (devBypass) {
+
+        /*
+          Place every node into its canonical radial class.
+        */
 
         profiles.forEach(
           node => {
@@ -3075,39 +2113,32 @@ async function resolveAssessment(
                 node.profile
               ];
 
-
             node.currentClass =
               targetClass;
-
 
             node.radiusRatio =
               RADIAL_CLASSES[
                 targetClass
               ];
 
-
-            positionNode(
-              node
-            );
+            positionNode(node);
           }
         );
 
-
         updateDynamicGeometry();
 
+
+        /*
+          Development bypass is visual-only.
+        */
 
         resolveAssessment({
           bypassAuthorization: true
         });
 
-
         return;
       }
 
-
-      /*
-        NORMAL GATE
-      */
 
       runObservationCycle();
     }
@@ -3117,7 +2148,6 @@ async function resolveAssessment(
   window.addEventListener(
     "resize",
     () => {
-
       positionAllNodes();
     }
   );

@@ -289,7 +289,6 @@ body.gate-test-page::after {
   border-color:
     rgba(234, 240, 243, 0);
 }
-
 /* ---------------------------------------------------------
    CAUSAL / LANE LINES
    --------------------------------------------------------- */
@@ -315,16 +314,13 @@ body.gate-test-page::after {
 
 /*
   BASE LINE
-
-  Hidden until one of the structural or causal classes
-  gives it a specific role.
 */
 
 .causal-line {
   fill: none;
 
   stroke:
-    rgba(232, 239, 242, 0.72);
+    rgba(220, 230, 235, 0.48);
 
   stroke-width: 1;
 
@@ -342,36 +338,34 @@ body.gate-test-page::after {
 
    Center → primary
 
-   These are NOT causal relationships.
-
-   They are faint continuous alignment guides and stop
-   slightly before reaching the primary node.
+   Very faint continuous guides.
+   They carry no causal meaning.
    --------------------------------------------------------- */
 
 .causal-line.is-lane {
-  opacity: 0.18;
+  opacity: 0.13;
 
   stroke:
-    rgba(220, 230, 235, 0.34);
+    rgba(220, 230, 235, 0.30);
 
-  stroke-width: 0.7;
+  stroke-width: 0.65;
 
   stroke-dasharray: none;
 }
 
 
 /*
-  The currently observed lane becomes brighter, but retains
-  exactly the same continuous structural appearance.
+  Active lane becomes somewhat easier to follow,
+  but remains dimmer than a causal connection.
 */
 
 .causal-line.is-lane.is-active-lane {
-  opacity: 0.72;
+  opacity: 0.42;
 
   stroke:
-    rgba(239, 245, 247, 0.64);
+    rgba(226, 235, 239, 0.46);
 
-  stroke-width: 1;
+  stroke-width: 0.9;
 }
 
 
@@ -380,45 +374,43 @@ body.gate-test-page::after {
 
    Primary → dependent
 
-   These represent actual downstream relationships.
+   These are intentionally darker than the nodes themselves.
    --------------------------------------------------------- */
 
 .causal-line.is-dependent-line {
   opacity: 0;
 
   stroke:
-    rgba(240, 245, 247, 0.88);
+    rgba(225, 234, 238, 0.52);
 
-  stroke-width: 1.15;
+  stroke-width: 1;
 
   stroke-dasharray: none;
 }
 
 
 /*
-  A causal relationship appears only when its dependent
-  appears.
+  Appears at the same moment as the dependent.
 */
 
 .causal-line.is-dependent-line.is-visible {
-  opacity: 0.88;
+  opacity: 0.62;
 }
 
 
 /*
   RETAINED CAUSAL RELATIONSHIP
 
-  Continuous line = consequence is still represented in the
-  final state.
+  Solid = the downstream consequence is still represented.
 */
 
 .causal-line.is-dependent-line.is-cycle-residue {
-  opacity: 0.92;
+  opacity: 0.58;
 
   stroke:
-    rgba(240, 245, 247, 0.88);
+    rgba(225, 234, 238, 0.52);
 
-  stroke-width: 1.15;
+  stroke-width: 1;
 
   stroke-dasharray: none;
 }
@@ -427,30 +419,24 @@ body.gate-test-page::after {
 /*
   HISTORICAL CAUSAL RELATIONSHIP
 
-  Clearly broken line = the relationship occurred, but its
-  resulting dependent no longer remains.
-
-  The longer dash pattern deliberately looks different from
-  both the structural lanes and retained causal links.
+  Dashed = this relationship occurred, but the downstream
+  object itself no longer remains.
 */
 
 .causal-line.is-dependent-line.is-history {
-  opacity: 0.84;
+  opacity: 0.52;
 
   stroke:
-    rgba(236, 242, 245, 0.82);
+    rgba(222, 232, 236, 0.48);
 
-  stroke-width: 1.05;
+  stroke-width: 0.95;
 
   stroke-dasharray: 6 6;
 }
 
 
 /*
-  Remote links use the same causal grammar.
-
-  Distance has meaning through geometry, not through a
-  different line pattern.
+  Remote links use exactly the same grammar.
 */
 
 .causal-line.is-remote {
@@ -458,18 +444,16 @@ body.gate-test-page::after {
 }
 
 .causal-line.is-remote.is-cycle-residue {
-  opacity: 0.92;
+  opacity: 0.58;
 
   stroke-dasharray: none;
 }
 
 .causal-line.is-remote.is-history {
-  opacity: 0.84;
+  opacity: 0.52;
 
   stroke-dasharray: 6 6;
 }
-
-
 /* ---------------------------------------------------------
    DEPENDENTS
    --------------------------------------------------------- */
@@ -494,11 +478,12 @@ body.gate-test-page::after {
   height: 10px;
 
   transform:
-    translate(-50%, -50%);
+    translate(-50%, -50%)
+    scale(0.35);
 
   border:
     1px solid
-    rgba(238, 243, 245, 0.90);
+    rgba(246, 249, 250, 0.96);
 
   border-radius: 50%;
 
@@ -507,14 +492,34 @@ body.gate-test-page::after {
   opacity: 0;
 
   transition:
-    opacity 420ms ease,
+    opacity 300ms ease,
     transform 520ms ease,
     border-color 520ms ease,
     background 520ms ease;
 }
 
+
+/*
+  ARRIVAL
+
+  Every new dependent becomes dramatically larger for a
+  moment and then settles into its actual state.
+
+  This is an animation of appearance, not an indication of
+  consequence magnitude.
+*/
+
 .dependent-node.is-visible {
   opacity: 1;
+
+  transform:
+    translate(-50%, -50%)
+    scale(1);
+
+  animation:
+    dependent-arrival
+    850ms
+    cubic-bezier(0.22, 0.72, 0.24, 1);
 }
 
 
@@ -523,14 +528,14 @@ body.gate-test-page::after {
 */
 
 .dependent-node.is-weakened {
-  opacity: 0.90;
+  opacity: 1;
 
   transform:
     translate(-50%, -50%)
     scale(0.72);
 
   border-color:
-    rgba(235, 241, 244, 0.90);
+    rgba(240, 245, 247, 0.94);
 }
 
 
@@ -539,17 +544,17 @@ body.gate-test-page::after {
 */
 
 .dependent-node.is-collapsed {
-  opacity: 0.90;
+  opacity: 1;
 
   transform:
     translate(-50%, -50%)
     scale(0.38);
 
   border-color:
-    rgba(235, 241, 244, 0.86);
+    rgba(240, 245, 247, 0.92);
 
   background:
-    rgba(235, 241, 244, 0.32);
+    rgba(240, 245, 247, 0.34);
 }
 
 
@@ -565,19 +570,18 @@ body.gate-test-page::after {
     scale(0.95);
 
   border-color:
-    rgba(246, 249, 250, 0.98);
+    rgba(250, 252, 252, 1);
 
   background:
-    rgba(239, 245, 247, 0.10);
+    rgba(244, 248, 249, 0.11);
 }
 
 
 /*
-  History-only dependent.
+  Historical dependent.
 
-  This is intentionally dashed: the reader can still see
-  that a dependent existed, but the broken outline means it
-  is no longer physically present.
+  The object itself is gone; the dashed circle is only its
+  retained observational record.
 */
 
 .dependent-node.is-history {
@@ -585,18 +589,20 @@ body.gate-test-page::after {
 
   border:
     1px dashed
-    rgba(235, 242, 245, 0.86);
+    rgba(239, 245, 247, 0.88);
 
   background: transparent;
 
   transform:
     translate(-50%, -50%)
     scale(0.92);
+
+  animation: none;
 }
 
 
 /*
-  Cumulative consequences remain at full readability.
+  Accumulated consequences remain fully readable.
 */
 
 .dependent-node.is-cycle-residue {
@@ -604,14 +610,16 @@ body.gate-test-page::after {
 }
 
 
-/* remote consequences */
+/* ---------------------------------------------------------
+   REMOTE DEPENDENTS
+   --------------------------------------------------------- */
 
 .dependent-node.is-remote {
   width: 9px;
   height: 9px;
 
   border-color:
-    rgba(238, 243, 245, 0.90);
+    rgba(246, 249, 250, 0.96);
 }
 
 .dependent-node.is-remote.is-visible,
@@ -621,6 +629,48 @@ body.gate-test-page::after {
 }
 
 
+/* ---------------------------------------------------------
+   DEPENDENT ARRIVAL
+
+   A new downstream object briefly becomes much larger than
+   its eventual resting size.
+
+   Because its causal line appears simultaneously, this makes
+   the parent → consequence relationship visually obvious.
+   --------------------------------------------------------- */
+
+@keyframes dependent-arrival {
+
+  0% {
+    opacity: 0;
+
+    transform:
+      translate(-50%, -50%)
+      scale(0.30);
+  }
+
+  28% {
+    opacity: 1;
+
+    transform:
+      translate(-50%, -50%)
+      scale(1.85);
+  }
+
+  58% {
+    transform:
+      translate(-50%, -50%)
+      scale(1.35);
+  }
+
+  100% {
+    opacity: 1;
+
+    transform:
+      translate(-50%, -50%)
+      scale(1);
+  }
+}
 /* ---------------------------------------------------------
    CENTRAL ACTOR
    --------------------------------------------------------- */

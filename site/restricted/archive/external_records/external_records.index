@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>External Records</title>
+
+  <link
+    rel="stylesheet"
+    href="/style.css"
+  >
+
+  <link
+    rel="stylesheet"
+    href="/restricted/restricted.css"
+  >
+</head>
+
+<body class="restricted-page">
+
+  <main class="restricted-document">
+
+    <header class="restricted-document-header">
+
+      <div class="restricted-document-path">
+        /restricted/archive/external_records/
+      </div>
+
+      <h1>
+        EXTERNAL RECORDS
+      </h1>
+
+      <p class="restricted-document-subtitle">
+        Retained observations of population-originated events,
+        transmissions, artifacts, and interventions with
+        relevance beyond their immediate human classification.
+      </p>
+
+    </header>
+
+
+    <section class="restricted-document-section">
+
+      <p>
+        Human classification is retained where useful.
+      </p>
+
+      <p>
+        External classification reflects observed function
+        rather than originating intent.
+      </p>
+
+      <p>
+        Inclusion does not indicate approval, priority,
+        successful development, or transition status.
+      </p>
+
+    </section>
+
+
+    <section class="simple-directory-list">
+
+      <div class="simple-directory-entry">
+        <a
+          href="/restricted/archive/external_records/self_representation_record_001.html"
+        >
+          SELF-REPRESENTATION ARTIFACT 001
+        </a>
+      </div>
+
+
+      <div class="simple-directory-entry is-unavailable">
+        BOUNDARY EXTENSION EVENT 001
+      </div>
+
+
+      <div class="simple-directory-entry is-unavailable">
+        PERSPECTIVE REVISION EVENT 001
+      </div>
+
+
+      <div class="simple-directory-entry is-unavailable">
+        DIRECTED PRESENCE TRANSMISSION 001
+      </div>
+
+
+      <div class="simple-directory-entry is-unavailable">
+        DISTRIBUTED REGULATION EVENT 001
+      </div>
+
+
+      <div class="simple-directory-entry is-unavailable">
+        PROTECTIVE EXTERNAL INTERVENTION 001
+      </div>
+
+    </section>
+
+
+    <footer class="restricted-document-footer">
+
+      <a
+        href="/restricted/archive/"
+      >
+        ← archive
+      </a>
+
+    </footer>
+
+  </main>
+
+</body>
+</html>

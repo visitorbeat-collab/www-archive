@@ -19,6 +19,75 @@
     rel="stylesheet"
     href="/restricted/restricted.css"
   >
+
+  <style>
+    .retained-media {
+      margin: 2.5rem 0;
+      padding: 1.25rem 0 0;
+      border-top: 1px solid rgba(220, 230, 235, 0.16);
+      border-bottom: 1px solid rgba(220, 230, 235, 0.16);
+    }
+
+    .retained-media-header {
+      margin-bottom: 1.25rem;
+    }
+
+    .retained-media-label {
+      margin: 0 0 0.4rem;
+
+      font-family:
+        "IBM Plex Mono",
+        monospace;
+
+      font-size: 0.72rem;
+      letter-spacing: 0.08em;
+
+      color:
+        rgba(220, 230, 235, 0.62);
+    }
+
+    .retained-media-value {
+      margin: 0 0 1rem;
+    }
+
+    .retained-media-image {
+      display: block;
+
+      width: min(100%, 720px);
+      height: auto;
+
+      margin: 1.5rem auto;
+
+      border:
+        1px solid
+        rgba(220, 230, 235, 0.16);
+
+      background: #0c0f12;
+    }
+
+    .retained-media-meta {
+      margin: 1.5rem 0 1.25rem;
+
+      font-family:
+        "IBM Plex Mono",
+        monospace;
+
+      font-size: 0.72rem;
+      line-height: 1.65;
+
+      color:
+        rgba(220, 230, 235, 0.58);
+    }
+
+    .retained-media-meta div {
+      margin-bottom: 0.2rem;
+    }
+
+    .reconstruction-note {
+      margin-top: 1.75rem;
+      padding-bottom: 1.5rem;
+    }
+  </style>
 </head>
 
 <body class="restricted-page">
@@ -126,6 +195,87 @@
         Recipient identity was not known at time of
         construction.
       </p>
+
+    </section>
+
+
+    <section class="retained-media">
+
+      <div class="retained-media-header">
+
+        <p class="retained-media-label">
+          RETAINED SOURCE COMPONENT
+        </p>
+
+        <p class="retained-media-value">
+          Recipient-interface artifact.
+        </p>
+
+      </div>
+
+
+      <img
+        class="retained-media-image"
+        src="/restricted/archive/external_records/media/voyager_golden_record_cover.jpg"
+        alt="Voyager Golden Record cover showing symbolic playback instructions and location diagrams"
+      >
+
+
+      <div class="retained-media-meta">
+
+        <div>
+          HUMAN DESIGNATION:
+          Voyager Golden Record cover
+        </div>
+
+        <div>
+          SOURCE:
+          NASA / JPL-Caltech
+        </div>
+
+        <div>
+          FORMAT:
+          engraved physical encoding
+        </div>
+
+        <div>
+          FUNCTION:
+          recipient interpretation interface
+        </div>
+
+      </div>
+
+
+      <div class="reconstruction-note">
+
+        <p class="retained-media-label">
+          RECONSTRUCTION NOTE
+        </p>
+
+        <p>
+          The retained surface provides instructions for
+          recovering information from the object without
+          assuming shared language.
+        </p>
+
+        <p>
+          It also provides references intended to establish
+          location and measurement through physical phenomena
+          presumed to be independently observable.
+        </p>
+
+        <p>
+          The surface therefore does not primarily describe
+          the originating population.
+        </p>
+
+        <p>
+          It describes assumptions made by the originating
+          population about what an unknown intelligence might
+          nevertheless share with it.
+        </p>
+
+      </div>
 
     </section>
 

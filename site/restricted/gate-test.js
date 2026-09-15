@@ -40,6 +40,18 @@ document.addEventListener("DOMContentLoaded", () => {
     I: 2
   };
 
+  const CONSEQUENCE_LEVEL = {
+    A: 2,
+    B: 0,
+    C: 1,
+    D: 2,
+    E: 3,
+    F: 0,
+    G: 1,
+    H: 0,
+    I: 2
+  };
+
   const RADIAL_CLASSES = [
     0.155,
     0.350,
@@ -308,6 +320,66 @@ document.addEventListener("DOMContentLoaded", () => {
     );
 
     updateDynamicGeometry();
+  }
+
+
+  /* =========================================================
+     CONSEQUENCE NORMALIZATION
+     ========================================================= */
+
+  const consequenceFootprints =
+    new Map();
+
+  function createConsequenceFootprints() {
+    profiles.forEach(
+      node => {
+        const footprint =
+          document.createElement(
+            "div"
+          );
+
+        footprint.classList.add(
+          "consequence-footprint",
+          `level-${CONSEQUENCE_LEVEL[node.profile]}`
+        );
+
+        footprint.dataset.profile =
+          node.profile;
+
+        field.appendChild(
+          footprint
+        );
+
+        consequenceFootprints.set(
+          node.profile,
+          footprint
+        );
+      }
+    );
+  }
+
+  function updateConsequenceFootprints() {
+    consequenceFootprints.forEach(
+      (footprint, profileId) => {
+        const node =
+          getNode(profileId);
+
+        if (!node) {
+          return;
+        }
+
+        const center =
+          getElementCenter(
+            node.element
+          );
+
+        footprint.style.left =
+          `${center.x}px`;
+
+        footprint.style.top =
+          `${center.y}px`;
+      }
+    );
   }
 
 
@@ -627,9 +699,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const dependents =
     new Map();
-
-
-  function createLine(
+    function createLine(
     id,
     classes = []
   ) {
@@ -992,14 +1062,6 @@ document.addEventListener("DOMContentLoaded", () => {
         dy * dy
       );
 
-    /*
-      The structural lane deliberately stops before reaching
-      the primary node.
-
-      This makes it visually distinct from a causal
-      connection, which originates directly at a primary.
-    */
-
     const gap = 23;
 
     const usableDistance =
@@ -1160,6 +1222,8 @@ document.addEventListener("DOMContentLoaded", () => {
       "H3",
       "H2-H3"
     );
+
+    updateConsequenceFootprints();
   }
 
 
@@ -1199,8 +1263,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
   /* =========================================================
      INITIAL RESET
-
-     Used only once before the observation sequence begins.
      ========================================================= */
 
   function clearEntireField() {
@@ -1267,14 +1329,6 @@ document.addEventListener("DOMContentLoaded", () => {
     );
   }
 
-
-  /*
-    Between cases we clear only the temporary animated state.
-
-    Historical and persistent evidence stays exactly where it
-    is.
-  */
-
   function endCurrentCase() {
     clearCaseFocus();
 
@@ -1295,7 +1349,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
   /* =========================================================
      A
-     BIG EXPANSION → RETURNS
      ========================================================= */
 
   async function runA() {
@@ -1324,11 +1377,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
     await wait(2200);
   }
-
-
-  /* =========================================================
+    /* =========================================================
      B
-     THREE DEPENDENTS
      ========================================================= */
 
   async function runB() {
@@ -1394,11 +1444,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
     await wait(900);
 
-
-    /*
-      B1 and its connection appear together.
-    */
-
     B1.element.classList.add(
       "is-visible"
     );
@@ -1409,11 +1454,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
     await wait(450);
 
-
-    /*
-      B2 and its connection appear together.
-    */
-
     B2.element.classList.add(
       "is-visible"
     );
@@ -1423,11 +1463,6 @@ document.addEventListener("DOMContentLoaded", () => {
     );
 
     await wait(450);
-
-
-    /*
-      B3 and its connection appear together.
-    */
 
     B3.element.classList.add(
       "is-visible"
@@ -1485,7 +1520,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
   /* =========================================================
      C
-     THREE DEPENDENTS
      ========================================================= */
 
   async function runC() {
@@ -1545,7 +1579,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
     await wait(900);
 
-
     C1.element.classList.add(
       "is-visible"
     );
@@ -1556,7 +1589,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
     await wait(450);
 
-
     C2.element.classList.add(
       "is-visible"
     );
@@ -1566,7 +1598,6 @@ document.addEventListener("DOMContentLoaded", () => {
     );
 
     await wait(450);
-
 
     C3.element.classList.add(
       "is-visible"
@@ -1615,7 +1646,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
   /* =========================================================
      D
-     BIG COLLAPSE → RETURNS
      ========================================================= */
 
   async function runD() {
@@ -1648,7 +1678,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
   /* =========================================================
      E
-     SMALL TEMPORARY REACTION
      ========================================================= */
 
   async function runE() {
@@ -1681,7 +1710,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
   /* =========================================================
      F
-     PRIMARY + DEPENDENT PERSIST
      ========================================================= */
 
   async function runF() {
@@ -1725,11 +1753,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
     await wait(1000);
 
-
-    /*
-      F1 and its line appear together.
-    */
-
     F1.element.classList.add(
       "is-visible",
       "is-persistent",
@@ -1750,7 +1773,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
   /* =========================================================
      G
-     TWO DEPENDENTS
      ========================================================= */
 
   async function runG() {
@@ -1797,7 +1819,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
     await wait(900);
 
-
     G1.element.classList.add(
       "is-visible"
     );
@@ -1807,7 +1828,6 @@ document.addEventListener("DOMContentLoaded", () => {
     );
 
     await wait(500);
-
 
     G2.element.classList.add(
       "is-visible"
@@ -1847,7 +1867,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
   /* =========================================================
      H
-     DELAYED LONG OUTWARD CHAIN
      ========================================================= */
 
   async function runH() {
@@ -1929,17 +1948,7 @@ document.addEventListener("DOMContentLoaded", () => {
       "effect-subtle"
     );
 
-
-    /*
-      Intentional delay before remote propagation.
-    */
-
     await wait(1800);
-
-
-    /*
-      First remote consequence and first segment.
-    */
 
     H1.element.classList.add(
       "is-visible"
@@ -1951,11 +1960,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
     await wait(650);
 
-
-    /*
-      Second consequence extends the chain.
-    */
-
     H2.element.classList.add(
       "is-visible"
     );
@@ -1966,11 +1970,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
     await wait(650);
 
-
-    /*
-      Terminal consequence and final chain segment.
-    */
-
     H3.element.classList.add(
       "is-visible",
       "is-persistent"
@@ -1979,7 +1978,6 @@ document.addEventListener("DOMContentLoaded", () => {
     revealDependentLine(
       line3
     );
-
 
     H1.element.classList.add(
       "is-cycle-residue"
@@ -2011,7 +2009,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
   /* =========================================================
      I
-     ONE DEPENDENT APPEARS THEN DISAPPEARS
      ========================================================= */
 
   async function runI() {
@@ -2045,11 +2042,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
     await wait(900);
 
-
-    /*
-      The dependent and its causal line appear together.
-    */
-
     I1.element.classList.add(
       "is-visible"
     );
@@ -2070,14 +2062,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
     await wait(700);
 
-
-    /*
-      The physical dependent is gone.
-
-      Its dashed historical representation remains so the
-      reader can inspect the completed record later.
-    */
-
     markDependentHistory(
       I1
     );
@@ -2087,18 +2071,8 @@ document.addEventListener("DOMContentLoaded", () => {
     );
 
     await wait(2400);
-  }
-
-
-  /* =========================================================
+  }  /* =========================================================
      OBSERVATION SEQUENCE
-
-     IMPORTANT CHANGE:
-
-     This now runs ONCE.
-
-     There is no second cycle. Once all nine observations have
-     finished, the accumulated field remains indefinitely.
      ========================================================= */
 
   const observationCases = [
@@ -2117,27 +2091,14 @@ document.addEventListener("DOMContentLoaded", () => {
     const myToken =
       ++cycleToken;
 
-
-    /*
-      Begin with one clean field.
-    */
-
     clearEntireField();
 
     await wait(2200);
-
-
-    /*
-      Randomized order is retained.
-
-      The reader cannot identify cases by sequence position.
-    */
 
     const sequence =
       shuffle(
         observationCases
       );
-
 
     for (
       const runCase
@@ -2150,12 +2111,9 @@ document.addEventListener("DOMContentLoaded", () => {
         return;
       }
 
-
       await wait(750);
 
-
       await runCase();
-
 
       if (
         resolved ||
@@ -2164,15 +2122,7 @@ document.addEventListener("DOMContentLoaded", () => {
         return;
       }
 
-
-      /*
-        Remove only the active animation emphasis.
-
-        All accumulated evidence remains.
-      */
-
       endCurrentCase();
-
 
       await wait(
         randomBetween(
@@ -2182,17 +2132,30 @@ document.addEventListener("DOMContentLoaded", () => {
       );
     }
 
-
     /*
       Observation is complete.
 
-      Remove the final active emphasis and then do nothing.
-
-      The accumulated field becomes the permanent state from
-      which the reader can make their interpretation.
+      The cumulative evidence stays visible.
+      After a brief neutral pause the normalized comparison
+      contours appear around every primary.
     */
 
     endCurrentCase();
+
+    await wait(1800);
+
+    if (
+      resolved ||
+      myToken !== cycleToken
+    ) {
+      return;
+    }
+
+    updateConsequenceFootprints();
+
+    field.classList.add(
+      "is-normalized"
+    );
   }
 
 
@@ -2416,17 +2379,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
   assignGeometry();
 
+  createConsequenceFootprints();
+
   profiles.forEach(
     attachDragHandlers
   );
 
   positionAllNodes();
-
-
-  /*
-    Permanent radial lanes are created after the primary
-    positions exist.
-  */
 
   createPrimaryLanes();
 
@@ -2465,7 +2424,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
       updateDynamicGeometry();
 
-
       if (devBypass) {
 
         profiles.forEach(
@@ -2498,11 +2456,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
         return;
       }
-
-
-      /*
-        Run exactly one observation sequence.
-      */
 
       runObservationSequence();
     }

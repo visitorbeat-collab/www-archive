@@ -1562,3 +1562,181 @@ body.gate-test-page::after {
     font-size: 23px;
   }
 }
+
+
+/* ---------------------------------------------------------
+   CONSEQUENCE NORMALIZATION
+   --------------------------------------------------------- */
+
+.consequence-footprint {
+  position: absolute;
+  border: 1px solid rgba(226, 235, 239, 0.32);
+  border-radius: 50%;
+  box-sizing: border-box;
+  pointer-events: none;
+  opacity: 0;
+  transform: translate(-50%, -50%) scale(0.78);
+  transition: opacity 1300ms ease, transform 1500ms ease;
+  z-index: 4;
+}
+
+.consequence-footprint.level-0 {
+  width: 78px;
+  height: 78px;
+  border-color: rgba(230, 238, 242, 0.38);
+}
+
+.consequence-footprint.level-1 {
+  width: 62px;
+  height: 62px;
+  border-color: rgba(228, 237, 241, 0.33);
+}
+
+.consequence-footprint.level-2 {
+  width: 48px;
+  height: 48px;
+  border-color: rgba(226, 235, 239, 0.28);
+}
+
+.consequence-footprint.level-3 {
+  width: 34px;
+  height: 34px;
+  border-color: rgba(224, 233, 237, 0.24);
+}
+
+.gate-field.is-normalized .consequence-footprint {
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1);
+}
+
+.gate-field.is-condensing .consequence-footprint {
+  opacity: 0;
+}
+/* ---------------------------------------------------------
+   CONSEQUENCE NORMALIZATION
+
+   Appears only after all nine observations have completed.
+
+   The contours translate unlike observations into a common
+   comparative visual scale.
+
+   Larger footprint = greater retained / propagated
+   consequence.
+   --------------------------------------------------------- */
+
+.consequence-footprint {
+  position: absolute;
+
+  border:
+    1px solid
+    rgba(230, 238, 242, 0.46);
+
+  border-radius: 50%;
+
+  box-sizing: border-box;
+
+  pointer-events: none;
+
+  opacity: 0;
+
+  transform:
+    translate(-50%, -50%)
+    scale(0.76);
+
+  transition:
+    opacity 1400ms ease,
+    transform 1600ms ease;
+
+  z-index: 4;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(226, 235, 239, 0.035) 0%,
+      rgba(226, 235, 239, 0.018) 55%,
+      rgba(226, 235, 239, 0) 75%
+    );
+}
+
+
+/*
+  B / F / H
+
+  Highest retained / propagated consequence.
+*/
+
+.consequence-footprint.level-0 {
+  width: 108px;
+  height: 108px;
+
+  border-color:
+    rgba(236, 242, 245, 0.48);
+}
+
+
+/*
+  C / G
+*/
+
+.consequence-footprint.level-1 {
+  width: 82px;
+  height: 82px;
+
+  border-color:
+    rgba(232, 240, 243, 0.41);
+}
+
+
+/*
+  A / D / I
+*/
+
+.consequence-footprint.level-2 {
+  width: 60px;
+  height: 60px;
+
+  border-color:
+    rgba(228, 237, 241, 0.35);
+}
+
+
+/*
+  E
+
+  Most contained / reversible consequence.
+*/
+
+.consequence-footprint.level-3 {
+  width: 42px;
+  height: 42px;
+
+  border-color:
+    rgba(224, 234, 238, 0.29);
+}
+
+
+/*
+  Comparison state.
+
+  All footprints emerge together once observation is
+  complete.
+*/
+
+.gate-field.is-normalized
+.consequence-footprint {
+  opacity: 1;
+
+  transform:
+    translate(-50%, -50%)
+    scale(1);
+}
+
+
+/*
+  During resolution they disappear with the assessment field.
+*/
+
+.gate-field.is-condensing
+.consequence-footprint {
+  opacity: 0;
+}

@@ -394,6 +394,12 @@ body.restricted-map-page {
    --------------------------------------------------------- */
 
 .restricted-map-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 1.5rem;
+
   padding: 12px 0 30px;
 }
 

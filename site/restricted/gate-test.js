@@ -39,17 +39,7 @@ document.addEventListener("DOMContentLoaded", () => {
     H: 0,
     I: 2
   };
-const CONSEQUENCE_LEVEL = {
-  A: 2,
-  B: 0,
-  C: 1,
-  D: 2,
-  E: 3,
-  F: 0,
-  G: 1,
-  H: 0,
-  I: 2
-};
+
   const RADIAL_CLASSES = [
     0.155,
     0.350,
@@ -324,46 +314,7 @@ const CONSEQUENCE_LEVEL = {
   /* =========================================================
      MARKERS
      ========================================================= */
-function createConsequenceFootprints() {
-  profiles.forEach(
-    node => {
 
-      /*
-        Prevent accidental duplication if initialization
-        is ever run more than once.
-      */
-
-      if (
-        node.element.querySelector(
-          ".consequence-footprint"
-        )
-      ) {
-        return;
-      }
-
-
-      const footprint =
-        document.createElement(
-          "div"
-        );
-
-
-      footprint.classList.add(
-        "consequence-footprint",
-        `level-${
-          CONSEQUENCE_LEVEL[
-            node.profile
-          ]
-        }`
-      );
-
-
-      node.element.appendChild(
-        footprint
-      );
-    }
-  );
-}
   function assignMarkers() {
     const shuffled =
       shuffle(
@@ -1078,6 +1029,7 @@ function createConsequenceFootprints() {
       end
     );
   }
+
   function updateDependentLine(
     profileId,
     dependentId,
@@ -2231,43 +2183,17 @@ function createConsequenceFootprints() {
     }
 
 
-/*
-  Observation is complete.
+    /*
+      Observation is complete.
 
-  Remove the final active emphasis.
-*/
+      Remove the final active emphasis and then do nothing.
 
-endCurrentCase();
+      The accumulated field becomes the permanent state from
+      which the reader can make their interpretation.
+    */
 
-
-/*
-  Leave a short neutral interval between observation and
-  interpretation.
-*/
-
-await wait(1800);
-
-
-if (
-  resolved ||
-  myToken !== cycleToken
-) {
-  return;
-}
-
-
-/*
-  NORMALIZATION PHASE
-
-  Every case now receives a common visual consequence
-  footprint.
-
-  Nothing from the observation sequence is removed.
-*/
-
-field.classList.add(
-  "is-normalized"
-);
+    endCurrentCase();
+  }
 
 
   /* =========================================================
@@ -2486,15 +2412,13 @@ field.classList.add(
      INITIALIZE
      ========================================================= */
 
-assignMarkers();
+  assignMarkers();
 
-assignGeometry();
+  assignGeometry();
 
-createConsequenceFootprints();
-
-profiles.forEach(
-  attachDragHandlers
-);
+  profiles.forEach(
+    attachDragHandlers
+  );
 
   positionAllNodes();
 

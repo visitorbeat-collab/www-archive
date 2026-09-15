@@ -1562,3 +1562,114 @@ body.gate-test-page::after {
     font-size: 23px;
   }
 }
+/* ---------------------------------------------------------
+   CONSEQUENCE NORMALIZATION
+
+   Appears only after all nine observations have completed.
+
+   These contours translate unlike events into one common
+   visual scale so their relative consequence can be
+   compared across the whole field.
+
+   Larger contour = greater retained / propagated consequence.
+   --------------------------------------------------------- */
+
+.consequence-footprint {
+  position: absolute;
+
+  left: 50%;
+  top: 50%;
+
+  border:
+    1px solid
+    rgba(226, 235, 239, 0.34);
+
+  border-radius: 50%;
+
+  box-sizing: border-box;
+
+  pointer-events: none;
+
+  opacity: 0;
+
+  transform:
+    translate(-50%, -50%)
+    scale(0.72);
+
+  transition:
+    opacity 1400ms ease,
+    transform 1600ms ease;
+
+  z-index: -1;
+}
+
+
+/*
+  Strongest consequence:
+  B / F / H
+*/
+
+.consequence-footprint.level-0 {
+  width: 72px;
+  height: 72px;
+
+  border-color:
+    rgba(230, 238, 242, 0.42);
+}
+
+
+/*
+  Significant retained downstream consequence:
+  C / G
+*/
+
+.consequence-footprint.level-1 {
+  width: 58px;
+  height: 58px;
+
+  border-color:
+    rgba(228, 237, 241, 0.36);
+}
+
+
+/*
+  Limited / mostly reversible consequence:
+  A / D / I
+*/
+
+.consequence-footprint.level-2 {
+  width: 45px;
+  height: 45px;
+
+  border-color:
+    rgba(226, 235, 239, 0.30);
+}
+
+
+/*
+  Small contained consequence:
+  E
+*/
+
+.consequence-footprint.level-3 {
+  width: 33px;
+  height: 33px;
+
+  border-color:
+    rgba(224, 233, 237, 0.25);
+}
+
+
+/*
+  The entire comparison layer appears at once after
+  observation is complete.
+*/
+
+.gate-field.is-normalized
+.consequence-footprint {
+  opacity: 1;
+
+  transform:
+    translate(-50%, -50%)
+    scale(1);
+}

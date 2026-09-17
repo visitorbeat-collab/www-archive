@@ -1,0 +1,936 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>Collective Threat Elimination 001</title>
+
+  <link
+    rel="stylesheet"
+    href="/style.css"
+  >
+
+  <link
+    rel="stylesheet"
+    href="/restricted/restricted.css"
+  >
+
+  <style>
+    .elimination-reconstruction {
+      margin: 2.5rem 0;
+      padding: 1.5rem 0;
+
+      border-top:
+        1px solid
+        rgba(220, 230, 235, 0.16);
+
+      border-bottom:
+        1px solid
+        rgba(220, 230, 235, 0.16);
+    }
+
+    .reconstruction-label {
+      margin: 0 0 0.4rem;
+
+      font-family:
+        "IBM Plex Mono",
+        monospace;
+
+      font-size: 0.72rem;
+      letter-spacing: 0.08em;
+
+      color:
+        rgba(220, 230, 235, 0.62);
+    }
+
+    .reconstruction-value {
+      margin: 0 0 1.5rem;
+    }
+
+    .eradication-timeline {
+      position: relative;
+
+      display: grid;
+
+      grid-template-columns:
+        repeat(4, minmax(0, 1fr));
+
+      gap: 1rem;
+
+      margin-bottom: 2rem;
+    }
+
+    .eradication-timeline::before {
+      content: "";
+
+      position: absolute;
+      top: 2.85rem;
+      left: 8%;
+      right: 8%;
+
+      height: 1px;
+
+      background:
+        rgba(132, 213, 232, 0.24);
+    }
+
+    .timeline-event {
+      position: relative;
+      z-index: 1;
+
+      min-height: 175px;
+      padding: 1rem;
+
+      border:
+        1px solid
+        rgba(220, 230, 235, 0.16);
+
+      background:
+        rgba(8, 12, 15, 0.9);
+    }
+
+    .timeline-year {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+
+      min-width: 58px;
+      min-height: 24px;
+
+      margin-bottom: 1rem;
+
+      border:
+        1px solid
+        rgba(132, 213, 232, 0.42);
+
+      font-family:
+        "IBM Plex Mono",
+        monospace;
+
+      font-size: 0.7rem;
+      letter-spacing: 0.08em;
+
+      color:
+        rgba(132, 213, 232, 0.78);
+
+      background:
+        rgba(8, 12, 15, 1);
+    }
+
+    .timeline-title {
+      display: block;
+      margin-bottom: 0.55rem;
+
+      font-family:
+        "IBM Plex Mono",
+        monospace;
+
+      font-size: 0.75rem;
+      letter-spacing: 0.08em;
+
+      color:
+        rgba(225, 232, 236, 0.82);
+    }
+
+    .timeline-description {
+      margin: 0;
+
+      font-size: 0.82rem;
+      line-height: 1.5;
+
+      color:
+        rgba(205, 214, 219, 0.64);
+    }
+
+    .containment-sequence {
+      display: grid;
+
+      grid-template-columns:
+        repeat(5, minmax(0, 1fr));
+
+      gap: 0.85rem;
+    }
+
+    .containment-stage {
+      position: relative;
+
+      min-height: 150px;
+      padding: 0.9rem;
+
+      border:
+        1px solid
+        rgba(220, 230, 235, 0.16);
+
+      background:
+        rgba(8, 12, 15, 0.48);
+    }
+
+    .containment-stage:not(:last-child)::after {
+      content: "→";
+
+      position: absolute;
+      top: 50%;
+      right: -0.65rem;
+
+      transform:
+        translate(50%, -50%);
+
+      font-family:
+        "IBM Plex Mono",
+        monospace;
+
+      font-size: 0.74rem;
+
+      color:
+        rgba(132, 213, 232, 0.42);
+    }
+
+    .containment-stage-number {
+      display: block;
+      margin-bottom: 0.65rem;
+
+      font-family:
+        "IBM Plex Mono",
+        monospace;
+
+      font-size: 0.65rem;
+      letter-spacing: 0.1em;
+
+      color:
+        rgba(132, 213, 232, 0.62);
+    }
+
+    .containment-stage-title {
+      display: block;
+      margin-bottom: 0.55rem;
+
+      font-family:
+        "IBM Plex Mono",
+        monospace;
+
+      font-size: 0.71rem;
+      letter-spacing: 0.07em;
+
+      color:
+        rgba(225, 232, 236, 0.82);
+    }
+
+    .containment-stage-description {
+      margin: 0;
+
+      font-size: 0.79rem;
+      line-height: 1.48;
+
+      color:
+        rgba(205, 214, 219, 0.64);
+    }
+
+    .reconstruction-note {
+      margin-top: 1.5rem;
+    }
+
+    .retention-status {
+      display: grid;
+
+      grid-template-columns:
+        repeat(2, minmax(0, 1fr));
+
+      gap: 1rem;
+
+      margin: 2.5rem 0;
+    }
+
+    .status-cell {
+      padding: 1.15rem;
+
+      border:
+        1px solid
+        rgba(220, 230, 235, 0.16);
+
+      background:
+        rgba(8, 12, 15, 0.48);
+    }
+
+    .status-label {
+      display: block;
+      margin-bottom: 0.7rem;
+
+      font-family:
+        "IBM Plex Mono",
+        monospace;
+
+      font-size: 0.68rem;
+      letter-spacing: 0.1em;
+
+      color:
+        rgba(220, 230, 235, 0.58);
+    }
+
+    .status-value {
+      display: block;
+      margin-bottom: 0.65rem;
+
+      font-family:
+        "IBM Plex Mono",
+        monospace;
+
+      font-size: 1rem;
+      letter-spacing: 0.09em;
+
+      color:
+        rgba(132, 213, 232, 0.78);
+    }
+
+    .status-description {
+      margin: 0;
+
+      font-size: 0.84rem;
+      line-height: 1.55;
+
+      color:
+        rgba(205, 214, 219, 0.66);
+    }
+
+    @media (max-width: 800px) {
+      .eradication-timeline,
+      .containment-sequence,
+      .retention-status {
+        grid-template-columns: 1fr;
+      }
+
+      .eradication-timeline::before {
+        display: none;
+      }
+
+      .timeline-event,
+      .containment-stage {
+        min-height: 0;
+      }
+
+      .containment-stage:not(:last-child)::after {
+        content: "↓";
+
+        top: auto;
+        right: auto;
+        bottom: -0.85rem;
+        left: 50%;
+
+        transform:
+          translate(-50%, 50%);
+      }
+    }
+  </style>
+</head>
+
+<body class="restricted-page">
+
+  <main class="restricted-document">
+
+    <header class="restricted-document-header">
+
+      <div class="restricted-document-path">
+        /restricted/archive/external_records/
+        collective_threat_elimination_001
+      </div>
+
+      <h1>
+        COLLECTIVE THREAT ELIMINATION 001
+      </h1>
+
+      <p class="restricted-document-subtitle">
+        Coordinated interruption of a persistent biological
+        threat until natural transmission ceased across the
+        originating population.
+      </p>
+
+    </header>
+
+
+    <section class="restricted-document-section">
+
+      <h2>
+        SOURCE IDENTIFICATION
+      </h2>
+
+      <p>
+        Worldwide public-health intervention.
+      </p>
+
+      <p>
+        Local designation:
+        <strong>
+          Global Smallpox Eradication Programme
+        </strong>.
+      </p>
+
+      <p>
+        Target organism:
+        variola virus.
+      </p>
+
+      <p>
+        Intensified programme initiated:
+        1967.
+      </p>
+
+      <p>
+        Last known naturally occurring case:
+        Somalia, 1977.
+      </p>
+
+      <p>
+        Formal eradication declaration:
+        1980.
+      </p>
+
+    </section>
+
+
+    <section class="restricted-document-section">
+
+      <h2>
+        HUMAN CLASSIFICATION
+      </h2>
+
+      <p>
+        International disease-eradication campaign combining
+        vaccination, surveillance, case investigation,
+        containment, and extended verification.
+      </p>
+
+      <p>
+        First and, at the time of retention, only human
+        infectious disease formally eradicated worldwide.
+      </p>
+
+    </section>
+
+
+    <section class="restricted-document-section">
+
+      <h2>
+        EXTERNAL CLASSIFICATION
+      </h2>
+
+      <p>
+        Collective threat elimination.
+      </p>
+
+      <p>
+        Distributed coordination sustained until a replicating
+        biological hazard no longer circulated naturally within
+        the population it had repeatedly harmed.
+      </p>
+
+    </section>
+
+
+    <section class="restricted-document-section">
+
+      <h2>
+        OBSERVED CONDITION
+      </h2>
+
+      <p>
+        Smallpox crossed political, economic, and geographic
+        boundaries without recognizing the systems through which
+        the population divided authority. Regional elimination
+        reduced local risk but could not permanently protect
+        regions connected to areas where transmission continued.
+      </p>
+
+      <p>
+        The relevant unit of protection therefore expanded from
+        the vaccinated individual and the local outbreak to the
+        complete chain of human transmission. Success required
+        continued action in locations where resources were often
+        least available and where failure would threaten progress
+        achieved elsewhere.
+      </p>
+
+    </section>
+
+
+    <section class="elimination-reconstruction">
+
+      <p class="reconstruction-label">
+        ELIMINATION TIMELINE RECONSTRUCTION
+      </p>
+
+      <p class="reconstruction-value">
+        Transition from proposed objective to verified global
+        condition.
+      </p>
+
+
+      <div class="eradication-timeline">
+
+        <div class="timeline-event">
+
+          <span class="timeline-year">
+            1958
+          </span>
+
+          <span class="timeline-title">
+            GLOBAL OBJECTIVE
+          </span>
+
+          <p class="timeline-description">
+            The World Health Assembly called for worldwide
+            eradication rather than indefinite regional control.
+          </p>
+
+        </div>
+
+
+        <div class="timeline-event">
+
+          <span class="timeline-year">
+            1967
+          </span>
+
+          <span class="timeline-title">
+            INTENSIFIED RESPONSE
+          </span>
+
+          <p class="timeline-description">
+            Coordinated vaccination, surveillance, and
+            containment were expanded across remaining endemic
+            regions.
+          </p>
+
+        </div>
+
+
+        <div class="timeline-event">
+
+          <span class="timeline-year">
+            1977
+          </span>
+
+          <span class="timeline-title">
+            LAST NATURAL CASE
+          </span>
+
+          <p class="timeline-description">
+            The final known naturally acquired infection was
+            identified and contained in Somalia.
+          </p>
+
+        </div>
+
+
+        <div class="timeline-event">
+
+          <span class="timeline-year">
+            1980
+          </span>
+
+          <span class="timeline-title">
+            ERADICATION DECLARED
+          </span>
+
+          <p class="timeline-description">
+            Extended investigation and independent review
+            supported formal recognition of global eradication.
+          </p>
+
+        </div>
+
+      </div>
+
+
+      <p class="reconstruction-label">
+        TRANSMISSION INTERRUPTION SEQUENCE
+      </p>
+
+      <p class="reconstruction-value">
+        Functional relation between observation and containment.
+      </p>
+
+
+      <div class="containment-sequence">
+
+        <div class="containment-stage">
+
+          <span class="containment-stage-number">
+            01
+          </span>
+
+          <span class="containment-stage-title">
+            DETECT
+          </span>
+
+          <p class="containment-stage-description">
+            Search for symptomatic cases rather than relying
+            only upon routine reporting.
+          </p>
+
+        </div>
+
+
+        <div class="containment-stage">
+
+          <span class="containment-stage-number">
+            02
+          </span>
+
+          <span class="containment-stage-title">
+            ISOLATE
+          </span>
+
+          <p class="containment-stage-description">
+            Separate infectious individuals from additional
+            susceptible hosts.
+          </p>
+
+        </div>
+
+
+        <div class="containment-stage">
+
+          <span class="containment-stage-number">
+            03
+          </span>
+
+          <span class="containment-stage-title">
+            TRACE
+          </span>
+
+          <p class="containment-stage-description">
+            Identify the surrounding network through which
+            transmission could continue.
+          </p>
+
+        </div>
+
+
+        <div class="containment-stage">
+
+          <span class="containment-stage-number">
+            04
+          </span>
+
+          <span class="containment-stage-title">
+            VACCINATE
+          </span>
+
+          <p class="containment-stage-description">
+            Establish a protected boundary around each detected
+            transmission path.
+          </p>
+
+        </div>
+
+
+        <div class="containment-stage">
+
+          <span class="containment-stage-number">
+            05
+          </span>
+
+          <span class="containment-stage-title">
+            VERIFY
+          </span>
+
+          <p class="containment-stage-description">
+            Continue searching after apparent disappearance to
+            test whether absence persisted.
+          </p>
+
+        </div>
+
+      </div>
+
+
+      <div class="reconstruction-note">
+
+        <p class="reconstruction-label">
+          RECONSTRUCTION NOTE
+        </p>
+
+        <p>
+          The sequence represents the surveillance-containment
+          relation used during the final phase of eradication. It
+          does not imply that every region used identical methods
+          or that mass vaccination was absent from the wider
+          campaign.
+        </p>
+
+      </div>
+
+    </section>
+
+
+    <section class="restricted-document-section">
+
+      <h2>
+        DISTRIBUTED PARTICIPATION
+      </h2>
+
+      <p>
+        No single jurisdiction could create the final condition
+        independently. Vaccines, production methods, technical
+        knowledge, personnel, surveillance reports, and local
+        access had to move across boundaries that the pathogen
+        had already demonstrated an ability to cross.
+      </p>
+
+      <p>
+        Cooperation did not require political alignment. State
+        systems in direct strategic competition contributed to
+        the same programme, while much of the decisive work was
+        performed by local health workers operating within their
+        own communities.
+      </p>
+
+    </section>
+
+
+    <section class="restricted-document-section">
+
+      <h2>
+        ADAPTIVE RESPONSE
+      </h2>
+
+      <p>
+        Broad vaccination reduced transmission but did not reach
+        every susceptible individual. The programme adapted by
+        increasing active surveillance and concentrating
+        intervention around detected cases and their contacts.
+      </p>
+
+      <p>
+        This change is retained as part of the event. The
+        population did not preserve one method because it had
+        already invested in that method. Observation of remaining
+        transmission altered the response structure.
+      </p>
+
+    </section>
+
+
+    <section class="restricted-document-section">
+
+      <h2>
+        VERIFICATION CONDITION
+      </h2>
+
+      <p>
+        The disappearance of reported cases was not treated as
+        immediate proof of eradication. Surveillance continued,
+        regional claims were investigated, and an independent
+        international commission reviewed the evidence before
+        the global declaration was made.
+      </p>
+
+      <p>
+        Absence became meaningful only after the population had
+        searched for the phenomenon under conditions capable of
+        detecting it. The final achievement therefore depended
+        upon observation continuing after visible consequence
+        had ceased.
+      </p>
+
+    </section>
+
+
+    <section class="retention-status">
+
+      <div class="status-cell">
+
+        <span class="status-label">
+          NATURAL HUMAN TRANSMISSION
+        </span>
+
+        <span class="status-value">
+          ABSENT
+        </span>
+
+        <p class="status-description">
+          No continuing chain of naturally acquired smallpox
+          remains within the human population.
+        </p>
+
+      </div>
+
+
+      <div class="status-cell">
+
+        <span class="status-label">
+          AUTHORIZED LABORATORY RETENTION
+        </span>
+
+        <span class="status-value">
+          PERSISTENT
+        </span>
+
+        <p class="status-description">
+          Live variola material remains under international
+          oversight at two designated secure repositories.
+        </p>
+
+      </div>
+
+    </section>
+
+
+    <section class="restricted-document-section">
+
+      <h2>
+        RESIDUAL CONDITION
+      </h2>
+
+      <p>
+        Eradication ended natural transmission but did not remove
+        every physical instance of the virus or all information
+        relevant to its reconstruction. Retained samples,
+        synthetic biology, and declining routine immunity require
+        continuing governance after the original campaign has
+        ended.
+      </p>
+
+      <p>
+        The threat changed form. It moved from persistent natural
+        circulation to a low-probability condition dependent upon
+        containment failure, deliberate release, or technical
+        recreation. Elimination of one pathway did not justify
+        elimination of observation.
+      </p>
+
+    </section>
+
+
+    <section class="restricted-document-section">
+
+      <h2>
+        RETENTION BASIS
+      </h2>
+
+      <p>
+        This event records an instance in which the population
+        selected a shared condition that no region could secure
+        alone and sustained coordinated action until that
+        condition was achieved across the complete inhabited
+        system.
+      </p>
+
+      <p>
+        Scientific knowledge became material protection through
+        manufacturing, distribution, local trust, field
+        observation, reporting, containment, and verification.
+        No single component was sufficient. The result emerged
+        from their continued compatibility.
+      </p>
+
+    </section>
+
+
+    <section class="restricted-document-section">
+
+      <h2>
+        MATURITY INDICATOR
+      </h2>
+
+      <p>
+        The event demonstrates that the population can organize
+        around protection whose final benefit is shared even when
+        effort and resources are unevenly distributed. Regions
+        that had already eliminated local transmission continued
+        contributing to elimination elsewhere.
+      </p>
+
+      <p>
+        This is relevant to transition assessment because shared
+        security sometimes requires capable groups to act beyond
+        the boundary of immediate local danger. Protection became
+        durable only when the remaining vulnerable populations
+        were treated as part of the same system.
+      </p>
+
+    </section>
+
+
+    <section class="restricted-document-section">
+
+      <h2>
+        PARTICIPATION LIMITATION
+      </h2>
+
+      <p>
+        Collective benefit did not ensure that every intervention
+        was experienced as voluntary or equal. Intensive searches,
+        movement controls, vaccination pressure, and authority
+        exercised during emergency conditions could subordinate
+        individual autonomy to the eradication objective.
+      </p>
+
+      <p>
+        A protective outcome does not remove the requirement to
+        examine how protection was imposed, whose consent was
+        considered dispensable, and whether less coercive methods
+        were materially available under the conditions present.
+      </p>
+
+    </section>
+
+
+    <section class="restricted-document-section">
+
+      <h2>
+        INTERPRETIVE CAUTION
+      </h2>
+
+      <p>
+        Smallpox possessed characteristics that made eradication
+        unusually achievable: transmission occurred between
+        humans, symptomatic cases could be recognized, and an
+        effective vaccine could interrupt spread. Other threats
+        may be less visible, may persist outside human hosts, or
+        may not permit comparable containment.
+      </p>
+
+      <p>
+        The event establishes that planetary coordination can
+        succeed under a favourable but demanding configuration.
+        It does not establish that the same methods will transfer
+        unchanged to every biological, environmental, or
+        technological threat.
+      </p>
+
+    </section>
+
+
+    <section class="restricted-document-section">
+
+      <p>
+        The final case was not the end of the response.
+      </p>
+
+      <p>
+        The response ended only after continued observation made
+        absence credible.
+      </p>
+
+    </section>
+
+
+    <footer class="restricted-document-footer">
+
+      <a
+        href="/restricted/archive/external_records/"
+      >
+        ← external records
+      </a>
+
+    </footer>
+
+  </main>
+
+</body>
+</html>

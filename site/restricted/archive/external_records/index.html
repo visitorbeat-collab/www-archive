@@ -8,17 +8,152 @@
     content="width=device-width, initial-scale=1.0"
   >
 
-  <title>External Records</title>
+  <title>Evidentiary Corpus</title>
 
-  <link
-    rel="stylesheet"
-    href="/style.css"
-  >
+  <link rel="stylesheet" href="/style.css">
+  <link rel="stylesheet" href="/restricted/restricted.css">
 
-  <link
-    rel="stylesheet"
-    href="/restricted/restricted.css"
-  >
+  <style>
+    .corpus-status {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.55rem 1.5rem;
+      margin: 1.75rem 0 0;
+      padding: 0.9rem 0;
+      border-top: 1px solid rgba(220, 230, 235, 0.12);
+      border-bottom: 1px solid rgba(220, 230, 235, 0.12);
+    }
+
+    .corpus-status-item {
+      font-family: "IBM Plex Mono", monospace;
+      font-size: 0.66rem;
+      letter-spacing: 0.09em;
+      color: rgba(205, 214, 219, 0.5);
+    }
+
+    .corpus-status-item strong {
+      font-weight: 400;
+      color: rgba(132, 213, 232, 0.68);
+    }
+
+    .corpus-method {
+      margin: 2rem 0 3rem;
+    }
+
+    .corpus-method p {
+      max-width: 760px;
+    }
+
+    .corpus-band {
+      margin: 0 0 3.25rem;
+    }
+
+    .corpus-band-header {
+      display: grid;
+      grid-template-columns:
+        minmax(190px, 0.8fr)
+        minmax(260px, 1.5fr);
+      gap: 1.5rem;
+      align-items: start;
+      margin-bottom: 1rem;
+      padding-bottom: 0.85rem;
+      border-bottom: 1px solid rgba(220, 230, 235, 0.13);
+    }
+
+    .corpus-band-code {
+      margin: 0;
+      font-family: "IBM Plex Mono", monospace;
+      font-size: 0.68rem;
+      letter-spacing: 0.12em;
+      color: rgba(132, 213, 232, 0.62);
+    }
+
+    .corpus-band-description {
+      margin: 0;
+      font-size: 0.84rem;
+      line-height: 1.58;
+      color: rgba(205, 214, 219, 0.62);
+    }
+
+    .corpus-records {
+      display: grid;
+      gap: 0.65rem;
+    }
+
+    .corpus-record {
+      display: grid;
+      grid-template-columns:
+        minmax(250px, 1.15fr)
+        minmax(240px, 1fr)
+        auto;
+      gap: 1.25rem;
+      align-items: center;
+      padding: 1rem;
+      border: 1px solid rgba(220, 230, 235, 0.12);
+      color: inherit;
+      text-decoration: none;
+      background: rgba(8, 12, 15, 0.38);
+      transition:
+        border-color 180ms ease,
+        background 180ms ease;
+    }
+
+    .corpus-record:hover,
+    .corpus-record:focus-visible {
+      border-color: rgba(132, 213, 232, 0.28);
+      background: rgba(132, 213, 232, 0.035);
+      outline: none;
+    }
+
+    .corpus-record-title {
+      font-family: "IBM Plex Mono", monospace;
+      font-size: 0.74rem;
+      line-height: 1.5;
+      letter-spacing: 0.08em;
+      color: rgba(225, 232, 236, 0.78);
+    }
+
+    .corpus-record-description {
+      font-size: 0.8rem;
+      line-height: 1.5;
+      color: rgba(205, 214, 219, 0.54);
+    }
+
+    .corpus-record-action {
+      font-family: "IBM Plex Mono", monospace;
+      font-size: 0.66rem;
+      letter-spacing: 0.1em;
+      color: rgba(132, 213, 232, 0.48);
+      transition: color 180ms ease;
+    }
+
+    .corpus-record:hover .corpus-record-action,
+    .corpus-record:focus-visible .corpus-record-action {
+      color: rgba(132, 213, 232, 0.82);
+    }
+
+    @media (max-width: 720px) {
+      .corpus-band-header,
+      .corpus-record {
+        grid-template-columns: 1fr;
+      }
+
+      .corpus-band-header {
+        gap: 0.65rem;
+      }
+
+      .corpus-record {
+        gap: 0.55rem;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .corpus-record,
+      .corpus-record-action {
+        transition: none;
+      }
+    }
+  </style>
 </head>
 
 <body class="restricted-page">
@@ -32,127 +167,245 @@
       </div>
 
       <h1>
-        EXTERNAL RECORDS
+        EVIDENTIARY CORPUS
       </h1>
 
       <p class="restricted-document-subtitle">
-        Retained observations of population-originated events,
-        transmissions, artifacts, and interventions with
-        relevance beyond their immediate human classification.
+        Population-originated events, transmissions, artifacts,
+        and interventions retained for comparative analysis.
       </p>
+
+      <div
+        class="corpus-status"
+        aria-label="Corpus status"
+      >
+        <span class="corpus-status-item">
+          COLLECTION: <strong>EXTERNAL RECORDS</strong>
+        </span>
+
+        <span class="corpus-status-item">
+          RETAINED ITEMS: <strong>09</strong>
+        </span>
+
+        <span class="corpus-status-item">
+          STATUS: <strong>COMPARATIVE</strong>
+        </span>
+      </div>
 
     </header>
 
 
-    <section class="restricted-document-section">
+    <section class="restricted-document-section corpus-method">
 
       <p>
-        Human classification is retained where useful.
+        Human classifications are retained where useful, while
+        external classifications describe observed function
+        rather than originating intent. Inclusion does not
+        indicate approval, priority, successful development, or
+        transition status.
       </p>
 
       <p>
-        External classification reflects observed function
-        rather than originating intent.
-      </p>
-
-      <p>
-        Inclusion does not indicate approval, priority,
-        successful development, or transition status.
+        Retrieval bands identify a record's primary relevance
+        within this collection. They do not assign the record to
+        a single relation within the restricted topology.
       </p>
 
     </section>
 
 
-    <section class="simple-directory-list">
+    <section class="corpus-band">
 
-      <div class="simple-directory-entry">
+      <header class="corpus-band-header">
+        <h2 class="corpus-band-code">
+          BAND 01 / EXTERNAL ORIENTATION
+        </h2>
+
+        <p class="corpus-band-description">
+          Attempts to perceive the originating world from beyond
+          its ordinary frame, extend presence outside it, or
+          represent the population to an unknown recipient.
+        </p>
+      </header>
+
+      <div class="corpus-records">
+
         <a
+          class="corpus-record"
           href="/restricted/archive/external_records/self_representation_record_001.html"
         >
-          SELF-REPRESENTATION ARTIFACT 001
+          <span class="corpus-record-title">
+            SELF-REPRESENTATION ARTIFACT 001
+          </span>
+          <span class="corpus-record-description">
+            Voyager Golden Record / constructed account of the
+            originating population and world.
+          </span>
+          <span class="corpus-record-action">access →</span>
         </a>
-      </div>
 
-
-<div class="simple-directory-entry">
-  <a
-    href="/restricted/archive/external_records/boundary_extension_event_001.html"
-  >
-    BOUNDARY EXTENSION EVENT 001
-  </a>
-</div>
-
-
-      <div class="simple-directory-entry">
         <a
+          class="corpus-record"
+          href="/restricted/archive/external_records/boundary_extension_event_001.html"
+        >
+          <span class="corpus-record-title">
+            BOUNDARY EXTENSION EVENT 001
+          </span>
+          <span class="corpus-record-description">
+            Voyager 1 / persistent human-made presence beyond the
+            primary stellar influence boundary.
+          </span>
+          <span class="corpus-record-action">access →</span>
+        </a>
+
+        <a
+          class="corpus-record"
           href="/restricted/archive/external_records/perspective_revision_event_001.html"
         >
-          PERSPECTIVE REVISION EVENT 001
+          <span class="corpus-record-title">
+            PERSPECTIVE REVISION EVENT 001
+          </span>
+          <span class="corpus-record-description">
+            Earthrise / originating world observed from outside
+            its familiar perceptual frame.
+          </span>
+          <span class="corpus-record-action">access →</span>
         </a>
-      </div>
 
-
-      <div class="simple-directory-entry">
         <a
+          class="corpus-record"
           href="/restricted/archive/external_records/directed_presence_transmission_001.html"
         >
-          DIRECTED PRESENCE TRANSMISSION 001
+          <span class="corpus-record-title">
+            DIRECTED PRESENCE TRANSMISSION 001
+          </span>
+          <span class="corpus-record-description">
+            Arecibo message / compressed declaration of location,
+            structure, and technological presence.
+          </span>
+          <span class="corpus-record-action">access →</span>
         </a>
+
       </div>
 
+    </section>
 
-      <div class="simple-directory-entry">
+
+    <section class="corpus-band">
+
+      <header class="corpus-band-header">
+        <h2 class="corpus-band-code">
+          BAND 02 / ANTICIPATORY PROTECTION
+        </h2>
+
+        <p class="corpus-band-description">
+          Protective or regulatory action initiated before the
+          projected consequence became immediate or irreversible.
+        </p>
+      </header>
+
+      <div class="corpus-records">
+
         <a
-          href="/restricted/archive/external_records/distributed_regulation_event_001.html"
-        >
-          DISTRIBUTED REGULATION EVENT 001
-        </a>
-      </div>
-
-
-      <div class="simple-directory-entry">
-        <a
+          class="corpus-record"
           href="/restricted/archive/external_records/protective_external_intervention_001.html"
         >
-          PROTECTIVE EXTERNAL INTERVENTION 001
+          <span class="corpus-record-title">
+            PROTECTIVE EXTERNAL INTERVENTION 001
+          </span>
+          <span class="corpus-record-description">
+            DART / controlled alteration of an external object in
+            preparation for possible future biospheric defence.
+          </span>
+          <span class="corpus-record-action">access →</span>
         </a>
-      </div>
 
-            <div class="simple-directory-entry">
         <a
+          class="corpus-record"
           href="/restricted/archive/external_records/external_domain_constraint_001.html"
         >
-          EXTERNAL DOMAIN CONSTRAINT 001
+          <span class="corpus-record-title">
+            EXTERNAL DOMAIN CONSTRAINT 001
+          </span>
+          <span class="corpus-record-description">
+            Outer Space Treaty / behavioural limits carried into
+            a newly accessible environment.
+          </span>
+          <span class="corpus-record-action">access →</span>
         </a>
+
       </div>
 
-      <div class="simple-directory-entry">
+    </section>
+
+
+    <section class="corpus-band">
+
+      <header class="corpus-band-header">
+        <h2 class="corpus-band-code">
+          BAND 03 / COLLECTIVE REGULATION
+        </h2>
+
+        <p class="corpus-band-description">
+          Instances in which distributed populations accepted
+          restraint, relinquished capacity, or coordinated action
+          against a consequence larger than local authority.
+        </p>
+      </header>
+
+      <div class="corpus-records">
+
         <a
+          class="corpus-record"
+          href="/restricted/archive/external_records/distributed_regulation_event_001.html"
+        >
+          <span class="corpus-record-title">
+            DISTRIBUTED REGULATION EVENT 001
+          </span>
+          <span class="corpus-record-description">
+            Montreal Protocol / coordinated restriction in
+            response to delayed atmospheric consequence.
+          </span>
+          <span class="corpus-record-action">access →</span>
+        </a>
+
+        <a
+          class="corpus-record"
           href="/restricted/archive/external_records/destructive_capacity_relinquishment_001.html"
         >
-          DESTRUCTIVE CAPACITY RELINQUISHMENT 001
+          <span class="corpus-record-title">
+            DESTRUCTIVE CAPACITY RELINQUISHMENT 001
+          </span>
+          <span class="corpus-record-description">
+            South African nuclear dismantlement / acquired
+            destructive capability materially removed.
+          </span>
+          <span class="corpus-record-action">access →</span>
         </a>
-      </div>
 
-            <div class="simple-directory-entry">
         <a
+          class="corpus-record"
           href="/restricted/archive/external_records/collective_threat_elimination_001.html"
         >
-          COLLECTIVE THREAT ELIMINATION 001
+          <span class="corpus-record-title">
+            COLLECTIVE THREAT ELIMINATION 001
+          </span>
+          <span class="corpus-record-description">
+            Smallpox eradication / coordinated interruption and
+            verified cessation of natural transmission.
+          </span>
+          <span class="corpus-record-action">access →</span>
         </a>
+
       </div>
 
     </section>
 
 
     <footer class="restricted-document-footer">
-
-      <a
-        href="/restricted/archive/"
-      >
-        ← archive
+      <a href="/restricted/archive/">
+        ← restricted topology
       </a>
-
     </footer>
 
   </main>

@@ -12,6 +12,99 @@
 
   <link rel="stylesheet" href="/style.css">
   <link rel="stylesheet" href="/restricted/restricted.css">
+
+  <style>
+    .evidence-corpus-entry {
+      width: min(760px, 100%);
+      margin: 0 0 1.25rem auto;
+      border-top: 1px solid rgba(190, 201, 208, 0.14);
+      border-bottom: 1px solid rgba(190, 201, 208, 0.14);
+      background: rgba(11, 15, 18, 0.64);
+    }
+
+    .evidence-corpus-link {
+      display: grid;
+      grid-template-columns:
+        minmax(170px, 0.75fr)
+        minmax(260px, 1.5fr)
+        auto;
+      gap: 1.5rem;
+      align-items: center;
+      padding: 1.15rem 1.25rem;
+      color: inherit;
+      text-decoration: none;
+      transition:
+        background 180ms ease,
+        border-color 180ms ease;
+    }
+
+    .evidence-corpus-link:hover,
+    .evidence-corpus-link:focus-visible {
+      background: rgba(132, 213, 232, 0.035);
+      outline: none;
+    }
+
+    .evidence-corpus-identity {
+      display: flex;
+      flex-direction: column;
+      gap: 0.35rem;
+    }
+
+    .evidence-corpus-kicker {
+      font-size: 0.61rem;
+      letter-spacing: 0.17em;
+      color: rgba(132, 213, 232, 0.54);
+    }
+
+    .evidence-corpus-title {
+      font-size: 0.76rem;
+      letter-spacing: 0.1em;
+      color: rgba(224, 229, 232, 0.78);
+    }
+
+    .evidence-corpus-description {
+      margin: 0;
+      font-size: 0.68rem;
+      line-height: 1.65;
+      letter-spacing: 0.04em;
+      color: rgba(193, 201, 206, 0.48);
+    }
+
+    .evidence-corpus-action {
+      font-size: 0.66rem;
+      letter-spacing: 0.12em;
+      white-space: nowrap;
+      color: rgba(193, 201, 206, 0.42);
+      transition: color 180ms ease;
+    }
+
+    .evidence-corpus-link:hover .evidence-corpus-action,
+    .evidence-corpus-link:focus-visible .evidence-corpus-action {
+      color: rgba(230, 234, 237, 0.84);
+    }
+
+    @media (max-width: 700px) {
+      .evidence-corpus-entry {
+        margin-top: 1rem;
+      }
+
+      .evidence-corpus-link {
+        grid-template-columns: 1fr;
+        gap: 0.8rem;
+      }
+
+      .evidence-corpus-action {
+        white-space: normal;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .evidence-corpus-link,
+      .evidence-corpus-action {
+        transition: none;
+      }
+    }
+  </style>
 </head>
 
 <body class="restricted-map-page">
@@ -258,6 +351,41 @@
   </section>
 
 
+  <aside
+    class="evidence-corpus-entry"
+    aria-label="Evidentiary corpus"
+  >
+
+    <a
+      class="evidence-corpus-link"
+      href="/restricted/archive/external_records/"
+    >
+
+      <span class="evidence-corpus-identity">
+        <span class="evidence-corpus-kicker">
+          ADJACENT EVIDENCE LAYER
+        </span>
+
+        <span class="evidence-corpus-title">
+          EVIDENTIARY CORPUS
+        </span>
+      </span>
+
+      <span class="evidence-corpus-description">
+        Population-originated events retained for comparative
+        analysis. Records inform the relational structure but
+        do not constitute elements within it.
+      </span>
+
+      <span class="evidence-corpus-action">
+        access 09 records →
+      </span>
+
+    </a>
+
+  </aside>
+
+
   <footer class="restricted-map-footer">
 
     <a
@@ -265,13 +393,6 @@
       href="/"
     >
       ← index
-    </a>
-
-    <a
-      class="restricted-return"
-      href="/restricted/archive/external_records/"
-    >
-      external records →
     </a>
 
   </footer>

@@ -11,21 +11,75 @@
 
   <style>
     .audio-frame {
-      margin: 42px 0 48px;
       max-width: 760px;
+      margin: 42px 0 48px;
+      padding: 24px;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      background: rgba(255, 255, 255, 0.015);
     }
 
     .audio-frame audio {
       display: block;
       width: 100%;
-      margin-top: 18px;
     }
 
     .media-caption {
-      margin-top: 12px;
+      margin-top: 14px;
       font-family: "IBM Plex Mono", monospace;
       font-size: 0.76rem;
-      opacity: 0.55;
+      line-height: 1.7;
+      opacity: 0.58;
+    }
+
+    .translation-map {
+      max-width: 760px;
+      margin-top: 28px;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .translation-row {
+      display: grid;
+      grid-template-columns: minmax(150px, 0.8fr) minmax(220px, 1.4fr);
+      gap: 24px;
+      padding: 12px 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .translation-source,
+    .translation-result {
+      font-family: "IBM Plex Mono", monospace;
+      font-size: 0.78rem;
+      line-height: 1.6;
+    }
+
+    .translation-source {
+      opacity: 0.78;
+    }
+
+    .translation-result {
+      opacity: 0.58;
+    }
+
+    .provenance-block {
+      max-width: 760px;
+      padding: 20px 22px;
+      border-left: 2px solid rgba(255, 255, 255, 0.18);
+      background: rgba(255, 255, 255, 0.012);
+    }
+
+    .provenance-block p {
+      margin: 0.45rem 0;
+    }
+
+    @media (max-width: 640px) {
+      .audio-frame {
+        padding: 18px;
+      }
+
+      .translation-row {
+        grid-template-columns: 1fr;
+        gap: 4px;
+      }
     }
   </style>
 </head>
@@ -46,7 +100,8 @@
 
     <div class="document-metadata">
       <span>media: audio</span>
-      <span>source continuity: unresolved</span>
+      <span>source continuity: documented</span>
+      <span>translation status: derivative</span>
     </div>
 
   </header>
@@ -55,7 +110,7 @@
   <section class="recovered-section">
 
     <p class="mono">
-      [retained audio object]
+      [retained human data translation]
     </p>
 
     <div class="audio-frame">
@@ -70,7 +125,8 @@
       </audio>
 
       <div class="media-caption">
-        source metadata unavailable / playback normalization not applied
+        derived from simulated CMS Higgs-to-bottom event 233917<br>
+        duration: 00:42 / stereo translation / playback normalization applied
       </div>
 
     </div>
@@ -82,17 +138,47 @@
     <h2>OBSERVATION</h2>
 
     <p>
-      No verified semantic interpretation is assigned.
+      The source object contains no acoustic recording. It consists of measurements associated with forty particle-flow candidates inside one simulated Higgs-to-bottom event retained in a human research dataset.
     </p>
 
-    <p class="mono">
-      low-amplitude broadband noise<br>
-      narrow tonal events<br>
-      repeated interval relationships<br>
-      abrupt interruption<br>
-      partial recurrence<br>
-      no stable intelligible speech
+    <p>
+      The audible object was produced by moving selected spatial and energetic relationships into a frequency range available to human hearing. Nothing in the source establishes that this is what the event sounded like. The event did not occur in an atmosphere, and the translation should not be mistaken for recovered physical sound.
     </p>
+
+  </section>
+
+
+  <section class="recovered-section">
+    <h2>TRANSLATION MAP</h2>
+
+    <div class="translation-map" aria-label="Data-to-sound translation map">
+
+      <div class="translation-row">
+        <div class="translation-source">distance from jet axis</div>
+        <div class="translation-result">position in playback sequence</div>
+      </div>
+
+      <div class="translation-row">
+        <div class="translation-source">relative transverse momentum</div>
+        <div class="translation-result">amplitude and event duration</div>
+      </div>
+
+      <div class="translation-row">
+        <div class="translation-source">relative pseudorapidity</div>
+        <div class="translation-result">frequency</div>
+      </div>
+
+      <div class="translation-row">
+        <div class="translation-source">relative azimuth</div>
+        <div class="translation-result">stereo position</div>
+      </div>
+
+      <div class="translation-row">
+        <div class="translation-source">particle classification</div>
+        <div class="translation-result">timbre</div>
+      </div>
+
+    </div>
 
   </section>
 
@@ -101,16 +187,26 @@
     <h2>INTERPRETATION CONSTRAINT</h2>
 
     <p>
-      Apparent phonetic structure is unstable.
+      Every audible feature depends upon a human-selected correspondence. Sequence, pitch, amplitude, stereo position, and timbre are interpretive decisions applied after measurement.
     </p>
 
     <p>
-      Repetition does not establish language.
+      The translation may expose relationships that are difficult to recognize visually. It may also create apparent pattern where none was present in the measured event. Recognition cannot be separated from the sensory system through which recognition was attempted.
     </p>
 
-    <p>
-      The object should remain available independently of communicative interpretation.
-    </p>
+  </section>
+
+
+  <section class="recovered-section">
+    <h2>PROVENANCE</h2>
+
+    <div class="provenance-block">
+      <p class="mono">source: CMS Open Data record 12102</p>
+      <p class="mono">dataset: HiggsToBBNTuple_HiggsToBB_QCD_RunII_13TeV_MC</p>
+      <p class="mono">source object: ntuple_merged_90.h5 / row 26677 / event 233917</p>
+      <p class="mono">source license: CC0 1.0</p>
+      <p class="mono">transformation: deterministic data sonification</p>
+    </div>
 
   </section>
 
@@ -119,7 +215,7 @@
     <h2>RETENTION NOTE</h2>
 
     <p>
-      Timing, timbre, spectral texture, and silence are not adequately preserved through textual reconstruction.
+      The retained object documents both the measured relationships and the human decision to make those relationships audible. The translation is not the event. It is evidence of how the population extends perception when direct perception is insufficient.
     </p>
 
   </section>

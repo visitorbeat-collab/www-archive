@@ -1,380 +1,297 @@
-# FILE_INDEX.md
+FILE INDEX
 
-**Status:** Internal Archive Architecture
+Status: Current archive architecture
 
-This document defines every major section of the World Wide Waste archive.
+Scope: Implemented site and access layer
 
-Not every file listed here will appear publicly.
+Site root: site/
 
-Many exist solely to establish the scale and internal consistency of the observation system.
+This document describes the architecture currently present in the repository. Canonical source documents remain in docs/; public and restricted representations live under site/; Cloudflare Pages Functions enforce the restricted boundary under functions/.
 
----
+1. Public Reconstruction
 
-# HUMAN RECONSTRUCTION
+The public archive is the Finder's reconstructed layer.
 
-Maintained by the Finder.
+Path
 
-```
-/
-│
-├── README.md
-├── ABOUT.md
-├── INDEX.md
-│
-├── field-notes/
-│
-├── working-notes/
-│
-├── recovered/
-│
-├── references/
-│
-├── cross-references/
-│
-├── testimony/
-│
-├── environmental/
-│
-├── timeline/
-│
-└── restricted/
-```
+Function
 
----
+site/index.html
 
-# README
+Public entry and primary navigation
 
-Purpose:
+site/field-notes/
 
-Introduces the visitor.
+Chronological Finder journal, entries 0001–0007
 
-Explains that this is a reconstructed index.
+site/working-notes/
 
-Makes no extraordinary claims.
+Working-note directory and personal reconstruction notes
 
----
+site/recovered/
 
-# ABOUT
+Recovered documents, annotations, and unverified material
 
-Who the Finder is.
+site/cross-references/
 
-Why the index exists.
+Six cross-reference files and contact-readiness synthesis
 
-His methodology.
+site/testimony/
 
-His limitations.
+Testimony records and associated notes
 
----
+site/environmental/
 
-# INDEX
+Environmental observations
 
-Navigation.
+site/timeline/
 
-Nothing more.
+Chronological reference layer
 
----
+site/search/
 
-# FIELD NOTES
+Concept search interface
 
-Personal journal.
+site/js/concept-search.js
 
-Chronological.
+Search corpus and concept relationships
 
-Where the audience develops trust.
+site/style.css
 
-Examples:
+Shared public styling
 
-```
-0001 - Why This Exists
+The public layer remains modest and evidentiary. It does not announce the archive's largest implications.
 
-0002 - The Pattern Problem
+2. Recovered Material
 
-0003 - Coincidence
+site/recovered/annotations/ contains annotation records attached to recovered material.
 
-0004 - Classification
+site/recovered/unverified/ contains assessment and protocol documents whose status remains intentionally uncertain.
 
-0005 - The Road
+authority_resistance_assessment_001.html is a deliberate anomaly. It must remain absent from directory indexes and concept search. Its discoverability is narrative, not navigational.
 
-0006 - First Inconsistency
+3. Restricted Boundary
 
-0007 - I Did Not Write This
+The restricted layer begins at site/restricted/index.html.
 
-0008 - Threshold
+The entry interaction is a relational gate rather than a conventional password puzzle. Its solution establishes a signed restricted_access cookie and leads to /restricted/archive/.
 
-0009 - Why I Continued
+Path
 
-0010 - If You're Reading This
-```
+Function
 
----
+site/restricted/index.html
 
-# WORKING NOTES
+Restrained public entrance to the gate
 
-Raw ideas.
+site/restricted/gate-test.html
 
-Incomplete thoughts.
+Development view for testing the relational gate
 
-Corrections.
+site/restricted/gate-test.js
 
-Diagrams.
+Gate interaction logic
 
-Questions.
+site/restricted/gate-test.css
 
-Often messy.
+Gate presentation
 
----
+site/restricted/restricted-map.js
 
-# RECOVERED
+Restricted relational-map behavior
 
-Material the Finder believes originated outside his own work.
+site/restricted/restricted.css
 
-Authenticity varies.
+Restricted archive and local-map presentation
 
-Some files remain unverified.
+functions/restricted/access.js
 
----
+Validates the relational sequence and issues the signed cookie
 
-# REFERENCES
+functions/restricted/dev-entry.js
 
-Books.
+Token-protected development entrance that issues the same cookie
 
-Research papers.
+functions/restricted/archive/_middleware.js
 
-Historical material.
+Verifies the cookie before serving restricted archive files
 
-Environmental reports.
+Cloudflare secrets:
 
-Witness accounts.
+RESTRICTED_COOKIE_SECRET signs and verifies access cookies.
 
----
+RESTRICTED_DEV_TOKEN protects the private development-entry route.
 
-# CROSS REFERENCES
+RESTRICTED_PASSWORD is obsolete and should not be restored.
 
-Connections between otherwise unrelated files.
+4. Restricted Relational Archive
 
-This directory becomes increasingly important.
+site/restricted/archive/index.html is the restricted hub. Its topology is relational rather than chronological.
 
-Eventually it begins containing references the Finder cannot explain.
+Concept
 
----
+Representation
 
-# TESTIMONY
+Condition
 
-Human witness accounts.
+restricted_threshold_interpretation_001.html
 
-Not presented as proof.
+Boundary
 
-Presented as data.
+Restricted threshold and access context
 
-Some contradict one another.
+Retention
 
-This is expected.
+nontext_retention_fragment_001.html
 
----
+Exposure
 
-# ENVIRONMENTAL
+post_exposure_participation_fragment_001.html
 
-Climate.
+Participation
 
-Ecology.
+participation_condition_fragment_001.html
 
-Species decline.
+Effect
 
-Resource consumption.
+Expressed through relations among the retained fragments
 
-Planetary change.
+Nontext
 
-Supports the Observer perspective.
+nontext/index.html and its retained objects
 
----
+Local navigation on restricted records reproduces this topology in miniature. The topology should remain sparse enough that relationships, not menu volume, carry the interface.
 
-# TIMELINE
+5. Nontext Collection
 
-Historical chronology.
+site/restricted/archive/nontext/ contains retained objects whose evidentiary properties cannot be replaced by prose alone.
 
-Used only when chronology matters.
+Record
 
----
+Media
 
-# RESTRICTED
+visual_record_001.html
 
-The threshold.
+media/visual_record_001.png
 
-Everything changes here.
+signal_capture_001.html
 
-Password required.
+media/signal_capture_001.png
 
----
+relational_diagram_001.html
 
-# OBSERVATION SYSTEM
+media/relational_diagram_001.png
 
-Beyond the threshold.
+audio_artifact_001.html
 
-Not created by the Finder.
+media/audio_artifact_001.wav
 
-The audience gradually realizes this.
+Audio Artifact 001 is a documented sonification of CERN CMS Open Data. It is distinct from Audio Artifact 002, the hidden-track object at the deepest accessible layer.
 
-```
-/
-│
-├── observation/
-│
-├── interpretation/
-│
-├── prediction/
-│
-├── intervention/
-│
-├── outcome/
-│
-├── variance/
-│
-├── failure/
-│
-├── testimony/
-│
-├── biospheres/
-│
-├── civilizations/
-│
-└── artifacts/
-```
+6. Evidentiary Corpus
 
----
+site/restricted/archive/external_records/ is an adjacent comparative evidence layer. It is promoted from obscurity through a prominent entrance on the restricted hub, but it is intentionally excluded from the relational map.
 
-# OBSERVATION
+The separation prevents historical examples from being mistaken for native records of the observation system while allowing them to test and complicate its claims.
 
-Raw records.
+Band 01 — External Orientation
 
-No conclusions.
+Record
 
----
+Subject
 
-# INTERPRETATION
+self_representation_record_001.html
 
-Models.
+Voyager Golden Record
 
-Relationships.
+boundary_extension_event_001.html
 
-Emerging patterns.
+Voyager 1
 
----
+perspective_revision_event_001.html
 
-# PREDICTION
+Earthrise
 
-Future projections.
+directed_presence_transmission_001.html
 
-Confidence estimates.
+Arecibo message
 
-Revision history.
+Band 02 — Anticipatory Protection
 
----
+Record
 
-# INTERVENTION
+Subject
 
-Documented Observer actions.
+protective_external_intervention_001.html
 
-Not every intervention succeeded.
+DART planetary-defense test
 
----
+external_domain_constraint_001.html
 
-# OUTCOME
+Outer Space Treaty
 
-Measured consequences.
+Band 03 — Collective Regulation
 
-Sometimes surprising.
+Record
 
----
+Subject
 
-# VARIANCE
+distributed_regulation_event_001.html
 
-Unexpected behaviour.
+Montreal Protocol
 
-Events outside prediction.
+destructive_capacity_relinquishment_001.html
 
-One of the most important folders.
+South African nuclear dismantlement
 
-Human civilization appears frequently here.
+collective_threat_elimination_001.html
 
----
+Smallpox eradication
 
-# FAILURE
+Corpus media currently includes:
 
-Incorrect models.
+media/voyager_golden_record_cover.jpg
 
-Unsuccessful interventions.
+media/earthrise_as08_14_2383.jpg
 
-Unexpected developments.
+The corpus count displayed in its index is 09.
 
-The existence of this folder quietly reveals that the Observers are not infallible.
+7. Canonical Source and Design Documentation
 
----
+docs/ contains source text, canon, architecture, epistemology, ontology, vocabulary, storyboard, and individual record specifications. These documents govern the implemented representations but are not themselves public pages.
 
-# BIOSPHERES
+Key control documents include:
 
-Planetary ecological systems.
+docs/CANON.md
 
-Earth is only one entry.
+docs/ARCHITECTURE.md
 
-No further explanation is initially provided.
+docs/EPISTEMOLOGY.md
 
----
+docs/ONTOLOGY.md
 
-# CIVILIZATIONS
+docs/VOCABULARY.md
 
-Technological populations.
+docs/STORYBOARD.md
 
-Again...
+docs/DOCUMENT_MATRIX.md
 
-Earth should not be the only one.
+docs/FILE_INDEX.md
 
-The audience is left to wonder what the others are.
+When an implementation and this index diverge, update this index only after confirming whether the implementation or the canon is authoritative.
 
----
+8. Architecture Constraints
 
-# ARTIFACTS
+Restricted records must remain inaccessible without a valid signed cookie.
 
-Recovered cultural objects.
+The development entrance must issue the same cookie format accepted by middleware.
 
-Music.
+The Evidentiary Corpus remains adjacent to, not embedded within, the relational topology.
 
-Images.
+Audio Artifact 001 and Audio Artifact 002 must remain canonically distinct.
 
-Language samples.
+The authority-resistance anomaly remains unindexed and absent from search.
 
-Recorded broadcasts.
+Public pages must not expose Cloudflare secrets or development tokens.
 
-The hidden track eventually resides here.
-
-Not because it is a reward.
-
-Because, to the Observers, it is one more cultural artifact worthy of preservation.
-
----
-
-# DESIGN RULES
-
-Not every folder should be accessible.
-
-Not every file should exist.
-
-Some files should exist only as references.
-
-Some should be permanently missing.
-
-Some should contradict earlier assumptions.
-
-The audience should gradually realize they are exploring a living system rather than a completed archive.
-
----
-
-# FINAL PRINCIPLE
-
-The archive should always feel larger than the portion available to the audience.
-
-The greatest mystery is not what the audience discovers.
-
-It is what remains just beyond their reach.
-
-```
-```
+Nontext media must retain provenance, alt text or equivalent description, and its interpretive constrai

@@ -2,20 +2,16 @@ const COOKIE_NAME = "restricted_access";
 const COOKIE_PAYLOAD = "restricted-access-v1";
 
 
-function base64UrlEncode(buffer) {
-  const bytes =
-    new Uint8Array(buffer);
-
-  let binary = "";
-
-  for (const byte of bytes) {
-    binary += String.fromCharCode(byte);
-  }
-
-  return btoa(binary)
-    .replace(/\+/g, "-")
-    .replace(/\//g, "_")
-    .replace(/=+$/g, "");
+function hexFromBytes(buffer) {
+  return Array.from(
+    new Uint8Array(buffer)
+  )
+    .map((byte) =>
+      byte
+        .toString(16)
+        .padStart(2, "0")
+    )
+    .join("");
 }
 
 
@@ -45,7 +41,7 @@ async function hmacSign(
       encoder.encode(value)
     );
 
-  return base64UrlEncode(
+  return hexFromBytes(
     signature
   );
 }
@@ -93,7 +89,7 @@ export async function onRequestGet(
 
     RESTRICTED_COOKIE_SECRET is the existing signing secret.
 
-    RESTRICTED_DEV_TOKEN is a new, separate secret used only
+    RESTRICTED_DEV_TOKEN is a separate secret used only
     for this development entry route.
   */
 
@@ -141,8 +137,8 @@ export async function onRequestGet(
 
 
   /*
-    Generate exactly the same cookie signature expected by
-    the restricted archive middleware.
+    Generate exactly the same hexadecimal cookie signature
+    expected by the restricted archive middleware.
   */
 
   const cookieValue =

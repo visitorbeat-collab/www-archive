@@ -1,12 +1,10 @@
-# STORYBOARD.md
+STORYBOARD.md
 
-**Status:** Internal Experience Design
-**Project:** World Wide Waste
-**Purpose:** Defines the emotional progression of the audience from the moment they hear the record until they leave the archive.
+Status: Internal Experience Design
+Project: World Wide Waste
+Purpose: Defines the emotional progression of the audience from the moment they hear the record until they leave the archive.
 
----
-
-# Core Design Philosophy
+Core Design Philosophy
 
 The archive is not intended to convince people that extraterrestrials exist.
 
@@ -14,10 +12,13 @@ The archive is intended to make the audience question how knowledge is construct
 
 Every stage of the experience should reward:
 
-* curiosity
-* observation
-* patience
-* interpretation
+curiosity
+
+observation
+
+patience
+
+interpretation
 
 Never speed.
 
@@ -25,9 +26,7 @@ Never luck.
 
 Never brute force.
 
----
-
-# Emotional Journey
+Emotional Journey
 
 The audience should experience the project in approximately this order:
 
@@ -67,9 +66,7 @@ Unease is preferable to fear.
 
 Wonder is preferable to certainty.
 
----
-
-# Stage 0 — The Record
+Stage 0 — The Record
 
 The listener purchases or discovers the physical EP.
 
@@ -77,10 +74,13 @@ Initially it appears to be nothing more than an industrial/EBM release.
 
 Only careful listeners notice:
 
-* the locked groove
-* the reversed phrase
-* unusual typography
-* recurring italicized characters
+the locked groove
+
+the reversed phrase
+
+unusual typography
+
+recurring italicized characters
 
 Objective:
 
@@ -90,9 +90,7 @@ Emotion:
 
 "I wonder if that's intentional."
 
----
-
-# Stage 1 — The Puzzle
+Stage 1 — The Puzzle
 
 The listener decodes the hidden URL.
 
@@ -110,9 +108,7 @@ Observation alone is insufficient.
 
 Interpretation is required.
 
----
-
-# Stage 2 — First Contact
+Stage 2 — First Contact
 
 The URL opens an unexpectedly ordinary webpage.
 
@@ -132,9 +128,7 @@ Emotion:
 
 "Is this really all there is?"
 
----
-
-# Stage 3 — Meeting the Finder
+Stage 3 — Meeting the Finder
 
 The audience reads the Finder's introduction.
 
@@ -142,18 +136,19 @@ The Finder makes no extraordinary claims.
 
 Instead he explains:
 
-* why he built the index
-* why the material has been preserved
-* what he does and does not know
-* how uncertain he remains
+why he built the index
+
+why the material has been preserved
+
+what he does and does not know
+
+how uncertain he remains
 
 His honesty is the foundation of the entire experience.
 
 If the audience trusts the Finder, they will continue.
 
----
-
-# Stage 4 — Reconstruction
+Stage 4 — Reconstruction
 
 The audience begins exploring the Finder's notes.
 
@@ -177,9 +172,7 @@ Emotion:
 
 "This is stranger than I expected."
 
----
-
-# Stage 5 — The Roman Road
+Stage 5 — The Roman Road
 
 The audience reaches the journal entry describing archaeological reconstruction.
 
@@ -193,21 +186,19 @@ This is the emotional turning point of the journal.
 
 The audience should begin suspecting that the Finder has stumbled onto something beyond his own work.
 
----
-
-# Stage 6 — Threshold
+Stage 6 — Threshold
 
 The Finder explains that his reconstruction eventually produced material he cannot account for.
 
 He warns readers that everything beyond this point exists outside his confidence.
 
-A password is required.
+A relational gate interrupts ordinary navigation.
 
-The password does not reward intelligence.
+The gate is an interpretive filter, not a password puzzle.
 
 It rewards interpretation.
 
-Entering the correct password does not produce celebration.
+Completing the relation does not produce celebration.
 
 It simply grants access.
 
@@ -215,9 +206,7 @@ Desired reaction:
 
 "I've crossed into another layer."
 
----
-
-# Stage 7 — The Observation System
+Stage 7 — The Restricted Archive
 
 The structure changes subtly.
 
@@ -225,15 +214,37 @@ The Finder's writing becomes less frequent.
 
 Observer material begins appearing.
 
+The archive is organized as a relational topology:
+
+condition
+
+boundary
+
+retention
+
+exposure
+
+participation
+
+effect
+
+nontext
+
+The reader moves among concepts rather than through a conventional hierarchy.
+
 The audience notices differences before consciously identifying them.
 
 Differences include:
 
-* terminology
-* confidence
-* formatting
-* classification systems
-* emotional absence
+terminology
+
+confidence
+
+formatting
+
+classification systems
+
+emotional absence
 
 No document explicitly announces:
 
@@ -241,21 +252,35 @@ No document explicitly announces:
 
 The audience arrives at that possibility through accumulated evidence.
 
----
+Stage 8 — Adjacent Evidence and Nontext
 
-# Stage 8 — The Hidden Track
+The Evidentiary Corpus appears as a prominent adjacent layer.
+
+It contains human historical records of external orientation, anticipatory protection, and collective regulation.
+
+It does not become another node in the restricted topology.
+
+This separation matters: the corpus tests the observation system's implications without being mistaken for material native to it.
+
+The nontext collection changes the reader's relationship to format.
+
+Images, diagrams, signals, and audio are retained because description cannot preserve all of their evidentiary properties.
+
+Audio Artifact 001 makes the archive's translation problem explicit. It is a documented human sonification of public collision-event data, not the literal sound of the event. Its disclosed mapping teaches the reader to ask what survives, what changes, and who selected the transformation.
+
+Stage 9 — The Hidden Track
 
 The deepest accessible layer contains the recovered audio.
 
-The hidden track is presented as an artifact within the system rather than a conventional bonus song.
+Audio Artifact 002 is presented as an artifact within the system rather than a conventional bonus song.
+
+It remains canonically distinct from the documented sonification in Audio Artifact 001.
 
 Its existence should raise questions rather than answer them.
 
 The audience should reconsider the EP they have already heard in light of everything they have discovered.
 
----
-
-# Stage 9 — Departure
+Stage 10 — Departure
 
 The archive does not conclude with an explanation.
 
@@ -263,17 +288,19 @@ It concludes with absence.
 
 The audience leaves without knowing:
 
-* exactly who the Observers are
-* how the system functions
-* whether the Finder is still active
-* whether the archive is complete
-* whether they have reached the deepest level
+exactly who the Observers are
+
+how the system functions
+
+whether the Finder is still active
+
+whether the archive is complete
+
+whether they have reached the deepest level
 
 The mystery continues beyond the final page.
 
----
-
-# Reader Experience Goals
+Reader Experience Goals
 
 By the end of the experience, the audience should believe:
 
@@ -285,43 +312,31 @@ Not:
 
 The emotional reward comes from discovery rather than completion.
 
----
+Design Rules
 
-# Design Rules
-
-## Never Rush
+Never Rush
 
 The audience should always have time to think.
 
----
-
-## Never Over Explain
+Never Over Explain
 
 Evidence is stronger than exposition.
 
----
-
-## Never Break Character
+Never Break Character
 
 Every document should feel as though it existed before the audience arrived.
 
----
-
-## Never Reward Guessing
+Never Reward Guessing
 
 Every puzzle should reward careful interpretation.
 
----
-
-## Never Reveal the Entire Truth
+Never Reveal the Entire Truth
 
 Mystery is an active component of the experience.
 
 Questions left unanswered create a world that feels larger than what has been shown.
 
----
-
-# Final Objective
+Final Objective
 
 The ideal audience member closes the browser believing two things simultaneously:
 
@@ -331,4 +346,4 @@ and
 
 "I cannot stop thinking about it."
 
-That lingering uncertainty is the intended ending of *World Wide Waste*.
+That lingering uncertainty is the intended ending of World Wide Waste.

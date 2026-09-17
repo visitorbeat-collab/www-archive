@@ -1,0 +1,813 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>Destructive Capacity Relinquishment 001</title>
+
+  <link
+    rel="stylesheet"
+    href="/style.css"
+  >
+
+  <link
+    rel="stylesheet"
+    href="/restricted/restricted.css"
+  >
+
+  <style>
+    .relinquishment-reconstruction {
+      margin: 2.5rem 0;
+      padding: 1.5rem 0;
+
+      border-top:
+        1px solid
+        rgba(220, 230, 235, 0.16);
+
+      border-bottom:
+        1px solid
+        rgba(220, 230, 235, 0.16);
+    }
+
+    .reconstruction-label {
+      margin: 0 0 0.4rem;
+
+      font-family:
+        "IBM Plex Mono",
+        monospace;
+
+      font-size: 0.72rem;
+      letter-spacing: 0.08em;
+
+      color:
+        rgba(220, 230, 235, 0.62);
+    }
+
+    .reconstruction-value {
+      margin: 0 0 1.5rem;
+    }
+
+    .inventory-panel {
+      display: grid;
+
+      grid-template-columns:
+        repeat(3, minmax(0, 1fr));
+
+      gap: 1rem;
+
+      margin-bottom: 1.5rem;
+    }
+
+    .inventory-state {
+      min-height: 145px;
+      padding: 1rem;
+
+      border:
+        1px solid
+        rgba(220, 230, 235, 0.16);
+
+      background:
+        rgba(8, 12, 15, 0.48);
+    }
+
+    .inventory-state-code {
+      display: block;
+      margin-bottom: 0.75rem;
+
+      font-family:
+        "IBM Plex Mono",
+        monospace;
+
+      font-size: 0.67rem;
+      letter-spacing: 0.1em;
+
+      color:
+        rgba(132, 213, 232, 0.62);
+    }
+
+    .device-markers {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.45rem;
+
+      margin: 0.8rem 0 1rem;
+    }
+
+    .device-marker {
+      width: 18px;
+      height: 18px;
+
+      border:
+        1px solid
+        rgba(132, 213, 232, 0.58);
+
+      background:
+        rgba(132, 213, 232, 0.24);
+    }
+
+    .device-marker.is-incomplete {
+      background:
+        linear-gradient(
+          90deg,
+          rgba(132, 213, 232, 0.24) 50%,
+          transparent 50%
+        );
+    }
+
+    .inventory-zero {
+      display: block;
+
+      margin: 0.25rem 0 0.5rem;
+
+      font-family:
+        "IBM Plex Mono",
+        monospace;
+
+      font-size: 2.4rem;
+      line-height: 1;
+
+      color:
+        rgba(132, 213, 232, 0.76);
+    }
+
+    .inventory-state-title {
+      display: block;
+
+      font-family:
+        "IBM Plex Mono",
+        monospace;
+
+      font-size: 0.75rem;
+      letter-spacing: 0.08em;
+
+      color:
+        rgba(225, 232, 236, 0.82);
+    }
+
+    .inventory-state-description {
+      margin: 0.65rem 0 0;
+
+      font-size: 0.82rem;
+      line-height: 1.5;
+
+      color:
+        rgba(205, 214, 219, 0.64);
+    }
+
+    .relinquishment-sequence {
+      display: grid;
+
+      grid-template-columns:
+        repeat(4, minmax(0, 1fr));
+
+      gap: 1rem;
+    }
+
+    .sequence-stage {
+      position: relative;
+
+      min-height: 148px;
+      padding: 1rem;
+
+      border:
+        1px solid
+        rgba(220, 230, 235, 0.16);
+
+      background:
+        rgba(8, 12, 15, 0.48);
+    }
+
+    .sequence-stage:not(:last-child)::after {
+      content: "→";
+
+      position: absolute;
+      top: 50%;
+      right: -0.75rem;
+
+      transform:
+        translate(50%, -50%);
+
+      font-family:
+        "IBM Plex Mono",
+        monospace;
+
+      font-size: 0.78rem;
+
+      color:
+        rgba(132, 213, 232, 0.42);
+    }
+
+    .sequence-stage-number {
+      display: block;
+      margin-bottom: 0.65rem;
+
+      font-family:
+        "IBM Plex Mono",
+        monospace;
+
+      font-size: 0.67rem;
+      letter-spacing: 0.1em;
+
+      color:
+        rgba(132, 213, 232, 0.62);
+    }
+
+    .sequence-stage-title {
+      display: block;
+      margin-bottom: 0.55rem;
+
+      font-family:
+        "IBM Plex Mono",
+        monospace;
+
+      font-size: 0.74rem;
+      letter-spacing: 0.08em;
+
+      color:
+        rgba(225, 232, 236, 0.82);
+    }
+
+    .sequence-stage-description {
+      margin: 0;
+
+      font-size: 0.82rem;
+      line-height: 1.5;
+
+      color:
+        rgba(205, 214, 219, 0.64);
+    }
+
+    .reconstruction-note {
+      margin-top: 1.5rem;
+    }
+
+    @media (max-width: 760px) {
+      .inventory-panel,
+      .relinquishment-sequence {
+        grid-template-columns: 1fr;
+      }
+
+      .inventory-state,
+      .sequence-stage {
+        min-height: 0;
+      }
+
+      .sequence-stage:not(:last-child)::after {
+        content: "↓";
+
+        top: auto;
+        right: auto;
+        bottom: -1rem;
+        left: 50%;
+
+        transform:
+          translate(-50%, 50%);
+      }
+    }
+  </style>
+</head>
+
+<body class="restricted-page">
+
+  <main class="restricted-document">
+
+    <header class="restricted-document-header">
+
+      <div class="restricted-document-path">
+        /restricted/archive/external_records/
+        destructive_capacity_relinquishment_001
+      </div>
+
+      <h1>
+        DESTRUCTIVE CAPACITY RELINQUISHMENT 001
+      </h1>
+
+      <p class="restricted-document-subtitle">
+        Deliberate removal of an operationally retained
+        population-destructive capability under conditions
+        allowing subsequent external verification.
+      </p>
+
+    </header>
+
+
+    <section class="restricted-document-section">
+
+      <h2>
+        SOURCE IDENTIFICATION
+      </h2>
+
+      <p>
+        State-directed termination of a concealed nuclear
+        weapons programme.
+      </p>
+
+      <p>
+        Originating authority:
+        Republic of South Africa under the apartheid government.
+      </p>
+
+      <p>
+        Physical inventory declared:
+        six completed nuclear explosive devices and one device
+        under construction.
+      </p>
+
+      <p>
+        Dismantlement interval:
+        1990–1991.
+      </p>
+
+      <p>
+        Public disclosure:
+        24 March 1993.
+      </p>
+
+    </section>
+
+
+    <section class="restricted-document-section">
+
+      <h2>
+        HUMAN CLASSIFICATION
+      </h2>
+
+      <p>
+        Unilateral nuclear disarmament followed by accession to
+        the Treaty on the Non-Proliferation of Nuclear Weapons
+        as a non-nuclear-weapon state.
+      </p>
+
+      <p>
+        Subsequent safeguards and dismantlement verification by
+        the International Atomic Energy Agency.
+      </p>
+
+    </section>
+
+
+    <section class="restricted-document-section">
+
+      <h2>
+        EXTERNAL CLASSIFICATION
+      </h2>
+
+      <p>
+        Destructive capacity relinquishment.
+      </p>
+
+      <p>
+        Removal of retained instruments whose primary strategic
+        function depended upon the credible possibility of
+        population-scale destruction.
+      </p>
+
+    </section>
+
+
+    <section class="restricted-document-section">
+
+      <h2>
+        OBSERVED CONDITION
+      </h2>
+
+      <p>
+        The originating authority had already completed the
+        difficult transition from theoretical knowledge to
+        material capability. Fissile material had been produced,
+        devices had been constructed, specialized facilities
+        existed, and personnel retained the knowledge required
+        to support the programme.
+      </p>
+
+      <p>
+        Relinquishment therefore did not consist of deciding
+        against an unrealized possibility. It required the
+        deliberate dismantlement of physical objects and
+        infrastructure produced through sustained institutional
+        effort.
+      </p>
+
+    </section>
+
+
+    <section class="relinquishment-reconstruction">
+
+      <p class="reconstruction-label">
+        CAPABILITY STATE RECONSTRUCTION
+      </p>
+
+      <p class="reconstruction-value">
+        Declared physical inventory and retained capability after
+        dismantlement.
+      </p>
+
+
+      <div class="inventory-panel">
+
+        <div class="inventory-state">
+
+          <span class="inventory-state-code">
+            COMPLETED / 06
+          </span>
+
+          <div
+            class="device-markers"
+            aria-label="Six completed devices"
+          >
+            <span class="device-marker"></span>
+            <span class="device-marker"></span>
+            <span class="device-marker"></span>
+            <span class="device-marker"></span>
+            <span class="device-marker"></span>
+            <span class="device-marker"></span>
+          </div>
+
+          <span class="inventory-state-title">
+            CONSTRUCTED CAPABILITY
+          </span>
+
+          <p class="inventory-state-description">
+            Six devices had progressed beyond design and material
+            preparation into completed physical assemblies.
+          </p>
+
+        </div>
+
+
+        <div class="inventory-state">
+
+          <span class="inventory-state-code">
+            INCOMPLETE / 01
+          </span>
+
+          <div
+            class="device-markers"
+            aria-label="One incomplete device"
+          >
+            <span class="device-marker is-incomplete"></span>
+          </div>
+
+          <span class="inventory-state-title">
+            INTERRUPTED ASSEMBLY
+          </span>
+
+          <p class="inventory-state-description">
+            One additional device remained under construction
+            when the programme was terminated.
+          </p>
+
+        </div>
+
+
+        <div class="inventory-state">
+
+          <span class="inventory-state-code">
+            RETAINED / 00
+          </span>
+
+          <span class="inventory-zero">
+            0
+          </span>
+
+          <span class="inventory-state-title">
+            ASSEMBLED DEVICES
+          </span>
+
+          <p class="inventory-state-description">
+            Declared devices were dismantled and weapon material
+            was returned to safeguarded inventory.
+          </p>
+
+        </div>
+
+      </div>
+
+
+      <div class="relinquishment-sequence">
+
+        <div class="sequence-stage">
+
+          <span class="sequence-stage-number">
+            01
+          </span>
+
+          <span class="sequence-stage-title">
+            DISASSEMBLE
+          </span>
+
+          <p class="sequence-stage-description">
+            Completed and incomplete devices were reduced to
+            separated components.
+          </p>
+
+        </div>
+
+
+        <div class="sequence-stage">
+
+          <span class="sequence-stage-number">
+            02
+          </span>
+
+          <span class="sequence-stage-title">
+            RECOVER
+          </span>
+
+          <p class="sequence-stage-description">
+            Highly enriched uranium was removed, recast, and
+            returned to the civilian atomic-energy authority.
+          </p>
+
+        </div>
+
+
+        <div class="sequence-stage">
+
+          <span class="sequence-stage-number">
+            03
+          </span>
+
+          <span class="sequence-stage-title">
+            DISABLE
+          </span>
+
+          <p class="sequence-stage-description">
+            Specialized components and records were destroyed;
+            relevant facilities were decontaminated or converted.
+          </p>
+
+        </div>
+
+
+        <div class="sequence-stage">
+
+          <span class="sequence-stage-number">
+            04
+          </span>
+
+          <span class="sequence-stage-title">
+            VERIFY
+          </span>
+
+          <p class="sequence-stage-description">
+            External inspectors examined material declarations,
+            facilities, historical records, and remaining
+            programme evidence.
+          </p>
+
+        </div>
+
+      </div>
+
+
+      <div class="reconstruction-note">
+
+        <p class="reconstruction-label">
+          RECONSTRUCTION NOTE
+        </p>
+
+        <p>
+          The sequence represents the principal transitions
+          required to change an assembled arsenal into a
+          verifiably absent one. It does not reconstruct device
+          design, handling procedures, or weapons information.
+        </p>
+
+      </div>
+
+    </section>
+
+
+    <section class="restricted-document-section">
+
+      <h2>
+        RELINQUISHMENT STRUCTURE
+      </h2>
+
+      <p>
+        The programme was not simply suspended. Devices were
+        disassembled, nuclear material was removed from weapon
+        assemblies, specialized components were destroyed, and
+        facilities were decontaminated or redirected toward
+        non-weapon use.
+      </p>
+
+      <p>
+        This distinction is material. A paused programme retains
+        its physical inventory while waiting for conditions to
+        change. Dismantlement imposes additional time, cost,
+        visibility, and institutional effort upon any later
+        attempt to restore the same capability.
+      </p>
+
+    </section>
+
+
+    <section class="restricted-document-section">
+
+      <h2>
+        VERIFICATION CONDITION
+      </h2>
+
+      <p>
+        External verification began after much of the physical
+        dismantlement had already occurred. Inspectors therefore
+        could not observe every destructive act directly. They
+        had to compare declared inventories with production
+        history, remaining nuclear material, facilities,
+        documentation, and physical evidence left by the former
+        programme.
+      </p>
+
+      <p>
+        The resulting conclusion depended upon consistency
+        across several incomplete forms of evidence. This is
+        weaker than continuous observation of the entire process,
+        but stronger than accepting a declaration without
+        inspection or material accounting.
+      </p>
+
+    </section>
+
+
+    <section class="restricted-document-section">
+
+      <h2>
+        KNOWLEDGE PERSISTENCE
+      </h2>
+
+      <p>
+        Physical relinquishment did not remove the scientific and
+        engineering knowledge through which the devices had been
+        produced. Personnel retained experience, and the broader
+        population retained access to the underlying disciplines
+        required for a future programme.
+      </p>
+
+      <p>
+        The event therefore demonstrates relinquishment of an
+        assembled capability, not a return to incapacity. Its
+        durability depends upon continued institutional restraint,
+        safeguards, material control, and the absence of a later
+        decision to reconstruct what remains technically possible.
+      </p>
+
+    </section>
+
+
+    <section class="restricted-document-section">
+
+      <h2>
+        POLITICAL CONDITION
+      </h2>
+
+      <p>
+        The decision occurred during regional strategic change,
+        international isolation, and the approaching transfer
+        from apartheid rule toward representative government.
+        These conditions prevent a simple interpretation based
+        upon moral development alone.
+      </p>
+
+      <p>
+        Relinquishment may have served several objectives at once:
+        reduced cost, diplomatic reintegration, adaptation to a
+        changed security environment, and control over which
+        future authority would inherit the arsenal. Mixed motive
+        does not erase the physical outcome, but it limits what
+        may be inferred from it.
+      </p>
+
+    </section>
+
+
+    <section class="restricted-document-section">
+
+      <h2>
+        RETENTION BASIS
+      </h2>
+
+      <p>
+        This event records a rare instance in which a population
+        created nuclear weapons, retained control of them, and
+        subsequently dismantled the complete declared arsenal
+        without transferring the devices to another authority.
+      </p>
+
+      <p>
+        It is retained because it establishes that destructive
+        capacity can be treated as reversible even after major
+        material and institutional thresholds have been crossed.
+        Technical achievement did not make permanent possession
+        inevitable.
+      </p>
+
+    </section>
+
+
+    <section class="restricted-document-section">
+
+      <h2>
+        MATURITY INDICATOR
+      </h2>
+
+      <p>
+        The event demonstrates a limited capacity to separate
+        possession from necessity. Resources already spent,
+        secrecy already maintained, and capability already
+        achieved did not prevent the originating authority from
+        accepting material loss and external scrutiny.
+      </p>
+
+      <p>
+        This is relevant to transition assessment because a
+        population with increasing power must sometimes abandon
+        a capability whose existence produces more instability
+        than protection. Regulation is incomplete if every
+        acquired capacity is assumed to require indefinite
+        preservation.
+      </p>
+
+    </section>
+
+
+    <section class="restricted-document-section">
+
+      <h2>
+        LIMITATION
+      </h2>
+
+      <p>
+        The relinquishment involved one state system and a small
+        arsenal under centralized control. It did not require
+        simultaneous agreement among several hostile nuclear
+        powers, nor did it remove the wider planetary inventory
+        of nuclear weapons.
+      </p>
+
+      <p>
+        Conditions that made dismantlement acceptable in this
+        case may not be reproducible where arsenals are larger,
+        authority is fragmented, strategic dependence is deeper,
+        or reciprocal distrust makes unilateral action appear
+        immediately dangerous.
+      </p>
+
+    </section>
+
+
+    <section class="restricted-document-section">
+
+      <h2>
+        INTERPRETIVE CAUTION
+      </h2>
+
+      <p>
+        The event should not be retained as evidence that the
+        apartheid government had developed a stable commitment
+        to shared human security. The system relinquishing the
+        weapons continued, during much of the relevant period,
+        to deny political autonomy and equal protection to most
+        of the population under its control.
+      </p>
+
+      <p>
+        Capacity for restraint in one domain can coexist with
+        severe domination in another. The event proves that
+        dismantlement occurred. It does not permit the motives,
+        governing system, or broader conduct of the originating
+        authority to be purified by that outcome.
+      </p>
+
+    </section>
+
+
+    <section class="restricted-document-section">
+
+      <p>
+        The material capability was removed.
+      </p>
+
+      <p>
+        The conditions capable of producing it remained within
+        the population.
+      </p>
+
+    </section>
+
+
+    <footer class="restricted-document-footer">
+
+      <a
+        href="/restricted/archive/external_records/"
+      >
+        ← external records
+      </a>
+
+    </footer>

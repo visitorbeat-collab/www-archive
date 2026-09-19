@@ -1,0 +1,705 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>Comparative Convergence Assessment 001</title>
+
+  <link
+    rel="stylesheet"
+    href="/style.css"
+  >
+
+  <link
+    rel="stylesheet"
+    href="/restricted/restricted.css"
+  >
+
+  <style>
+    .assessment-status {
+      display: grid;
+      grid-template-columns:
+        repeat(4, minmax(0, 1fr));
+      gap: 0.75rem;
+      margin: 2.5rem 0;
+    }
+
+    .status-cell {
+      min-height: 118px;
+      padding: 1rem;
+      border:
+        1px solid
+        rgba(220, 230, 235, 0.14);
+      background:
+        rgba(8, 12, 15, 0.48);
+    }
+
+    .status-label {
+      display: block;
+      margin-bottom: 0.7rem;
+      font-family:
+        "IBM Plex Mono",
+        monospace;
+      font-size: 0.64rem;
+      line-height: 1.45;
+      letter-spacing: 0.1em;
+      color:
+        rgba(205, 214, 219, 0.5);
+    }
+
+    .status-value {
+      display: block;
+      font-family:
+        "IBM Plex Mono",
+        monospace;
+      font-size: 0.78rem;
+      line-height: 1.5;
+      letter-spacing: 0.08em;
+      color:
+        rgba(132, 213, 232, 0.76);
+    }
+
+    .convergence-field {
+      margin: 2.5rem 0;
+      padding: 1.5rem 0;
+      border-top:
+        1px solid
+        rgba(220, 230, 235, 0.16);
+      border-bottom:
+        1px solid
+        rgba(220, 230, 235, 0.16);
+    }
+
+    .field-label {
+      margin: 0 0 0.4rem;
+      font-family:
+        "IBM Plex Mono",
+        monospace;
+      font-size: 0.72rem;
+      letter-spacing: 0.08em;
+      color:
+        rgba(220, 230, 235, 0.62);
+    }
+
+    .field-description {
+      margin: 0 0 1.5rem;
+      max-width: 760px;
+    }
+
+    .evidence-bands {
+      display: grid;
+      grid-template-columns:
+        repeat(3, minmax(0, 1fr));
+      gap: 1rem;
+    }
+
+    .evidence-band {
+      position: relative;
+      min-height: 225px;
+      padding: 1rem;
+      border:
+        1px solid
+        rgba(220, 230, 235, 0.14);
+      background:
+        rgba(8, 12, 15, 0.48);
+    }
+
+    .evidence-band::after {
+      content: "";
+      position: absolute;
+      left: 50%;
+      bottom: -2rem;
+      width: 1px;
+      height: 2rem;
+      background:
+        linear-gradient(
+          to bottom,
+          rgba(132, 213, 232, 0.34),
+          rgba(132, 213, 232, 0.08)
+        );
+    }
+
+    .band-code {
+      display: block;
+      margin-bottom: 0.8rem;
+      font-family:
+        "IBM Plex Mono",
+        monospace;
+      font-size: 0.66rem;
+      letter-spacing: 0.1em;
+      color:
+        rgba(132, 213, 232, 0.64);
+    }
+
+    .band-title {
+      display: block;
+      margin-bottom: 0.7rem;
+      font-family:
+        "IBM Plex Mono",
+        monospace;
+      font-size: 0.76rem;
+      line-height: 1.5;
+      letter-spacing: 0.08em;
+      color:
+        rgba(225, 232, 236, 0.82);
+    }
+
+    .band-observation {
+      margin: 0;
+      font-size: 0.82rem;
+      line-height: 1.55;
+      color:
+        rgba(205, 214, 219, 0.64);
+    }
+
+    .convergence-result {
+      width: min(680px, 92%);
+      margin: 2rem auto 0;
+      padding: 1.15rem 1.25rem;
+      border:
+        1px solid
+        rgba(132, 213, 232, 0.22);
+      background:
+        rgba(132, 213, 232, 0.025);
+      text-align: center;
+    }
+
+    .convergence-result-label {
+      display: block;
+      margin-bottom: 0.55rem;
+      font-family:
+        "IBM Plex Mono",
+        monospace;
+      font-size: 0.64rem;
+      letter-spacing: 0.12em;
+      color:
+        rgba(132, 213, 232, 0.58);
+    }
+
+    .convergence-result-value {
+      display: block;
+      font-family:
+        "IBM Plex Mono",
+        monospace;
+      font-size: 0.82rem;
+      line-height: 1.6;
+      letter-spacing: 0.07em;
+      color:
+        rgba(225, 232, 236, 0.8);
+    }
+
+    .generalization-grid {
+      display: grid;
+      grid-template-columns:
+        repeat(5, minmax(0, 1fr));
+      gap: 0.75rem;
+      margin: 2.5rem 0;
+    }
+
+    .generalization-cell {
+      min-height: 170px;
+      padding: 0.9rem;
+      border:
+        1px solid
+        rgba(220, 230, 235, 0.14);
+      background:
+        rgba(8, 12, 15, 0.4);
+    }
+
+    .generalization-number {
+      display: block;
+      margin-bottom: 0.65rem;
+      font-family:
+        "IBM Plex Mono",
+        monospace;
+      font-size: 0.64rem;
+      letter-spacing: 0.1em;
+      color:
+        rgba(132, 213, 232, 0.58);
+    }
+
+    .generalization-title {
+      display: block;
+      margin-bottom: 0.65rem;
+      font-family:
+        "IBM Plex Mono",
+        monospace;
+      font-size: 0.71rem;
+      line-height: 1.45;
+      letter-spacing: 0.07em;
+      color:
+        rgba(225, 232, 236, 0.8);
+    }
+
+    .generalization-state {
+      margin: 0;
+      font-size: 0.78rem;
+      line-height: 1.5;
+      color:
+        rgba(205, 214, 219, 0.58);
+    }
+
+    .assessment-question {
+      margin: 2.75rem 0;
+      padding: 1.3rem 1.4rem;
+      border-left:
+        2px solid
+        rgba(132, 213, 232, 0.34);
+      background:
+        rgba(132, 213, 232, 0.025);
+    }
+
+    .assessment-question p {
+      margin: 0;
+      font-family:
+        "IBM Plex Mono",
+        monospace;
+      font-size: 0.86rem;
+      line-height: 1.7;
+      letter-spacing: 0.04em;
+      color:
+        rgba(225, 232, 236, 0.76);
+    }
+
+    @media (max-width: 860px) {
+      .assessment-status {
+        grid-template-columns:
+          repeat(2, minmax(0, 1fr));
+      }
+
+      .generalization-grid {
+        grid-template-columns:
+          repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 700px) {
+      .evidence-bands,
+      .assessment-status,
+      .generalization-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .evidence-band {
+        min-height: 0;
+      }
+
+      .evidence-band::after {
+        display: none;
+      }
+
+      .status-cell,
+      .generalization-cell {
+        min-height: 0;
+      }
+    }
+  </style>
+</head>
+
+<body class="restricted-page">
+
+  <main class="restricted-document">
+
+    <header class="restricted-document-header">
+
+      <div class="restricted-document-path">
+        /restricted/archive/external_records/
+        comparative_convergence_assessment_001
+      </div>
+
+      <h1>
+        COMPARATIVE CONVERGENCE ASSESSMENT 001
+      </h1>
+
+      <p class="restricted-document-subtitle">
+        Cross-domain comparison of retained population-originated
+        evidence relevant to expanding consequence, regulation,
+        and wider participation.
+      </p>
+
+    </header>
+
+
+    <section class="restricted-document-section">
+
+      <h2>
+        ASSESSMENT BASIS
+      </h2>
+
+      <p>
+        This assessment introduces no additional event record.
+        It compares nine retained instances in which the
+        population perceived, crossed, revised, protected, or
+        regulated a boundary larger than the immediate interests
+        of a single actor.
+      </p>
+
+      <p>
+        The records were not selected as representative samples
+        of ordinary population behaviour. They were retained
+        because each demonstrates a capacity relevant to wider
+        participation under a distinct set of conditions.
+      </p>
+
+    </section>
+
+
+    <section
+      class="assessment-status"
+      aria-label="Comparative assessment status"
+    >
+
+      <div class="status-cell">
+        <span class="status-label">
+          EVIDENCE SET
+        </span>
+        <span class="status-value">
+          09 RETAINED EVENTS
+        </span>
+      </div>
+
+      <div class="status-cell">
+        <span class="status-label">
+          REQUIRED CAPACITY
+        </span>
+        <span class="status-value">
+          PRESENT
+        </span>
+      </div>
+
+      <div class="status-cell">
+        <span class="status-label">
+          CROSS-DOMAIN INTEGRATION
+        </span>
+        <span class="status-value">
+          UNRESOLVED
+        </span>
+      </div>
+
+      <div class="status-cell">
+        <span class="status-label">
+          TRANSITION STATUS
+        </span>
+        <span class="status-value">
+          INDETERMINATE
+        </span>
+      </div>
+
+    </section>
+
+
+    <section class="convergence-field">
+
+      <p class="field-label">
+        EVIDENCE CONVERGENCE
+      </p>
+
+      <p class="field-description">
+        The retrieval bands approach the same developmental
+        question from different directions. No band is sufficient
+        independently.
+      </p>
+
+
+      <div class="evidence-bands">
+
+        <div class="evidence-band">
+          <span class="band-code">
+            BAND 01
+          </span>
+          <span class="band-title">
+            EXTERNAL ORIENTATION
+          </span>
+          <p class="band-observation">
+            The population can imagine an unknown recipient,
+            observe its own world from outside its familiar frame,
+            and extend effective presence beyond its local
+            biological boundary.
+          </p>
+        </div>
+
+        <div class="evidence-band">
+          <span class="band-code">
+            BAND 02
+          </span>
+          <span class="band-title">
+            ANTICIPATORY PROTECTION
+          </span>
+          <p class="band-observation">
+            The population can model a consequence before it
+            becomes immediate and can carry protective constraint
+            into a domain where direct experience remains limited.
+          </p>
+        </div>
+
+        <div class="evidence-band">
+          <span class="band-code">
+            BAND 03
+          </span>
+          <span class="band-title">
+            COLLECTIVE REGULATION
+          </span>
+          <p class="band-observation">
+            Distributed actors can accept restraint, remove
+            acquired destructive capacity, and sustain coordinated
+            action beyond the point of immediate local benefit.
+          </p>
+        </div>
+
+      </div>
+
+
+      <div class="convergence-result">
+        <span class="convergence-result-label">
+          SHARED RELATION
+        </span>
+        <span class="convergence-result-value">
+          CONSEQUENCE RECOGNIZED BEYOND THE ORDINARY BOUNDARY
+          OF DIRECT EXPERIENCE
+        </span>
+      </div>
+
+    </section>
+
+
+    <section class="restricted-document-section">
+
+      <h2>
+        OBSERVED CONVERGENCE
+      </h2>
+
+      <p>
+        Across the retained records, distance does not reliably
+        terminate accounting. Unknown recipients, future
+        populations, distant regions, unfamiliar environments,
+        and systems unable to answer are sometimes included
+        before immediate consequence forces inclusion.
+      </p>
+
+      <p>
+        The population has also demonstrated that knowledge can
+        alter behaviour rather than merely increase capability.
+        Observation has, under some conditions, produced
+        constraint, relinquishment, coordinated protection, and
+        continued verification.
+      </p>
+
+    </section>
+
+
+    <section class="restricted-document-section">
+
+      <h2>
+        GENERALIZATION TEST
+      </h2>
+
+      <p>
+        Presence in one domain does not establish persistence
+        across the population. The relevant question is whether
+        the demonstrated capacities remain available when the
+        object, incentive, authority structure, and scale of
+        consequence change.
+      </p>
+
+    </section>
+
+
+    <section
+      class="generalization-grid"
+      aria-label="Cross-domain generalization test"
+    >
+
+      <div class="generalization-cell">
+        <span class="generalization-number">
+          01
+        </span>
+        <span class="generalization-title">
+          RECOGNIZE THE LARGER BOUNDARY
+        </span>
+        <p class="generalization-state">
+          Demonstrated in selected perceptual, environmental, and
+          biological contexts.
+        </p>
+      </div>
+
+      <div class="generalization-cell">
+        <span class="generalization-number">
+          02
+        </span>
+        <span class="generalization-title">
+          ANTICIPATE DELAYED CONSEQUENCE
+        </span>
+        <p class="generalization-state">
+          Demonstrated where evidence, modelling, and institutional
+          attention converged.
+        </p>
+      </div>
+
+      <div class="generalization-cell">
+        <span class="generalization-number">
+          03
+        </span>
+        <span class="generalization-title">
+          COORDINATE ACROSS DIVISION
+        </span>
+        <p class="generalization-state">
+          Demonstrated under several high-consequence conditions;
+          continuity remains uneven.
+        </p>
+      </div>
+
+      <div class="generalization-cell">
+        <span class="generalization-number">
+          04
+        </span>
+        <span class="generalization-title">
+          LIMIT ACQUIRED CAPACITY
+        </span>
+        <p class="generalization-state">
+          Demonstrated in isolated cases without establishing a
+          general relationship to increasing power.
+        </p>
+      </div>
+
+      <div class="generalization-cell">
+        <span class="generalization-number">
+          05
+        </span>
+        <span class="generalization-title">
+          VERIFY PERSISTENCE
+        </span>
+        <p class="generalization-state">
+          Demonstrated where observation continued after the
+          visible intervention had ended.
+        </p>
+      </div>
+
+    </section>
+
+
+    <section class="restricted-document-section">
+
+      <h2>
+        DISCONTINUITY
+      </h2>
+
+      <p>
+        The retained events remain exceptional enough to require
+        individual preservation. Several followed substantial
+        harm rather than preceding it. Others depended upon
+        favourable technical conditions, concentrated authority,
+        unusual political transitions, or threats whose effects
+        could be made legible to institutions.
+      </p>
+
+      <p>
+        Protective outcomes also contain unresolved participation
+        costs. Coordination may include coercion. Shared benefit
+        may conceal unequal exposure. A relinquished capability
+        may remain reproducible. A successful intervention may
+        preserve the reasoning that caused the original risk.
+      </p>
+
+      <p>
+        These limitations do not negate the demonstrated
+        capacities. They prevent isolated success from being
+        treated as a stable population characteristic.
+      </p>
+
+    </section>
+
+
+    <section class="restricted-document-section">
+
+      <h2>
+        CONTACT RELATION
+      </h2>
+
+      <p>
+        Wider contact would introduce an unfamiliar actor whose
+        capability, information, and possible influence exceed
+        the conditions represented in this corpus. The boundary
+        would expand before the receiving population had stable
+        models for what had entered it.
+      </p>
+
+      <p>
+        Under that condition, isolated evidence of restraint is
+        relevant but insufficient. Regulatory capacity would need
+        to persist under novelty, authority asymmetry, internal
+        disagreement, unequal access, and the expectation of
+        further capability.
+      </p>
+
+    </section>
+
+
+    <section class="restricted-document-section">
+
+      <h2>
+        INTERPRETIVE CAUTION
+      </h2>
+
+      <p>
+        This corpus cannot establish the frequency of the
+        behaviours it retains. Selection for relevance prevents
+        prevalence from being inferred. Nine events can prove
+        that a capacity has occurred; they cannot prove that the
+        capacity will recur when conditions become less
+        favourable.
+      </p>
+
+      <p>
+        The absence of generalization is not established either.
+        The assessment remains incomplete because the available
+        evidence supports both demonstrated capacity and
+        continued uncertainty about persistence.
+      </p>
+
+    </section>
+
+
+    <div class="assessment-question">
+      <p>
+        Can a population be considered ready because it has
+        demonstrated the required capacities, or only when those
+        capacities reliably persist across domains?
+      </p>
+    </div>
+
+
+    <section class="restricted-document-section">
+
+      <p>
+        The population has already produced the behaviours the
+        threshold appears to require.
+      </p>
+
+      <p>
+        It has not established whether those behaviours belong to
+        the population, or to the limited conditions that briefly
+        produced them.
+      </p>
+
+    </section>
+
+
+    <footer class="restricted-document-footer">
+
+      <a
+        href="/restricted/archive/external_records/"
+      >
+        ← external records
+      </a>
+
+    </footer>
+
+  </main>
+
+</body>
+</html>

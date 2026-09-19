@@ -989,6 +989,12 @@ const aliases = {
   influence: "capability",
   ability: "capability",
 
+  duty: "responsibility",
+  obligation: "responsibility",
+  accountable: "responsibility",
+  accountability: "responsibility",
+  responsible: "responsibility",
+
   mistake: "revision",
   error: "revision",
   learning: "revision",
@@ -1184,6 +1190,7 @@ readiness: "contact readiness",
 const form = document.getElementById("concept-search-form");
 const input = document.getElementById("concept-search");
 const response = document.getElementById("search-response");
+const RESTRICTED_DISCOVERY_KEY = "observation-index-restricted-discovered";
 
 
 function normalizeQuery(value) {
@@ -1206,6 +1213,16 @@ function escapeHTML(value) {
 
 
 function renderResult(originalQuery, concept, result, mapped) {
+
+  const boundaryDiscovered = concept === "responsibility";
+
+  if (boundaryDiscovered) {
+    try {
+      window.localStorage.setItem(RESTRICTED_DISCOVERY_KEY, "true");
+    } catch (error) {
+      // The current result can still expose the boundary when storage is unavailable.
+    }
+  }
 
   const related = result.related
     .map(item => `
@@ -1242,6 +1259,16 @@ function renderResult(originalQuery, concept, result, mapped) {
     ? `<p class="search-note">${escapeHTML(result.note)}</p>`
     : "";
 
+  const boundaryResponse = boundaryDiscovered
+    ? `
+      <div class="search-boundary-response">
+        <div class="search-heading">index state</div>
+        <p class="mono">boundary condition recognized</p>
+        <a href="/restricted/">restricted material available →</a>
+      </div>
+    `
+    : "";
+
   response.innerHTML = `
     ${mappingText}
 
@@ -1263,6 +1290,8 @@ function renderResult(originalQuery, concept, result, mapped) {
       <div class="search-heading">possible matches</div>
       ${documents}
     </div>
+
+    ${boundaryResponse}
   `;
 
   attachConceptButtons();

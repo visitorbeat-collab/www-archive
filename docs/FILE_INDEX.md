@@ -27,6 +27,7 @@ The public archive is the Finder's reconstructed layer.
 | `site/index.html` | Root index and primary query instrument |
 | `site/search/` | Expanded conceptual retrieval view; not presented as an archive directory |
 | `site/js/concept-search.js` | Search corpus, concept relationships, and root-query handoff |
+| `site/js/index-state.js` | Restores conditional root navigation after boundary discovery |
 | `site/style.css` | Shared public styling |
 
 The public layer remains modest and evidentiary. It does not announce the archive's largest implications.
@@ -46,6 +47,12 @@ The public layer remains modest and evidentiary. It does not announce the archiv
 # 3. Restricted Boundary
 
 The restricted layer begins at `site/restricted/index.html`.
+
+The root index does not initially list `restricted/`. When conceptual search resolves a query to
+`responsibility`, the retrieval view exposes the restricted entrance and records the discovery in
+local storage. Later visits restore the `restricted/` row under `SYSTEM / STATUS`. This controls
+discoverability only: direct URLs remain available, and the relational gate remains the actual
+access condition.
 
 The entry interaction is a relational gate rather than a conventional password puzzle. Its solution establishes a signed `restricted_access` cookie and leads to `/restricted/archive/`.
 

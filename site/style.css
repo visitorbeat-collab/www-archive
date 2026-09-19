@@ -39,6 +39,10 @@
   box-sizing: border-box;
 }
 
+[hidden] {
+  display: none !important;
+}
+
 html {
   min-height: 100%;
   background: var(--bg);
@@ -612,6 +616,21 @@ hr {
 .search-document {
   padding: 8px 0;
   border-bottom: 1px solid var(--line-soft);
+  font-family: var(--index-font);
+}
+
+.search-boundary-response {
+  margin-top: 38px;
+  padding: 20px 0 4px;
+  border-top: 1px solid var(--line);
+}
+
+.search-boundary-response p {
+  margin-bottom: 8px;
+  color: var(--text-soft);
+}
+
+.search-boundary-response a {
   font-family: var(--index-font);
 }
 

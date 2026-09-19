@@ -345,6 +345,20 @@ body.restricted-map-page {
 }
 
 
+.node-nontext.has-retained-audio .node-symbol {
+  color: rgba(151, 220, 235, 0.94);
+
+  text-shadow:
+    0 0 14px
+    rgba(132, 213, 232, 0.18);
+}
+
+
+.node-nontext.has-retained-audio .node-label {
+  opacity: 0.58;
+}
+
+
 /* ---------------------------------------------------------
    RELATION DISPLAY
    --------------------------------------------------------- */

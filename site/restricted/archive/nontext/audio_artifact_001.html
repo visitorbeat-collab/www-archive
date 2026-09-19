@@ -31,6 +31,21 @@
       opacity: 0.58;
     }
 
+    .audio-download {
+      display: inline-block;
+      margin-top: 18px;
+      font-family: "IBM Plex Mono", monospace;
+      font-size: 0.7rem;
+      letter-spacing: 0.08em;
+      color: rgba(132, 213, 232, 0.72);
+      text-decoration: none;
+    }
+
+    .audio-download:hover,
+    .audio-download:focus-visible {
+      color: rgba(168, 229, 242, 0.96);
+    }
+
     .translation-map {
       max-width: 760px;
       margin-top: 28px;
@@ -128,6 +143,14 @@
         derived from simulated CMS Higgs-to-bottom event 233917<br>
         duration: 00:42 / stereo translation / playback normalization applied
       </div>
+
+      <a
+        class="audio-download"
+        href="/restricted/archive/nontext/media/audio_artifact_001.wav"
+        download="audio_artifact_001.wav"
+      >
+        download retained object [WAV] ↓
+      </a>
 
     </div>
 

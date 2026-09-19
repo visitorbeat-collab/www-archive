@@ -60,6 +60,12 @@
   function applyVisitedState() {
     const visited = getVisitedNodes();
 
+    const retainedAudioUnlocked =
+      Boolean(
+        window.RestrictedAudioState &&
+        window.RestrictedAudioState.isUnlocked()
+      );
+
     clickableNodes.forEach((node) => {
       const nodeId = node.dataset.nodeId;
       const symbol = node.querySelector(".node-symbol");
@@ -68,13 +74,22 @@
         return;
       }
 
-      const isVisited = visited.includes(nodeId);
+      const isVisited =
+        visited.includes(nodeId);
 
       if (isVisited) {
         node.classList.add("is-visited");
 
         if (nodeId === "nontext") {
-          symbol.textContent = "◆";
+          symbol.textContent =
+            retainedAudioUnlocked
+              ? "◆"
+              : "◇";
+
+          node.classList.toggle(
+            "has-retained-audio",
+            retainedAudioUnlocked
+          );
         } else if (nodeId === "threshold") {
           symbol.textContent = "◎";
         } else {
@@ -86,6 +101,10 @@
 
         if (nodeId === "nontext") {
           symbol.textContent = "◇";
+
+          node.classList.remove(
+            "has-retained-audio"
+          );
         } else if (nodeId === "threshold") {
           symbol.textContent = "◎";
         } else {
@@ -251,6 +270,14 @@
   window.addEventListener("storage", () => {
     refreshMap();
   });
+
+
+  window.addEventListener(
+    "retainedaudiochange",
+    () => {
+      refreshMap();
+    }
+  );
 
 
   window.addEventListener("hashchange", () => {

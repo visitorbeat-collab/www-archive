@@ -279,15 +279,25 @@ Audio Artifact 001 makes the archive's translation problem explicit. It is a doc
 
 ---
 
-# Stage 9 — The Hidden Track
+# Stage 9 — Retained Audio
 
-The deepest accessible layer contains the recovered audio.
+The deepest accessible layer resolves into a retained-audio
+collection rather than a single reward.
 
 Audio Artifact 002 is presented as an artifact within the system rather than a conventional bonus song.
 
 It remains canonically distinct from the documented sonification in Audio Artifact 001.
 
 Its existence should raise questions rather than answer them.
+
+Available audio objects may be downloaded. Retention therefore
+permits the reader to keep the object rather than limiting access
+to playback inside the interface.
+
+The collection may expand with later audio artifacts. Additional
+records do not reduce Audio Artifact 002's role as the first
+concealed object revealed through the restricted interpretation
+path.
 
 The audience should reconsider the EP they have already heard in light of everything they have discovered.
 

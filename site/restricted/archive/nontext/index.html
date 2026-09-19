@@ -8,6 +8,33 @@
 
   <link rel="stylesheet" href="/style.css">
   <link rel="stylesheet" href="/restricted/restricted.css">
+
+  <style>
+    .retained-audio-entry {
+      margin-top: 1.4rem;
+      padding-top: 1.1rem;
+      border-top:
+        1px solid
+        rgba(132, 213, 232, 0.14);
+    }
+
+    .retained-audio-entry a {
+      color:
+        rgba(151, 220, 235, 0.84);
+    }
+
+    .retained-audio-status {
+      display: block;
+      margin-top: 0.35rem;
+      font-family:
+        "IBM Plex Mono",
+        monospace;
+      font-size: 0.63rem;
+      letter-spacing: 0.1em;
+      color:
+        rgba(132, 213, 232, 0.46);
+    }
+  </style>
 </head>
 
 <body class="directory-page">
@@ -47,6 +74,20 @@
   <a href="/restricted/archive/nontext/audio_artifact_001.html">
     audio_artifact_001
   </a>
+</div>
+
+<div
+  class="simple-directory-entry retained-audio-entry"
+  data-retained-audio-unlocked
+  hidden
+>
+  <a href="/restricted/archive/nontext/audio/">
+    retained_audio/
+  </a>
+
+  <span class="retained-audio-status">
+    additional retained structure resolved
+  </span>
 </div>
   </div>
 
@@ -104,6 +145,7 @@
 </main>
 
 <script src="/js/main.js"></script>
+<script src="/restricted/retained-audio.js"></script>
 
 </body>
 </html>

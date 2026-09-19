@@ -98,7 +98,23 @@ Local navigation on restricted records reproduces this topology in miniature. Th
 | `relational_diagram_001.html` | `media/relational_diagram_001.png` |
 | `audio_artifact_001.html` | `media/audio_artifact_001.wav` |
 
-Audio Artifact 001 is a documented sonification of CERN CMS Open Data. It is distinct from Audio Artifact 002, the hidden-track object at the deepest accessible layer.
+Audio Artifact 001 is a documented sonification of CERN CMS Open
+Data. Available audio objects include explicit download links so
+retention is not limited to browser playback.
+
+`nontext/audio/index.html` is the extensible retained-audio
+registry. It becomes visible after the five navigable restricted
+concepts and Comparative Convergence Assessment 001 have been
+visited.
+
+`nontext/audio/audio_artifact_002.html` is the first concealed
+audio reference. Until its media object is attached, it must
+remain explicitly unavailable rather than linking to a missing
+file.
+
+Future audio files remain in `nontext/media/` and use sequential
+`audio_artifact_###` identifiers. Audio Artifact 002 and later
+records remain canonically distinct from Audio Artifact 001.
 
 ---
 
@@ -171,6 +187,7 @@ When an implementation and this index diverge, update this index only after conf
 - The development entrance must issue the same cookie format accepted by middleware.
 - The Evidentiary Corpus remains adjacent to, not embedded within, the relational topology.
 - Audio Artifact 001 and Audio Artifact 002 must remain canonically distinct.
+- Available retained-audio objects must support local download.
 - The authority-resistance anomaly remains unindexed and absent from search.
 - Public pages must not expose Cloudflare secrets or development tokens.
 - Nontext media must retain provenance, alt text or equivalent description, and its interpretive constraints.

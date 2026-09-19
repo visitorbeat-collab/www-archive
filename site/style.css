@@ -482,6 +482,40 @@ hr {
   margin-top: 30px;
 }
 
+.index-query {
+  margin: 2.4rem 0 3.4rem;
+  padding: 1.2rem 0 1.15rem;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+
+.index-query-heading {
+  margin-bottom: 0.8rem;
+  color: var(--meta);
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+}
+
+.index-query-note {
+  margin: 0.65rem 0 0;
+  color: var(--faint);
+  font-family: var(--mono);
+  font-size: 0.72rem;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
 .search-label {
   display: block;
   margin-bottom: 7px;
@@ -614,8 +648,9 @@ hr {
   text-transform: uppercase;
 
   color: var(--meta);
+}
 
-  /* Unresolved reference response */
+/* Unresolved reference response */
 
 .unresolved-reference-page {
   min-height: 82vh;
@@ -638,5 +673,4 @@ hr {
 .unresolved-reference-page .document-footer {
   margin-top: auto;
   padding-top: 6rem;
-}
 }

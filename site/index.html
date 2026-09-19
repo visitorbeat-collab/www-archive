@@ -24,6 +24,36 @@
   </header>
 
 
+  <section class="index-query" aria-labelledby="index-query-heading">
+
+    <div class="index-query-heading" id="index-query-heading">
+      QUERY INDEX
+    </div>
+
+    <form class="search-row" action="/search/" method="get">
+      <label class="visually-hidden" for="index-query-input">
+        Search the Index by concept
+      </label>
+
+      <input
+        id="index-query-input"
+        name="q"
+        type="text"
+        autocomplete="off"
+        spellcheck="false"
+        placeholder="enter concept"
+      >
+
+      <button type="submit">search</button>
+    </form>
+
+    <p class="index-query-note">
+      Relational retrieval across current classifications.
+    </p>
+
+  </section>
+
+
   <section class="directory-section">
 
     <div class="directory-section-heading">
@@ -83,16 +113,6 @@
         </div>
         <div class="directory-meta">relationships</div>
         <div class="directory-size">directory</div>
-      </div>
-
-      <div class="directory-row">
-        <div class="directory-name">
-          <a href="/search/">
-            search/
-          </a>
-        </div>
-        <div class="directory-meta">conceptual</div>
-        <div class="directory-size">index</div>
       </div>
 
     </div>

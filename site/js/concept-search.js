@@ -1349,3 +1349,11 @@ form.addEventListener("submit", event => {
   event.preventDefault();
   performSearch(input.value);
 });
+
+
+const initialQuery = new URLSearchParams(window.location.search).get("q");
+
+if (initialQuery) {
+  input.value = initialQuery;
+  performSearch(initialQuery);
+}

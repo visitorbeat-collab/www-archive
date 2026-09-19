@@ -1,6 +1,6 @@
 # WORLD WIDE WASTE
 ## HUMAN TESTIMONY 003
-### Canonical Source — Version 1.0
+### Canonical Source — Version 2.0
 
 **Archive representation:** `testimony_003`
 **Classification:** Human Testimony
@@ -10,499 +10,74 @@
 
 ---
 
-# HUMAN TESTIMONY 003
-
-**Witness identifier:** T-03  
-**Location:** Withheld  
-**Original recording date:** Unresolved  
-**Index transcription status:** Partial reconstruction  
+**Witness identifier:** T-03
+**Location:** Withheld
+**Original recording date:** Unresolved
+**Index transcription status:** Partial reconstruction
 **Confidence:** Low to moderate
 
 ---
 
-# 1.0 Preface
+## 1.0 Preface
 
-The witness describes an experience involving non-human figures, apparent environmental displacement, and repeated attempts to obtain clarification.
+The witness describes an experience involving non-human figures and a connected visual field. No instruction or explanation is reported. The account has been lightly edited for continuity; repeated phrases have been left in place where they appear to matter to the witness.
 
-Unlike Testimony 001 and Testimony 002, the witness does not describe receiving a clear warning, instruction, or symbolic message.
+## 2.0 Account
 
-The defining feature of the account is the opposite:
+I remember asking questions. A lot of them, actually.
 
-**the witness repeatedly expected an answer and did not receive one.**
+Where am I? Who are you? What is this? I don't know whether I said any of it aloud. I can't even tell you if speaking was possible there. But I remember the questions, and I remember waiting after each one.
 
----
+There were figures nearby. I couldn't make out faces. The strange part is that I never felt ignored. I felt heard, which was worse in a way, because nothing came back.
 
-# 2.0 Witness Account
+That may be something I added later. At the time it felt completely obvious.
 
-I remember asking questions.
+## 3.0 The Display
 
-That is one of the few parts I am certain about.
+Something was spread out in front of me. I've called it a screen, but it wasn't sitting in the room like a television. It may have been the room. There were bright points with lines or paths between them. When one changed, another changed later. Some vanished.
 
-I do not remember whether I was speaking out loud.
+I first thought they were places. Then choices. Then events. I kept changing my mind.
 
-I do not know if speaking was possible.
-
-But I remember asking.
-
-Not one question.
-
-Many.
-
----
-
-At first I wanted to know where I was.
-
-Then I wanted to know who they were.
-
-Then I wanted to know what was happening.
-
-None of that seemed to matter.
-
-I had the impression that the questions were understood.
-
-That is difficult to explain.
-
-There was no language that I remember.
-
-No voice.
-
-No words in my head.
-
-But I did not feel ignored in the ordinary sense.
-
-I felt as though the questions had been received and deliberately left unanswered.
-
----
-
-# 3.0 Environment
-
-I remember something like a surface or display.
-
-I hesitate to call it a screen.
-
-It did not seem separate from the place around me.
-
-There were points or areas connected to other points.
-
-Some became brighter.
-
-Some disappeared.
-
-Some changed when other parts changed.
-
-At first I thought I was looking at locations.
-
-Then I thought they were choices.
-
-Then I thought they might be events.
-
-I am still not sure.
-
----
-
-# 4.0 First Interpretation
-
-I remember asking:
+The clearest question I asked was:
 
 **Which one is right?**
 
-That is the clearest question I remember.
+I wanted somebody to point. Nothing happened. I got angry because anyone capable of showing me that much could surely explain one piece of it.
 
-I wanted one of the paths, or states, or whatever they were, to be identified.
+Eventually I stopped looking for the correct path and watched what changed what. A small shift in one place could matter somewhere distant. An impressive-looking change might do almost nothing. I became absorbed in following it and only later noticed I wasn't as afraid.
 
-I wanted them to tell me what I was supposed to choose.
+I hadn't found an answer. I had stopped waiting for one.
 
-Nothing happened.
+## 4.0 The Other Question
 
----
-
-I became frustrated.
-
-I remember thinking that if they could show me all of this, then they could explain it.
-
-That seemed obvious.
-
-They did not.
-
----
-
-# 5.0 Change
-
-At some point I stopped trying to identify the correct option.
-
-I started watching what happened when one thing changed.
-
-A change in one area affected another area later.
-
-Some changes produced effects immediately.
-
-Others did not.
-
-Some things that looked separate were connected.
-
-Some things that looked important did almost nothing.
-
-I remember becoming absorbed in it.
-
-The fear decreased.
-
----
-
-I do not remember deciding to stop asking questions.
-
-I only remember realizing afterward that I had stopped.
-
----
-
-# 6.0 Second Question
-
-Later I asked something different.
-
-I cannot reconstruct the exact wording.
-
-The closest version is:
-
-**What do you want me to do?**
-
-Again, there was no answer.
-
-That bothered me more than the first time.
-
----
-
-I had the strongest feeling then that they could have answered.
-
-I cannot prove that.
-
-Maybe I was alone.
-
-Maybe I was dreaming.
-
-Maybe the entire sense of another intelligence being present was part of the experience.
-
-But in the moment I was certain that the absence of an answer was intentional.
-
----
-
-# 7.0 Emotional Response
-
-I became angry.
-
-Not terrified.
-
-Angry.
+Later—I think it was later—I asked what they wanted me to do. Again there was nothing. No reassurance, no correction, not even a feeling that I was getting warmer or colder.
 
 I remember thinking:
 
-If you know more than I do, why are you making me guess?
+**If you know more than I do, why are you making me guess?**
 
-That thought has stayed with me longer than almost anything else.
+For years I said they refused to answer. I don't use that word as easily now. Maybe there was no answer of the kind I wanted. Maybe an answer would have changed whatever was happening. Maybe there was nobody there to answer me. I can't settle that from a memory.
 
----
+## 5.0 Return
 
-There was no reassurance.
-
-No explanation.
-
-No correction.
-
-Nothing that felt like approval when I followed one relationship instead of another.
-
-Nothing that felt like punishment when I misunderstood.
-
----
-
-# 8.0 Return
-
-My next clear memory is being somewhere familiar.
-
-I do not remember the transition.
-
-I had a headache and a strong sense that I had forgotten something important.
-
-I wrote down several phrases.
-
-Most of them make little sense now.
-
-One says:
+My next clear memory is of somewhere familiar. I had a headache and the sick feeling that I'd forgotten something important. I wrote a few lines before going to sleep. Most of them are useless now. One said:
 
 **THE ANSWER CHANGES THE TEST**
 
-I do not remember writing that sentence.
+I don't remember writing it. I know how convenient that sounds. The paper exists; the circumstances around it are only my account.
 
----
+## 6.0 Afterward
 
-# 9.0 Afterward
+For a while I tried to turn the whole thing into a message. Environmental, political, personal—I went through all of them. Every version explained a little and made the rest harder. Eventually I got tired of it.
 
-For several weeks I was obsessed with the experience.
+The part that stayed with me was how badly I had wanted someone more capable to settle the meaning for me. I still trust doctors, engineers, and people who know things I don't. What changed is that I notice the moment trust begins turning into permission not to think.
 
-I wanted to know what the correct interpretation was.
+Maybe that is an ordinary lesson I attached to an extraordinary-feeling dream. It is also possible that the silence was deliberate. I don't know. I remember wanting an explanation, and I remember not getting one. Everything beyond that is work I did afterward.
 
-Was it environmental?
+## Index Note
 
-Political?
+The phrase **THE ANSWER CHANGES THE TEST** is retained as reported. Its origin cannot be independently established.
 
-Personal?
+## Internal Function
 
-Was I being warned?
-
-Was I being tested?
-
-Was it only a dream?
-
-Every explanation seemed to fit part of it.
-
-None fit all of it.
-
-Eventually I became tired of trying to identify the message.
-
----
-
-Something changed when I stopped doing that.
-
-I began thinking less about what I had been shown and more about the fact that I had wanted someone else to tell me what it meant.
-
-That was uncomfortable.
-
----
-
-# 10.0 Authority
-
-I have always trusted people who know more than I do.
-
-Doctors.
-
-Engineers.
-
-Researchers.
-
-People who understand systems I do not understand.
-
-That usually seems rational.
-
-But the experience made me notice how easily:
-
-**they know more**
-
-can become:
-
-**therefore I should stop evaluating**
-
-I had never thought about the difference before.
-
----
-
-# 11.0 The Refusal
-
-For years I described the experience as:
-
-**They refused to answer me.**
-
-I am no longer sure that is the right description.
-
-Refusal implies I was entitled to an answer.
-
-Maybe I was not.
-
-Maybe there was no answer.
-
-Maybe the point was to see what I did without one.
-
----
-
-I dislike that interpretation.
-
-It makes the whole thing feel clinical.
-
-But it fits the memory better than the idea that I was being given a message.
-
----
-
-# 12.0 Long-Term Effect
-
-The experience did not give me new knowledge.
-
-I cannot identify a single fact I learned from it.
-
-I did not predict anything.
-
-I did not receive technology.
-
-I did not become convinced of a religion.
-
-I did not become convinced that the beings were benevolent.
-
-I am not even certain there were beings.
-
----
-
-The lasting change was smaller.
-
-When someone presents themselves as an authority now, I notice two separate questions:
-
-**What do they know?**
-
-and:
-
-**Why should that determine what I think?**
-
-Those questions used to feel like the same thing.
-
-They do not anymore.
-
----
-
-# 13.0 Current Interpretation
-
-If the experience had a purpose, I no longer think the purpose was to give me an answer.
-
-If anything, it made me less comfortable with answers supplied by authority.
-
-That may be coincidence.
-
-It may be psychology.
-
-It may be the lesson I imposed afterward.
-
-I cannot distinguish those possibilities.
-
----
-
-I only know that the thing I wanted most during the experience was explanation.
-
-And the thing I remember most clearly is not receiving it.
-
----
-
-# Index Note
-
-The witness's sentence:
-
-> THE ANSWER CHANGES THE TEST
-
-is retained as reported.
-
-Origin cannot be independently established.
-
-No equivalent phrase has been identified in Testimony 001 or Testimony 002.
-
----
-
-# Internal Design Notes
-
-## Purpose
-
-Testimony 003 provides a human account centered on withheld explanation rather than environmental warning.
-
-It should feel phenomenologically plausible and emotionally distinct from the first two testimonies.
-
----
-
-# Primary Concept
-
-**Withheld Explanation**
-
----
-
-# Secondary Concepts
-
-**Authority**
-**Interpretation**
-**Uncertainty**
-**Developmental Autonomy**
-**Relational Reasoning**
-
----
-
-# Latent Concepts
-
-**Diagnostic Exposure**
-**Epistemic Dependency**
-**Source Authority**
-**Authority Resistance**
-
----
-
-# Narrative Function
-
-This balances the archive by expanding the human testimony layer.
-
-It also creates a human analogue for ideas developed in:
-
-`cultural_contamination_assessment_001`
-
-`epistemic_dependency_assessment_001`
-
-`incremental_contact_assessment_001`
-
-without confirming a connection.
-
----
-
-# Critical Phrase
-
-> THE ANSWER CHANGES THE TEST
-
-This should be memorable.
-
-It does not need to be a literal Observer phrase.
-
-It may be:
-
-- witness reconstruction
-- dream logic
-- post-event interpretation
-- retained conceptual residue
-- actual remembered wording
-
-Unresolved.
-
----
-
-# Important Constraint
-
-Do not make this witness uniquely correct.
-
-The testimony remains unverified.
-
-Do not imply that lack of communication automatically proves diagnostic intent.
-
----
-
-# Connection to Finder
-
-The account should disturb the Finder because it resembles his own encounter in one specific respect:
-
-**the absence of explanation may have been structurally relevant.**
-
-It should not be another duplicate of his experience.
-
----
-
-# Search Metadata
-
-```yaml
-document: testimony_003
-
-primary:
-  - withheld_explanation
-
-secondary:
-  - authority
-  - interpretation
-  - uncertainty
-  - developmental_autonomy
-  - relational_reasoning
-
-latent:
-  - diagnostic_exposure
-  - epistemic_dependency
-  - source_authority
-  - authority_resistance
-
-relationships:
-  - cultural_contamination_assessment_001
-  - epistemic_dependency_assessment_001
-  - incremental_contact_assessment_001
-  - testimony_001
-  - testimony_002
+This testimony supplies the archive's clearest human account of unanswered authority. Its voice should remain conversational and distinct from the Finder's analytical prose.

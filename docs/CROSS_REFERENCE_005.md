@@ -1,6 +1,6 @@
 # WORLD WIDE WASTE
 ## CROSS REFERENCE 005
-### Canonical Source — Version 1.0
+### Canonical Source — Version 2.0
 
 **Archive representation:** `cross_reference_005`
 **Classification:** Cross Reference
@@ -9,499 +9,54 @@
 
 ---
 
-# CROSS REFERENCE
+## 1.0 Basis
 
-## Materials Compared
+`testimony_003` retains the phrase **THE ANSWER CHANGES THE TEST**. No recovered document uses that wording. Several describe a similar relationship: explicit explanation may alter the behavior being assessed. Similarity of principle is not identity of source.
 
-- `testimony_003`
-- `incremental_contact_assessment_001`
-- `cultural_contamination_assessment_001`
-- `epistemic_dependency_assessment_001`
-- `cognitive_assessment_protocol_fragment_001`
+The witness does not remember writing the sentence. It could be a direct memory, a summary formed after waking, an ordinary inference, or language introduced during later reconstruction. The paper establishes that the phrase existed by the time it entered the Index, not where it came from.
 
----
+## 2.0 Comparison
 
-# 1.0 Basis
+The witness phrase compresses a familiar testing problem: supply an answer, change the subject's state, and later observation no longer measures the same condition. The recovered protocols are narrower and conditional. They withhold preferred interpretation where independent relational reasoning is the variable under observation.
 
-`testimony_003` contains an unusual retained phrase:
+**Structural compatibility: high / linguistic correspondence: low**
 
-**THE ANSWER CHANGES THE TEST**
+The cognitive protocol supplies the narrowest match: preferred interpretation can contaminate the response being observed. The incremental-contact assessment broadens this to expectation and later memory. The cultural-contamination and epistemic-dependency records extend the effect to groups: repeated high-authority answers can change not only what a population knows but how it decides what counts as knowledge.
 
-The phrase appears in a human witness account.
+## 3.0 Chronology Problem
 
-No equivalent wording has been identified in the recovered material.
+The original note has no established custody record, and the Finder encountered the recovered protocols before making this comparison. Selective attention, altered transcription, and later conceptual compression therefore remain possible. The framework may make the phrase look more specific now than it did before the comparison existed.
 
-However, several recovered documents contain a structurally similar principle:
+Strong independence would require a dated original, a traceable custody history, and confidence that the wording survived transcription. None is available. This does not erase the phrase; it limits what the comparison can carry.
 
-**explicit explanation may alter the behavior being assessed**
+## 4.0 Ordinary Model
 
-This comparison requires caution.
+No extraordinary source is required. People encounter the same principle in education, experimentation, diagnosis, games, and ordinary problem-solving: giving away the answer can defeat the purpose of the exercise. Independent convergence is plausible.
 
-Similarity of principle is not similarity of source.
+## 5.0 Diagnostic Reading
 
----
+If the testimony did describe a diagnostic interaction, its sequence is coherent: the subject requests a correct interpretation, receives none, continues observing, and shifts from answer-seeking to tracking relationships. The later concern with authority also fits the recovered framework. Coherence makes this model usable. It does not verify it.
 
-# 2.0 Testimony Phrase
+The match is more specific than a shared theme such as fear or uncertainty. It identifies a relation between information and the validity of later observation. That is enough to retain the comparison, though not enough to privilege an external explanation over the ordinary one.
 
-The witness reports writing:
+## 6.0 Source Separation
 
-**THE ANSWER CHANGES THE TEST**
+The phrase may be direct memory, a later summary, an inference, or false memory. Its origin and the structure of the reported experience are separate questions. The strongest supported claim is that withholding explanation preceded a shift toward independent relational interpretation.
 
-after the experience.
+The witness's later concern with authority belongs in the same comparison but not in the source claim. A person can learn to distinguish expertise from surrendering judgment without having been taught by an external intelligence. The result may resemble the recovered model because both are responses to the same general problem.
 
-The witness does not remember writing the sentence.
+## 7.0 Status
 
-Possible origins include:
+- Phenomenological compatibility: moderate
+- Structural compatibility: high
+- Source independence: unresolved
+- Direct information transfer: unsupported
+- Diagnostic interpretation: plausible
 
-- direct memory
-- post-event inference
-- dream reconstruction
-- ordinary reasoning
-- later reinterpretation
-- contamination from unknown prior material
-
-No independent origin can presently be established.
+Retain the phrase with the testimony. Do not promote it into recovered terminology.
 
 ---
 
-# 3.0 Cognitive Assessment Protocol
+## Internal Function
 
-`cognitive_assessment_protocol_fragment_001` states that explicit semantic instruction may reduce diagnostic value.
-
-Relevant principle:
-
-the subject should not be supplied with a preferred interpretation where independent relational reasoning is the variable under observation.
-
-Structural relation:
-
-**answer supplied**
-
-→
-
-**subject response altered**
-
-→
-
-**assessment value reduced**
-
-This is compatible with the witness phrase.
-
-It is not identical to it.
-
----
-
-# 4.0 Incremental Contact Assessment
-
-`incremental_contact_assessment_001` states that subject understanding of interaction purpose is not always required.
-
-It further notes that explanation may alter:
-
-- behavioral response
-- interpretation
-- expectation
-- later memory
-- model formation
-
-This creates another structural correspondence.
-
-Again:
-
-**explanation changes the condition being observed**
-
----
-
-# 5.0 Cultural Contamination Assessment
-
-`cultural_contamination_assessment_001` introduces a broader version of the same problem.
-
-High-authority communication may alter not only what a subject knows, but how that subject evaluates information.
-
-In this framework:
-
-**the source of an answer**
-
-may change:
-
-**the meaning and behavioral consequence of the answer**
-
-This is stronger than simple information transfer.
-
----
-
-# 6.0 Epistemic Dependency Assessment
-
-`epistemic_dependency_assessment_001` adds a second effect.
-
-Repeated high-confidence answers may reduce:
-
-- independent verification
-- model competition
-- disagreement tolerance
-- autonomous interpretation
-
-Therefore an answer may change not only an individual assessment.
-
-It may change the receiving population's future epistemic behavior.
-
----
-
-# 7.0 Phrase / Principle Comparison
-
-The witness phrase:
-
-**THE ANSWER CHANGES THE TEST**
-
-can be represented as:
-
-**information supplied**
-
-→
-
-**subject state altered**
-
-→
-
-**subsequent observation no longer measures the same condition**
-
-The recovered material can be represented similarly:
-
-**explicit instruction**
-
-→
-
-**interpretive behavior altered**
-
-→
-
-**diagnostic value reduced**
-
-Structural compatibility is high.
-
-Linguistic correspondence is low.
-
----
-
-# 8.0 Important Difference
-
-The testimony phrase is compact, human, and categorical.
-
-The recovered documents are procedural and conditional.
-
-The witness says:
-
-**THE ANSWER CHANGES THE TEST**
-
-The recovered framework says something closer to:
-
-**in some assessment classes, explanation may alter the variable under observation**
-
-These should not be treated as equivalent wording.
-
----
-
-# 9.0 Retrospective Convergence
-
-The most serious problem is chronology of interpretation.
-
-The Finder encountered the recovered protocols before performing this comparison.
-
-Therefore the comparison is vulnerable to:
-
-- selective attention
-- conceptual compression
-- confirmation bias
-- reclassification after exposure
-- preference for matching structure
-
-The phrase may now appear more significant because the framework exists.
-
----
-
-# 10.0 Independence Problem
-
-The evidentiary value of the testimony depends partly upon whether it was independent of the recovered framework.
-
-Current Index material does not establish:
-
-- date of original written phrase
-- custody of original note
-- whether wording changed during transcription
-- whether witness had access to related ideas
-- whether Finder reconstruction altered phrasing
-
-Therefore strong independence cannot be assigned.
-
----
-
-# 11.0 Specificity
-
-Despite these limitations, the correspondence is more specific than generic similarity.
-
-The phrase does not merely involve:
-
-- uncertainty
-- fear
-- environmental imagery
-- authority
-
-It identifies a particular relationship:
-
-**providing the answer alters the validity of the assessment**
-
-That relationship is uncommon enough to retain.
-
-Retention does not equal confirmation.
-
----
-
-# 12.0 Alternative Model
-
-A non-external explanation remains straightforward.
-
-A person placed in an ambiguous problem-solving situation may independently realize that receiving the answer would defeat the purpose of the exercise.
-
-This principle exists in ordinary:
-
-- education
-- experimentation
-- psychology
-- games
-- diagnosis
-- scientific testing
-
-No extraordinary source is required.
-
----
-
-# 13.0 Diagnostic Interpretation
-
-If `testimony_003` did involve a diagnostic interaction, the absence of explanation becomes functionally coherent.
-
-Possible model:
-
-1. subject requests correct interpretation
-2. no interpretation supplied
-3. subject continues observation
-4. subject shifts from categorical answer-seeking to relational tracking
-5. behavior after the shift becomes the relevant data
-
-This is compatible with the recovered framework.
-
-The model remains unverified.
-
----
-
-# 14.0 Authority Interpretation
-
-The witness's later concern with authority may also be relevant.
-
-The account describes a shift from:
-
-**they know more**
-
-to:
-
-**therefore I should stop evaluating**
-
-as a relationship the witness learned to question.
-
-This resembles later recovered concerns regarding:
-
-- source authority
-- epistemic dependency
-- developmental autonomy
-
-However, this may simply represent later human reflection.
-
----
-
-# 15.0 Message Interpretation
-
-The testimony does not require that the phrase itself was communicated.
-
-Possible models include:
-
-- directly supplied phrase
-- retained conceptual structure rendered later as language
-- witness-generated summary
-- independent post-event insight
-- false memory
-
-Current evidence cannot discriminate among them.
-
-Therefore:
-
-**phrase origin**
-
-and
-
-**experience structure**
-
-must remain separate.
-
----
-
-# 16.0 Strongest Supported Correspondence
-
-The strongest supported relationship is not:
-
-**the witness received the phrase from the external source**
-
-It is:
-
-**the witness describes an experience in which withholding explanation preceded a shift toward independent relational interpretation.**
-
-That pattern is compatible with the recovered diagnostic framework.
-
----
-
-# 17.0 Evidentiary Status
-
-Current assessment:
-
-**phenomenological compatibility: moderate**
-
-**structural compatibility: high**
-
-**linguistic correspondence: low**
-
-**source independence: unresolved**
-
-**direct information transfer: unsupported**
-
-**diagnostic interpretation: plausible**
-
----
-
-# 18.0 Conclusion
-
-`testimony_003` contains the closest human formulation yet identified to a principle present in the recovered assessment material.
-
-That makes the testimony relevant.
-
-It does not make the testimony verified.
-
-The phrase:
-
-**THE ANSWER CHANGES THE TEST**
-
-should be retained.
-
-It should not be elevated to recovered terminology.
-
----
-
-# Internal Design Notes
-
-## Purpose
-
-Cross Reference 005 connects Testimony 003 to the recovered contact and assessment framework without turning the phrase into proof.
-
----
-
-# Primary Concept
-
-**Withheld Explanation**
-
----
-
-# Secondary Concepts
-
-**Diagnostic Exposure**
-**Developmental Autonomy**
-**Source Authority**
-**Interpretation**
-**Structural Compatibility**
-
----
-
-# Latent Concepts
-
-**Common Origin**
-**Authority Resistance**
-**Contact Readiness**
-
----
-
-# Narrative Function
-
-This strengthens the testimony layer and cross-reference layer while preserving uncertainty.
-
-It should also create the impression that the Index is beginning to discover repeated structural principles across very different source types.
-
----
-
-# Critical Distinction
-
-The phrase may match the logic of the recovered framework.
-
-That does not mean the phrase came from the recovered source.
-
----
-
-# Important Constraint
-
-This document must not advance the prospective anomaly involving:
-
-`authority_resistance_assessment_001`
-
-The term may remain latent internally, but the missing destination must not be linked or discussed publicly here.
-
----
-
-# Relationship to Finder Method
-
-This comparison demonstrates the Finder's stronger evidentiary discipline.
-
-He distinguishes:
-
-- structural similarity
-- linguistic similarity
-- source identity
-- chronological independence
-
-These are separate questions.
-
----
-
-# Concept Matrix
-
-**Primary concept:**  
-Withheld Explanation
-
-**Secondary concepts:**  
-Diagnostic Exposure  
-Developmental Autonomy  
-Source Authority  
-Interpretation  
-Structural Compatibility
-
-**Latent concepts:**  
-Common Origin  
-Authority Resistance  
-Contact Readiness
-
-**Narrative phase:**  
-Phase V
-
-**Existing material strengthened:**  
-`testimony_003`  
-`incremental_contact_assessment_001`  
-`cultural_contamination_assessment_001`  
-`epistemic_dependency_assessment_001`  
-`cognitive_assessment_protocol_fragment_001`
-
-**Future material prepared:**  
-Human/recovered convergence  
-Contact-readiness synthesis  
-Authority-resistance resolution
-
----
-
-# Final Design Principle
-
-The reader should come away thinking:
-
-> The phrase is interesting because it matches a relationship.
-
-> Not because it sounds mysterious.
+The phrase matters because it matches a relationship, not because it sounds mysterious. This file must not advance or link the hidden authority-resistance anomaly.

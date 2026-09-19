@@ -135,6 +135,8 @@ Relationships may exist between entries.
 
 Do not assume that adjacency implies shared source.
 
+[secondary audio reference retained / media continuity unresolved]
+
 ---
 
 [fragment]

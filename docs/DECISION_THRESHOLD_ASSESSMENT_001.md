@@ -2,21 +2,31 @@
 ## DECISION THRESHOLD ASSESSMENT 001
 ### Canonical Source — Version 1.0
 
-**Archive representation:** `decision_threshold_assessment_001`  
-**Classification:** Recovered / Unverified  
-**Source type:** Developmental assessment  
-**Authorship:** Observer-origin material  
-**Translation status:** Conceptually reconstructed  
+**Archive representation:** `decision_threshold_assessment_001`
+**Classification:** Recovered / Unverified
+**Source type:** Developmental assessment
+**Authorship:** Observer-origin material
+**Translation status:** Conceptually reconstructed
 **Internal status:** Canonical
 
 ---
 
 # ASSESSMENT RECORD
 
-**Observed population:** TP-3  
-**Assessment focus:** Decision threshold under uncertain consequence  
-**Observation interval:** Translation unresolved  
-**Confidence:** High
+**Observed population:** TP-3
+**Assessment focus:** Decision threshold under uncertain consequence
+**Observation interval:** Translation unresolved
+**Confidence:** Revised / moderate-high
+
+---
+
+# MODEL REVISION
+
+**Prior state:** non-intervention weighted as neutral baseline
+**Revision:** rejected
+**Cause:** continuing system change omitted from comparison
+
+Earlier threshold estimates underweighted delayed consequence by comparing intervention against an unchanged system state. Section 6 supersedes that assumption. Confidence has been reduced until affected comparisons are recalculated.
 
 ---
 
@@ -327,19 +337,19 @@ The reader should be able to derive the moral concept independently.
 
 # Secondary Concepts
 
-**Consequence**  
-**Uncertainty**  
-**Capability**  
-**Restraint**  
+**Consequence**
+**Uncertainty**
+**Capability**
+**Restraint**
 **Reversibility**
 
 ---
 
 # Latent Concepts
 
-**Responsibility**  
-**Stewardship**  
-**Maturity**  
+**Responsibility**
+**Stewardship**
+**Maturity**
 **Trust**
 
 ---
@@ -440,41 +450,41 @@ Trust will eventually emerge not from goodness but from reliable self-regulation
 
 # Concept Matrix
 
-**Primary concept:**  
+**Primary concept:**
 Decision Threshold
 
-**Secondary concepts:**  
-Consequence  
-Uncertainty  
-Capability  
-Restraint  
+**Secondary concepts:**
+Consequence
+Uncertainty
+Capability
+Restraint
 Reversibility
 
-**Latent concepts:**  
-Responsibility  
-Stewardship  
-Maturity  
+**Latent concepts:**
+Responsibility
+Stewardship
+Maturity
 Trust
 
-**Narrative phase:**  
+**Narrative phase:**
 Phase IV
 
-**Existing material strengthened:**  
-`technological_population_assessment_001`  
-`technological_population_assessment_002`  
-`what_are_they_measuring`  
-`environmental_observation_001`  
+**Existing material strengthened:**
+`technological_population_assessment_001`
+`technological_population_assessment_002`
+`what_are_they_measuring`
+`environmental_observation_001`
 `environmental_observation_002`
 
-**Future material prepared:**  
-Responsibility  
-Trustworthiness  
-Contact readiness  
-Stewardship  
-Conceptual search  
+**Future material prepared:**
+Responsibility
+Trustworthiness
+Contact readiness
+Stewardship
+Conceptual search
 Restricted pathway
 
-**Assumption challenged:**  
+**Assumption challenged:**
 That the same evidentiary standard is appropriate regardless of how consequential an action can become.
 
 ---

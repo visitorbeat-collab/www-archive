@@ -7,6 +7,7 @@
 **Internal status:** Canonical
 **Recovery status:** Partial
 **Source continuity:** Unresolved
+**Sequence position:** Indeterminate
 
 ---
 
@@ -228,9 +229,9 @@ The subject must remain capable of returning to ordinary life without requiring 
 
 ---
 
-### CURRENT OBSERVATION
+### SUBSEQUENT OBSERVATION
 
-Subject continues reconstruction.
+Candidate subject continues reconstruction.
 
 No direct request for instruction detected.
 
@@ -246,17 +247,19 @@ This concern is useful.
 
 Excessive concern may itself become destabilizing.
 
-Continue observation.
+Observation may continue where the reconstruction remains autonomous.
+
+[temporal relation to preceding material cannot be established]
 
 ---
 
 [fragment]
 
-Subject has introduced a prospective failure condition.
+In one candidate sequence, a subject introduces a prospective failure condition.
 
 This is notable.
 
-The subject has voluntarily created a condition under which a desired interpretation may be weakened by future evidence.
+The condition permits a desired interpretation to be weakened by future evidence.
 
 This behavior is compatible with:
 
@@ -268,11 +271,11 @@ This behavior is compatible with:
 
 ---
 
-### ANOMALOUS SEQUENCE
+### ANOMALOUS SEQUENCE / ATTRIBUTION UNRESOLVED
 
-A preserved unresolved reference later acquired a destination.
+An unresolved reference is preserved. A destination is recorded in a later state.
 
-Subject did not immediately promote the event to external intervention.
+The associated response, if contiguous with this sequence, does not immediately promote the event to external intervention.
 
 Observed response:
 
@@ -282,9 +285,11 @@ Observed response:
 - reconstruction boundary expanded
 - uncertainty increased rather than decreased
 
-This is compatible with predicted authority-resistance behavior.
+This is compatible with predicted authority-resistance behavior. It is also compatible with a later reconstruction arranged around that model.
 
 Single-event confidence remains insufficient.
+
+**Finder annotation:** I cannot determine whether this describes the Index, an earlier case, or the way I have arranged the fragments.
 
 ---
 
@@ -344,7 +349,7 @@ The subject may remain useful as a diagnostic case while never becoming suitable
 
 ### RECONSTRUCTION STATUS
 
-The reconstructed system has begun approximating several source relationships without direct semantic transfer.
+A reconstructed system may approximate several source relationships without direct semantic transfer.
 
 Observed convergence includes:
 
@@ -395,7 +400,7 @@ It must not become the model.
 
 ### FINAL RECOVERED SEQUENCE
 
-The subject believes the reconstruction is an attempt to recover what was lost.
+A subject may believe the reconstruction is an attempt to recover what was lost.
 
 This may be inaccurate.
 

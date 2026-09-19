@@ -1,6 +1,6 @@
 # WORLD WIDE WASTE
 ## HUMAN TESTIMONY 004
-### Canonical Source — Version 1.0
+### Canonical Source — Version 2.0
 
 **Archive representation:** `testimony_004`
 **Classification:** Human Testimony
@@ -10,548 +10,72 @@
 
 ---
 
-# HUMAN TESTIMONY 004
-
-**Witness identifier:** T-04  
-**Location:** Withheld  
-**Original recording date:** Unresolved  
-**Index transcription status:** Partial reconstruction  
+**Witness identifier:** T-04
+**Location:** Withheld
+**Original recording date:** Unresolved
+**Index transcription status:** Partial reconstruction
 **Confidence:** Low to moderate
 
 ---
 
-# 1.0 Preface
+## 1.0 Preface
 
-The witness describes an encounter involving a strong capability asymmetry, apparent direction toward an unknown procedure, and a deliberate refusal to participate.
+The witness reports refusing one part of an encounter controlled by unknown figures. The sequence changes after the refusal, but the witness does not describe the encounter as consensual or the figures as benevolent.
 
-The account is notable because the refusal does not produce:
+## 2.0 Statement
 
-- punishment
-- physical escalation
-- forced compliance
-- obvious retaliation
+People always start with the dream question. Fine. It could have been a dream. I can't hand you anything that proves otherwise. But that isn't the part I've been trying to explain.
 
-The witness nevertheless reports remaining under conditions of extreme control.
+I remember a bright place and several figures. I couldn't see where the light came from. I don't remember faces. I remember how far apart they stood and the feeling that everyone in the room except me knew what happened next.
 
----
+One of them moved and I followed. I wasn't dragged. I also didn't decide where we were going.
 
-# 2.0 Initial Memory
+## 3.0 The Platform
 
-I remember being awake.
+The next space was smaller. There was a raised thing in the middle. Table isn't right, but it is the word I keep using because people understand it.
 
-That is important to me because people always ask whether I was dreaming.
-
-Maybe I was.
-
-I cannot prove otherwise.
-
-But the memory does not feel like waking from a dream.
-
-It feels like remembering being somewhere.
-
----
-
-The room was bright without having a light source I could identify.
-
-There were figures.
-
-I do not remember faces clearly.
-
-I remember posture.
-
-Distance.
-
-Movement.
-
-The feeling that they were waiting for something.
-
----
-
-# 3.0 Direction
-
-One of them moved toward an opening or another part of the room.
-
-I understood that I was supposed to follow.
-
-I do not know how I understood that.
-
-There was no spoken instruction that I remember.
-
-I simply knew what was expected.
-
-I followed at first.
-
----
-
-# 4.0 Second Area
-
-The next space was smaller.
-
-There was something raised in the center.
-
-A surface.
-
-A platform.
-
-Maybe a table.
-
-I immediately thought:
+I saw it and stopped.
 
 **No.**
 
-I did not know what it was.
-
-I did not know what they intended to do.
-
-I only knew that I did not want to go near it.
-
----
-
-# 5.0 Refusal
-
-I stopped.
-
-One of the figures turned toward me.
-
-I remember thinking that I had made a mistake.
-
-The fear at that moment was worse than anything before it.
-
-I expected to be forced forward.
-
-Nothing happened.
-
----
-
-I said:
+One of them turned toward me. I said it again because I was sure I was about to be forced forward and I wanted, at least, to have said it.
 
 **No.**
-
-I am almost certain I said it aloud.
-
-Then again:
-
-**No.**
-
----
-
-# 6.0 Waiting
 
 They waited.
 
-That is the part I have the most trouble explaining.
+I had no reason to think they needed my cooperation. If they could put me there, they could move me six more feet. That was what made the waiting so strange.
 
-Not because waiting is strange.
+## 4.0 The Change
 
-Because they seemed completely capable of ignoring me.
+After a while one of them indicated another area. I went there instead. Perhaps that option had been available all along and I hadn't seen it. Perhaps I misunderstood the first gesture. What I remember is that I refused and the sequence changed.
 
-I had no sense that I could stop them if they decided otherwise.
+Nobody told me I was safe or said I had a choice. Nobody comforted me. They simply did not use force at that moment. I need those details kept together because people hear the first half and turn it into a nicer story.
 
-The difference in control was obvious.
+It was not a nice story. I still couldn't leave.
 
-But they waited anyway.
+## 5.0 What Followed
 
----
+Something happened later involving pressure near my head and a moving pattern of light. That part comes back in scraps. I don't know whether I agreed to it. I don't remember being asked, and respecting one refusal would not make everything afterward consensual.
 
-I remember one of them moving slightly.
+My next clear memory is outside somewhere I knew. I was shaking. The clock and my sense of elapsed time did not agree, though disorientation could account for that.
 
-I thought it was going to grab me.
+## 6.0 What I Make of It
 
-It did not.
+For years I used the refusal to reassure myself. If they meant harm, I thought, why stop? I don't think that follows. Restraint, procedure, curiosity, indifference—any of those could look the same from where I was standing.
 
----
+I also wonder whether the refusal was part of whatever they were doing. Maybe the choice existed because somebody wanted to see whether I would make it. I dislike that possibility, but disliking it doesn't remove it.
 
-# 7.0 Second Direction
-
-After some time, the same figure indicated something else.
-
-Not the platform.
-
-Another area.
-
-I understood that I could go there instead.
-
-I did.
-
----
-
-I do not know whether that was a compromise.
-
-I do not know whether the first thing had been misunderstood.
-
-I do not know whether the whole situation was intended to see what I would do.
-
-I only know that after I refused, the sequence changed.
-
----
-
-# 8.0 No Reassurance
-
-Nobody told me:
-
-**It is safe.**
-
-Nobody told me:
-
-**You are allowed to refuse.**
-
-Nobody told me:
-
-**We will not hurt you.**
-
-That would have changed how I understood the situation.
-
-There was no reassurance.
-
-Only the absence of force.
-
----
-
-# 9.0 Control
-
-I do not want to make this sound comforting.
-
-I was not free.
-
-I could not leave.
-
-I did not know where I was.
-
-I did not understand what was happening.
-
-I did not know whether the refusal would be respected a second time.
-
-The situation was still completely unequal.
-
----
-
-But there is a difference between:
-
-**I had no control over the situation**
-
-and:
-
-**every choice I made was irrelevant**
-
-I think I had assumed they were the same.
-
-They were not.
-
----
-
-# 10.0 Later Procedure
-
-Something happened after that.
-
-I remember sitting or lying somewhere.
-
-I remember pressure near my head.
-
-I remember a moving pattern of light.
-
-I remember trying not to look at it and then realizing I was looking anyway.
-
-I cannot reconstruct the sequence reliably.
-
----
-
-I do not know whether the later procedure was something I agreed to.
-
-I do not remember being asked.
-
-That matters.
-
-The refusal of the first thing does not make everything that followed consensual.
-
-I want that distinction preserved.
-
----
-
-# 11.0 Return
-
-My next clear memory is outside.
-
-I do not remember traveling there.
-
-I was shaking badly.
-
-I had the strong impression that I had been gone much longer than the time suggested.
-
-I cannot verify that.
-
----
-
-# 12.0 First Interpretation
-
-For years, the refusal was the part I used to convince myself the experience could not have been hostile.
-
-That was too simple.
-
-If something has complete control over a situation and chooses not to exercise all of it, that does not tell me why.
-
-Possible reasons include:
-
-- restraint
-- procedure
-- experimentation
-- preference
-- efficiency
-- indifference
-- rules I do not understand
-
-The absence of force is information.
-
-It is not proof of benevolence.
-
----
-
-# 13.0 Fear / Choice
-
-The strangest part is that my fear changed after they did not force me.
-
-I was still afraid.
-
-But I became more attentive.
-
-Before that, I had been reacting to everything.
-
-Afterward, I started trying to work out which things were actually required and which things I only assumed were required.
-
-That distinction stayed with me.
-
----
-
-# 14.0 Authority
-
-I think I had assumed that because they could make me do something, refusing was meaningless.
-
-That assumption was wrong at least once.
-
-I do not know how much can be built from that.
-
-Probably not much.
-
-But it changed the experience.
-
----
-
-There is a difference between:
-
-**power**
-
-and:
-
-**the use of power**
-
-I knew that intellectually before.
-
-I do not think I understood it until then.
-
----
-
-# 15.0 Retrospective Concern
-
-There is another possibility I dislike.
-
-Maybe the refusal itself was being observed.
-
-Maybe respecting it was part of the procedure.
-
-Maybe the choice only existed because somebody wanted to see whether I would make it.
-
-If so, then the situation was less generous than it first appears.
-
-It was still controlled.
-
----
-
-I cannot determine that now.
-
----
-
-# 16.0 Current Interpretation
-
-I no longer describe the experience as proof that the beings were kind.
-
-I do not know whether they were kind.
-
-I do not know whether that category even applies properly.
-
-What I retain is narrower:
-
-**something with substantially more control than I had did not use all of that control when I resisted.**
-
-That is the fact I am willing to keep.
-
-Everything after that is interpretation.
-
----
-
-# 17.0 Final Statement
-
-I used to think the important question was:
-
-**Could they force me?**
-
-I already knew the answer.
-
-The question I still think about is:
+So I keep the claim narrow. Something with far more control than I had did not use all of that control when I resisted. I don't call that kindness anymore. I call it the part I remember.
 
 **What did they do when they did not need my cooperation, but I refused anyway?**
 
-I do not know what that means.
+They changed the sequence. I still don't know why.
 
-But I remember what happened.
+## Index Note
 
----
+A refusal being respected once is not treated here as evidence that the encounter as a whole was consensual. This distinction belongs to the witness and is retained.
 
-# Index Note
+## Internal Function
 
-Testimony 004 should not be interpreted as establishing consent.
-
-The witness explicitly distinguishes:
-
-**a refusal being respected once**
-
-from:
-
-**the encounter as a whole being consensual**
-
-This distinction is retained.
-
----
-
-# Internal Design Notes
-
-## Purpose
-
-Testimony 004 provides a human account of behavioral autonomy under extreme capability asymmetry.
-
-It introduces refusal without turning the encounter into a reassuring or benevolent event.
-
----
-
-# Primary Concept
-
-**Refusal Capacity**
-
----
-
-# Secondary Concepts
-
-**Autonomy**
-**Capability Asymmetry**
-**Restraint**
-**Boundary Recognition**
-**Consent**
-
----
-
-# Latent Concepts
-
-**Authority Resistance**
-**Diagnostic Exposure**
-**Reciprocal Trust**
-**Contact Readiness**
-
----
-
-# Narrative Function
-
-This gives the archive a human-side example of the distinction between:
-
-**having power**
-
-and:
-
-**exercising all available power**
-
-The witness's refusal may be evidence of external restraint.
-
-It may also be part of a controlled assessment.
-
-Both remain possible.
-
----
-
-# Critical Distinction
-
-> I had no control over the situation.
-
-is not equivalent to:
-
-> every choice I made was irrelevant.
-
-This is the core experiential insight.
-
----
-
-# Consent Constraint
-
-Do not allow this testimony to imply that the overall encounter was consensual.
-
-The witness explicitly says:
-
-> The refusal of the first thing does not make everything that followed consensual.
-
-This prevents the archive from sanitizing coercive asymmetry.
-
----
-
-# Observer Interpretation
-
-If connected to the recovered framework, the event may be compatible with:
-
-- boundary recognition
-- limited coercion
-- diagnostic choice
-- autonomy assessment
-- minimum sufficient intervention
-
-But none should be assigned as confirmed purpose.
-
----
-
-# Concept Matrix
-
-**Primary concept:**  
-Refusal Capacity
-
-**Secondary concepts:**  
-Autonomy  
-Capability Asymmetry  
-Restraint  
-Boundary Recognition  
-Consent
-
-**Latent concepts:**  
-Authority Resistance  
-Diagnostic Exposure  
-Reciprocal Trust  
-Contact Readiness
-
-**Narrative phase:**  
-Phase V
-
-**Existing material strengthened:**  
-`reciprocal_trust_assessment_001`  
-`incremental_contact_assessment_001`  
-`authority_resistance_assessment_001`  
-`reciprocal_trust_assessment_001_notes`  
-`testimony_003`
-
-**Future material prepared:**  
-Contact-readiness synthesis  
-Restricted threshold
-
----
-
-# Final Design Principle
-
-The witness should not conclude:
-
-> They respected me.
-
-The stronger and more cautious observation is:
-
-> They could have forced one decision and did not.
+This testimony preserves the distinction between restraint and benevolence, and between one respected refusal and global consent. Its voice should remain blunt and embodied rather than analytical.

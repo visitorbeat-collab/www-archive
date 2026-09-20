@@ -11,6 +11,7 @@
 body.restricted-map-page {
   margin: 0;
   min-height: 100vh;
+  min-height: 100dvh;
 
   background:
     radial-gradient(
@@ -35,6 +36,7 @@ body.restricted-map-page {
 .restricted-map-shell {
   width: min(1180px, 94vw);
   min-height: 100vh;
+  min-height: 100dvh;
 
   margin: 0 auto;
 
@@ -516,6 +518,26 @@ body.restricted-map-page {
     font-size: 0.58rem;
 
     letter-spacing: 0.11em;
+
+    opacity: 0.48;
+  }
+
+
+  .concept-node-static .node-label {
+    opacity: 0.32;
+  }
+
+
+  .concept-node.is-visited .node-label,
+  .node-center .node-label {
+    opacity: 0.6;
+  }
+
+
+  .restricted-return {
+    display: inline-block;
+
+    padding: 12px 0;
   }
 
 
@@ -859,6 +881,8 @@ a.local-node:focus-visible .local-node-label {
 
   .local-node {
     min-width: 72px;
+
+    padding: 5px 0;
   }
 
 
@@ -883,8 +907,25 @@ a.local-node:focus-visible .local-node-label {
 
 
   .local-node-label {
-    font-size: 0.48rem;
+    font-size: 0.54rem;
     letter-spacing: 0.12em;
+
+    opacity: 0.48;
+  }
+
+
+  .local-node-static .local-node-label {
+    opacity: 0.32;
+  }
+
+
+  .local-node-current .local-node-label {
+    opacity: 0.68;
+  }
+
+
+  .local-map-return a {
+    padding: 12px 0;
   }
 
 }

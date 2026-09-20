@@ -47,6 +47,12 @@ Run in a fresh private window after Cloudflare Pages reports a successful deploy
 ## Restricted archive
 
 - [ ] Relational map works on desktop and narrow mobile width
+- [ ] At 320 px, 390 px, and 430 px widths, no page introduces horizontal scrolling
+- [ ] Mobile search and password fields do not trigger browser auto-zoom
+- [ ] Restricted gate nodes drag reliably by touch without moving the page
+- [ ] Restricted and local-map labels remain legible without hover
+- [ ] Return and audio-download links have comfortable mobile tap areas
+- [ ] Gate remains centered when mobile browser controls expand or collapse
 - [ ] Evidentiary Corpus remains outside the topology
 - [ ] Earthrise and Golden Record images load with correct orientation and captions
 - [ ] Audio Artifact 001 plays

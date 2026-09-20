@@ -169,5 +169,6 @@ Crawler directives reduce accidental discovery but are not security controls.
 - No public file contains Cloudflare secrets or development tokens.
 - The Evidentiary Corpus remains outside the restricted topology.
 - Audio Artifact 001 and Audio Artifact 002 remain canonically distinct.
+- Audio Artifact 002 is a human-retained biospheric field record, not source-system audio.
 - Available retained audio remains downloadable.
 - Adding material must deepen interpretation rather than merely increase volume.

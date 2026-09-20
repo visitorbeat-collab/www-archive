@@ -293,11 +293,14 @@ Audio Artifact 001 makes the archive's translation problem explicit. It is a doc
 The deepest accessible layer resolves into a retained-audio
 collection rather than a single reward.
 
-Audio Artifact 002 is presented as an artifact within the system rather than a conventional bonus song.
+Audio Artifact 002 is presented as an incorporated biospheric
+record rather than a conventional bonus song or source-system
+transmission.
 
 It remains canonically distinct from the documented sonification in Audio Artifact 001.
 
-Its existence should raise questions rather than answer them.
+Its existence expands retention beyond human production while
+keeping the meaning of the recorded signals unresolved.
 
 Available audio objects may be downloaded. Retention therefore
 permits the reader to keep the object rather than limiting access

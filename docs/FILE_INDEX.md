@@ -106,6 +106,7 @@ Local navigation on restricted records reproduces this topology in miniature. Th
 | `signal_capture_001.html` | `media/signal_capture_001.png` |
 | `relational_diagram_001.html` | `media/relational_diagram_001.png` |
 | `audio_artifact_001.html` | `media/audio_artifact_001.wav` |
+| `audio/audio_artifact_002.html` | `media/audio_artifact_002.wav`, source OGG, and spectrogram |
 
 Audio Artifact 001 is a documented sonification of CERN CMS Open
 Data. Available audio objects include explicit download links so
@@ -117,9 +118,9 @@ concepts and Comparative Convergence Assessment 001 have been
 visited.
 
 `nontext/audio/audio_artifact_002.html` is the first concealed
-audio reference. Until its media object is attached, it must
-remain explicitly unavailable rather than linking to a missing
-file.
+biospheric audio record. It preserves a documented National Park
+Service humpback-whale hydrophone recording with a downloadable
+WAV, source-preservation OGG, and derived spectrogram.
 
 Future audio files remain in `nontext/media/` and use sequential
 `audio_artifact_###` identifiers. Audio Artifact 002 and later

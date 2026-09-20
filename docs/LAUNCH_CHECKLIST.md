@@ -61,7 +61,10 @@ Run in a fresh private window after Cloudflare Pages reports a successful deploy
 - [ ] Earthrise and Golden Record images load with correct orientation and captions
 - [ ] Audio Artifact 001 plays
 - [ ] Audio Artifact 001 downloads successfully
-- [ ] Audio Artifact 002 remains visibly unavailable until media exists
+- [ ] Audio Artifact 002 plays successfully
+- [ ] Audio Artifact 002 WAV and source OGG download successfully
+- [ ] Audio Artifact 002 spectrogram loads with legible caption and alt text
+- [ ] Audio Artifact 002 provenance identifies it as an incorporated human field recording
 
 ## Retained audio
 

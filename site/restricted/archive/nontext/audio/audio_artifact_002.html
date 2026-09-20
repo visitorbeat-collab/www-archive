@@ -2,75 +2,29 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-
-  <meta
-    name="viewport"
-    content="width=device-width, initial-scale=1.0"
-  >
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <title>audio_artifact_002</title>
 
-  <link
-    rel="stylesheet"
-    href="/style.css"
-  >
-
-  <link
-    rel="stylesheet"
-    href="/restricted/restricted.css"
-  >
+  <link rel="stylesheet" href="/style.css">
+  <link rel="stylesheet" href="/restricted/restricted.css">
 
   <style>
-    .artifact-locked,
-    .media-absence {
+    .artifact-locked {
       max-width: 760px;
       margin: 2.5rem 0;
       padding: 1.25rem;
-      border:
-        1px solid
-        rgba(220, 230, 235, 0.13);
-      background:
-        rgba(8, 12, 15, 0.42);
-    }
-
-    .artifact-locked {
-      font-family:
-        "IBM Plex Mono",
-        monospace;
+      border: 1px solid rgba(220, 230, 235, 0.13);
+      background: rgba(8, 12, 15, 0.42);
+      font-family: "IBM Plex Mono", monospace;
       font-size: 0.74rem;
       letter-spacing: 0.08em;
-      color:
-        rgba(205, 214, 219, 0.48);
-    }
-
-    .media-absence-label {
-      display: block;
-      margin-bottom: 0.7rem;
-      font-family:
-        "IBM Plex Mono",
-        monospace;
-      font-size: 0.66rem;
-      letter-spacing: 0.11em;
-      color:
-        rgba(132, 213, 232, 0.58);
-    }
-
-    .media-absence-value {
-      display: block;
-      font-family:
-        "IBM Plex Mono",
-        monospace;
-      font-size: 0.84rem;
-      line-height: 1.6;
-      letter-spacing: 0.06em;
-      color:
-        rgba(225, 232, 236, 0.76);
+      color: rgba(205, 214, 219, 0.48);
     }
 
     .artifact-state {
       display: grid;
-      grid-template-columns:
-        repeat(3, minmax(0, 1fr));
+      grid-template-columns: repeat(3, minmax(0, 1fr));
       gap: 0.8rem;
       max-width: 760px;
       margin: 2.5rem 0;
@@ -79,42 +33,135 @@
     .artifact-state-cell {
       min-height: 105px;
       padding: 1rem;
-      border:
-        1px solid
-        rgba(220, 230, 235, 0.13);
+      border: 1px solid rgba(220, 230, 235, 0.13);
+    }
+
+    .artifact-state-label,
+    .artifact-state-value {
+      display: block;
+      font-family: "IBM Plex Mono", monospace;
+      letter-spacing: 0.08em;
     }
 
     .artifact-state-label {
-      display: block;
       margin-bottom: 0.65rem;
-      font-family:
-        "IBM Plex Mono",
-        monospace;
       font-size: 0.62rem;
-      letter-spacing: 0.1em;
-      color:
-        rgba(205, 214, 219, 0.46);
+      color: rgba(205, 214, 219, 0.46);
     }
 
     .artifact-state-value {
-      display: block;
-      font-family:
-        "IBM Plex Mono",
-        monospace;
       font-size: 0.74rem;
       line-height: 1.5;
+      color: rgba(132, 213, 232, 0.68);
+    }
+
+    .audio-frame,
+    .spectrogram-frame {
+      max-width: 760px;
+      margin: 2rem 0;
+      padding: 1.25rem;
+      border: 1px solid rgba(220, 230, 235, 0.13);
+      background: rgba(8, 12, 15, 0.42);
+    }
+
+    .audio-frame audio {
+      display: block;
+      width: 100%;
+    }
+
+    .media-caption {
+      margin: 0.9rem 0 0;
+      font-family: "IBM Plex Mono", monospace;
+      font-size: 0.7rem;
+      line-height: 1.65;
+      letter-spacing: 0.04em;
+      color: rgba(205, 214, 219, 0.55);
+    }
+
+    .download-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem 1.5rem;
+      margin-top: 1rem;
+    }
+
+    .download-actions a {
+      padding: 0.55rem 0;
+      font-family: "IBM Plex Mono", monospace;
+      font-size: 0.68rem;
       letter-spacing: 0.07em;
-      color:
-        rgba(132, 213, 232, 0.68);
+      color: rgba(132, 213, 232, 0.72);
+      text-decoration: none;
+    }
+
+    .download-actions a:hover,
+    .download-actions a:focus-visible {
+      color: rgba(168, 229, 242, 0.96);
+    }
+
+    .spectrogram-frame img {
+      display: block;
+      width: 100%;
+      height: auto;
+      border: 1px solid rgba(220, 230, 235, 0.09);
+    }
+
+    .provenance-grid {
+      display: grid;
+      grid-template-columns: minmax(145px, 0.55fr) minmax(250px, 1.45fr);
+      max-width: 760px;
+      margin-top: 1.5rem;
+      border-top: 1px solid rgba(220, 230, 235, 0.1);
+    }
+
+    .provenance-label,
+    .provenance-value {
+      padding: 0.7rem 0;
+      border-bottom: 1px solid rgba(220, 230, 235, 0.08);
+      font-family: "IBM Plex Mono", monospace;
+      font-size: 0.72rem;
+      line-height: 1.6;
+    }
+
+    .provenance-label {
+      color: rgba(205, 214, 219, 0.45);
+    }
+
+    .provenance-value {
+      color: rgba(225, 232, 236, 0.72);
+    }
+
+    .provenance-value a {
+      color: rgba(132, 213, 232, 0.72);
     }
 
     @media (max-width: 700px) {
-      .artifact-state {
+      .artifact-state,
+      .provenance-grid {
         grid-template-columns: 1fr;
       }
 
       .artifact-state-cell {
         min-height: 0;
+      }
+
+      .audio-frame,
+      .spectrogram-frame {
+        padding: 1rem;
+      }
+
+      .provenance-label {
+        padding-bottom: 0;
+        border-bottom: 0;
+      }
+
+      .download-actions {
+        flex-direction: column;
+        gap: 0;
+      }
+
+      .download-actions a {
+        min-height: 44px;
       }
     }
   </style>
@@ -124,134 +171,199 @@
 
   <main class="restricted-document">
 
-    <div
-      class="artifact-locked"
-      data-retained-audio-locked
-    >
+    <div class="artifact-locked" data-retained-audio-locked>
       retention condition unresolved
     </div>
 
-
-    <div
-      data-retained-audio-unlocked
-      hidden
-    >
+    <div data-retained-audio-unlocked hidden>
 
       <header class="restricted-document-header">
-
         <div class="restricted-document-path">
-          /restricted/archive/nontext/audio/
-          audio_artifact_002
+          /restricted/archive/nontext/audio/audio_artifact_002
         </div>
 
-        <h1>
-          AUDIO ARTIFACT 002
-        </h1>
+        <h1>AUDIO ARTIFACT 002</h1>
 
         <p class="restricted-document-subtitle">
-          Retained audio reference without a corresponding media
-          object in the current reconstruction.
+          A biospheric acoustic record retained where playback
+          preserves patterned structure not recoverable through
+          semantic description alone.
         </p>
-
       </header>
 
-
-      <section
-        class="artifact-state"
-        aria-label="Artifact status"
-      >
-
+      <section class="artifact-state" aria-label="Artifact status">
         <div class="artifact-state-cell">
-          <span class="artifact-state-label">
-            RETENTION STATE
-          </span>
-          <span class="artifact-state-value">
-            REFERENCE RESOLVED
-          </span>
+          <span class="artifact-state-label">RETENTION STATE</span>
+          <span class="artifact-state-value">MEDIA AVAILABLE</span>
         </div>
 
         <div class="artifact-state-cell">
-          <span class="artifact-state-label">
-            SOURCE CONTINUITY
-          </span>
-          <span class="artifact-state-value">
-            UNESTABLISHED
-          </span>
+          <span class="artifact-state-label">SOURCE DOMAIN</span>
+          <span class="artifact-state-value">BIOSPHERIC / MARINE</span>
         </div>
 
         <div class="artifact-state-cell">
-          <span class="artifact-state-label">
-            MEDIA OBJECT
-          </span>
-          <span class="artifact-state-value">
-            UNAVAILABLE
-          </span>
+          <span class="artifact-state-label">TRANSFORMATION</span>
+          <span class="artifact-state-value">FORMAT CONVERSION ONLY</span>
         </div>
-
       </section>
 
+      <section class="audio-frame" aria-label="Retained audio object">
+        <audio controls preload="metadata">
+          <source
+            src="/restricted/archive/nontext/media/audio_artifact_002.wav"
+            type="audio/wav"
+          >
+          Audio playback unavailable.
+        </audio>
 
-      <section class="media-absence">
+        <p class="media-caption">
+          humpback whale acoustic activity / Glacier Bay, Alaska /<br>
+          duration: 01:01.23 / mono / 44.1 kHz / pitch and time unaltered
+        </p>
 
-        <span class="media-absence-label">
-          RETAINED OBJECT STATUS
-        </span>
+        <div class="download-actions">
+          <a
+            href="/restricted/archive/nontext/media/audio_artifact_002.wav"
+            download="audio_artifact_002.wav"
+          >
+            download retained object [WAV] ↓
+          </a>
 
-        <span class="media-absence-value">
-          media continuity not established
-        </span>
-
+          <a
+            href="/restricted/archive/nontext/media/audio_artifact_002_source.ogg"
+            download="audio_artifact_002_source.ogg"
+          >
+            download source-preservation copy [OGG] ↓
+          </a>
+        </div>
       </section>
-
 
       <section class="restricted-document-section">
-
-        <h2>
-          OBSERVATION
-        </h2>
+        <h2>OBSERVATION</h2>
 
         <p>
-          The retained structure identifies an audio object at
-          this position. No corresponding media object is attached
-          to the current reconstruction.
+          The retained object contains acoustic activity produced
+          by one or more humpback whales and recorded by an anchored
+          hydrophone near the mouth of Glacier Bay. Vocal activity
+          occupies much of the record. Breathing and wheeze blows
+          are audible near its end.
         </p>
 
         <p>
-          Duration, source environment, authorship, and
-          transformation status cannot be verified from the
-          reference alone.
+          The record was produced without a human performer and
+          without translation into a human musical system. Human
+          decisions remain present in hydrophone placement,
+          recording, selection, naming, encoding, and retention.
         </p>
-
       </section>
 
+      <figure class="spectrogram-frame">
+        <img
+          src="/restricted/archive/nontext/media/audio_artifact_002_spectrogram.png"
+          alt="Spectrogram of the 61-second recording, showing clustered low-frequency whale sounds over time with stronger events near the end."
+          width="1682"
+          height="728"
+          loading="lazy"
+        >
+
+        <figcaption class="media-caption">
+          spectral view generated from the retained WAV / horizontal:
+          time / vertical: 0–6 kHz / brightness: relative energy.
+          This view describes the same object; it is not separate evidence.
+        </figcaption>
+      </figure>
 
       <section class="restricted-document-section">
-
-        <h2>
-          INTERPRETATION CONSTRAINT
-        </h2>
+        <h2>INTERPRETATION CONSTRAINT</h2>
 
         <p>
-          Absence of the media object does not distinguish between
-          loss, damage, withholding, incomplete transfer, or a
-          reference whose source has not yet been recovered.
+          Pattern establishes neither message nor intended
+          recipient. Repetition, variation, and response may be
+          described without assigning human language, music, or
+          motive to the source organism.
         </p>
 
         <p>
-          The assigned identifier establishes position within this
-          reconstruction. It does not establish sequence within
-          the source system.
+          The object demonstrates that consequential acoustic
+          structure is not exclusive to human production. It does
+          not establish what any individual signal meant within
+          the source environment.
         </p>
-
       </section>
 
+      <section class="restricted-document-section">
+        <h2>PROVENANCE</h2>
+
+        <p>
+          This is a documented human field recording incorporated
+          during reconstruction. It is not presented as audio
+          recovered directly from the source system.
+        </p>
+
+        <div class="provenance-grid">
+          <div class="provenance-label">SUBJECT</div>
+          <div class="provenance-value">
+            humpback whale (<i>Megaptera novaeangliae</i>)
+          </div>
+
+          <div class="provenance-label">LOCATION</div>
+          <div class="provenance-value">
+            near the mouth of Glacier Bay, Alaska
+          </div>
+
+          <div class="provenance-label">SOURCE TIMESTAMP</div>
+          <div class="provenance-value">
+            2001-09-20 10:29, as encoded in the original filename
+          </div>
+
+          <div class="provenance-label">ACQUISITION</div>
+          <div class="provenance-value">
+            National Park Service hydrophone used to monitor
+            ambient underwater sound
+          </div>
+
+          <div class="provenance-label">SOURCE RECORD</div>
+          <div class="provenance-value">
+            <a
+              href="https://commons.wikimedia.org/wiki/File:Humpback_whale_wheezeblow.ogg"
+              rel="external noreferrer"
+            >
+              National Park Service recording preserved by
+              Wikimedia Commons
+            </a>
+          </div>
+
+          <div class="provenance-label">RIGHTS</div>
+          <div class="provenance-value">
+            public domain in the United States / United States
+            National Park Service work
+          </div>
+
+          <div class="provenance-label">RECONSTRUCTION</div>
+          <div class="provenance-value">
+            Commons OGG decoded to 44.1 kHz mono PCM WAV; no pitch,
+            timing, sequence, or dynamic processing applied
+          </div>
+        </div>
+      </section>
+
+      <section class="restricted-document-section">
+        <h2>RETENTION NOTE</h2>
+
+        <p>
+          The recording is retained because its structure exists
+          before and beyond the explanatory text surrounding it.
+          Description can identify the source and constrain
+          interpretation. It cannot substitute for encounter with
+          the object itself.
+        </p>
+      </section>
 
       <footer class="restricted-document-footer">
-
         <a href="/restricted/archive/nontext/audio/">
           ← retained audio
         </a>
-
       </footer>
 
     </div>

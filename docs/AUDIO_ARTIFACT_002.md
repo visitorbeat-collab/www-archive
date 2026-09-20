@@ -1,36 +1,33 @@
 # WORLD WIDE WASTE
 ## AUDIO ARTIFACT 002
-### Canonical Design Constraint — Version 1.0
+### Canonical Design Constraint — Version 2.0
 
 **Archive representation:** `audio_artifact_002`
 
 **Classification:** Restricted / Nontext / Retained Audio
 
-**Internal status:** Reserved
+**Internal status:** Available
 
-**Media status:** Not yet attached
+**Media status:** Attached and downloadable
 
-**Narrative function:** First concealed retained-audio object
+**Narrative function:** First concealed biospheric acoustic record
 
 ---
 
-# 1.0 Current State
+# 1.0 Canonical Identity
 
-Audio Artifact 002 exists in the reconstructed archive as a
-resolved reference without an attached media object.
+Audio Artifact 002 is a documented National Park Service field
+recording of humpback-whale acoustic activity near the mouth of
+Glacier Bay, Alaska.
 
-Until the final audio is available, the site must not fabricate
-duration, source, authorship, recording conditions, or
-transformation details.
+It was incorporated during the Finder's reconstruction. It is not
+material recovered directly from the source system, and the site
+must never imply otherwise.
 
-The visible placeholder may distinguish among unresolved
-possibilities but must not select one:
-
-- media loss
-- damage
-- withholding
-- incomplete transfer
-- source not yet recovered
+The original filename records the timestamp `20Sep01@1029`. The
+timestamp may be reported only as information encoded in that
+filename; its timezone and independent verification are not
+established.
 
 ---
 
@@ -42,18 +39,11 @@ has:
 - visited the five navigable restricted concepts
 - opened Comparative Convergence Assessment 001
 
-The relevant concepts are:
+The relevant concepts are condition, retention, exposure,
+participation, and nontext. Boundary and effect remain static
+concepts and are not included in visit-state evaluation.
 
-- condition
-- retention
-- exposure
-- participation
-- nontext
-
-Boundary and effect remain static concepts in the current map
-and are not included in visit-state evaluation.
-
-The reveal is narrative interface state, not a second security
+This reveal is narrative interface state, not a second security
 boundary. Cloudflare restricted middleware remains the actual
 access control.
 
@@ -61,81 +51,70 @@ access control.
 
 # 3.0 Relationship to Audio Artifact 001
 
-Audio Artifact 001 is a documented human sonification with
-declared provenance and mapping.
+Audio Artifact 001 is a human-designed sonification of simulated
+particle-collision data. Audio Artifact 002 is a field recording
+of biospheric acoustic activity.
 
-Audio Artifact 002 must remain distinct. It must not inherit:
+Audio Artifact 002 must not inherit Audio Artifact 001's CERN or
+CMS provenance, event identifier, sonification mapping, reference
+tone, or derivative interpretation status.
 
-- CERN or CMS provenance
-- event 233917
-- the five-part sonification mapping
-- the 125 Hz reference tone
-- the interpretation status of a human-authored data derivative
-
-The first artifact teaches that audible structure can be created
-through translation. The second asks the reader to retain that
-caution when the source cannot be resolved.
+Together, the records contrast translated measurement with sound
+that occurred in an observed environment. Neither record removes
+the human choices involved in acquisition and retention.
 
 ---
 
-# 4.0 Media Requirements
+# 4.0 Media and Provenance
 
-When the final audio object is attached:
+The retained media files are:
 
-- store it at
-  `site/restricted/archive/nontext/media/audio_artifact_002.wav`
-- provide in-page playback without autoplay
-- provide an explicit same-origin download link
-- preserve a lossless WAV version
-- disclose only provenance that is canonically established
-- update the registry status from `MEDIA UNAVAILABLE` to
-  `MEDIA AVAILABLE`
+- `site/restricted/archive/nontext/media/audio_artifact_002.wav`
+  — 44.1 kHz mono PCM reconstruction copy
+- `site/restricted/archive/nontext/media/audio_artifact_002_source.ogg`
+  — source-preservation copy obtained from Wikimedia Commons
+- `site/restricted/archive/nontext/media/audio_artifact_002_spectrogram.png`
+  — derived visual representation of the retained WAV
 
-Downloading is part of the retention model. Available audio
-objects must not be restricted to streaming playback.
+The OGG was decoded to WAV without pitch, timing, sequence, or
+dynamic processing. Both audio files remain downloadable. The
+spectrogram is explicitly described as a view of the same object,
+not separate evidence.
+
+Source: National Park Service recording preserved by Wikimedia
+Commons at
+`https://commons.wikimedia.org/wiki/File:Humpback_whale_wheezeblow.ogg`.
+The source is identified as public domain in the United States as
+a United States National Park Service work.
 
 ---
 
-# 5.0 Collection Model
+# 5.0 Interpretation Constraint
+
+The page may describe vocal activity, breathing, and wheeze blows
+where supported by source documentation. It must not convert
+pattern into an unsupported claim of language, music, message,
+recipient, or motive.
+
+Its role is to demonstrate that structured acoustic production is
+not exclusive to humanity while keeping the meaning of individual
+signals unresolved.
+
+---
+
+# 6.0 Collection Model
 
 Audio Artifact 002 is the first concealed record in an extensible
-retained-audio collection. It is not required to remain the final
-audio object.
+retained-audio collection. Future records use sequential stable
+identifiers such as `audio_artifact_003` and
+`audio_artifact_004`.
 
-Future records should use sequential stable identifiers:
+Artifact number describes position within the reconstruction. It
+does not establish source chronology, track order, importance,
+confidence, or depth.
 
-- `audio_artifact_003`
-- `audio_artifact_004`
-- `audio_artifact_005`
-
-Artifact number indicates position within the reconstruction. It
-does not automatically indicate:
-
-- source chronology
-- track order
-- importance
-- confidence
-- depth
-
-Musical titles may be retained as optional local designations
-without replacing archive identifiers.
-
----
-
-# 6.0 Presentation Constraint
-
-The page should remain sparse.
-
-Avoid:
-
-- bonus-track language
-- congratulatory reveal text
-- exaggerated transmission effects
-- autoplay
-- invented technical metadata
-- claims that ambiguity proves external origin
-
-The object should feel retained rather than awarded.
+Available media must provide in-page playback without autoplay
+and an explicit local download path.
 
 ---
 

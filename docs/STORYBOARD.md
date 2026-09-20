@@ -191,6 +191,10 @@ He was reconstructing the road.
 
 This is the emotional turning point of the journal.
 
+The full road analogy should first appear here. Earlier orientation and field notes may
+establish collection, uncertainty, and recurring structure, but should not pre-empt the
+road metaphor or its implication that reconstruction can approach an unanticipated destination.
+
 The audience should begin suspecting that the Finder has stumbled onto something beyond his own work.
 
 ---
@@ -214,6 +218,11 @@ It simply grants access.
 Desired reaction:
 
 "I've crossed into another layer."
+
+The public timeline remains absent from root navigation until the Finder reaches
+reconstruction reassessment in `what_changed`, or the reader independently discovers the
+restricted boundary. This prevents the chronology from summarizing the prospective test
+before the reader encounters it.
 
 ---
 

@@ -13,6 +13,7 @@
 - [x] Public and restricted JavaScript syntax checked
 - [x] Conditional Restricted discovery tested with exact and aliased concepts
 - [x] Persisted root discovery state tested
+- [x] Conditional Timeline discovery and persisted chronology state tested
 - [x] Retained-audio state logic retained
 - [x] CSS brace balance checked
 - [x] Empty control documents resolved
@@ -28,11 +29,12 @@ Run in a fresh private window after Cloudflare Pages reports a successful deploy
 
 ## Public entry
 
-- [ ] Root Index loads without `restricted/`
+- [ ] Fresh root Index loads without `SYSTEM / STATUS`, `timeline/`, or `restricted/`
 - [ ] Query instrument is visible above the directory structure
 - [ ] An ordinary query returns conceptual results without revealing Restricted
 - [ ] `responsibility`, `duty`, `obligation`, or `accountability` reveals the boundary
-- [ ] Returning to the root restores `restricted/` under `SYSTEM / STATUS`
+- [ ] Returning to the root restores `timeline/` and `restricted/` under `SYSTEM / STATUS`
+- [ ] In a separate fresh private window, visiting `what_changed` and returning to root reveals `timeline/` without revealing `restricted/`
 
 ## Restricted boundary
 

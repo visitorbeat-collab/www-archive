@@ -52,6 +52,11 @@ Public collections include:
 - `environmental/`
 - `timeline/`
 
+The root does not expose `timeline/` immediately. Visiting
+`working-notes/personal/what_changed.html` records the chronology discovery state, and
+prior restricted-boundary discovery also satisfies that condition. The timeline itself
+remains directly reachable; the conditional state protects story order rather than access.
+
 Search is not represented as a directory. The root query instrument submits to `site/search/index.html`, and `site/js/concept-search.js` maps human queries to conceptual classifications and related documents.
 
 ---

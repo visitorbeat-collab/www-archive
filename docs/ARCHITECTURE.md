@@ -93,6 +93,12 @@ Cookie properties:
 
 The middleware independently recreates the expected signature using `RESTRICTED_COOKIE_SECRET`. Invalid or missing cookies redirect to `/restricted/`.
 
+After the first server-verified solution, the browser stores
+`restricted-gate-relation-retained=true`. A returning reader sees the resolved topology
+and may renew access by selecting its center. The browser still requests a fresh signed
+challenge and submits the canonical interpretation before the server issues a new access
+cookie. Local recognition reduces repetition; it does not bypass server authorization.
+
 ---
 
 # 6. Restricted Relational Archive
@@ -137,6 +143,7 @@ Local storage controls discoverability and reader continuity only. It must never
 | `observation-index-restricted-discovered` | Restores the root Restricted link |
 | `restricted-map-visited` | Records restricted topology visits |
 | `restricted-audio-convergence` | Records convergence-assessment observation |
+| `restricted-gate-relation-retained` | Restores the shortened returning-reader gate |
 
 The signed, `HttpOnly` cookie is the only client credential accepted by restricted middleware.
 

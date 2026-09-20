@@ -43,6 +43,10 @@ Run in a fresh private window after Cloudflare Pages reports a successful deploy
 - [ ] Incorrect arrangements do not grant access
 - [ ] Correct arrangement issues the cookie and opens the restricted archive
 - [ ] Restricted navigation survives page changes and refreshes
+- [ ] A completed gate stores `restricted-gate-relation-retained=true`
+- [ ] Returning after the access cookie expires shows the resolved topology and `prior relation retained`
+- [ ] Selecting the retained center renews authorization and opens the archive
+- [ ] Clearing site data restores the complete gate
 
 ## Restricted archive
 

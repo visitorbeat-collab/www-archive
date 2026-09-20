@@ -1411,6 +1411,98 @@ body.gate-test-page::after {
     rgba(248, 250, 251, 0.98);
 }
 
+.retained-entry {
+  margin: 0;
+  padding: 0;
+
+  border: 0;
+  border-radius: 50%;
+
+  background: transparent;
+  color: inherit;
+
+  cursor: default;
+  pointer-events: none;
+}
+
+.retained-entry-symbol {
+  display: block;
+  line-height: 1;
+}
+
+.retained-entry-label {
+  position: absolute;
+
+  left: 50%;
+  top: calc(100% + 17px);
+
+  width: max-content;
+
+  transform:
+    translateX(-50%);
+
+  font-size: 0.56rem;
+  font-weight: 400;
+  letter-spacing: 0.14em;
+  line-height: 1.4;
+
+  color:
+    rgba(226, 234, 238, 0.64);
+
+  text-transform: lowercase;
+
+  opacity: 0;
+
+  pointer-events: none;
+
+  transition:
+    opacity 500ms ease,
+    color 220ms ease;
+}
+
+.gate-field.is-retained
+.resolution-map {
+  pointer-events: auto;
+}
+
+.gate-field.is-retained
+.retained-entry {
+  cursor: pointer;
+  pointer-events: auto;
+}
+
+.gate-field.is-retained
+.retained-entry-label {
+  opacity: 1;
+}
+
+.gate-field.is-retained
+.retained-entry:hover
+.retained-entry-label,
+.gate-field.is-retained
+.retained-entry:focus-visible
+.retained-entry-label {
+  color:
+    rgba(244, 248, 250, 0.92);
+}
+
+.gate-field.is-retained
+.retained-entry:focus-visible {
+  outline:
+    1px solid
+    rgba(232, 239, 242, 0.54);
+
+  outline-offset: 8px;
+}
+
+.gate-field.is-retained.is-retained-entering
+.resolution-map {
+  opacity: 0.22;
+
+  transform:
+    scale(0.975);
+}
+
 .resolved-boundary {
   left: 27%;
   top: 45.5%;

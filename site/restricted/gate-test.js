@@ -14,11 +14,25 @@ document.addEventListener("DOMContentLoaded", () => {
   const dependentLayer =
     document.getElementById("dependent-layer");
 
+  const resolutionMap =
+    field?.querySelector(".resolution-map");
+
+  const retainedEntry =
+    document.getElementById("retained-entry");
+
+  const retainedEntryLabel =
+    retainedEntry?.querySelector(
+      ".retained-entry-label"
+    );
+
   if (
     !field ||
     !centerElement ||
     !causalLayer ||
-    !dependentLayer
+    !dependentLayer ||
+    !resolutionMap ||
+    !retainedEntry ||
+    !retainedEntryLabel
   ) {
     return;
   }
@@ -77,11 +91,15 @@ document.addEventListener("DOMContentLoaded", () => {
   const DRAG_MIN_RATIO = 0.08;
   const DRAG_MAX_RATIO = 0.88;
 
+  const RETAINED_RELATION_KEY =
+    "restricted-gate-relation-retained";
+
   let resolved = false;
   let cycleToken = 0;
 
   let assessmentChallenge = null;
   let accessAuthorized = false;
+  let retainedEntryPending = false;
 
 
   /* =========================================================
@@ -132,6 +150,27 @@ document.addEventListener("DOMContentLoaded", () => {
     );
   }
 
+  function hasRetainedRelation() {
+    try {
+      return localStorage.getItem(
+        RETAINED_RELATION_KEY
+      ) === "true";
+    } catch (error) {
+      return false;
+    }
+  }
+
+  function retainRelation() {
+    try {
+      localStorage.setItem(
+        RETAINED_RELATION_KEY,
+        "true"
+      );
+    } catch (error) {
+      /* localStorage unavailable */
+    }
+  }
+
 
   /* =========================================================
      PRIMARY STATE
@@ -164,6 +203,31 @@ document.addEventListener("DOMContentLoaded", () => {
       node =>
         node.profile === profileId
     );
+  }
+
+  function applyCanonicalInterpretation() {
+    profiles.forEach(
+      node => {
+        const targetClass =
+          TARGET_CLASS[
+            node.profile
+          ];
+
+        node.currentClass =
+          targetClass;
+
+        node.radiusRatio =
+          RADIAL_CLASSES[
+            targetClass
+          ];
+
+        positionNode(
+          node
+        );
+      }
+    );
+
+    updateDynamicGeometry();
   }
 
 
@@ -2288,6 +2352,8 @@ document.addEventListener("DOMContentLoaded", () => {
       accessAuthorized =
         true;
 
+      retainRelation();
+
       return true;
 
     } catch (error) {
@@ -2370,6 +2436,52 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
+  async function resumeRetainedRelation() {
+    if (
+      retainedEntryPending ||
+      accessAuthorized
+    ) {
+      return;
+    }
+
+    retainedEntryPending = true;
+    retainedEntry.disabled = true;
+
+    field.classList.add(
+      "is-retained-entering"
+    );
+
+    const authorized =
+      await authorizeInterpretation();
+
+    if (!authorized) {
+      retainedEntryPending = false;
+      retainedEntry.disabled = false;
+
+      field.classList.remove(
+        "is-retained-entering"
+      );
+
+      retainedEntryLabel.textContent =
+        "relation unavailable";
+
+      return;
+    }
+
+    const reducedMotion =
+      window.matchMedia &&
+      window.matchMedia(
+        "(prefers-reduced-motion: reduce)"
+      ).matches;
+
+    await wait(
+      reducedMotion ? 120 : 800
+    );
+
+    window.location.href =
+      "/restricted/archive/";
+  }
+
 
   /* =========================================================
      INITIALIZE
@@ -2413,6 +2525,10 @@ document.addEventListener("DOMContentLoaded", () => {
     isGateTestPage &&
     params.get("dev") === "1";
 
+  const retainedRelation =
+    !devBypass &&
+    hasRetainedRelation();
+
 
   if (!devBypass) {
     requestAssessmentChallenge();
@@ -2425,34 +2541,35 @@ document.addEventListener("DOMContentLoaded", () => {
       updateDynamicGeometry();
 
       if (devBypass) {
-
-        profiles.forEach(
-          node => {
-
-            const targetClass =
-              TARGET_CLASS[
-                node.profile
-              ];
-
-            node.currentClass =
-              targetClass;
-
-            node.radiusRatio =
-              RADIAL_CLASSES[
-                targetClass
-              ];
-
-            positionNode(
-              node
-            );
-          }
-        );
-
-        updateDynamicGeometry();
+        applyCanonicalInterpretation();
 
         resolveAssessment({
           bypassAuthorization: true
         });
+
+        return;
+      }
+
+      if (retainedRelation) {
+        applyCanonicalInterpretation();
+
+        field.classList.add(
+          "is-condensing",
+          "is-map-visible",
+          "is-retained"
+        );
+
+        resolutionMap.setAttribute(
+          "aria-hidden",
+          "false"
+        );
+
+        retainedEntry.disabled = false;
+
+        retainedEntry.addEventListener(
+          "click",
+          resumeRetainedRelation
+        );
 
         return;
       }

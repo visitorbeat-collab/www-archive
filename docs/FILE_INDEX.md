@@ -16,7 +16,7 @@ The public archive is the Finder's reconstructed layer.
 
 | Path | Function |
 | --- | --- |
-| `site/index.html` | Public entry and primary navigation |
+| `site/index.html` | Public entry, primary navigation, and root query instrument |
 | `site/field-notes/` | Chronological Finder journal, entries 0001–0007 |
 | `site/working-notes/` | Working-note directory and personal reconstruction notes |
 | `site/recovered/` | Recovered documents, annotations, and unverified material |
@@ -24,11 +24,12 @@ The public archive is the Finder's reconstructed layer.
 | `site/testimony/` | Testimony records and associated notes |
 | `site/environmental/` | Environmental observations |
 | `site/timeline/` | Chronological reference layer |
-| `site/index.html` | Root index and primary query instrument |
 | `site/search/` | Expanded conceptual retrieval view; not presented as an archive directory |
 | `site/js/concept-search.js` | Search corpus, concept relationships, and root-query handoff |
 | `site/js/index-state.js` | Restores conditional root navigation after boundary discovery |
 | `site/style.css` | Shared public styling |
+| `site/robots.txt` | Site-wide crawler exclusion request |
+| `site/_headers` | Static-response crawler and privacy headers |
 
 The public layer remains modest and evidentiary. It does not announce the archive's largest implications.
 
@@ -184,6 +185,8 @@ Key control documents include:
 - `docs/STORYBOARD.md`
 - `docs/DOCUMENT_MATRIX.md`
 - `docs/FILE_INDEX.md`
+- `docs/PUZZLES.md`
+- `docs/LAUNCH_CHECKLIST.md`
 
 When an implementation and this index diverge, update this index only after confirming whether the implementation or the canon is authoritative.
 
@@ -199,3 +202,4 @@ When an implementation and this index diverge, update this index only after conf
 - The authority-resistance anomaly remains unindexed and absent from search.
 - Public pages must not expose Cloudflare secrets or development tokens.
 - Nontext media must retain provenance, alt text or equivalent description, and its interpretive constraints.
+- Search engines must not be invited to index or archive the experience.

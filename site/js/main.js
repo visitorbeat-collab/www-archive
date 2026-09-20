@@ -1,23 +1,12 @@
-/* WORLD WIDE WASTE — THE INDEX — V3 */
+/*
+  WORLD WIDE WASTE — THE INDEX
 
-document.addEventListener("DOMContentLoaded", () => {
-  const form = document.querySelector("[data-password-form]");
-  if (!form) return;
+  Shared public behavior is intentionally minimal.
+  Interactive systems are isolated in their owning scripts:
 
-  form.addEventListener("submit", (event) => {
-    event.preventDefault();
-
-    const input = form.querySelector("[data-password-input]");
-    const status = document.querySelector("#password-status");
-
-    // Placeholder only. Final puzzle authentication will be added later.
-    if (status) status.textContent = "authentication unavailable";
-
-    document.body.classList.add("threshold-entering");
-
-    window.setTimeout(() => {
-      document.body.classList.remove("threshold-entering");
-      if (input) input.value = "";
-    }, 250);
-  });
-});
+  - concept-search.js: conceptual retrieval and boundary discovery
+  - index-state.js: conditional root navigation
+  - restricted/gate-test.js: relational access assessment
+  - restricted/restricted-map.js: restricted topology state
+  - restricted/retained-audio.js: retained-audio convergence state
+*/

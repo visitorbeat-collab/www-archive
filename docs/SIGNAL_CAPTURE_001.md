@@ -1,223 +1,140 @@
 # WORLD WIDE WASTE
 ## SIGNAL CAPTURE 001
-### Canonical Source — Version 1.0
+### Canonical Source — Version 2.0
 
 **Archive representation:** `signal_capture_001`
+
 **Classification:** Restricted / Nontext
+
 **Internal status:** Canonical
-**Media type:** Signal image
-**Source continuity:** Unresolved
-**Interpretation status:** Unassigned
+
+**Media type:** Scientific signal visualization and source video
+
+**Source continuity:** Documented human instrument record
+
+**Interpretation status:** Physically constrained
 
 ---
 
-# SIGNAL CAPTURE
+# 1.0 Identity
 
-## 1.0 Description
+Signal Capture 001 is NASA catalogue record PIA17045: a Voyager 1
+Plasma Wave Science visualization based on observations made during
+October–November 2012 and April–May 2013.
 
-Single retained signal visualization.
+It is a documented human scientific record incorporated during the
+Finder's reconstruction. It is not presented as a signal recovered
+from the source system.
 
-No verified source device.
+Credit must remain:
 
-No verified capture date.
-
-No verified transmission medium.
-
-No stable semantic interpretation assigned.
-
-The artifact should be treated as a measurement record, not as evidence of communication.
+**NASA / JPL-Caltech / University of Iowa**
 
 ---
 
-# 2.0 Observed Features
+# 2.0 Measured Relationship
 
-The retained record contains:
+Voyager 1's Plasma Wave Instrument detected oscillations of
+electrons in ionized gas beyond the heliosphere.
 
-- repeated interval clusters
-- asymmetrical pulse spacing
-- several abrupt amplitude discontinuities
-- low-intensity background structure
-- one prolonged quiet region
-- recurring high-density events
-- partial recurrence without exact duplication
+The visualization records:
 
----
+- observation time on the horizontal axis
+- plasma-wave frequency on the left vertical axis
+- inferred electron density on the right vertical axis
+- relative wave intensity through colour
 
-# 3.0 Repetition
-
-Several event groups recur at intervals that appear related.
-
-The intervals are not identical.
-
-This weakens simple periodic interpretation.
-
-Possible explanations include:
-
-- variable source timing
-- measurement drift
-- interference
-- composite source
-- damaged capture
-- non-periodic structured process
-
-No preference assigned.
+Frequency provides a measure of local electron density. The later
+activity occurs at a higher frequency and therefore indicates
+denser interstellar plasma.
 
 ---
 
-# 4.0 Quiet Interval
+# 3.0 Representation
 
-One extended low-activity interval appears between two denser event groups.
+The instrument did not capture atmospheric sound. It measured
+plasma oscillations through spacecraft antennas.
 
-The quiet interval should not automatically be interpreted as absence.
+NASA documents that these oscillations occur within the range of
+human hearing and that the antenna signal can be amplified and
+played through a speaker. The audio reproduces measured amplitude
+and frequency.
 
-Possible interpretations include:
-
-- genuine silence
-- unmeasured activity
-- signal loss
-- threshold behavior
-- phase change
-- source discontinuity
-
----
-
-# 5.0 Structural Correspondence
-
-The artifact shows a recurring relationship:
-
-**activity**
-
-→
-
-**distribution**
-
-→
-
-**interruption**
-
-→
-
-**reorganization**
-
-This may be visually compatible with several archive concepts involving:
-
-- transition
-- discontinuity
-- recovery
-- boundary change
-- regulation
-
-The correspondence is weak.
-
-No common origin is established.
+The plot and audible source record are human representations of a
+measured physical relationship. Neither is unmediated perception
+of interstellar space.
 
 ---
 
-# 6.0 Information Constraint
+# 4.0 Media
 
-The record may contain structure that is not visually obvious.
+The local media files are:
 
-The following may be relevant:
+- `site/restricted/archive/nontext/media/signal_capture_001.jpg`
+  — NASA catalogue JPEG retained without visual alteration
+- `site/restricted/archive/nontext/media/signal_capture_001_source.webm`
+  — public-domain NASA source video preserved by Wikimedia Commons
 
-- timing
-- spacing
-- amplitude ratio
-- density
-- silence duration
-- sequence order
-- recurrence
-- phase relation
+The institutional source page is:
 
-Visual inspection alone is insufficient for strong interpretation.
+`https://science.nasa.gov/photojournal/voyager-captures-sounds-of-interstellar-space/`
 
----
+The preserved source-video page is:
 
-# 7.0 Communication Warning
+`https://commons.wikimedia.org/wiki/File:Voyager_Captures_Sounds_of_Interstellar_Space.webm`
 
-Pattern recognition creates a high false-positive risk.
-
-Repeated structure does not establish:
-
-**message**
-
-Irregularity does not establish:
-
-**intelligence**
-
-Compression does not establish:
-
-**encoding**
-
-The source may be natural, technical, reconstructive, or composite.
+NASA content is generally not subject to copyright in the United
+States when used factually and without implying endorsement. NASA
+must be acknowledged as the source.
 
 ---
 
-# 8.0 Retention Reason
+# 5.0 Interpretation Constraint
 
-The artifact is retained because textual description removes timing and spacing relationships.
+Structured variation does not establish communication.
 
-It should remain available in visual form.
+In this record, rising tones have a supported physical explanation
+connected to electron density and solar activity. The record should
+teach the reader that signal structure becomes meaningful through
+instrument context, calibration, and comparison—not through visual
+pattern alone.
 
----
+Do not describe the record as:
 
-# Internal Design Notes
-
-## Purpose
-
-This is the second nontext artifact.
-
-It should feel like technical capture output rather than artwork.
-
----
-
-# Primary Concept
-
-**Signal Structure**
+- an alien transmission
+- sound travelling acoustically through vacuum
+- encoded language
+- evidence of intelligence
+- source-system material
 
 ---
 
-# Secondary Concepts
+# 6.0 Relationship to the Archive
 
-**Interval**
-**Recurrence**
-**Discontinuity**
-**Measurement**
-**Interpretive Restraint**
+Signal Capture 001 provides documented human evidence for the
+boundary described in `boundary_extension_event_001`.
 
----
+Its position in Nontext is determined by representation: the
+relationship among time, frequency, intensity, and inferred density
+cannot be preserved adequately through prose alone.
 
-# Narrative Function
-
-The signal record trains the reader not to equate structure with communication.
-
-This is useful before the later audio artifacts.
+Its subject overlap with an External Record does not move it into
+the source system or the restricted topology.
 
 ---
 
-# Important Constraint
+# 7.0 Narrative Function
 
-Do not hide an obvious message in this image.
+The record trains the reader not to equate structure with message.
+It also demonstrates that a boundary can be inferred through an
+indirect measured relationship rather than witnessed directly.
 
-It may contain repeated structures, but nothing should resolve cleanly into language.
-
----
-
-# Visual Direction
-
-The signal should look like:
-
-- a sparse instrument output
-- dark background
-- fine pale trace
-- several narrow event clusters
-- one long low-activity section
-- subtle secondary frequency information
-- no labels that explain the pattern
-- no alien glyphs
-- no text embedded in the waveform
+This prepares the reader for later records in which interpretation
+is less strongly constrained.
 
 ---
 
 # Final Design Principle
 
-The reader should feel that the signal might matter without being given a reason to call it a message.
+The artifact should feel credible because its source and limits are
+known, not because its appearance performs mystery.

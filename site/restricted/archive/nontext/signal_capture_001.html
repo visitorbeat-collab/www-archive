@@ -11,25 +11,102 @@
 
   <style>
     .media-frame {
-      margin: 42px 0 48px;
+      max-width: 980px;
+      margin: 42px auto 48px;
+      padding: 18px;
+      border: 1px solid rgba(255,255,255,0.12);
+      background: #090b0d;
     }
 
     .media-frame img {
       display: block;
       width: 100%;
-      max-width: 980px;
       height: auto;
-      margin: 0 auto;
-      border: 1px solid rgba(255,255,255,0.14);
-      background: #0f1113;
+      border: 1px solid rgba(255,255,255,0.08);
+      background: #000;
     }
 
     .media-caption {
-      max-width: 980px;
-      margin: 12px auto 0;
+      margin: 14px 0 0;
       font-family: "IBM Plex Mono", monospace;
-      font-size: 0.76rem;
-      opacity: 0.55;
+      font-size: 0.72rem;
+      line-height: 1.7;
+      opacity: 0.58;
+    }
+
+    .source-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem 1.5rem;
+      margin-top: 12px;
+    }
+
+    .source-actions a {
+      padding: 8px 0;
+      font-family: "IBM Plex Mono", monospace;
+      font-size: 0.68rem;
+      letter-spacing: 0.07em;
+      color: rgba(132, 213, 232, 0.72);
+      text-decoration: none;
+    }
+
+    .source-actions a:hover,
+    .source-actions a:focus-visible {
+      color: rgba(168, 229, 242, 0.96);
+    }
+
+    .provenance-grid {
+      display: grid;
+      grid-template-columns: minmax(145px, 0.55fr) minmax(250px, 1.45fr);
+      max-width: 780px;
+      margin-top: 24px;
+      border-top: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .provenance-grid dt,
+    .provenance-grid dd {
+      margin: 0;
+      padding: 11px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      font-family: "IBM Plex Mono", monospace;
+      font-size: 0.72rem;
+      line-height: 1.6;
+    }
+
+    .provenance-grid dt {
+      opacity: 0.48;
+    }
+
+    .provenance-grid dd {
+      opacity: 0.72;
+    }
+
+    .provenance-grid a {
+      color: rgba(132, 213, 232, 0.76);
+    }
+
+    @media (max-width: 640px) {
+      .media-frame {
+        padding: 12px;
+      }
+
+      .source-actions {
+        flex-direction: column;
+        gap: 0;
+      }
+
+      .source-actions a {
+        min-height: 44px;
+      }
+
+      .provenance-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .provenance-grid dt {
+        padding-bottom: 0;
+        border-bottom: 0;
+      }
     }
   </style>
 </head>
@@ -39,7 +116,6 @@
 <main class="document">
 
   <header class="document-header">
-
     <div class="eyebrow">
       RESTRICTED / NONTEXT / SIGNAL
     </div>
@@ -49,32 +125,49 @@
     </h1>
 
     <div class="document-metadata">
-      <span>media: signal image</span>
-      <span>source continuity: unresolved</span>
+      <span>media: signal visualization</span>
+      <span>source continuity: documented</span>
+      <span>origin: human instrument record</span>
     </div>
-
   </header>
 
 
   <section class="recovered-section">
-
     <p class="mono">
-      [retained signal capture]
+      [incorporated human measurement record]
     </p>
 
-    <div class="media-frame">
-
+    <figure class="media-frame">
       <img
-        src="/restricted/archive/nontext/media/signal_capture_001.png"
-        alt="Unresolved signal capture"
+        src="/restricted/archive/nontext/media/signal_capture_001.jpg"
+        alt="Voyager 1 Plasma Wave Science plot showing two groups of interstellar plasma-wave activity between October 2012 and May 2013, with frequency increasing from approximately two to nearly three kilohertz."
+        width="1280"
+        height="720"
       >
 
-      <div class="media-caption">
-        source device unavailable / capture parameters unresolved
+      <figcaption class="media-caption">
+        Voyager 1 Plasma Wave Science / observations recorded
+        October–November 2012 and April–May 2013 / frequency at
+        left / inferred electron density at right / colour indicates
+        relative wave intensity
+      </figcaption>
+
+      <div class="source-actions">
+        <a
+          href="/restricted/archive/nontext/media/signal_capture_001_source.webm"
+          download="signal_capture_001_source.webm"
+        >
+          download NASA source record [WEBM] ↓
+        </a>
+
+        <a
+          href="https://science.nasa.gov/photojournal/voyager-captures-sounds-of-interstellar-space/"
+          rel="external noreferrer"
+        >
+          open institutional source ↗
+        </a>
       </div>
-
-    </div>
-
+    </figure>
   </section>
 
 
@@ -82,17 +175,44 @@
     <h2>OBSERVATION</h2>
 
     <p>
-      No verified semantic interpretation is assigned.
+      Voyager 1's Plasma Wave Instrument detected oscillations of
+      electrons in ionized gas beyond the heliosphere. The two
+      visible groups were recorded during October–November 2012
+      and April–May 2013.
+    </p>
+
+    <p>
+      Frequency provides a measure of local electron density. The
+      later activity occurs at a higher frequency, indicating that
+      the spacecraft was moving through denser interstellar plasma.
     </p>
 
     <p class="mono">
-      repeated interval clusters<br>
-      asymmetric spacing<br>
-      discontinuous amplitude events<br>
-      extended low-activity interval<br>
-      partial recurrence
+      measured oscillation<br>
+      → frequency relation<br>
+      → density inference<br>
+      → boundary reassessment
+    </p>
+  </section>
+
+
+  <section class="recovered-section">
+    <h2>REPRESENTATION</h2>
+
+    <p>
+      The instrument did not record pressure waves moving through
+      an atmosphere. It measured plasma oscillations through its
+      antennas. Because those oscillations fall within the range
+      of human hearing, their amplitude and frequency can be
+      amplified and reproduced through a speaker.
     </p>
 
+    <p>
+      The visible plot and audible source record are two human
+      representations of the same measured relationship. Neither
+      should be mistaken for unmediated perception of interstellar
+      space.
+    </p>
   </section>
 
 
@@ -100,17 +220,61 @@
     <h2>INTERPRETATION CONSTRAINT</h2>
 
     <p>
-      Repetition does not establish communication.
+      Structured variation does not establish communication. In
+      this record, repeated rising tones have a physical explanation
+      connected to changing plasma density and solar activity.
     </p>
 
     <p>
-      Irregularity does not establish intelligence.
+      The record demonstrates why pattern must be evaluated with
+      instrument context. The same visible structure, detached from
+      its acquisition history, could invite a substantially different
+      interpretation.
     </p>
+  </section>
+
+
+  <section class="recovered-section">
+    <h2>PROVENANCE</h2>
 
     <p>
-      The retained structure may be natural, technical, reconstructive, or composite.
+      This is a documented human scientific record incorporated
+      during reconstruction. It is not presented as a signal
+      recovered from the source system.
     </p>
 
+    <dl class="provenance-grid">
+      <dt>SPACECRAFT</dt>
+      <dd>Voyager 1</dd>
+
+      <dt>INSTRUMENT</dt>
+      <dd>Plasma Wave Instrument</dd>
+
+      <dt>OBSERVATION</dt>
+      <dd>dense interstellar plasma beyond the heliosphere</dd>
+
+      <dt>PERIOD</dt>
+      <dd>October–November 2012 and April–May 2013</dd>
+
+      <dt>CREDIT</dt>
+      <dd>NASA / JPL-Caltech / University of Iowa</dd>
+
+      <dt>CATALOGUE</dt>
+      <dd>PIA17045</dd>
+
+      <dt>RIGHTS</dt>
+      <dd>
+        NASA media; generally not subject to copyright in the
+        United States when used factually with source acknowledgement
+      </dd>
+
+      <dt>LOCAL MEDIA</dt>
+      <dd>
+        NASA catalogue JPEG retained without visual alteration;
+        public-domain NASA video preserved as the downloadable
+        source record
+      </dd>
+    </dl>
   </section>
 
 
@@ -118,23 +282,25 @@
     <h2>RETENTION NOTE</h2>
 
     <p>
-      Timing and spacing relationships are not adequately preserved through textual description.
+      This record is retained because the relationship among time,
+      frequency, intensity, and inferred density cannot be preserved
+      adequately through prose alone.
     </p>
 
     <p>
-      Original structure retained where available.
+      It also provides documented human evidence for the boundary
+      described in
+      <a href="/restricted/archive/external_records/boundary_extension_event_001.html">
+        boundary_extension_event_001
+      </a>.
+      Shared subject matter does not place this human record inside
+      the source system.
     </p>
-
   </section>
 
 
   <footer class="restricted-local-nav">
-
-    <div
-      class="local-map"
-      aria-label="Related restricted material"
-    >
-
+    <div class="local-map" aria-label="Related restricted material">
       <svg
         class="local-map-lines"
         viewBox="0 0 620 310"
@@ -144,7 +310,6 @@
         <line x1="310" y1="155" x2="508" y2="155" />
       </svg>
 
-
       <div
         class="local-node local-node-center local-node-current"
         aria-label="Nontext"
@@ -152,7 +317,6 @@
         <span class="local-node-symbol">◆</span>
         <span class="local-node-label">nontext</span>
       </div>
-
 
       <a
         class="local-node local-node-right local-node-static local-node-concept-link"
@@ -162,23 +326,15 @@
         <span class="local-node-symbol">⊙</span>
         <span class="local-node-label">effect</span>
       </a>
-
     </div>
-
 
     <div class="local-map-return">
-      <a href="/restricted/archive/">
-        relation
-      </a>
+      <a href="/restricted/archive/">relation</a>
     </div>
-
 
     <div class="local-map-return">
-      <a href="/restricted/archive/nontext/">
-        nontext
-      </a>
+      <a href="/restricted/archive/nontext/">nontext</a>
     </div>
-
   </footer>
 
 </main>

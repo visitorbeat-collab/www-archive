@@ -1,13 +1,14 @@
 # WORLD WIDE WASTE
 ## RELATIONAL DIAGRAM 001
-### Canonical Source — Version 1.0
+### Canonical Source — Version 2.0
 
 **Archive representation:** `relational_diagram_001`
 **Classification:** Restricted / Nontext
 **Internal status:** Canonical
-**Media type:** Diagram
+**Media type:** Deterministic SVG reconstruction
 **Source continuity:** Unresolved
 **Interpretation status:** Partial
+**Representation status:** Finder reconstruction
 
 ---
 
@@ -15,7 +16,12 @@
 
 ## 1.0 Description
 
-Single retained relational diagram.
+The surviving material describes a relational diagram, but the
+original visual object is not present in the reconstruction.
+
+The public-facing SVG is a deterministic Finder reconstruction of
+the structural properties retained in this document. It must not
+be presented as the original source image.
 
 No verified source metadata.
 
@@ -32,13 +38,15 @@ No confirmed distinction between:
 - institutions
 - temporal states
 
-The diagram should be interpreted relationally before it is interpreted literally.
+The reconstruction should be interpreted as an explicit model of
+the surviving description, not as evidence of unretained visual
+details.
 
 ---
 
 # 2.0 Observed Structure
 
-The retained object contains:
+The retained description identifies:
 
 - multiple bounded nodes
 - uneven node sizes
@@ -47,12 +55,32 @@ The retained object contains:
 - several reciprocal relationships
 - indirect dependency chains
 - overlapping local clusters
-- no visually dominant central node
+- no reliably dominant central node
 - multiple peripheral structures with high relational influence
 
 ---
 
-# 3.0 Centrality
+# 3.0 Reconstruction Rules
+
+The displayed SVG contains thirteen anonymous nodes assigned only
+local reconstruction identifiers.
+
+Its visual grammar is fixed:
+
+- solid arrow: direct dependency
+- double-ended arrow: reciprocal relationship
+- dotted arrow: conditional or incompletely supported relationship
+- paired route: partially substitutable pathway
+- amber outline: peripheral node with wider connective consequence
+
+Node identity, size, position, and cluster membership are not
+claimed as recovered facts. Geometry is selected for legibility.
+No texture, simulated damage, generative imagery, or undocumented
+decorative element is permitted.
+
+---
+
+# 4.0 Centrality
 
 The diagram does not appear to privilege geometric center.
 
@@ -68,7 +96,7 @@ should not be assumed to equal:
 
 ---
 
-# 4.0 Direct / Indirect Effect
+# 5.0 Direct / Indirect Effect
 
 Several nodes have few direct connections but participate in long dependency chains.
 
@@ -84,7 +112,7 @@ A low-contact node may still produce high distributed consequence.
 
 ---
 
-# 5.0 Dependency
+# 6.0 Dependency
 
 Some relationships appear reciprocal.
 
@@ -105,7 +133,7 @@ No specific interpretation is preferred.
 
 ---
 
-# 6.0 Boundary Selection
+# 7.0 Boundary Selection
 
 Any attempt to isolate one cluster changes the apparent importance of its components.
 
@@ -121,7 +149,7 @@ This is compatible with the archive's recurring boundary problem.
 
 ---
 
-# 7.0 Redundancy
+# 8.0 Redundancy
 
 Several pathways appear partially substitutable.
 
@@ -135,7 +163,7 @@ No common origin is established.
 
 ---
 
-# 8.0 Third-Party Consequence
+# 9.0 Third-Party Consequence
 
 Several connection paths between two nodes pass through or materially affect a third.
 
@@ -147,7 +175,7 @@ This is compatible with wider-system responsibility material.
 
 ---
 
-# 9.0 Isolation Error
+# 10.0 Isolation Error
 
 A node interpreted independently may appear:
 
@@ -169,7 +197,7 @@ Classification changes with boundary.
 
 ---
 
-# 10.0 Interpretation Constraint
+# 11.0 Interpretation Constraint
 
 Do not assume:
 
@@ -179,12 +207,14 @@ Do not assume:
 - proximity represents physical distance
 - direction represents chronology
 - clusters represent political or biological groups
+- reconstruction identifiers existed in the source object
+- displayed geometry reproduces the missing original
 
 The object may represent a general relational grammar rather than a specific system.
 
 ---
 
-# 11.0 Retention Reason
+# 12.0 Retention Reason
 
 The diagram is retained because prose encourages sequential interpretation.
 
@@ -194,7 +224,7 @@ Describing those relationships one at a time may create a false hierarchy.
 
 ---
 
-# 12.0 Strongest Supported Relationship
+# 13.0 Strongest Supported Relationship
 
 The strongest interpretive statement currently justified is:
 
@@ -210,7 +240,8 @@ Importance changes when:
 
 ## Purpose
 
-This is the third Restricted nontext artifact.
+This is the third Restricted nontext artifact and the first to
+make the Finder's reconstruction process visually explicit.
 
 It should visually demonstrate relational consequence without explaining exactly what the nodes represent.
 
@@ -254,4 +285,6 @@ The visual should resist the assumption that one population, world, or intellige
 
 # Final Design Principle
 
-The diagram should make isolation look like an analytical choice rather than a natural property of the system.
+The diagram should make isolation look like an analytical choice
+rather than a natural property of the system, while never asking
+visual polish to substitute for provenance.

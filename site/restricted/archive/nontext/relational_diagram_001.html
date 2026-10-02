@@ -29,7 +29,45 @@
       margin: 12px auto 0;
       font-family: "IBM Plex Mono", monospace;
       font-size: 0.76rem;
+      line-height: 1.7;
       opacity: 0.55;
+    }
+
+    .reconstruction-key {
+      display: grid;
+      grid-template-columns: minmax(150px, 0.65fr) minmax(240px, 1.35fr);
+      max-width: 760px;
+      margin: 28px 0 0;
+      border-top: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .reconstruction-key dt,
+    .reconstruction-key dd {
+      margin: 0;
+      padding: 11px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      font-family: "IBM Plex Mono", monospace;
+      font-size: 0.74rem;
+      line-height: 1.6;
+    }
+
+    .reconstruction-key dt {
+      opacity: 0.72;
+    }
+
+    .reconstruction-key dd {
+      opacity: 0.5;
+    }
+
+    @media (max-width: 640px) {
+      .reconstruction-key {
+        grid-template-columns: 1fr;
+      }
+
+      .reconstruction-key dt {
+        padding-bottom: 0;
+        border-bottom: 0;
+      }
     }
   </style>
 </head>
@@ -51,6 +89,7 @@
     <div class="document-metadata">
       <span>media: diagram</span>
       <span>source continuity: unresolved</span>
+      <span>representation: finder reconstruction</span>
     </div>
 
   </header>
@@ -65,12 +104,13 @@
     <div class="media-frame">
 
       <img
-        src="/restricted/archive/nontext/media/relational_diagram_001.png"
-        alt="Unresolved relational diagram"
+        src="/restricted/archive/nontext/media/relational_diagram_001.svg"
+        alt="Reconstructed systems diagram with thirteen anonymous nodes in three overlapping clusters, including direct, reciprocal, conditional, and redundant pathways."
       >
 
       <div class="media-caption">
-        source metadata unavailable / relational interpretation partial
+        deterministic reconstruction from retained structural description<br>
+        original geometry unavailable / node identity and scale unassigned
       </div>
 
     </div>
@@ -82,17 +122,48 @@
     <h2>OBSERVATION</h2>
 
     <p>
-      No verified subject class is assigned.
+      The original diagram is not present in the reconstruction.
+      The surviving description identifies structural properties,
+      but does not preserve exact geometry, labels, scale, or
+      subject class.
     </p>
 
     <p class="mono">
-      multiple bounded nodes<br>
-      asymmetric connection density<br>
-      direct and indirect dependency<br>
-      overlapping clusters<br>
-      peripheral high-influence structures<br>
-      no stable central node
+      retained description → explicit constraints<br>
+      explicit constraints → deterministic layout<br>
+      unspecified properties → left unassigned
     </p>
+
+    <p>
+      The displayed plate is the Finder's reconstruction of those
+      constraints. It is not presented as the retained original.
+    </p>
+
+  </section>
+
+
+  <section class="recovered-section">
+    <h2>RECONSTRUCTION KEY</h2>
+
+    <dl class="reconstruction-key">
+      <dt>anonymous node</dt>
+      <dd>bounded component; identity and scale unassigned</dd>
+
+      <dt>solid arrow</dt>
+      <dd>direct dependency recorded in the reconstruction model</dd>
+
+      <dt>double-ended arrow</dt>
+      <dd>reciprocal relation without an assumption of equal influence</dd>
+
+      <dt>dotted arrow</dt>
+      <dd>conditional or incompletely supported relation</dd>
+
+      <dt>paired route</dt>
+      <dd>partially substitutable pathway retained as redundancy</dd>
+
+      <dt>peripheral node</dt>
+      <dd>low local centrality with wider connective consequence</dd>
+    </dl>
 
   </section>
 
@@ -101,15 +172,21 @@
     <h2>INTERPRETATION CONSTRAINT</h2>
 
     <p>
-      Visual position should not be interpreted as system importance.
+      Visual position was selected for legibility and should not
+      be interpreted as physical location, chronology, or system
+      importance.
     </p>
 
     <p>
-      Connection should not automatically be interpreted as communication.
+      Connection should not automatically be interpreted as
+      communication. Node size does not encode quantity, authority,
+      or population.
     </p>
 
     <p>
-      The diagram may represent relational rather than physical structure.
+      The model demonstrates how classification changes when a
+      relational boundary expands. It does not establish what the
+      original diagram represented.
     </p>
 
   </section>
@@ -119,11 +196,14 @@
     <h2>RETENTION NOTE</h2>
 
     <p>
-      Several apparently peripheral structures become significant only when the relational boundary is expanded.
+      Several apparently peripheral structures become significant
+      only when the relational boundary is expanded.
     </p>
 
     <p>
-      This correspondence has been retained without assigning source intent.
+      Because the original geometry is unavailable, this
+      reconstruction remains revisable. Its value is the explicit
+      relationship grammar, not the authority of its appearance.
     </p>
 
   </section>

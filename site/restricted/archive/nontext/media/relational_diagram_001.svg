@@ -1,0 +1,186 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 820" role="img" aria-labelledby="title desc">
+  <title id="title">Relational diagram reconstruction 001</title>
+  <desc id="desc">An austere systems diagram containing thirteen anonymous nodes arranged in three overlapping clusters. Solid arrows show direct dependency, double-ended arrows show reciprocal relationships, dotted lines show uncertain relationships, and paired routes show redundancy. Two small peripheral nodes connect otherwise separate regions.</desc>
+
+  <metadata>
+    Deterministic Finder reconstruction from the surviving structural description of relational_diagram_001.
+    Node identifiers are local to this reconstruction and do not identify subjects, populations, places, or chronology.
+  </metadata>
+
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8.4" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 1 L 9 5 L 0 9 z" fill="#aeb7bc"/>
+    </marker>
+
+    <style>
+      .bg { fill: #0b0e10; }
+      .rule { stroke: #263037; stroke-width: 1; }
+      .registration { stroke: #4c5b63; stroke-width: 1; fill: none; }
+      .direct { stroke: #aeb7bc; stroke-width: 1.5; fill: none; marker-end: url(#arrow); }
+      .reciprocal { stroke: #d2d8db; stroke-width: 1.5; fill: none; marker-start: url(#arrow); marker-end: url(#arrow); }
+      .uncertain { stroke: #7f939e; stroke-width: 1.4; stroke-dasharray: 3 8; fill: none; marker-end: url(#arrow); }
+      .redundant { stroke: #82929a; stroke-width: 1.2; fill: none; marker-end: url(#arrow); }
+      .node { fill: #0b0e10; stroke: #b7c0c4; stroke-width: 1.5; }
+      .node-secondary { fill: #0b0e10; stroke: #71848e; stroke-width: 1.5; }
+      .node-peripheral { fill: #0b0e10; stroke: #c3a87b; stroke-width: 1.7; }
+      .node-core { fill: none; stroke: #40505a; stroke-width: 1; stroke-dasharray: 2 5; }
+      .label { fill: #d4dadd; font: 16px "IBM Plex Mono", "Courier New", monospace; text-anchor: middle; dominant-baseline: middle; letter-spacing: 1px; }
+      .small { fill: #7e8a90; font: 12px "IBM Plex Mono", "Courier New", monospace; letter-spacing: 1.5px; }
+      .heading { fill: #c9d0d3; font: 18px "IBM Plex Mono", "Courier New", monospace; letter-spacing: 2px; }
+      .caption { fill: #77858c; font: 13px "IBM Plex Mono", "Courier New", monospace; letter-spacing: 1px; }
+      .legend-line { stroke-width: 1.5; fill: none; }
+    </style>
+  </defs>
+
+  <rect class="bg" width="1200" height="820"/>
+
+  <g aria-hidden="true">
+    <path class="registration" d="M30 58V30H58 M1142 30h28v28 M30 762v28h28 M1142 790h28v-28"/>
+    <line class="rule" x1="30" y1="82" x2="1170" y2="82"/>
+    <line class="rule" x1="30" y1="720" x2="1170" y2="720"/>
+  </g>
+
+  <text class="heading" x="46" y="56">RELATIONAL PLATE / RD-001</text>
+  <text class="small" x="1154" y="56" text-anchor="end">RECONSTRUCTION 01</text>
+
+  <!-- Direct dependency paths -->
+  <g aria-label="Direct dependency paths">
+    <path class="direct" d="M150 252 L277 184"/>
+    <path class="direct" d="M324 211 L346 298"/>
+    <path class="direct" d="M324 369 L241 471"/>
+    <path class="direct" d="M342 166 L519 193"/>
+    <path class="direct" d="M390 335 L608 375"/>
+    <path class="direct" d="M203 520 L101 646"/>
+    <path class="direct" d="M105 664 L488 553"/>
+    <path class="direct" d="M580 232 L635 350"/>
+    <path class="direct" d="M633 430 L548 515"/>
+    <path class="direct" d="M560 551 L737 565"/>
+    <path class="direct" d="M590 194 L850 178"/>
+    <path class="direct" d="M689 388 L882 439"/>
+    <path class="direct" d="M910 196 L987 270"/>
+    <path class="direct" d="M1018 342 L939 412"/>
+    <path class="direct" d="M880 461 L801 544"/>
+    <path class="direct" d="M1084 632 L1032 342"/>
+  </g>
+
+  <!-- Reciprocal relationships -->
+  <g aria-label="Reciprocal relationships">
+    <path class="reciprocal" d="M386 320 C470 260 552 280 624 356"/>
+    <path class="reciprocal" d="M690 409 C760 456 812 474 878 452"/>
+    <path class="reciprocal" d="M804 583 C904 638 990 655 1061 651"/>
+  </g>
+
+  <!-- Uncertain and conditional relationships -->
+  <g aria-label="Uncertain relationships">
+    <path class="uncertain" d="M172 282 C230 390 352 487 491 542"/>
+    <path class="uncertain" d="M255 506 C430 470 520 421 610 397"/>
+    <path class="uncertain" d="M577 218 C710 272 817 317 986 303"/>
+    <path class="uncertain" d="M1110 653 C1015 559 951 530 797 566"/>
+  </g>
+
+  <!-- Parallel routes record partial redundancy -->
+  <g aria-label="Redundant pathways">
+    <path class="redundant" d="M83 645 C132 578 162 556 204 531"/>
+    <path class="redundant" d="M90 674 C224 693 372 654 500 568"/>
+    <path class="redundant" d="M775 534 C828 496 859 474 884 454"/>
+    <path class="redundant" d="M799 555 C912 509 994 421 1011 343"/>
+  </g>
+
+  <!-- Anonymous nodes. Size encodes no quantity. -->
+  <g aria-label="Anonymous relational nodes">
+    <g transform="translate(126 265)">
+      <circle class="node-secondary" r="31"/>
+      <circle class="node-core" r="24"/>
+      <text class="label">A.01</text>
+    </g>
+
+    <g transform="translate(312 175)">
+      <circle class="node" r="38"/>
+      <circle class="node-core" r="29"/>
+      <text class="label">A.02</text>
+    </g>
+
+    <g transform="translate(358 338)">
+      <circle class="node" r="37"/>
+      <circle class="node-core" r="28"/>
+      <text class="label">A.03</text>
+    </g>
+
+    <g transform="translate(222 508)">
+      <circle class="node-secondary" r="31"/>
+      <circle class="node-core" r="23"/>
+      <text class="label">A.04</text>
+    </g>
+
+    <g transform="translate(555 198)">
+      <circle class="node-secondary" r="37"/>
+      <circle class="node-core" r="28"/>
+      <text class="label">B.01</text>
+    </g>
+
+    <g transform="translate(650 390)">
+      <circle class="node" r="43"/>
+      <circle class="node-core" r="33"/>
+      <text class="label">B.02</text>
+    </g>
+
+    <g transform="translate(525 548)">
+      <circle class="node-secondary" r="35"/>
+      <circle class="node-core" r="26"/>
+      <text class="label">B.03</text>
+    </g>
+
+    <g transform="translate(770 570)">
+      <circle class="node" r="36"/>
+      <circle class="node-core" r="27"/>
+      <text class="label">B.04</text>
+    </g>
+
+    <g transform="translate(884 180)">
+      <circle class="node-secondary" r="34"/>
+      <circle class="node-core" r="25"/>
+      <text class="label">C.01</text>
+    </g>
+
+    <g transform="translate(1017 305)">
+      <circle class="node" r="40"/>
+      <circle class="node-core" r="30"/>
+      <text class="label">C.02</text>
+    </g>
+
+    <g transform="translate(910 447)">
+      <circle class="node-secondary" r="35"/>
+      <circle class="node-core" r="26"/>
+      <text class="label">C.03</text>
+    </g>
+
+    <g transform="translate(80 665)">
+      <circle class="node-peripheral" r="25"/>
+      <circle class="node-core" r="17"/>
+      <text class="label">P.01</text>
+    </g>
+
+    <g transform="translate(1086 654)">
+      <circle class="node-peripheral" r="26"/>
+      <circle class="node-core" r="18"/>
+      <text class="label">P.02</text>
+    </g>
+  </g>
+
+  <g transform="translate(46 754)" aria-label="Relationship legend">
+    <path class="direct legend-line" d="M0 0H70"/>
+    <text class="caption" x="86" y="5">DIRECT</text>
+
+    <path class="reciprocal legend-line" d="M210 0H280"/>
+    <text class="caption" x="296" y="5">RECIPROCAL</text>
+
+    <path class="uncertain legend-line" d="M452 0H522"/>
+    <text class="caption" x="538" y="5">CONDITIONAL</text>
+
+    <path class="redundant legend-line" d="M744 -4C770 -13 788 -13 814 -4"/>
+    <path class="redundant legend-line" d="M744 4C770 13 788 13 814 4"/>
+    <text class="caption" x="830" y="5">REDUNDANT ROUTE</text>
+  </g>
+
+  <text class="small" x="1154" y="802" text-anchor="end">IDENTITY / SCALE / CHRONOLOGY UNASSIGNED</text>
+</svg>

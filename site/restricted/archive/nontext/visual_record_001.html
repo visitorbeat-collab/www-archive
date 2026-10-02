@@ -6,30 +6,90 @@
 
   <title>visual_record_001</title>
 
- <link rel="stylesheet" href="/style.css">
-<link rel="stylesheet" href="/restricted/restricted.css">
+  <link rel="stylesheet" href="/style.css">
+  <link rel="stylesheet" href="/restricted/restricted.css">
 
   <style>
     .media-frame {
-      margin: 42px 0 48px;
+      max-width: 980px;
+      margin: 42px auto 48px;
+      padding: 18px;
+      border: 1px solid rgba(255,255,255,0.12);
+      background: #090b0d;
     }
 
     .media-frame img {
       display: block;
       width: 100%;
-      max-width: 980px;
       height: auto;
-      margin: 0 auto;
-      border: 1px solid rgba(255,255,255,0.14);
-      background: #0f1113;
+      border: 1px solid rgba(255,255,255,0.08);
+      background: #d8d8d8;
     }
 
     .media-caption {
-      max-width: 980px;
-      margin: 12px auto 0;
+      margin: 14px 0 0;
       font-family: "IBM Plex Mono", monospace;
-      font-size: 0.76rem;
-      opacity: 0.55;
+      font-size: 0.72rem;
+      line-height: 1.7;
+      opacity: 0.58;
+    }
+
+    .source-action {
+      display: inline-block;
+      min-height: 44px;
+      margin-top: 10px;
+      padding: 8px 0;
+      font-family: "IBM Plex Mono", monospace;
+      font-size: 0.68rem;
+      letter-spacing: 0.07em;
+      color: rgba(132, 213, 232, 0.72);
+      text-decoration: none;
+    }
+
+    .source-action:hover,
+    .source-action:focus-visible {
+      color: rgba(168, 229, 242, 0.96);
+    }
+
+    .process-grid {
+      display: grid;
+      grid-template-columns: minmax(145px, 0.55fr) minmax(250px, 1.45fr);
+      max-width: 780px;
+      margin-top: 24px;
+      border-top: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .process-grid dt,
+    .process-grid dd {
+      margin: 0;
+      padding: 11px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      font-family: "IBM Plex Mono", monospace;
+      font-size: 0.72rem;
+      line-height: 1.6;
+    }
+
+    .process-grid dt {
+      opacity: 0.48;
+    }
+
+    .process-grid dd {
+      opacity: 0.72;
+    }
+
+    @media (max-width: 640px) {
+      .media-frame {
+        padding: 12px;
+      }
+
+      .process-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .process-grid dt {
+        padding-bottom: 0;
+        border-bottom: 0;
+      }
     }
   </style>
 </head>
@@ -39,7 +99,6 @@
 <main class="document">
 
   <header class="document-header">
-
     <div class="eyebrow">
       RESTRICTED / NONTEXT / VISUAL
     </div>
@@ -49,32 +108,40 @@
     </h1>
 
     <div class="document-metadata">
-      <span>media: image</span>
-      <span>source continuity: unresolved</span>
+      <span>media: photographed paper object</span>
+      <span>source continuity: structural only</span>
+      <span>representation: physical reconstruction</span>
     </div>
-
   </header>
 
 
   <section class="recovered-section">
-
     <p class="mono">
-      [retained visual object]
+      [physical reconstruction from retained description]
     </p>
 
-    <div class="media-frame">
-
+    <figure class="media-frame">
       <img
-        src="/restricted/archive/nontext/media/visual_record_001.png"
-        alt="Unresolved visual record"
+        src="/restricted/archive/nontext/media/visual_record_001.jpg"
+        alt="Photograph of a lightly crinkled printed structural plate with a central bounded form, broken concentric regions, sparse pathways to the left, and increasingly dense branching pathways to the right."
+        width="1920"
+        height="1440"
       >
 
-      <div class="media-caption">
-        source metadata unavailable / visual normalization not applied
-      </div>
+      <figcaption class="media-caption">
+        printed vector plate / lightly altered by hand / photographed
+        under uneven ambient light / grayscale crop / original visual
+        geometry unavailable
+      </figcaption>
 
-    </div>
-
+      <a
+        class="source-action"
+        href="/restricted/archive/nontext/media/visual_record_001_plate.svg"
+        download="visual_record_001_plate.svg"
+      >
+        download pre-photographic construction plate [SVG] ↓
+      </a>
+    </figure>
   </section>
 
 
@@ -82,20 +149,79 @@
     <h2>OBSERVATION</h2>
 
     <p>
-      No verified interpretation is assigned.
+      The original visual object is not present. Its surviving
+      description identifies a bounded central form, discontinuous
+      surrounding regions, outward pathways, repeated peripheral
+      nodes, increasing relational density, and three incomplete
+      continuations.
     </p>
 
     <p>
-      The object should be examined before descriptive reconstruction.
+      The displayed object reconstructs only those specified
+      relationships. Exact geometry, spacing, orientation, scale,
+      and visual hierarchy were not retained.
     </p>
 
     <p class="mono">
-      central boundary<br>
-      repeated peripheral structures<br>
-      outward relational pathways<br>
-      incomplete continuation
+      retained description<br>
+      → explicit vector construction<br>
+      → physical handling<br>
+      → photographic record
+    </p>
+  </section>
+
+
+  <section class="recovered-section">
+    <h2>RECONSTRUCTION RECORD</h2>
+
+    <dl class="process-grid">
+      <dt>STRUCTURAL BASIS</dt>
+      <dd>canonical descriptive constraints retained in the Index</dd>
+
+      <dt>CONSTRUCTION</dt>
+      <dd>explicit monochrome SVG geometry; no generative image model</dd>
+
+      <dt>PHYSICAL MEDIUM</dt>
+      <dd>ordinary printed paper</dd>
+
+      <dt>ALTERATION</dt>
+      <dd>light manual crinkling without removal or addition of marks</dd>
+
+      <dt>CAPTURE</dt>
+      <dd>human photograph under uneven ambient light / 2026-10-01</dd>
+
+      <dt>PROCESSING</dt>
+      <dd>
+        crop, grayscale conversion, minor brightness and contrast
+        adjustment, light sharpening, and metadata removal
+      </dd>
+
+      <dt>GENERATIVE PROCESSING</dt>
+      <dd>none</dd>
+    </dl>
+  </section>
+
+
+  <section class="recovered-section">
+    <h2>INTERPRETATION CONSTRAINT</h2>
+
+    <p>
+      The central boundary, peripheral nodes, and pathway density
+      were selected to preserve described relationships. They do
+      not establish what the missing visual object represented.
     </p>
 
+    <p>
+      Paper texture, creases, illumination, camera position, and
+      tonal variation belong to the reconstruction process. They
+      must not be treated as source-system properties.
+    </p>
+
+    <p>
+      Central position does not establish importance. Pathways do
+      not necessarily represent movement or communication. Repeated
+      nodes do not establish identical entities.
+    </p>
   </section>
 
 
@@ -103,72 +229,56 @@
     <h2>RETENTION NOTE</h2>
 
     <p>
-      Apparent structural correspondence with boundary-expansion material has been recorded.
+      The reconstruction is retained because the relationship
+      between boundary, reach, and affected structure becomes less
+      clear when reduced to sequential prose.
     </p>
 
     <p>
-      Correspondence does not establish intended meaning or common source.
+      Its evidentiary value is limited to the relationships explicitly
+      reconstructed from the surviving description. Physical presence
+      does not restore missing source continuity.
     </p>
   </section>
 
 
-<footer class="restricted-local-nav">
+  <footer class="restricted-local-nav">
+    <div class="local-map" aria-label="Related restricted material">
+      <svg
+        class="local-map-lines"
+        viewBox="0 0 620 310"
+        preserveAspectRatio="none"
+        aria-hidden="true"
+      >
+        <line x1="310" y1="155" x2="508" y2="155" />
+      </svg>
 
-  <div
-    class="local-map"
-    aria-label="Related restricted material"
-  >
+      <div
+        class="local-node local-node-center local-node-current"
+        aria-label="Nontext"
+      >
+        <span class="local-node-symbol">◆</span>
+        <span class="local-node-label">nontext</span>
+      </div>
 
-    <svg
-      class="local-map-lines"
-      viewBox="0 0 620 310"
-      preserveAspectRatio="none"
-      aria-hidden="true"
-    >
-      <!-- nontext → effect -->
-      <line x1="310" y1="155" x2="508" y2="155" />
-    </svg>
-
-
-    <!-- current: nontext -->
-
-    <div
-      class="local-node local-node-center local-node-current"
-      aria-label="Nontext"
-    >
-      <span class="local-node-symbol">◆</span>
-      <span class="local-node-label">nontext</span>
+      <a
+        class="local-node local-node-right local-node-static local-node-concept-link"
+        href="/restricted/archive/#effect"
+        aria-label="Effect"
+      >
+        <span class="local-node-symbol">⊙</span>
+        <span class="local-node-label">effect</span>
+      </a>
     </div>
 
+    <div class="local-map-return">
+      <a href="/restricted/archive/">relation</a>
+    </div>
 
-    <!-- effect: concept link -->
-
-    <a
-      class="local-node local-node-right local-node-static local-node-concept-link"
-      href="/restricted/archive/#effect"
-      aria-label="Effect"
-    >
-      <span class="local-node-symbol">⊙</span>
-      <span class="local-node-label">effect</span>
-    </a>
-
-  </div>
-
-
-  <div class="local-map-return">
-    <a href="/restricted/archive/">
-      relation
-    </a>
-  </div>
-
-
-  <div class="local-map-return">
-    <a href="/restricted/archive/nontext/">
-      nontext
-    </a>
-  </div>
-
-</footer>
+    <div class="local-map-return">
+      <a href="/restricted/archive/nontext/">nontext</a>
+    </div>
+  </footer>
 
 </main>
 

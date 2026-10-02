@@ -102,15 +102,21 @@ Local navigation on restricted records reproduces this topology in miniature. Th
 
 | Record | Media |
 | --- | --- |
-| `visual_record_001.html` | `media/visual_record_001.png` |
-| `signal_capture_001.html` | `media/signal_capture_001.png` |
-| `relational_diagram_001.html` | `media/relational_diagram_001.png` |
+| `visual_record_001.html` | physical reconstruction photograph and source SVG plate |
+| `signal_capture_001.html` | NASA PIA17045 JPEG and preserved source WEBM |
+| `relational_diagram_001.html` | deterministic SVG reconstruction |
 | `audio_artifact_001.html` | `media/audio_artifact_001.wav` |
 | `audio/audio_artifact_002.html` | `media/audio_artifact_002.wav`, source OGG, and spectrogram |
 
 Audio Artifact 001 is a documented sonification of CERN CMS Open
 Data. Available audio objects include explicit download links so
 retention is not limited to browser playback.
+
+The three visual nontext records distinguish retained structure
+from representation. Visual Record 001 is a photographed physical
+reconstruction, Signal Capture 001 is a documented NASA instrument
+record, and Relational Diagram 001 is an explicit deterministic
+model. None is presented as an unmodified source-system image.
 
 `nontext/audio/index.html` is the extensible retained-audio
 registry. It becomes visible after the five navigable restricted

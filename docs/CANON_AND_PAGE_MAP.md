@@ -125,8 +125,9 @@ personal note pretending to be his voice.
 9. **Threshold:** The reader discovers the restricted entrance by understanding responsibility, then
    passes a relational gate by accounting for consequence rather than magnitude.
 10. **Participation:** Restricted fragments suggest that the Finder's exposure and subsequent
-    reconstruction may themselves have been behavior under observation. He was not chosen as a
-    prophet; he may have been a measurement opportunity.
+    reconstruction may themselves have been behavior under observation. The fragments identify only
+    an unnamed subject; the reader makes the correspondence. He was not chosen as a prophet; he may
+    have been a measurement opportunity.
 11. **Wider evidence:** The Evidentiary Corpus asks whether humanity already demonstrates partial
     capacities relevant to wider participation, while refusing to treat exceptional events as a
     stable species-level trait.
@@ -359,6 +360,11 @@ The public implementation now makes this distinction visible through a first-per
 `README_FIRST.html` and `/recovered/`, plus a compact Finder reconstruction note on each recovered
 clinical record. The restricted hub uses neutral continuity metadata rather than inserting Finder
 commentary into the deeper material.
+
+No restricted page explicitly names the Finder. Passages previously styled as “FINDER NOTE” are
+neutral recovered emphasis, and the one first-person Finder aside formerly embedded in the
+post-exposure fragment has been removed. The record may correspond to him, but it does not identify
+him.
 
 Items 1–3 are documentation drift, not public plot failures. Item 4 is a small clarity improvement.
 Item 5 matters only where the page is canonically written by the Finder.

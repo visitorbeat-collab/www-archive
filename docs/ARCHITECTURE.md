@@ -132,6 +132,18 @@ Finder-created diagrams, photographs, and interpretive models remain in
 `site/working-notes/personal/`, even when they refer to restricted
 material.
 
+The Nontext index also contains a non-interactive continuity register.
+This register implies a larger retained collection without creating dead
+links or false puzzle states. Missing objects use varied continuity
+conditions—absent payload, unresolved encoding, checksum conflict,
+incomplete sequence, or unavailable dependency—rather than a universal
+"corrupt" status.
+
+Manifest counts respond to the existing retained-audio state: three
+objects are initially accessible, and a fourth becomes accessible when
+the concealed audio registry resolves. The total retained-reference count
+remains constant.
+
 ---
 
 # 7. Retained Audio State
@@ -185,6 +197,7 @@ Crawler directives reduce accidental discovery but are not security controls.
 - The Evidentiary Corpus remains outside the restricted topology.
 - Nontext remains a collection branch of Retention, not a peer conceptual claim.
 - Finder-created reconstructions remain outside the restricted archive.
+- Unresolved Nontext references remain non-interactive until a real object replaces them.
 - Audio Artifact 001 and Audio Artifact 002 remain canonically distinct.
 - Audio Artifact 002 is a population-originated biospheric field record, not Observer-produced audio.
 - Available retained audio remains downloadable.

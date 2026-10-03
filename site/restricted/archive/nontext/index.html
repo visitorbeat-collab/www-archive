@@ -34,6 +34,93 @@
       color:
         rgba(132, 213, 232, 0.46);
     }
+
+    .collection-status {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 0.8rem 1.5rem;
+      margin: 1.8rem 0 2.4rem;
+      padding: 0.9rem 0;
+      border-top: 1px solid rgba(220, 230, 235, 0.12);
+      border-bottom: 1px solid rgba(220, 230, 235, 0.12);
+    }
+
+    .collection-status-item {
+      display: flex;
+      flex-direction: column;
+      gap: 0.3rem;
+      font-family: "IBM Plex Mono", monospace;
+      font-size: 0.64rem;
+      letter-spacing: 0.08em;
+      color: rgba(205, 214, 219, 0.46);
+    }
+
+    .collection-status-item strong {
+      font-size: 0.75rem;
+      font-weight: 400;
+      color: rgba(132, 213, 232, 0.68);
+    }
+
+    .continuity-register {
+      margin-top: 3rem;
+      padding-top: 1.2rem;
+      border-top: 1px solid rgba(220, 230, 235, 0.12);
+    }
+
+    .continuity-register h2 {
+      margin: 0 0 0.8rem;
+      font-family: "IBM Plex Mono", monospace;
+      font-size: 0.69rem;
+      font-weight: 400;
+      letter-spacing: 0.13em;
+      color: rgba(205, 214, 219, 0.56);
+    }
+
+    .continuity-register-intro {
+      max-width: 760px;
+      margin: 0 0 1.25rem;
+      font-size: 0.8rem;
+      line-height: 1.65;
+      color: rgba(205, 214, 219, 0.52);
+    }
+
+    .continuity-reference {
+      display: grid;
+      grid-template-columns: minmax(190px, 0.75fr) minmax(250px, 1.25fr);
+      gap: 1rem;
+      padding: 0.75rem 0;
+      border-bottom: 1px solid rgba(220, 230, 235, 0.08);
+      font-family: "IBM Plex Mono", monospace;
+      font-size: 0.68rem;
+      line-height: 1.55;
+    }
+
+    .continuity-reference-id {
+      color: rgba(205, 214, 219, 0.42);
+    }
+
+    .continuity-reference-state {
+      color: rgba(205, 214, 219, 0.3);
+    }
+
+    .continuity-remainder {
+      margin: 1rem 0 0;
+      font-family: "IBM Plex Mono", monospace;
+      font-size: 0.65rem;
+      letter-spacing: 0.08em;
+      color: rgba(205, 214, 219, 0.28);
+    }
+
+    @media (max-width: 640px) {
+      .collection-status,
+      .continuity-reference {
+        grid-template-columns: 1fr;
+      }
+
+      .continuity-reference {
+        gap: 0.25rem;
+      }
+    }
   </style>
 </head>
 
@@ -53,6 +140,25 @@
     Terrestrial media retained where form, duration, or spatial
     relation cannot be replaced by prose alone.
   </p>
+
+  <div class="collection-status" aria-label="Nontext collection status">
+    <div class="collection-status-item">
+      <span>ACCESSIBLE OBJECTS</span>
+      <strong data-retained-audio-locked>03</strong>
+      <strong data-retained-audio-unlocked hidden>04</strong>
+    </div>
+
+    <div class="collection-status-item">
+      <span>RETAINED REFERENCES</span>
+      <strong>29</strong>
+    </div>
+
+    <div class="collection-status-item">
+      <span>CONTINUITY UNRESOLVED</span>
+      <strong data-retained-audio-locked>26</strong>
+      <strong data-retained-audio-unlocked hidden>25</strong>
+    </div>
+  </div>
 
   <div class="simple-directory-list">
 
@@ -86,6 +192,54 @@
   </span>
 </div>
   </div>
+
+  <section class="continuity-register" aria-labelledby="continuity-register-heading">
+    <h2 id="continuity-register-heading">UNRESOLVED RETENTION REFERENCES</h2>
+
+    <p class="continuity-register-intro">
+      A retained reference does not establish a recoverable media object.
+      Objects are exposed only where source continuity is sufficient to
+      distinguish retained structure from reconstruction.
+    </p>
+
+    <div class="continuity-reference">
+      <span class="continuity-reference-id">visual_record_002</span>
+      <span class="continuity-reference-state">descriptor retained / payload absent</span>
+    </div>
+
+    <div class="continuity-reference">
+      <span class="continuity-reference-id">signal_capture_002</span>
+      <span class="continuity-reference-state">container recognized / encoding unresolved</span>
+    </div>
+
+    <div class="continuity-reference">
+      <span class="continuity-reference-id">audio_artifact_003</span>
+      <span class="continuity-reference-state">checksum conflict / no verified object</span>
+    </div>
+
+    <div class="continuity-reference">
+      <span class="continuity-reference-id">motion_record_001</span>
+      <span class="continuity-reference-state">frame sequence incomplete</span>
+    </div>
+
+    <div class="continuity-reference">
+      <span class="continuity-reference-id">spatial_record_001</span>
+      <span class="continuity-reference-state">coordinate layer unavailable</span>
+    </div>
+
+    <div class="continuity-reference">
+      <span class="continuity-reference-id">composite_record_001</span>
+      <span class="continuity-reference-state">dependent object references unresolved</span>
+    </div>
+
+    <p class="continuity-remainder" data-retained-audio-locked>
+      [20 additional references not instantiated]
+    </p>
+
+    <p class="continuity-remainder" data-retained-audio-unlocked hidden>
+      [19 additional references not instantiated]
+    </p>
+  </section>
 
 <footer class="restricted-local-nav">
 

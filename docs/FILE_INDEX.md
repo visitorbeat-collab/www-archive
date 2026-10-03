@@ -149,6 +149,21 @@ Future audio files remain in `nontext/media/` and use sequential
 `audio_artifact_###` identifiers. Audio Artifact 002 and later
 records remain canonically distinct from Audio Artifact 001.
 
+The Nontext index exposes a continuity register rather than pretending
+that the visible collection is exhaustive. Its canonical manifest state
+is:
+
+- retained references: **29**
+- initially accessible objects: **03**
+- initially unresolved continuity: **26**
+- accessible after retained-audio resolution: **04**
+- unresolved after retained-audio resolution: **25**
+
+Unresolved rows are non-interactive. They preserve evidence that an
+identifier or descriptor survived without implying that the media object
+is recoverable. A future artifact may replace an unresolved row when its
+continuity becomes sufficient; counts must then be revised consistently.
+
 ---
 
 # 6. Evidentiary Corpus

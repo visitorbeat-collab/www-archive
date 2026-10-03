@@ -91,6 +91,12 @@ single answer.
 | **C** | Corpus | A reconstruction-era analytical classification applied to a documented human event or artifact. It is not a literal historical Observer document. |
 | **M** | Media custody | Neutral description of a retained terrestrial media object, including provenance and representation limits. |
 
+The entire public Index remains the Finder's layer in presentation and custody. “Recovered” does
+not identify a second public narrator: it identifies underlying content the Finder says he did not
+author. He created the readable page, filename, English reconstruction, section divisions, links,
+and placement around that content. The exact access mechanism and original authorship remain
+unresolved.
+
 This distinction resolves the apparent authorship problem that prompted the earlier Finder-language
 review. A Finder-authored public page should use **I/me/my** or neutral language. Third-person
 “the Finder” belongs in internal documentation, neutral chronology, or source metadata—not in a
@@ -348,6 +354,11 @@ small without pretending that a real observation system would retain only four o
 5. **Finder self-reference:** If any deployed Finder-authored introduction or annotation still says
    “the Finder” as its narrator, change it to first person or neutral wording. Internal docs and the
    neutral timeline may keep the term.
+
+The public implementation now makes this distinction visible through a first-person explanation in
+`README_FIRST.html` and `/recovered/`, plus a compact Finder reconstruction note on each recovered
+clinical record. The restricted hub uses neutral continuity metadata rather than inserting Finder
+commentary into the deeper material.
 
 Items 1–3 are documentation drift, not public plot failures. Item 4 is a small clarity improvement.
 Item 5 matters only where the page is canonically written by the Finder.

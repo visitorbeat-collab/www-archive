@@ -46,6 +46,12 @@ behavior.
 
 `site/recovered/unverified/` contains assessment and protocol documents whose status remains intentionally uncertain.
 
+Every public recovered clinical record includes a compact Finder note stating that he did not author
+the underlying record, that source continuity is unverified, and that the presentation is
+reconstructed. The note links to the fuller first-person provenance explanation at
+`site/recovered/index.html#reconstruction-note`. This identifies the entire public site as the
+Finder's presentation layer without implying that every embedded source was written by him.
+
 `authority_resistance_assessment_001.html` is a deliberate anomaly. It must remain absent from directory indexes and concept search. Its discoverability is narrative, not navigational.
 
 ---

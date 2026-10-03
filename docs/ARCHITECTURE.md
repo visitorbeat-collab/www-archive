@@ -16,6 +16,11 @@ The Index is the Finder's human reconstruction of a deeper observation system. I
 - restricted material requires conceptual qualification
 - nontext material preserves properties that prose cannot replace
 
+The complete public layer is Finder-controlled in presentation and custody. This does not mean the
+Finder authored every underlying record. Public recovered pages distinguish source content from the
+Finder's filenames, English reconstruction, section divisions, links, and directory placement.
+Original authorship and the precise access mechanism remain unresolved.
+
 The interface should feel like a modest archive, not a game dashboard. Conditional behavior must correspond to interpretation rather than arbitrary completion counts.
 
 ---

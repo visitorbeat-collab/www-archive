@@ -65,6 +65,18 @@ body.restricted-map-page {
   text-transform: uppercase;
 }
 
+.restricted-continuity-status {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem 1.25rem;
+  margin-top: 0.65rem;
+  font-family: var(--mono);
+  font-size: 0.58rem;
+  line-height: 1.55;
+  letter-spacing: 0.08em;
+  color: rgba(193, 201, 206, 0.32);
+}
+
 
 /* ---------------------------------------------------------
    MAP

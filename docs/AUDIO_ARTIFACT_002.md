@@ -20,9 +20,9 @@ Audio Artifact 002 is a documented National Park Service field
 recording of humpback-whale acoustic activity near the mouth of
 Glacier Bay, Alaska.
 
-It was incorporated during the Finder's reconstruction. It is not
-material recovered directly from the source system, and the site
-must never imply otherwise.
+It is a documented human field recording retained within the recovered
+observation system. It is not audio produced by the Observers, and the
+site must never imply otherwise.
 
 The original filename records the timestamp `20Sep01@1029`. The
 timestamp may be reported only as information encoded in that
@@ -109,7 +109,7 @@ retained-audio collection. Future records use sequential stable
 identifiers such as `audio_artifact_003` and
 `audio_artifact_004`.
 
-Artifact number describes position within the reconstruction. It
+Artifact number describes position within the collection. It
 does not establish source chronology, track order, importance,
 confidence, or depth.
 

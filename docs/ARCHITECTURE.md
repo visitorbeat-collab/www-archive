@@ -111,11 +111,26 @@ cookie. Local recognition reduces repetition; it does not bypass server authoriz
 - exposure
 - participation
 - effect
-- nontext
 
-`restricted-map.js` records visits to navigable concepts in local storage under `restricted-map-visited`. Local navigation on individual records reproduces the topology without turning every retained document into a map node.
+Nontext appears as a distinct collection branch attached to Retention. It
+is not an additional conceptual claim: it is the operational result of the
+rule to retain media before interpretation removes relevant structure.
 
-The Evidentiary Corpus at `archive/external_records/` is adjacent to this topology. It is prominent but excluded from the relational map so human historical evidence is not confused with recovered-source material.
+`restricted-map.js` records visits to navigable concepts and the Nontext collection in local storage under `restricted-map-visited`. Local navigation on individual records reproduces the topology without turning every retained document into a map node.
+
+The Evidentiary Corpus at `archive/external_records/` is adjacent to this topology. It is prominent but excluded from the relational map so interpreted population events are not confused with either recovered conceptual records or retained media objects.
+
+The three restricted layers have separate functions:
+
+| Layer | Primary object | Function |
+| --- | --- | --- |
+| Relational topology | Recovered conceptual record | States the observation model |
+| Nontext | Documented terrestrial media | Preserves properties that prose cannot replace |
+| Evidentiary Corpus | Population-originated event | Tests the model through comparative analysis |
+
+Finder-created diagrams, photographs, and interpretive models remain in
+`site/working-notes/personal/`, even when they refer to restricted
+material.
 
 ---
 
@@ -168,7 +183,9 @@ Crawler directives reduce accidental discovery but are not security controls.
 - Restricted authorization remains server-side.
 - No public file contains Cloudflare secrets or development tokens.
 - The Evidentiary Corpus remains outside the restricted topology.
+- Nontext remains a collection branch of Retention, not a peer conceptual claim.
+- Finder-created reconstructions remain outside the restricted archive.
 - Audio Artifact 001 and Audio Artifact 002 remain canonically distinct.
-- Audio Artifact 002 is a human-retained biospheric field record, not source-system audio.
+- Audio Artifact 002 is a population-originated biospheric field record, not Observer-produced audio.
 - Available retained audio remains downloadable.
 - Adding material must deepen interpretation rather than merely increase volume.

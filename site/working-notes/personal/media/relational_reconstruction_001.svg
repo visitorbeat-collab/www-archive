@@ -1,9 +1,9 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 820" role="img" aria-labelledby="title desc">
-  <title id="title">Relational diagram reconstruction 001</title>
+  <title id="title">Relational reconstruction 001</title>
   <desc id="desc">An austere systems diagram containing thirteen anonymous nodes arranged in three overlapping clusters. Solid arrows show direct dependency, double-ended arrows show reciprocal relationships, dotted lines show uncertain relationships, and paired routes show redundancy. Two small peripheral nodes connect otherwise separate regions.</desc>
 
   <metadata>
-    Deterministic Finder reconstruction from the surviving structural description of relational_diagram_001.
+    Deterministic Finder model of relational patterns described across recovered fragments.
     Node identifiers are local to this reconstruction and do not identify subjects, populations, places, or chronology.
   </metadata>
 

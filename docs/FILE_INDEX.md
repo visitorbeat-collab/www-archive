@@ -90,7 +90,11 @@ Cloudflare secrets:
 | Exposure | `post_exposure_participation_fragment_001.html` |
 | Participation | `participation_condition_fragment_001.html` |
 | Effect | Expressed through relations among the retained fragments |
-| Nontext | `nontext/index.html` and its retained objects |
+| Nontext | Collection branch governed by `nontext_retention_fragment_001.html` |
+
+Nontext is visually attached to Retention. It is a retained-media
+collection produced by the preservation rule, not a seventh conceptual
+claim equivalent to Condition, Boundary, or Effect.
 
 Local navigation on restricted records reproduces this topology in miniature. The topology should remain sparse enough that relationships, not menu volume, carry the interface.
 
@@ -98,13 +102,14 @@ Local navigation on restricted records reproduces this topology in miniature. Th
 
 # 5. Nontext Collection
 
-`site/restricted/archive/nontext/` contains retained objects whose evidentiary properties cannot be replaced by prose alone.
+`site/restricted/archive/nontext/` contains documented terrestrial media
+selected within the recovered observation system because relevant visual,
+auditory, temporal, or spatial properties cannot be replaced by prose alone.
 
 | Record | Media |
 | --- | --- |
-| `visual_record_001.html` | physical reconstruction photograph and source SVG plate |
+| `visual_record_001.html` | USGS-retained public-domain Ferguson Fire photograph and original source JPEG |
 | `signal_capture_001.html` | NASA PIA17045 JPEG and preserved source WEBM |
-| `relational_diagram_001.html` | deterministic SVG reconstruction |
 | `audio_artifact_001.html` | `media/audio_artifact_001.wav` |
 | `audio/audio_artifact_002.html` | `media/audio_artifact_002.wav`, source OGG, and spectrogram |
 
@@ -112,11 +117,23 @@ Audio Artifact 001 is a documented sonification of CERN CMS Open
 Data. Available audio objects include explicit download links so
 retention is not limited to browser playback.
 
-The three visual nontext records distinguish retained structure
-from representation. Visual Record 001 is a photographed physical
-reconstruction, Signal Capture 001 is a documented NASA instrument
-record, and Relational Diagram 001 is an explicit deterministic
-model. None is presented as an unmodified source-system image.
+Visual Record 001 and Signal Capture 001 are documented terrestrial
+records. Their pages preserve source institution, media provenance,
+representation limits, and downloadable source material.
+
+Finder-created reconstructions do not belong in Nontext. The former
+`relational_diagram_001` has been reclassified as
+`site/working-notes/personal/relational_reconstruction_001.html`.
+
+Placement rule:
+
+- if a record matters because of what can be seen, heard, measured, or
+  spatially examined in the media object, it belongs in Nontext;
+- if a record matters because of the historical event, institutional
+  decision, intention, or outcome it documents, it belongs in the
+  Evidentiary Corpus;
+- if the Finder constructed the object to interpret recovered material,
+  it belongs in personal working notes.
 
 `nontext/audio/index.html` is the extensible retained-audio
 registry. It becomes visible after the five navigable restricted
@@ -138,7 +155,10 @@ records remain canonically distinct from Audio Artifact 001.
 
 `site/restricted/archive/external_records/` is an adjacent comparative evidence layer. It is promoted from obscurity through a prominent entrance on the restricted hub, but it is intentionally excluded from the relational map.
 
-The separation prevents historical examples from being mistaken for native records of the observation system while allowing them to test and complicate its claims.
+The separation prevents event-level interpretation from being confused
+with either native conceptual records or media retained before
+interpretation. The Corpus tests and complicates the relational model;
+Nontext preserves media properties that the model warns against reducing.
 
 ## Band 01 — External Orientation
 

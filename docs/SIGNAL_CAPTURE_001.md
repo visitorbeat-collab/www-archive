@@ -22,9 +22,9 @@ Signal Capture 001 is NASA catalogue record PIA17045: a Voyager 1
 Plasma Wave Science visualization based on observations made during
 October–November 2012 and April–May 2013.
 
-It is a documented human scientific record incorporated during the
-Finder's reconstruction. It is not presented as a signal recovered
-from the source system.
+It is a documented human scientific record retained within the
+recovered observation system. It is not presented as a signal produced
+by that system.
 
 Credit must remain:
 
@@ -118,8 +118,8 @@ Its position in Nontext is determined by representation: the
 relationship among time, frequency, intensity, and inferred density
 cannot be preserved adequately through prose alone.
 
-Its subject overlap with an External Record does not move it into
-the source system or the restricted topology.
+Its subject overlap with an External Record does not convert it into an
+event-level Corpus entry or a conceptual node in the restricted topology.
 
 ---
 

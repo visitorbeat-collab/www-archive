@@ -1,6 +1,6 @@
 # WORLD WIDE WASTE
 ## VISUAL RECORD 001
-### Canonical Source — Version 2.0
+### Canonical Source — Version 3.0
 
 **Archive representation:** `visual_record_001`
 
@@ -8,141 +8,119 @@
 
 **Internal status:** Canonical
 
-**Media type:** Photographed physical reconstruction
+**Media type:** Terrestrial photograph
 
-**Source continuity:** Structural description only
+**Source continuity:** Documented
 
-**Representation status:** Finder reconstruction
+**Origin:** Population instrument record
 
 ---
 
 # 1.0 Identity
 
-The original visual object is not present in the reconstruction.
-The surviving description retains structural relationships but not
-exact geometry, spacing, orientation, scale, colour, or hierarchy.
+Visual Record 001 is a documented photograph of the Ferguson Fire in
+Sierra National Forest, California, in 2018.
 
-The public image is a physical Finder reconstruction produced from
-those descriptive constraints. It must not be represented as the
-missing original.
+The photograph was made by Kari Greer for the USDA Forest Service and
+is retained by the U.S. Geological Survey through its Climate
+Adaptation Science Centers media collection. The USGS source page
+identifies the image as Public Domain.
 
-The public-facing page does not refer to the Finder in the third
-person. It uses the neutral term **physical reconstruction**.
-
----
-
-# 2.0 Retained Structure
-
-The surviving description identifies:
-
-- a central bounded form
-- several concentric or near-concentric regions
-- discontinuous radial pathways
-- branching structures extending beyond the central region
-- repeated peripheral nodes
-- several incomplete connections
-- one region in which outward expansion corresponds with increasing network density
-
-No other visual property is treated as retained.
+The record is terrestrial media selected within the recovered
+observation system. It is not Observer-created imagery, a Finder
+reconstruction, or an original physical artifact recovered by the
+Finder.
 
 ---
 
-# 3.0 Construction
+# 2.0 Nontext Function
 
-The reconstruction process is:
+The record belongs in Nontext because its relevant properties depend on
+the image itself:
 
-1. convert the retained structural description into explicit SVG geometry
-2. print the vector plate on ordinary paper
-3. alter the paper through slight manual crinkling
-4. photograph the physical object under uneven ambient light
-5. apply only conventional crop, grayscale, brightness, contrast, sharpening, and metadata-removal operations
+- incomplete visible boundary
+- foreground and background occlusion
+- simultaneous unburned, burning, obscured, and altered states
+- uncertain continuation beyond the frame
+- difference between visible flame and total event extent
 
-No generative image model or generative image-editing process is
-used.
+These properties can be described, but the description does not replace
+their spatial relationship within the image.
 
-The final media files are:
+The record is not classified as an event in the Evidentiary Corpus.
+Historical causation, institutional response, and comparative readiness
+are not its primary archival function.
+
+---
+
+# 3.0 Representation
+
+The displayed media is a resized JPEG derived from the institutional
+source file. Metadata is removed from the display copy to minimize file
+size and unnecessary exposure.
+
+The downloadable source JPEG is preserved without modification,
+including its embedded metadata.
+
+Final media files:
 
 - `site/restricted/archive/nontext/media/visual_record_001.jpg`
-  — processed photograph of the physical reconstruction
-- `site/restricted/archive/nontext/media/visual_record_001_plate.svg`
-  — pre-photographic vector construction plate
-
-The physical photograph was made on 2026-10-01.
+  — optimized display copy
+- `site/restricted/archive/nontext/media/visual_record_001_source.jpg`
+  — unaltered institutional source file
 
 ---
 
 # 4.0 Interpretation Constraint
 
-Do not assume that:
+The photograph alone does not establish:
 
-- central position implies importance
-- geometric similarity implies physical scale
-- repeated elements represent identical entities
-- outer regions are spatially distant
-- pathways represent movement or communication
-- nodes represent populations
-- paper texture or creases existed in the missing source object
-- illumination or camera perspective carries source-system meaning
+- ignition source
+- preventability
+- complete spatial extent
+- total severity
+- human responsibility
+- ecological function across different timescales
+- later recovery
 
-The image may preserve relational structure without identifying what
-that structure describes.
-
----
-
-# 5.0 Possible Relationship
-
-The strongest recurring pattern is:
-
-**increased outward connection**
-
-corresponding with:
-
-**increased number of affected relationships**
-
-This is structurally compatible with the archive's treatment of:
-
-**reach → consequence**
-
-No common origin is established.
+Visible flame must not be treated as the complete event. Smoke,
+atmospheric transport, habitat change, displacement, and regeneration
+may extend beyond both the visible frame and the captured moment.
 
 ---
 
-# 6.0 Boundary Behaviour
+# 5.0 Provenance
 
-The central form remains visually stable while its external
-relationships increase.
+**Subject:** Ferguson Fire, Sierra National Forest, California
 
-The system boundary does not disappear. It becomes less sufficient
-as a complete explanatory unit.
+**Date:** 2018
 
-The displayed geometry was designed to preserve this relationship,
-not to claim that the missing image used the same arrangement.
+**Photographer:** Kari Greer
 
----
+**Creating institution:** USDA Forest Service
 
-# 7.0 Physical Process
+**Retaining institution:** U.S. Geological Survey / Climate Adaptation
+Science Centers
 
-The paper texture, light, creases, and photographic perspective are
-real properties of the reconstruction object.
+**Rights:** Public Domain
 
-Their authenticity as physical events does not convert them into
-source evidence. The page must distinguish reconstructed geometry
-from incidental material properties introduced during reconstruction.
+**Institutional source:**
+`https://www.usgs.gov/media/images/ferguson-fire-sierra-nf-ca-2018`
 
 ---
 
-# 8.0 Retention Reason
+# 6.0 Retention Reason
 
-The image is retained because boundary, reach, and affected structure
-are difficult to preserve through sequential prose without imposing
-a preferred hierarchy.
+Occlusion, simultaneous states, edge ambiguity, and the relation between
+visible activity and unseen extent are not adequately preserved through
+textual summary.
 
-Its evidentiary value is limited to the relationships explicitly
-reconstructed from the surviving description.
+The media object is retained independently of later explanation assigned
+to the event it depicts.
 
 ---
 
 # Final Design Principle
 
-Physical presence may make a reconstruction more tangible. It does
-not restore missing source continuity.
+Nontext preserves the media object. The Evidentiary Corpus interprets the
+event. These functions must remain separate.

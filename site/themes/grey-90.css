@@ -84,8 +84,7 @@ html.public-grey90 {
 }
 
 .public-grey90 .search-row input,
-.public-grey90 .search-row button,
-.public-grey90 .concept-node {
+.public-grey90 .search-row button {
   border-color: #5f625d;
   background: #c6c8c3;
   color: #111211;
@@ -94,21 +93,53 @@ html.public-grey90 {
 }
 
 .public-grey90 .search-row input:focus,
-.public-grey90 .search-row button:hover,
-.public-grey90 .concept-node:hover,
-.public-grey90 .concept-node:focus-visible {
+.public-grey90 .search-row button:hover {
   border-color: #1f211f;
   outline-color: #1f211f;
 }
 
-.public-grey90 .concept-node {
+.public-grey90 .concept-network .concept-node {
+  display: flex;
+  align-items: center;
+  width: auto;
+  min-height: 38px;
+  padding: 6px 2px;
+
+  appearance: none;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+
   color: var(--link);
+  font-family: "Courier New", Courier, monospace;
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 2px;
 }
 
-.public-grey90 .concept-node-primary {
-  border-color: #3e514f;
+.public-grey90 .concept-network button.concept-node {
+  cursor: pointer;
+}
+
+.public-grey90 .concept-network .concept-node:hover,
+.public-grey90 .concept-network .concept-node:focus-visible {
+  color: var(--link-hover);
+  background: transparent;
+  outline: 1px dotted #30322f;
+  outline-offset: 2px;
+}
+
+.public-grey90 .concept-network .concept-node-primary {
+  display: inline-flex;
+  width: auto;
+  min-height: 38px;
+  padding: 6px 9px;
+
+  border: 1px solid #5f625d;
   background: #b0b4b0;
   color: #101110;
+  text-decoration: none;
 }
 
 .public-grey90 .concept-network-trunk,

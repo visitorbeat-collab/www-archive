@@ -875,7 +875,7 @@ hr {
   border-top: 1px solid rgba(132, 213, 232, 0.22);
 }
 
-.concept-node {
+.concept-network .concept-node {
   display: inline-block;
   max-width: 100%;
   min-height: 34px;
@@ -891,19 +891,19 @@ hr {
   overflow-wrap: anywhere;
 }
 
-button.concept-node {
+.concept-network button.concept-node {
   cursor: pointer;
 }
 
-.concept-node:hover,
-.concept-node:focus-visible {
+.concept-network .concept-node:hover,
+.concept-network .concept-node:focus-visible {
   border-color: var(--meta);
   color: var(--link-hover);
   outline: none;
   text-decoration: none;
 }
 
-.concept-node-primary {
+.concept-network .concept-node-primary {
   border-color: rgba(132, 213, 232, 0.38);
   color: rgba(224, 229, 232, 0.9);
 }
@@ -987,7 +987,7 @@ button.concept-node {
     width: 27px;
   }
 
-  .concept-node {
+.concept-network .concept-node {
     min-height: 44px;
     padding: 9px 8px;
     font-size: 0.7rem;

@@ -24,8 +24,8 @@ The public archive is the Finder's reconstructed layer.
 | `site/testimony/` | Testimony records and associated notes |
 | `site/environmental/` | Environmental observations |
 | `site/timeline/` | Chronological reference layer, conditionally shown after reconstruction reassessment or restricted discovery |
-| `site/search/` | Expanded conceptual retrieval view; not presented as an archive directory |
-| `site/js/concept-search.js` | Search corpus, concept relationships, and root-query handoff |
+| `site/search/` | Progressive local concept network and document retrieval view; not presented as an archive directory |
+| `site/js/concept-search.js` | Search corpus, local relationship rendering, aliases, and boundary discovery |
 | `site/js/index-state.js` | Manages first-visit entrance and restores conditional root navigation |
 | `site/style.css` | Shared public styling |
 | `site/robots.txt` | Site-wide crawler exclusion request |

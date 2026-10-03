@@ -699,6 +699,14 @@ hr {
   letter-spacing: 0.12em;
 }
 
+.index-query-explanation {
+  max-width: 640px;
+  margin: 0 0 1rem;
+  color: var(--text-soft);
+  font-size: 0.9rem;
+  line-height: 1.65;
+}
+
 .index-query-note {
   margin: 0.65rem 0 0;
   color: var(--faint);
@@ -811,6 +819,114 @@ hr {
   color: var(--link-hover);
 }
 
+.concept-network {
+  display: grid;
+  grid-template-columns:
+    minmax(110px, 0.72fr)
+    38px
+    minmax(170px, 1.28fr);
+  align-items: stretch;
+  width: min(680px, 100%);
+  margin-top: 14px;
+}
+
+.concept-network-origin {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.concept-network-trunk {
+  position: relative;
+  margin-left: 50%;
+  border-left: 1px solid rgba(132, 213, 232, 0.22);
+}
+
+.concept-network-trunk::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: 100%;
+  width: 19px;
+  border-top: 1px solid rgba(132, 213, 232, 0.22);
+}
+
+.concept-network-related {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 7px;
+  padding: 5px 0;
+}
+
+.concept-network-branch {
+  position: relative;
+  padding-left: 20px;
+}
+
+.concept-network-branch::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: -19px;
+  width: 39px;
+  border-top: 1px solid rgba(132, 213, 232, 0.22);
+}
+
+.concept-node {
+  display: inline-block;
+  max-width: 100%;
+  min-height: 34px;
+  padding: 7px 10px;
+  border: 1px solid var(--line);
+  background: rgba(15, 19, 23, 0.72);
+  color: var(--link);
+  font-family: var(--mono);
+  font-size: 0.74rem;
+  line-height: 1.35;
+  text-align: left;
+  text-decoration: none;
+  overflow-wrap: anywhere;
+}
+
+button.concept-node {
+  cursor: pointer;
+}
+
+.concept-node:hover,
+.concept-node:focus-visible {
+  border-color: var(--meta);
+  color: var(--link-hover);
+  outline: none;
+  text-decoration: none;
+}
+
+.concept-node-primary {
+  border-color: rgba(132, 213, 232, 0.38);
+  color: rgba(224, 229, 232, 0.9);
+}
+
+.concept-network-branch .concept-node {
+  width: min(280px, 100%);
+}
+
+.concept-network-seed {
+  width: min(560px, 100%);
+  margin-top: 22px;
+}
+
+.search-network-note {
+  margin: 12px 0 0;
+  color: var(--faint);
+  font-family: var(--mono);
+  font-size: 0.68rem;
+  line-height: 1.55;
+}
+
+.search-relation-section {
+  margin-top: 8px;
+}
+
 .search-document {
   padding: 8px 0;
   border-bottom: 1px solid var(--line-soft);
@@ -845,6 +961,32 @@ hr {
 
   .search-row button {
     align-self: flex-start;
+  }
+
+  .concept-network {
+    grid-template-columns:
+      minmax(88px, 0.68fr)
+      26px
+      minmax(0, 1.32fr);
+  }
+
+  .concept-network-trunk::before {
+    width: 13px;
+  }
+
+  .concept-network-branch {
+    padding-left: 14px;
+  }
+
+  .concept-network-branch::before {
+    left: -13px;
+    width: 27px;
+  }
+
+  .concept-node {
+    min-height: 44px;
+    padding: 9px 8px;
+    font-size: 0.7rem;
   }
 }
 /* Grouped archive index sections */

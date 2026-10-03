@@ -207,6 +207,12 @@ He warns readers that everything beyond this point exists outside his confidence
 
 A relational gate interrupts ordinary navigation.
 
+Before the gate becomes available, the root query instrument teaches the reader to navigate by
+relationship. Its initial concept network is incomplete by design. Each selected term redraws the
+local relationships around it, allowing the reader to move from observation and interpretation
+toward systems, consequence, and responsibility. Responsibility is not shown in the initial state;
+it emerges from the conceptual route and changes the Index state when queried.
+
 The gate is an interpretive filter, not a password puzzle.
 
 It rewards interpretation.

@@ -70,6 +70,12 @@ remains directly reachable; the conditional state protects story order rather th
 
 Search is not represented as a directory. The root query instrument submits to `site/search/index.html`, and `site/js/concept-search.js` maps human queries to conceptual classifications and related documents.
 
+The query instrument exposes a progressive local concept network. Its initial state shows only
+`interpretation` and the safe starting relations `observation`, `systems`, and `uncertainty`.
+Selecting or entering a concept redraws the network around that classification and shows only its
+immediate relations. This makes relational retrieval discoverable without exposing the complete
+ontology or reducing the path to a checklist. Document matches remain below the network.
+
 ---
 
 # 4. Conditional Restricted Discovery
@@ -83,6 +89,10 @@ When conceptual search resolves a query to `responsibility`, it:
 3. permits `site/js/index-state.js` to restore the `restricted/` row on later root visits
 
 Aliases such as `duty`, `obligation`, and `accountability` may resolve to the same classification. This is a discovery condition, not access control. Direct URLs remain functional.
+
+`responsibility` is not present in the initial network. It first becomes visible as an immediate
+relation of `consequence`, which is itself reachable through the earlier public concepts. The route
+therefore remains semantic rather than completion-based.
 
 ---
 

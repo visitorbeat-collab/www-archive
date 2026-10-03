@@ -63,8 +63,12 @@
   <section class="index-query" aria-labelledby="index-query-heading">
 
     <div class="index-query-heading" id="index-query-heading">
-      QUERY INDEX
+      RELATIONAL RETRIEVAL
     </div>
+
+    <p class="index-query-explanation">
+      Folders show where material is stored. Concepts show why records were placed together.
+    </p>
 
     <form class="search-row" action="/search/" method="get">
       <label class="visually-hidden" for="index-query-input">
@@ -83,8 +87,28 @@
       <button type="submit">search</button>
     </form>
 
+    <div class="concept-network concept-network-seed" aria-label="Starting concept relationships">
+      <div class="concept-network-origin">
+        <a class="concept-node concept-node-primary" href="/search/?q=interpretation">interpretation</a>
+      </div>
+
+      <div class="concept-network-trunk" aria-hidden="true"></div>
+
+      <div class="concept-network-related">
+        <div class="concept-network-branch">
+          <a class="concept-node" href="/search/?q=observation">observation</a>
+        </div>
+        <div class="concept-network-branch">
+          <a class="concept-node" href="/search/?q=systems">systems</a>
+        </div>
+        <div class="concept-network-branch">
+          <a class="concept-node" href="/search/?q=uncertainty">uncertainty</a>
+        </div>
+      </div>
+    </div>
+
     <p class="index-query-note">
-      Relational retrieval across current classifications.
+      Select a visible relation or enter another concept.
     </p>
 
   </section>

@@ -142,8 +142,10 @@ personal note pretending to be his voice.
 The physical EP supplies the address. The new one-time entrance lets the solved address feel like an
 arrival without pretending it is already a security boundary. `README_FIRST` establishes the
 Finder's method; the public folders teach the reader to separate observation, interpretation, and
-speculation. Search becomes a conceptual instrument rather than another directory. The query
-**responsibility** reveals the restricted entrance. The gate tests whether the reader can account
+speculation. Search becomes a conceptual instrument rather than another directory. A progressive
+local network begins with interpretation and redraws around each selected concept, allowing the
+reader to move from observation toward systems, consequence, and finally responsibility without
+displaying the complete ontology. The query **responsibility** reveals the restricted entrance. The gate tests whether the reader can account
 for durable, dependent, delayed, and weakly represented consequence. Restricted material then
 changes from a folder hierarchy to a relational topology. The Corpus and Nontext collections widen
 the question from “are the Observers real?” to “what would make a powerful population safe to enter
@@ -163,7 +165,7 @@ also listed, although it is not part of the intended reader path.
 | --- | --- | --- |
 | `index.html` | I | One-time arrival threshold, public directory, conceptual query entry, and conditional system status. It establishes that this is a human reconstruction without explaining the larger truth. |
 | `README_FIRST.html` | F | The Finder's compact statement of method, uncertainty, and the observation/interpretation/speculation distinction. This is the trust contract for the entire project. |
-| `search/index.html` | I | Conceptual retrieval instrument. It teaches the Index's ontology and can reveal the Restricted boundary through interpretation rather than folder browsing. |
+| `search/index.html` | I | Progressive local concept network and retrieval instrument. It teaches the Index's ontology one immediate relationship at a time and can reveal the Restricted boundary through interpretation rather than folder browsing. |
 | `timeline/index.html` | I/F | A provisional reconstruction chronology exposed only after the story can support it. It orders events without assigning the unresolved source. |
 | `404.html` | I | Keeps missing destinations inside the fiction as unresolved references without implying that every broken link is a puzzle. |
 

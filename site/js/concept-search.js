@@ -120,6 +120,7 @@ const conceptIndex = {
       "capability",
       "revision",
       "decision threshold",
+      "responsibility",
       "scale"
     ],
     documents: [
@@ -1022,6 +1023,7 @@ const aliases = {
 
   decision: "decision threshold",
   reversibility: "decision threshold",
+  irreversibility: "decision threshold",
 
   environment: "system dependency",
   ecology: "system dependency",
@@ -1029,6 +1031,8 @@ const aliases = {
 
   preservation: "maintenance",
   protect: "maintenance",
+  diversity: "redundancy",
+  "non-ownership": "reverence",
 
 trustworthy: "trustworthiness",
 reliable: "behavioral reliability",
@@ -1212,6 +1216,59 @@ function escapeHTML(value) {
 }
 
 
+function renderConceptNetwork(concept, relatedConcepts) {
+
+  const branches = relatedConcepts
+    .map(item => `
+      <div class="concept-network-branch">
+        <button
+          class="concept-node concept-link"
+          type="button"
+          data-concept="${escapeHTML(item)}"
+        >
+          ${escapeHTML(item)}
+        </button>
+      </div>
+    `)
+    .join("");
+
+  return `
+    <div class="concept-network" aria-label="Relationships for ${escapeHTML(concept)}">
+      <div class="concept-network-origin">
+        <span class="concept-node concept-node-primary" aria-current="true">
+          ${escapeHTML(concept)}
+        </span>
+      </div>
+
+      <div class="concept-network-trunk" aria-hidden="true"></div>
+
+      <div class="concept-network-related">
+        ${branches}
+      </div>
+    </div>
+  `;
+}
+
+
+function renderSeedState() {
+
+  response.innerHTML = `
+    <div class="search-heading">starting relations</div>
+
+    ${renderConceptNetwork(
+      "interpretation",
+      ["observation", "systems", "uncertainty"]
+    )}
+
+    <p class="search-network-note">
+      Select a visible relation or enter another concept. Only immediate relationships are shown.
+    </p>
+  `;
+
+  attachConceptButtons();
+}
+
+
 function renderResult(originalQuery, concept, result, mapped) {
 
   const boundaryDiscovered = concept === "responsibility";
@@ -1223,18 +1280,6 @@ function renderResult(originalQuery, concept, result, mapped) {
       // The current result can still expose the boundary when storage is unavailable.
     }
   }
-
-  const related = result.related
-    .map(item => `
-      <button
-        class="concept-link"
-        type="button"
-        data-concept="${escapeHTML(item)}"
-      >
-        ${escapeHTML(item)}
-      </button>
-    `)
-    .join("");
 
   const documents = result.documents
     .map(([title, url]) => `
@@ -1272,19 +1317,13 @@ function renderResult(originalQuery, concept, result, mapped) {
   response.innerHTML = `
     ${mappingText}
 
-    <div class="search-result-section">
-      <div class="search-heading">classification</div>
-      <div class="search-primary">${escapeHTML(concept)}</div>
+    <div class="search-result-section search-relation-section">
+      <div class="search-heading">current relation</div>
+      ${renderConceptNetwork(concept, result.related)}
+      <p class="search-network-note">Only immediate relationships are shown.</p>
     </div>
 
     ${note}
-
-    <div class="search-result-section">
-      <div class="search-heading">related concepts</div>
-      <div class="concept-links">
-        ${related}
-      </div>
-    </div>
 
     <div class="search-result-section">
       <div class="search-heading">possible matches</div>
@@ -1309,7 +1348,17 @@ function renderNoResult(query) {
     <p class="muted">
       Try a broader process, relationship, or assessment variable.
     </p>
+
+    <div class="search-result-section">
+      <div class="search-heading">starting relations</div>
+      ${renderConceptNetwork(
+        "interpretation",
+        ["observation", "systems", "uncertainty"]
+      )}
+    </div>
   `;
+
+  attachConceptButtons();
 }
 
 
@@ -1318,7 +1367,7 @@ function performSearch(rawQuery) {
   const query = normalizeQuery(rawQuery);
 
   if (!query) {
-    response.innerHTML = `<p class="muted">No query submitted.</p>`;
+    renderSeedState();
     return;
   }
 
@@ -1360,6 +1409,10 @@ function attachConceptButtons() {
 
       input.value = concept;
 
+      const url = new URL(window.location.href);
+      url.searchParams.set("q", concept);
+      window.history.replaceState({}, "", url);
+
       performSearch(concept);
 
       window.scrollTo({
@@ -1376,6 +1429,15 @@ function attachConceptButtons() {
 
 form.addEventListener("submit", event => {
   event.preventDefault();
+
+  const query = normalizeQuery(input.value);
+
+  if (query) {
+    const url = new URL(window.location.href);
+    url.searchParams.set("q", query);
+    window.history.replaceState({}, "", url);
+  }
+
   performSearch(input.value);
 });
 
@@ -1385,4 +1447,6 @@ const initialQuery = new URLSearchParams(window.location.search).get("q");
 if (initialQuery) {
   input.value = initialQuery;
   performSearch(initialQuery);
+} else {
+  renderSeedState();
 }

@@ -4,6 +4,10 @@
 
 **Status:** Internal Design Document
 
+> **Historical design matrix:** This file records the initial concept distribution and proposed
+> restricted path. It is not a current file inventory. Use `CANON_AND_PAGE_MAP.md` for the implemented
+> page map and `ARCHITECTURE.md` for current discovery, gate, topology, and retained-media behavior.
+
 ---
 
 # Purpose

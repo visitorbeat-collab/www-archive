@@ -16,7 +16,7 @@ The public archive is the Finder's reconstructed layer.
 
 | Path | Function |
 | --- | --- |
-| `site/index.html` | Public entry, primary navigation, and root query instrument |
+| `site/index.html` | First-visit entrance, public navigation, and root query instrument |
 | `site/field-notes/` | Chronological Finder journal, entries 0001–0007 |
 | `site/working-notes/` | Working-note directory and personal reconstruction notes |
 | `site/recovered/` | Recovered documents, annotations, and unverified material |
@@ -26,12 +26,17 @@ The public archive is the Finder's reconstructed layer.
 | `site/timeline/` | Chronological reference layer, conditionally shown after reconstruction reassessment or restricted discovery |
 | `site/search/` | Expanded conceptual retrieval view; not presented as an archive directory |
 | `site/js/concept-search.js` | Search corpus, concept relationships, and root-query handoff |
-| `site/js/index-state.js` | Restores conditional root navigation after boundary discovery |
+| `site/js/index-state.js` | Manages first-visit entrance and restores conditional root navigation |
 | `site/style.css` | Shared public styling |
 | `site/robots.txt` | Site-wide crawler exclusion request |
 | `site/_headers` | Static-response crawler and privacy headers |
 
 The public layer remains modest and evidentiary. It does not announce the archive's largest implications.
+
+The entrance appears once per browser profile and records
+`observation-index-entry-seen=true`. It is a presentation threshold, not an access gate. A
+footer control lets the reader reopen it, and clearing local site data restores first-visit
+behavior.
 
 ---
 

@@ -42,6 +42,12 @@ No secret is present in public JavaScript. Production secrets are supplied throu
 
 `site/index.html` is the primary public entry. It presents the archive as grouped material rather than a strict reading sequence.
 
+On a reader's first visit, the root displays a restrained entrance state before revealing the
+directory. The entrance identifies only the public reconstruction boundary and its incomplete
+source continuity; it does not imply that the visitor has reached the restricted system. Opening
+the Index stores `observation-index-entry-seen=true` in local storage. Later visits proceed
+directly to the root, while a quiet footer control can restore the entrance deliberately.
+
 Public collections include:
 
 - `field-notes/`
@@ -167,6 +173,7 @@ Local storage controls discoverability and reader continuity only. It must never
 
 | Key | Purpose |
 | --- | --- |
+| `observation-index-entry-seen` | Bypasses the root entrance for returning readers |
 | `observation-index-restricted-discovered` | Restores the root Restricted link |
 | `restricted-map-visited` | Records restricted topology visits |
 | `restricted-audio-convergence` | Records convergence-assessment observation |

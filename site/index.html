@@ -6,12 +6,48 @@
 
   <title>Index</title>
 
+  <script>
+    try {
+      if (localStorage.getItem("observation-index-entry-seen") !== "true") {
+        document.documentElement.classList.add("index-entry-pending");
+      }
+    } catch (error) {
+      document.documentElement.classList.add("index-entry-pending");
+    }
+  </script>
+
   <link rel="stylesheet" href="/style.css">
 </head>
 
-<body>
+<body class="index-root">
 
-<main class="index-page">
+<div
+  class="index-entry"
+  data-index-entry
+  role="dialog"
+  aria-modal="true"
+  aria-labelledby="index-entry-title"
+  hidden
+>
+  <div class="index-entry-panel">
+    <div class="index-entry-path">/reconstruction/</div>
+
+    <h1 class="index-entry-title" id="index-entry-title">
+      ADDRESS RESOLVED
+    </h1>
+
+    <div class="index-entry-status" aria-label="Entry status">
+      <span>reconstruction boundary: public</span>
+      <span>source continuity: incomplete</span>
+    </div>
+
+    <button class="index-entry-open" type="button" data-index-entry-open>
+      open index
+    </button>
+  </div>
+</div>
+
+<main class="index-page" id="index-content">
 
   <header class="index-header">
 
@@ -205,7 +241,10 @@
 
 
   <footer class="index-footer">
-    Observation Index.
+    <span>Observation Index.</span>
+    <button type="button" class="index-entry-reopen" data-index-entry-reopen>
+      reopen entrance
+    </button>
   </footer>
 
 </main>

@@ -5,6 +5,13 @@
 **Project:** World Wide Waste / Visitor
 **Purpose:** Internal creative reference. Not intended for public release.
 
+> **Implementation note:** This document preserves the project's foundational canon, but several
+> structural details predate the implemented Index. For the current restricted topology, Nontext
+> placement, Evidentiary Corpus, retained-audio assignments, and complete public-page inventory,
+> `CANON_AND_PAGE_MAP.md` and `ARCHITECTURE.md` take precedence. In particular, the category proposal
+> in section 22 and the open artifact assignment in section 25 are retained as design history rather
+> than current implementation instructions.
+
 ---
 
 ## 1. Purpose of This Document

@@ -72,6 +72,18 @@ body.restricted-page {
   background: var(--bg-restricted);
 }
 
+body.index-entry-active {
+  overflow: hidden;
+}
+
+.index-entry-pending #index-content {
+  visibility: hidden;
+}
+
+.index-entry-pending .index-entry[hidden] {
+  display: grid;
+}
+
 main {
   width: min(calc(100% - 36px), var(--content-width));
   margin: 64px auto 80px;
@@ -79,6 +91,113 @@ main {
 
 main.document {
   max-width: var(--document-width);
+}
+
+/* ---------- Root entrance ---------- */
+
+.index-entry {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+
+  display: grid;
+  place-items: center;
+
+  min-height: 100vh;
+  min-height: 100dvh;
+  padding: 24px;
+
+  background:
+    radial-gradient(
+      circle at 50% 42%,
+      rgba(126, 151, 165, 0.055),
+      transparent 42%
+    ),
+    #0b0d10;
+
+  opacity: 1;
+  visibility: visible;
+
+  transition:
+    opacity 620ms ease,
+    visibility 620ms ease;
+}
+
+.index-entry.is-closing {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.index-entry-panel {
+  width: min(100%, 520px);
+  text-align: center;
+}
+
+.index-entry-path {
+  margin-bottom: 1.4rem;
+  font-family: var(--mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.13em;
+  color: rgba(178, 190, 198, 0.34);
+}
+
+.index-entry-title {
+  margin: 0 0 1.8rem;
+  font-family: var(--mono);
+  font-size: 0.86rem;
+  font-weight: 400;
+  letter-spacing: 0.18em;
+  color: rgba(220, 226, 230, 0.76);
+}
+
+.index-entry-status {
+  display: grid;
+  gap: 0.35rem;
+  margin-bottom: 2.25rem;
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.05em;
+  color: rgba(178, 190, 198, 0.46);
+}
+
+.index-entry-open {
+  min-width: 150px;
+  min-height: 44px;
+  padding: 10px 18px;
+  border: 1px solid rgba(135, 191, 255, 0.32);
+  background: transparent;
+  color: rgba(181, 214, 255, 0.84);
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  text-transform: lowercase;
+}
+
+.index-entry-open:hover,
+.index-entry-open:focus-visible {
+  border-color: rgba(181, 214, 255, 0.66);
+  color: var(--link-hover);
+}
+
+.index-entry-reopen {
+  margin-left: 0.8rem;
+  padding: 8px 0;
+  border: 0;
+  background: transparent;
+  color: var(--faint);
+  font: inherit;
+}
+
+.index-entry-reopen::before {
+  content: "/ ";
+  opacity: 0.55;
+}
+
+.index-entry-reopen:hover,
+.index-entry-reopen:focus-visible {
+  color: var(--link-hover);
+  text-decoration: underline;
+  text-underline-offset: 3px;
 }
 
 /* ---------- Typography ---------- */
@@ -484,6 +603,10 @@ hr {
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .index-entry {
+    transition: none;
+  }
+
   .threshold-entering {
     transition: none;
   }

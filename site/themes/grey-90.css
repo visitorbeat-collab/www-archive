@@ -1,0 +1,138 @@
+/* =========================================================
+   PUBLIC INDEX — GREY 90s THEME
+   Restricted paths do not receive the public-grey90 class.
+   ========================================================= */
+
+html.public-grey90 {
+  color-scheme: light;
+
+  --bg: #b8bab6;
+  --bg-recovered: #adafac;
+
+  --text: #101110;
+  --text-soft: #292b29;
+  --meta: #484b47;
+  --faint: #626660;
+
+  --line: #696c67;
+  --line-soft: #92958f;
+
+  --link: #0000a8;
+  --link-hover: #000064;
+
+  --finder: #006d72;
+
+  --sans: "Courier New", Courier, monospace;
+  --mono: "Courier New", Courier, monospace;
+  --index-font: "Courier New", Courier, monospace;
+
+  background: var(--bg);
+}
+
+.public-grey90 body,
+.public-grey90 body.finder-page,
+.public-grey90 body.recovered-page,
+.public-grey90 body.directory-page {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--sans);
+  -webkit-font-smoothing: auto;
+  text-rendering: auto;
+}
+
+.public-grey90 body.recovered-page {
+  background: var(--bg-recovered);
+}
+
+.public-grey90 a {
+  color: var(--link);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 2px;
+}
+
+.public-grey90 a:visited {
+  color: #4e246c;
+}
+
+.public-grey90 a:hover,
+.public-grey90 a:focus-visible {
+  color: var(--link-hover);
+}
+
+.public-grey90 .index-title,
+.public-grey90 .document-title,
+.public-grey90 .directory-name a,
+.public-grey90 .simple-directory-entry {
+  font-family: "Courier New", Courier, monospace;
+  font-weight: 700;
+  letter-spacing: 0;
+}
+
+.public-grey90 .system-label,
+.public-grey90 .directory-path,
+.public-grey90 .directory-section-heading,
+.public-grey90 .index-query-heading,
+.public-grey90 .search-heading {
+  color: #3e423d;
+  letter-spacing: 0.08em;
+}
+
+.public-grey90 .directory-row:hover,
+.public-grey90 .simple-directory-entry:hover {
+  background: rgba(0, 0, 0, 0.045);
+}
+
+.public-grey90 .search-row input,
+.public-grey90 .search-row button,
+.public-grey90 .concept-node {
+  border-color: #5f625d;
+  background: #c6c8c3;
+  color: #111211;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+.public-grey90 .search-row input:focus,
+.public-grey90 .search-row button:hover,
+.public-grey90 .concept-node:hover,
+.public-grey90 .concept-node:focus-visible {
+  border-color: #1f211f;
+  outline-color: #1f211f;
+}
+
+.public-grey90 .concept-node {
+  color: var(--link);
+}
+
+.public-grey90 .concept-node-primary {
+  border-color: #3e514f;
+  background: #b0b4b0;
+  color: #101110;
+}
+
+.public-grey90 .concept-network-trunk,
+.public-grey90 .concept-network-trunk::before,
+.public-grey90 .concept-network-branch::before {
+  border-color: rgba(20, 35, 34, 0.42);
+}
+
+.public-grey90 .reconstruction-method {
+  border-left-color: var(--finder);
+  background: rgba(0, 70, 74, 0.055);
+}
+
+.public-grey90 .reconstruction-note {
+  border-color: var(--line);
+}
+
+.public-grey90 .search-boundary-response {
+  border-color: #3f625f;
+  background: rgba(0, 80, 83, 0.07);
+}
+
+.public-grey90 .index-footer,
+.public-grey90 .directory-footer,
+.public-grey90 .document-footer {
+  color: var(--meta);
+}

@@ -1252,18 +1252,24 @@ function renderConceptNetwork(concept, relatedConcepts) {
 
 function renderSeedState() {
 
-  response.innerHTML = `
-    <div class="search-heading">starting relations</div>
+response.innerHTML = `
+  ${boundaryResponse}
 
-    ${renderConceptNetwork(
-      "interpretation",
-      ["observation", "systems", "uncertainty"]
-    )}
+  ${mappingText}
 
-    <p class="search-network-note">
-      Select a visible relation or enter another concept. Only immediate relationships are shown.
-    </p>
-  `;
+  <div class="search-result-section search-relation-section">
+    <div class="search-heading">current relation</div>
+    ${renderConceptNetwork(concept, result.related)}
+    <p class="search-network-note">Only immediate relationships are shown.</p>
+  </div>
+
+  ${note}
+
+  <div class="search-result-section">
+    <div class="search-heading">possible matches</div>
+    ${documents}
+  </div>
+`;
 
   attachConceptButtons();
 }

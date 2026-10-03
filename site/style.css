@@ -934,9 +934,9 @@ button.concept-node {
 }
 
 .search-boundary-response {
-  margin-top: 38px;
-  padding: 20px 0 4px;
-  border-top: 1px solid var(--line);
+  margin: 0 0 30px;
+  padding: 4px 0 18px;
+  border-bottom: 1px solid var(--line);
 }
 
 .search-boundary-response p {

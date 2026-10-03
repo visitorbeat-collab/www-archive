@@ -1253,7 +1253,6 @@ function renderConceptNetwork(concept, relatedConcepts) {
 function renderSeedState() {
 
 response.innerHTML = `
-  ${boundaryResponse}
 
   ${mappingText}
 
@@ -1336,7 +1335,12 @@ function renderResult(originalQuery, concept, result, mapped) {
       ${documents}
     </div>
 
-    ${boundaryResponse}
+  response.innerHTML = `
+  ${boundaryResponse}
+
+  ${mappingText}
+
+  <div class="search-result-section search-relation-section">
   `;
 
   attachConceptButtons();

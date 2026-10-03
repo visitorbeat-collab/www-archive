@@ -18,7 +18,8 @@ const conceptIndex = {
       "observation",
       "uncertainty",
       "revision",
-      "systems"
+      "systems",
+      "evidence"
     ],
     documents: [
       ["testimony_001", "/testimony/testimony_001.html"],
@@ -29,10 +30,10 @@ const conceptIndex = {
 
   systems: {
     related: [
-      "scale",
-      "consequence",
       "system boundary",
-      "feedback"
+      "consequence",
+      "system dependency",
+      "recovery capacity"
     ],
     documents: [
       ["classification_schema_v1", "/recovered/unverified/classification_schema_v1.html"],
@@ -40,6 +41,23 @@ const conceptIndex = {
       ["environmental_observation_002", "/environmental/environmental_observation_002.html"],
       ["cross_reference_001", "/cross-references/cross_reference_001.html"]
     ]
+  },
+
+  "system boundary": {
+    related: [
+      "systems",
+      "consequence",
+      "externalization",
+      "wider system responsibility",
+      "reconstruction uncertainty"
+    ],
+    documents: [
+      ["classification_schema_v1", "/recovered/unverified/classification_schema_v1.html"],
+      ["environmental_observation_001", "/environmental/environmental_observation_001.html"],
+      ["technological_population_assessment_002", "/recovered/unverified/technological_population_assessment_002.html"],
+      ["wider_system_responsibility_assessment_001", "/recovered/unverified/wider_system_responsibility_assessment_001.html"]
+    ],
+    note: "The scope used to decide which relationships and consequences belong inside an account of a system."
   },
 
   uncertainty: {
@@ -50,7 +68,7 @@ const conceptIndex = {
       "reversibility"
     ],
     documents: [
-      ["technological_population_assessment_002", "/recovered/unverified/technological_population_assessment_002.html"],
+      ["that_is_not_enough", "/working-notes/personal/that_is_not_enough.html"],
       ["decision_threshold_assessment_001", "/recovered/unverified/decision_threshold_assessment_001.html"],
       ["testimony_002", "/testimony/testimony_002.html"],
       ["cross_reference_003", "/cross-references/cross_reference_003.html"]
@@ -59,10 +77,10 @@ const conceptIndex = {
 
   revision: {
     related: [
-      "self-correction",
       "consequence",
       "persistence",
-      "prediction"
+      "prediction",
+      "evidence"
     ],
     documents: [
       ["technological_population_assessment_001", "/recovered/unverified/technological_population_assessment_001.html"],
@@ -74,8 +92,8 @@ const conceptIndex = {
     related: [
       "revision",
       "resilience",
-      "long horizon",
-      "maturity"
+      "maturity",
+      "behavioral reliability"
     ],
     documents: [
       ["technological_population_assessment_001", "/recovered/unverified/technological_population_assessment_001.html"],
@@ -105,7 +123,8 @@ const conceptIndex = {
       "consequence",
       "prediction",
       "restraint",
-      "decision threshold"
+      "decision threshold",
+      "intelligence"
     ],
     documents: [
       ["technological_population_assessment_002", "/recovered/unverified/technological_population_assessment_002.html"],
@@ -121,7 +140,7 @@ const conceptIndex = {
       "revision",
       "decision threshold",
       "responsibility",
-      "scale"
+      "system boundary"
     ],
     documents: [
       ["environmental_observation_001", "/environmental/environmental_observation_001.html"],
@@ -145,15 +164,31 @@ const conceptIndex = {
     ]
   },
 
+  reversibility: {
+    related: [
+      "uncertainty",
+      "decision threshold",
+      "restraint",
+      "recovery capacity",
+      "transition risk"
+    ],
+    documents: [
+      ["decision_threshold_assessment_001", "/recovered/unverified/decision_threshold_assessment_001.html"],
+      ["transition_risk_assessment_001", "/recovered/unverified/transition_risk_assessment_001.html"],
+      ["environmental_observation_003", "/environmental/environmental_observation_003.html"]
+    ],
+    note: "Capacity to withdraw or repair an intervention while preserving viable alternatives."
+  },
+
 maturity: {
   related: [
     "capability",
     "restraint",
     "revision",
-    "stewardship",
-    "reverence",
     "persistence",
-    "behavioral reliability"
+    "behavioral reliability",
+    "trustworthiness",
+    "threshold"
   ],
   documents: [
     ["contact_readiness_synthesis_001", "/cross-references/contact_readiness_synthesis_001.html"],
@@ -169,11 +204,12 @@ maturity: {
 
   responsibility: {
     related: [
-      "capability",
       "consequence",
+      "capability",
       "restraint",
-      "revision",
-      "persistence"
+      "persistence",
+      "stewardship",
+      "wider system responsibility"
     ],
     documents: [
       ["contact_readiness_synthesis_001", "/cross-references/contact_readiness_synthesis_001.html"],
@@ -205,7 +241,7 @@ stewardship: {
 
   "system dependency": {
     related: [
-      "influence",
+      "capability",
       "maintenance",
       "persistence",
       "system boundary"
@@ -220,7 +256,7 @@ stewardship: {
     related: [
       "system dependency",
       "persistence",
-      "influence",
+      "capability",
       "consequence"
     ],
     documents: [
@@ -251,21 +287,21 @@ trust: {
       "persistence",
       "restraint",
       "revision",
-      "self-regulation",
-      "generalization"
+      "maturity",
+      "trustworthiness"
     ],
     documents: [
       ["behavioral_reliability_assessment_001", "/recovered/unverified/behavioral_reliability_assessment_001.html"],
       ["can_they_trust_us", "/working-notes/personal/can_they_trust_us.html"],
       ["technological_population_assessment_001", "/recovered/unverified/technological_population_assessment_001.html"],
-      ["system_dependency_assessment_001", "/recovered/unverified/system_dependency_assessment_001.html"]
+      ["maturity_is_not_trust", "/working-notes/personal/maturity_is_not_trust.html"]
     ]
   },
 
   threshold: {
     related: [
+      "maturity",
       "behavioral reliability",
-      "capability",
       "transition",
       "restraint",
       "persistence"
@@ -282,9 +318,9 @@ transition: {
     "transition risk",
     "threshold",
     "trustworthiness",
-    "behavioral reliability",
-    "capability",
-    "transfer"
+    "transfer",
+    "contact",
+    "contact readiness"
   ],
   documents: [
     ["contact_readiness_synthesis_001", "/cross-references/contact_readiness_synthesis_001.html"],
@@ -327,9 +363,10 @@ encounter: {
 "cognitive assessment": {
   related: [
     "interpretation",
-    "systems",
     "structural retention",
-    "uncertainty"
+    "uncertainty",
+    "encounter",
+    "diagnostic exposure"
   ],
   documents: [
     ["cognitive_assessment_protocol_fragment_001", "/recovered/unverified/cognitive_assessment_protocol_fragment_001.html"],
@@ -344,9 +381,9 @@ encounter: {
     "reassessment",
     "post-exposure observation",
     "cognitive assessment",
-    "systems",
     "interpretation",
-    "persistence"
+    "persistence",
+    "reconstruction"
   ],
   documents: [
     ["reassessment_status_fragment_001", "/recovered/unverified/reassessment_status_fragment_001.html"],
@@ -425,7 +462,8 @@ reassessment: {
     "evidence",
     "prediction",
     "revision",
-    "restraint"
+    "restraint",
+    "interpretive compression"
   ],
   documents: [
     ["that_is_not_enough", "/working-notes/personal/that_is_not_enough.html"],
@@ -462,17 +500,17 @@ anomaly: {
   documents: [
     ["reassessment_response_protocol_fragment_001", "/recovered/unverified/reassessment_response_protocol_fragment_001.html"],
     ["Field Note 0006", "/field-notes/0006.html"],
-    ["what_have_i_been_doing", "/working-notes/personal/what_have_i_been_doing.html"]
+    ["the_reference_resolved", "/working-notes/personal/the_reference_resolved.html"]
   ],
   note: "Classification depends on response and later correspondence."
 },
 prediction: {
   related: [
-    "falsifiability",
     "evidence",
     "anomaly",
     "epistemic restraint",
-    "reassessment response"
+    "reassessment response",
+    "prospective evidence"
   ],
   documents: [
     ["the_condition_occurred", "/working-notes/personal/the_condition_occurred.html"],
@@ -493,7 +531,7 @@ prediction: {
   documents: [
     ["preservation_value_assessment_001", "/recovered/unverified/preservation_value_assessment_001.html"],
     ["system_dependency_assessment_001", "/recovered/unverified/system_dependency_assessment_001.html"],
-    ["environmental_observation_001", "/environmental/environmental_observation_001.html"]
+    ["this_is_not_stewardship", "/working-notes/personal/this_is_not_stewardship.html"]
   ],
   note: "Significance independent of demonstrated immediate utility."
 },
@@ -503,7 +541,7 @@ preservation: {
     "existence value",
     "system dependency",
     "uncertainty",
-    "irreversibility",
+    "reversibility",
     "maintenance"
   ],
   documents: [
@@ -516,7 +554,7 @@ reverence: {
   related: [
     "existence value",
     "stewardship",
-    "non-ownership",
+    "preservation",
     "responsibility",
     "maturity"
   ],
@@ -538,12 +576,13 @@ intelligence: {
   documents: [
     ["developmental_maturity_assessment_001", "/recovered/unverified/developmental_maturity_assessment_001.html"],
     ["what_are_they_measuring", "/working-notes/personal/what_are_they_measuring.html"],
-    ["technological_population_assessment_001", "/recovered/unverified/technological_population_assessment_001.html"]
+    ["classification_schema_v1", "/recovered/unverified/classification_schema_v1.html"]
   ],
   note: "Technological or cognitive capability does not independently establish developmental maturity."
 },
 trustworthiness: {
   related: [
+    "trust",
     "maturity",
     "behavioral reliability",
     "persistence",
@@ -602,7 +641,7 @@ contact: {
     "contact",
     "diagnostic exposure",
     "transition risk",
-    "contamination",
+    "cultural contamination",
     "capability"
   ],
   documents: [
@@ -618,7 +657,8 @@ contact: {
     "incremental contact",
     "cognitive assessment",
     "interpretation",
-    "structural retention"
+    "structural retention",
+    "withheld explanation"
   ],
   documents: [
     ["testimony_003", "/testimony/testimony_003.html"],
@@ -633,7 +673,7 @@ contact: {
     "incremental contact",
     "diagnostic exposure",
     "interpretation",
-    "contamination",
+    "cultural contamination",
     "structural retention"
   ],
   documents: [
@@ -668,7 +708,8 @@ contact: {
     "cultural contamination",
     "interpretation",
     "developmental autonomy",
-    "uncertainty"
+    "uncertainty",
+    "epistemic dependency"
   ],
   documents: [
     ["cultural_contamination_assessment_001", "/recovered/unverified/cultural_contamination_assessment_001.html"],
@@ -683,7 +724,8 @@ contact: {
     "revision",
     "interpretation",
     "cultural contamination",
-    "nudge"
+    "nudge",
+    "refusal capacity"
   ],
   documents: [
     ["testimony_004", "/testimony/testimony_004.html"],
@@ -743,7 +785,8 @@ verification: {
     "developmental autonomy",
     "verification",
     "restraint",
-    "capability"
+    "capability",
+    "source skepticism"
   ],
   documents: [
     ["testimony_004", "/testimony/testimony_004.html"],
@@ -762,7 +805,8 @@ verification: {
     "stewardship",
     "consequence",
     "reciprocal trust",
-    "maturity"
+    "maturity",
+    "externalization"
   ],
   documents: [
     ["wider_system_responsibility_assessment_001", "/recovered/unverified/wider_system_responsibility_assessment_001.html"],
@@ -809,7 +853,8 @@ externalization: {
     "source authority",
     "verification",
     "revision",
-    "developmental autonomy"
+    "developmental autonomy",
+    "anomaly authority"
   ],
   documents: [
     ["reciprocal_trust_assessment_001_notes", "/recovered/annotations/reciprocal_trust_assessment_001_notes.html"],
@@ -857,8 +902,7 @@ externalization: {
   related: [
     "redundancy",
     "resilience",
-    "diversity",
-    "irreversibility",
+    "reversibility",
     "system dependency",
     "preservation"
   ],
@@ -875,9 +919,9 @@ redundancy: {
   related: [
     "recovery capacity",
     "resilience",
-    "diversity",
     "uncertainty",
-    "preservation"
+    "preservation",
+    "system dependency"
   ],
   documents: [
     ["environmental_observation_003", "/environmental/environmental_observation_003.html"]
@@ -905,7 +949,8 @@ resilience: {
     "evidence",
     "anomaly",
     "reassessment",
-    "epistemic restraint"
+    "epistemic restraint",
+    "reconstruction uncertainty"
   ],
   documents: [
     ["the_reference_resolved", "/working-notes/personal/the_reference_resolved.html"],
@@ -970,7 +1015,7 @@ resilience: {
     "reciprocal trust",
     "wider system responsibility",
     "transition",
-    "responsibility"
+    "wider community"
   ],
   documents: [
     ["contact_readiness_synthesis_001", "/cross-references/contact_readiness_synthesis_001.html"],
@@ -1016,28 +1061,20 @@ const aliases = {
   connected: "systems",
   scale: "systems",
   feedback: "systems",
-  "system boundary": "systems",
 
-  resilience: "persistence",
   "long horizon": "persistence",
 
   decision: "decision threshold",
-  reversibility: "decision threshold",
-  irreversibility: "decision threshold",
 
   environment: "system dependency",
   ecology: "system dependency",
   nature: "system dependency",
 
-  preservation: "maintenance",
   protect: "maintenance",
-  diversity: "redundancy",
-  "non-ownership": "reverence",
 
 trustworthy: "trustworthiness",
-reliable: "behavioral reliability",
 confidence: "trustworthiness",
-  worthy: "trust",
+  worthy: "trustworthiness",
 
   reliability: "behavioral reliability",
   reliable: "behavioral reliability",
@@ -1046,8 +1083,7 @@ confidence: "trustworthiness",
   "self-regulation": "behavioral reliability",
   generalization: "behavioral reliability",
 
-  ready: "transition",
-  readiness: "transition",
+  ready: "contact readiness",
 
   transferable: "transfer",
   abduction: "encounter",
@@ -1062,8 +1098,7 @@ structure: "structural retention",
 "relational structure": "structural retention",
 
 proof: "evidence",
-coincidence: "evidence",
-comparison: "evidence",
+coincidence: "uncertainty",
 
 followup: "post-exposure observation",
 "follow-up": "post-exposure observation",
@@ -1075,15 +1110,12 @@ index: "reconstruction",
 archive: "reconstruction",
 rebuild: "reconstruction",
 road: "reconstruction",
-anomaly: "reconstruction",
 
 reassess: "reassessment",
 reevaluation: "reassessment",
 "re-evaluation": "reassessment",
 confirmation: "reassessment",
 
-falsifiable: "epistemic restraint",
-falsifiability: "epistemic restraint",
 skepticism: "epistemic restraint",
 scepticism: "epistemic restraint",
 certainty: "epistemic restraint",
@@ -1100,13 +1132,12 @@ fail: "prediction",
 value: "existence value",
 significance: "existence value",
 intrinsic: "existence value",
-"existence value": "existence value",
 preserve: "preservation",
 extinction: "preservation",
 sacred: "reverence",
 respect: "reverence",
 
-advanced: "maturity",
+advanced: "capability",
 development: "maturity",
 developmental: "maturity",
 wisdom: "maturity",
@@ -1124,7 +1155,7 @@ extraterrestrial: "contact",
 comparison: "structural compatibility",
 similarity: "structural compatibility",
 "common origin": "structural compatibility",
-testimony: "structural compatibility",
+testimony: "evidence",
 
 authority: "source authority",
 obedience: "source authority",
@@ -1136,13 +1167,11 @@ autonomy: "developmental autonomy",
 
 dependency: "epistemic dependency",
 deference: "epistemic dependency",
-skepticism: "verification",
-scepticism: "verification",
 "independent verification": "verification",
 
 reciprocity: "reciprocal trust",
 "mutual trust": "reciprocal trust",
-submission: "reciprocal trust",
+submission: "epistemic dependency",
 "capability asymmetry": "reciprocal trust",
 
 community: "wider community",
@@ -1151,7 +1180,6 @@ externalities: "externalization",
 "third party": "wider system responsibility",
 "future generations": "wider system responsibility",
 
-"source skepticism": "source skepticism",
 "source scepticism": "source skepticism",
 "question the source": "source skepticism",
 fallibility: "source skepticism",
@@ -1217,7 +1245,6 @@ function escapeHTML(value) {
 
 
 function renderConceptNetwork(concept, relatedConcepts) {
-
   const branches = relatedConcepts
     .map(item => `
       <div class="concept-network-branch">
@@ -1251,7 +1278,6 @@ function renderConceptNetwork(concept, relatedConcepts) {
 
 
 function renderSeedState() {
-
   response.innerHTML = `
     <div class="search-heading">starting relations</div>
 

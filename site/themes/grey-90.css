@@ -99,23 +99,25 @@ html.public-grey90 {
 }
 
 .public-grey90 .concept-network .concept-node {
-  display: flex;
+  display: inline-flex;
   align-items: center;
-  width: auto;
+  max-width: 100%;
   min-height: 38px;
-  padding: 6px 2px;
+  padding: 7px 10px;
 
   appearance: none;
-  border: 0;
+  border: 1px solid #5f625d;
   border-radius: 0;
-  background: transparent;
+  background: #c6c8c3;
   box-shadow: none;
 
   color: var(--link);
   font-family: "Courier New", Courier, monospace;
-  text-decoration: underline;
-  text-decoration-thickness: 1px;
-  text-underline-offset: 2px;
+  font-size: 0.74rem;
+  line-height: 1.35;
+  text-align: left;
+  text-decoration: none;
+  overflow-wrap: anywhere;
 }
 
 .public-grey90 .concept-network button.concept-node {
@@ -124,22 +126,18 @@ html.public-grey90 {
 
 .public-grey90 .concept-network .concept-node:hover,
 .public-grey90 .concept-network .concept-node:focus-visible {
+  border-color: #1f211f;
+  background: #d0d1cc;
   color: var(--link-hover);
-  background: transparent;
   outline: 1px dotted #30322f;
   outline-offset: 2px;
 }
 
 .public-grey90 .concept-network .concept-node-primary {
-  display: inline-flex;
-  width: auto;
-  min-height: 38px;
-  padding: 6px 9px;
-
-  border: 1px solid #5f625d;
-  background: #b0b4b0;
+  border-color: #3e514f;
+  background: #aeb1ac;
   color: #101110;
-  text-decoration: none;
+  font-weight: 700;
 }
 
 .public-grey90 .concept-network-trunk,

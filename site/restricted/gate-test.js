@@ -601,6 +601,17 @@ document.addEventListener("DOMContentLoaded", () => {
       "is-adjusting"
     );
 
+    const activeFootprint =
+      consequenceFootprints.get(
+        node.profile
+      );
+
+    if (activeFootprint) {
+      activeFootprint.classList.add(
+        "is-drag-active"
+      );
+    }
+
     try {
       node.element.setPointerCapture(
         event.pointerId
@@ -659,6 +670,17 @@ document.addEventListener("DOMContentLoaded", () => {
     node.element.classList.remove(
       "is-dragging"
     );
+
+    const activeFootprint =
+      consequenceFootprints.get(
+        node.profile
+      );
+
+    if (activeFootprint) {
+      activeFootprint.classList.remove(
+        "is-drag-active"
+      );
+    }
 
     field.classList.remove(
       "is-adjusting"
@@ -2218,7 +2240,25 @@ document.addEventListener("DOMContentLoaded", () => {
     updateConsequenceFootprints();
 
     field.classList.add(
-      "is-normalized"
+      "is-normalized",
+      "is-footprint-preview"
+    );
+
+    // transient consequence footprint preview
+    window.setTimeout(
+      () => {
+        if (
+          resolved ||
+          myToken !== cycleToken
+        ) {
+          return;
+        }
+
+        field.classList.remove(
+          "is-footprint-preview"
+        );
+      },
+      3000
     );
   }
 
@@ -2391,7 +2431,16 @@ document.addEventListener("DOMContentLoaded", () => {
     cycleToken += 1;
 
     field.classList.remove(
-      "is-adjusting"
+      "is-adjusting",
+      "is-footprint-preview"
+    );
+
+    consequenceFootprints.forEach(
+      footprint => {
+        footprint.classList.remove(
+          "is-drag-active"
+        );
+      }
     );
 
     clearCaseFocus();

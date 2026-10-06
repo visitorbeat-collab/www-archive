@@ -1838,3 +1838,32 @@ body.gate-test-page::after {
 .consequence-footprint {
   opacity: 0;
 }
+
+
+/* =========================================================
+   TRANSIENT CONSEQUENCE FOOTPRINTS
+
+   The complete comparison appears briefly after observation.
+   Afterward, only the footprint belonging to the node being
+   held or dragged is shown.
+   ========================================================= */
+
+.gate-field.is-normalized .consequence-footprint {
+  opacity: 0;
+  transform: translate(-50%, -50%) scale(0.86);
+  transition:
+    opacity 520ms ease,
+    transform 620ms ease;
+}
+
+.gate-field.is-normalized.is-footprint-preview
+.consequence-footprint,
+.gate-field.is-normalized
+.consequence-footprint.is-drag-active {
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1);
+}
+
+.gate-field.is-condensing .consequence-footprint {
+  opacity: 0;
+}

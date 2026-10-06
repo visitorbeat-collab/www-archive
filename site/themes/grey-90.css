@@ -165,3 +165,24 @@ html.public-grey90 {
 .public-grey90 .document-footer {
   color: var(--meta);
 }
+
+
+/* =========================================================
+   INDEX ENTRY CONTRAST FIX
+   Keep the dark landing panel legible inside the light theme.
+   ========================================================= */
+
+.public-grey90 .index-entry .index-entry-open {
+  border-color: rgba(181, 214, 255, 0.58);
+  background: rgba(181, 214, 255, 0.035);
+  color: rgba(218, 233, 251, 0.96);
+}
+
+.public-grey90 .index-entry .index-entry-open:hover,
+.public-grey90 .index-entry .index-entry-open:focus-visible {
+  border-color: rgba(213, 232, 255, 0.88);
+  background: rgba(181, 214, 255, 0.09);
+  color: #f5f9ff;
+  outline: 1px solid rgba(213, 232, 255, 0.32);
+  outline-offset: 3px;
+}
